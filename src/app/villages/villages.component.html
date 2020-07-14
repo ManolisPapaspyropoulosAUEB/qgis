@@ -1,0 +1,81 @@
+<style>
+
+  ::ng-deep.table{
+    padding-top: 10px!important;
+    margin-bottom: 0rem!important;
+
+  }
+  ngx-datatable{
+    padding-left: 14px;
+    padding-bottom: 4%;
+  }
+
+</style>
+<div class="table">
+  <ngx-datatable  #mydatatable
+                  class="material"
+                  [sortType]="'multi'"
+                  [headerHeight]="50"
+                  [footerHeight]="40"
+                  [rowHeight]="'50'"
+                  [rows]="villages"
+                  [columnMode]="'force'"
+                  [limit]="limit"
+                  [scrollbarH]="true"
+  >
+    <ngx-datatable-column name="Show on map" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <mat-checkbox [(ngModel)]="row.checked" (change)="selectRow(row,$event)"></mat-checkbox>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Village_Co" prop="Village_Co" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.Village_Co }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Village__1" prop="Village__1" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.Village__1 }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="VillagePop" prop="VillagePop" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.VillagePop }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Village_HH" prop="Village_HH" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.Village_HH }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="village_name" prop="village_name" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.village_name }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="East_UTM42" prop="East_UTM42" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.East_UTM42 }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Nort_UTM42" prop="Nort_UTM42" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.Nort_UTM42 }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+</div>

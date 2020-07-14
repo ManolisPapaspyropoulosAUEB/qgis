@@ -1,0 +1,37 @@
+<body style="background-color: #5c6b94">
+<div class="container" style="justify-items: center;width: 445px;    position: relative;top: 10%">
+  <div style="
+    height: 51px;
+    font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+    background-color: #3f51b5;
+    padding-top: 12px;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+        box-shadow: 1px 1px 4px #344e8a;
+
+">Login
+
+    <mat-progress-bar style="    top: -33px;" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+  </div>
+  <mat-card>
+    <form  [formGroup]="editForm" class="example-form" style="" (submit)="onSubmitForm()" >
+      <mat-form-field style="width: 100%;" class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input  formControlName="username"   matInput placeholder="username" [(ngModel)]="username">
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%;" class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input  type="password"  formControlName="password"   matInput placeholder="Password" [(ngModel)]="password">
+      </mat-form-field>
+      <button mat-raised-button color="primary">Login</button>
+      <a   (click)="goToRegisterPage()"    style="    margin-left: 5px;" mat-button >Register</a>
+    </form>
+  </mat-card>
+</div>
+</body>
+
+

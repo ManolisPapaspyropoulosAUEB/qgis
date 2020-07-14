@@ -1,0 +1,43 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form" style="    margin-top: 30px;display: flex">
+
+
+  <div class="col-md-4">
+    <mat-form-field style="width: 100%;" class="example-full-width">
+      <mat-label>Ονομασία Προιόντος</mat-label>
+      <input  formControlName="productName"   matInput placeholder="Name" [(ngModel)]="productName">
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%;" class="example-full-width">
+      <mat-label>Περιγραφή</mat-label>
+      <textarea style="height: 100px"  formControlName="description"   matInput placeholder="Name" [(ngModel)]="description"></textarea>
+    </mat-form-field>
+
+
+
+    <mat-form-field style="width: 100%;" class="example-full-width">
+      <mat-label>Τιμή Προιόντος €/kg </mat-label>
+      <input type="number" id="number-input"  formControlName="originalPrice"   matInput placeholder="Προσθέσθε τιμή" [(ngModel)]="originalPrice">
+    </mat-form-field>
+
+
+    <mat-form-field style="width: 100%;" class="example-full-width">
+      <mat-label>Απόθεμα (kg)</mat-label>
+      <input type="number" id="number-input"  formControlName="reserve"   matInput placeholder="Προσθέσθε Απόθεμα" [(ngModel)]="reserve">
+    </mat-form-field>
+    <app-fileupload></app-fileupload>
+
+
+  </div>
+  <div class="col-md-8">
+
+    <app-slider></app-slider>
+
+
+  </div>
+
+
+
+
+
+
+</form>

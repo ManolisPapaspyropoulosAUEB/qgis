@@ -1,0 +1,119 @@
+<style>
+
+  ::ng-deep.table{
+    padding-top: 10px!important;
+    margin-bottom: 0rem!important;
+
+  }
+
+  ngx-datatable{
+    padding-left: 14px;
+    padding-bottom: 4%;
+
+  }
+</style>
+<div class="table">
+  <ngx-datatable  #mydatatable
+                  class="material"
+
+                  [sortType]="'multi'"
+                  [headerHeight]="50"
+                  [footerHeight]="40"
+                  [rowHeight]="'50'"
+                  [rows]="finalfacilitiesMerged"
+                  [columnMode]="'force'"
+                  [limit]="limit"
+                  [scrollbarH]="true"
+
+
+
+  >
+      <ngx-datatable-column name="Show on map" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <mat-checkbox [(ngModel)]="row.checked" (change)="selectRow(row,$event)"></mat-checkbox>
+        </ng-template>
+      </ngx-datatable-column>
+
+    <ngx-datatable-column name="id" prop="id" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.id }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+
+
+
+
+      <ngx-datatable-column name="NAME" prop="NAME" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <div >
+            {{ row?.NAME }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Pro_Center" prop="Pro_Center" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <div >
+            {{ row?.Pro_Center }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Pro_Code" prop="Pro_Code" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <div >
+            {{ row?.Pro_Code }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Center_Typ" prop="Center_Typ" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <div >
+            {{ row?.Center_Typ }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="East" prop="East" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <div >
+            {{ row?.East }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="North" prop="North" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <div >
+            {{ row?.North }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="East_UTM42" prop="East_UTM42" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <div >
+            {{ row?.East_UTM42 }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Nort_UTM42" prop="Nort_UTM42" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <div >
+            {{ row?.Nort_UTM42 }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="From_" prop="From_" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <div >
+            {{ row?.From_ }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="main_type" prop="main_type" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <div >
+            {{ row?.main_type }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+</div>

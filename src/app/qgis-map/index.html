@@ -1,0 +1,685 @@
+<style>
+  mat-drawer-container {
+    height: 100vh;
+    overflow: hidden !important;
+  }
+
+  .searchFilter {
+    width: 45%;
+    margin-top: 20px;
+    margin-bottom: 14px !important;
+    border: 0px !important;
+    border-radius: 0 !important;
+    margin-left: 12px;
+  !important;
+  }
+
+  .mat-pseudo-checkbox {
+    display: none !important;
+  }
+
+  /*mat-list-option{*/
+  /*box-shadow: 4px 2px 2px 0px #888888!important;*/
+  /*!* color: black; *!*/
+  /*background: white!important;*/
+
+  /*}*/
+  .mat-list-item-content mat-list-item-content-reverse {
+    background: red !important;
+  }
+
+  mat-list-option {
+    box-shadow: 4px 2px 2px 0px #888888 !important;
+  }
+
+  mat-drawer {
+    box-shadow: 2px 3px 3px 0px #888888;
+  }
+
+  #map {
+    min-height: 920px;
+    max-height: 95vh !important;
+  }
+
+  .mat-drawer-content {
+    height: 110% !important;
+  }
+
+  ngx-datatable {
+    padding-left: 14px;
+    padding-bottom: 4%;
+  }
+
+  ::ng-deep.datatable-header {
+    width: 100% !important;;
+  }
+
+  ::ng-deep.datatable-body {
+    width: 100% !important;;
+  }
+
+  .roadFilters {
+    margin-top: 55px;
+    margin-right: 5px;
+    margin-left: 5px;
+
+    background-color: white;
+    padding: 9px;
+    box-shadow: 1px 1px 2px 0px #888888;
+  }
+
+  .buttonNav {
+    cursor: pointer;
+    cursor: pointer;
+    box-shadow: 2px 2px 3px 0px #888888;
+    border-radius: 23px;
+    position: relative;
+    z-index: 3;
+    background: white;
+    top: 9px;
+    left: 3px;
+  }
+
+  .buttonNav:hover {
+    color: #0073aa !important;
+  }
+
+  ::ng-deep .mat-drawer-inner-container {
+    overflow: hidden !important;
+    padding: 10px;
+
+  }
+</style>
+<mat-drawer-container class="example-container">
+  <mat-drawer style="width:17%;
+  background: whitesmoke" #drawer [mode]="'side'" opened>
+
+
+
+
+    <div class="float-right">
+      <button onClick="window.location.reload();" mat-button style="    margin-right: 15px;">
+        <span class="material-icons">cached</span>
+      </button>
+    </div>
+
+
+    <div class="">
+      <div style="margin-top: 40px;margin-left: 14px;">
+        <angular2-multiselect [data]="provinces" [settings]="dropdownSettings2"
+                              [(ngModel)]="province" (onSelect)="selectProvince(province)"
+                              (onDeSelect)="deselectProvince(province)"
+        >
+        </angular2-multiselect>
+      </div>
+      <div style="margin-top: 40px;margin-left: 14px;" disabled=true>
+        <angular2-multiselect [data]="districts" [settings]="dropdownSettings3"
+                              [(ngModel)]="district" (onSelect)="selectDistrict(district)"
+                              (onDeSelect)="deselectDistrict(district)"
+        >
+        </angular2-multiselect>
+
+
+      </div>
+      <div *ngIf="tab==1 && currentNum_district_code>0" class="roadFilters">
+        <div style="display: grid">
+               <span style="margin-bottom: 10px;    "><b>Road Filters</b>
+                         <span class="material-icons resetFilters" matTooltip="Rese Filters" (click)="resetFilters()">cached</span>
+               </span>
+          <mat-checkbox [(ngModel)]="selectAllCheck" (click)="selectAllCheckMethod()" class="example-margin">
+            <span *ngIf="!selectAllCheck">
+              Select All
+            </span>
+            <span *ngIf="selectAllCheck">
+              Unselect All
+            </span>
+          </mat-checkbox>
+        </div>
+
+        <mat-form-field class="example-full-width" style="width: 91%">
+          <mat-label>Search by name</mat-label>
+          <input matInput placeholder="name.." [(ngModel)]="nameFilter" (keyup)="updateFilter()">
+        </mat-form-field>
+        <mat-form-field style="width: 91%">
+          <mat-label>fclass search</mat-label>
+          <mat-select
+            [(ngModel)]="selectedValuesFclass"
+            #fclassSelect="ngModel"
+            multiple (valueChange)="updateFiterFclass($event)">
+            <mat-option [value]="unclassifiedCheck">unclassified</mat-option>
+            <mat-option [value]="primaryCheck">primary</mat-option>
+            <mat-option [value]="secondaryCheck">secondary</mat-option>
+            <mat-option [value]="tertiaryCheck">tertiary</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-radio-group (change)="updateFilter()" [(ngModel)]="roadWayRadio" aria-label="Select an option"
+                         style="    display: grid;">
+          <mat-radio-button value="F">Oneway</mat-radio-button>
+          <mat-radio-button value="B">Both way</mat-radio-button>
+          <mat-radio-button value="FB">Oneway and Both way</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field class="example-full-width" style="width: 91%">
+          <mat-label>Search by max speed</mat-label>
+          <input matInput placeholder="max speed.." [(ngModel)]="maxSpeedFilter" (keyup)="updateFilter()">
+        </mat-form-field>
+
+        <mat-radio-group (change)="updateFilter()" [(ngModel)]="bridgeFilter" aria-label="Select an option"
+                         style="    display: grid;">
+          <mat-radio-button value="T">Having bridge</mat-radio-button>
+          <mat-radio-button value="F">With no bridge</mat-radio-button>
+          <mat-radio-button value="TF">Both</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-form-field style="width: 91%">
+          <mat-label>Road Condition Search</mat-label>
+          <mat-select
+            [(ngModel)]="selectedValuesRoadCondition"
+            #roadConditionSelect="ngModel"
+            multiple (valueChange)="updateRoadConditionFilter($event)">
+            <mat-option [value]="concreteFilter">concrete</mat-option>
+            <mat-option [value]="sand_or_gravelFilter">sand or gravel</mat-option>
+            <mat-option [value]="asphaltFilter">asphalt</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-radio-group (change)="updateFilter()" [(ngModel)]="agriculturFacilitationFilter"
+                         aria-label="Select an option" style="    display: grid;">
+          <mat-radio-button value="TRUE">Agriculture Facilitation True</mat-radio-button>
+          <mat-radio-button value="FALSE">Agriculture Facilitation False</mat-radio-button>
+          <mat-radio-button value="TF">Both</mat-radio-button>
+        </mat-radio-group>
+
+        <button class="btn" style="position: relative; left: -15px;top: -6px;" [matMenuTriggerFor]="menu2">
+          Items per page: ({{limitPage}})
+          <span style="    position: relative;top: 7px;" class="material-icons">
+                    unfold_more
+                  </span>
+        </button>
+        <mat-menu #menu2="matMenu">
+          <button mat-menu-item (click)="setPageNgx(5)">
+            <b *ngIf="limitPage==5">5</b>
+            <span *ngIf="limitPage!=5">5</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgx(10)">
+            <b *ngIf="limitPage==10">10</b>
+            <span *ngIf="limitPage!=10">10</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgx(16)">
+            <b *ngIf="limitPage==16">16</b>
+            <span *ngIf="limitPage!=16">16</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgx(20)">
+            <b *ngIf="limitPage==20">20</b>
+            <span *ngIf="limitPage!=20">20</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgx(50)">
+            <b *ngIf="limitPage==50">50</b>
+            <span *ngIf="limitPage!=50">50</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgx(100)">
+            <b *ngIf="limitPage==100">100</b>
+            <span *ngIf="limitPage!=100">100</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgx(200)">
+            <b *ngIf="limitPage==200">200</b>
+            <span *ngIf="limitPage!=200">200</span>
+          </button>
+        </mat-menu>
+      </div>
+      <div *ngIf="tab==2 && currentProvinceCode>0" class="roadFilters">
+
+
+        <!--<span style="margin-bottom: 10px"><b>Facilities Filters</b>-->
+        <!--<span class="material-icons resetFilters" matTooltip="Reset Filters"-->
+        <!--(click)="resetFiltersFacilities()">cached</span>-->
+        <!--</span>-->
+
+
+        <div style="display: grid;">
+               <span style="margin-bottom: 10px;    "><b>Road Filters</b>
+                         <span class="material-icons resetFilters" matTooltip="Rese Filters"
+                               (click)="resetFiltersFacilities()">cached</span>
+               </span>
+          <mat-checkbox [(ngModel)]="selectAllCheckFacilities" (click)="selectAllCheckMethodFacilities()"
+                        class="example-margin">
+            <span *ngIf="!selectAllCheckFacilities">
+              Select All
+            </span>
+            <span *ngIf="selectAllCheckFacilities">
+              Unselect All
+            </span>
+          </mat-checkbox>
+        </div>
+
+
+        <mat-radio-group style="    margin-top: 14px;" (change)="updateFilterTabFacilities()"
+                         [(ngModel)]="typeFacilities" aria-label="Select an option" style="    display: grid;    ">
+          <mat-radio-button value="Distcenters">Distcenters</mat-radio-button>
+          <mat-radio-button value="Schools">Schools</mat-radio-button>
+          <mat-radio-button value="Mosques">Mosques</mat-radio-button>
+          <mat-radio-button value="Both">All</mat-radio-button>
+        </mat-radio-group>
+        <button class="btn" style="position: relative; left: -15px;top: -6px;" [matMenuTriggerFor]="menu2">
+          Items per page: ({{FacilitislimitPage}})
+          <span style="    position: relative;top: 7px;" class="material-icons">
+                    unfold_more
+                  </span>
+        </button>
+
+        <mat-menu #menu2="matMenu">
+          <button mat-menu-item (click)="setPageNgxFacilities(5)">
+            <b *ngIf="FacilitislimitPage==5">5</b>
+            <span *ngIf="FacilitislimitPage!=5">5</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgxFacilities(10)">
+            <b *ngIf="FacilitislimitPage==10">10</b>
+            <span *ngIf="FacilitislimitPage!=10">10</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgxFacilities(16)">
+            <b *ngIf="FacilitislimitPage==16">16</b>
+            <span *ngIf="FacilitislimitPage!=16">16</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgxFacilities(20)">
+            <b *ngIf="FacilitislimitPage==20">20</b>
+            <span *ngIf="FacilitislimitPage!=20">20</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgxFacilities(50)">
+            <b *ngIf="FacilitislimitPage==50">50</b>
+            <span *ngIf="FacilitislimitPage!=50">50</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgxFacilities(100)">
+            <b *ngIf="FacilitislimitPage==100">100</b>
+            <span *ngIf="FacilitislimitPage!=100">100</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgxFacilities(200)">
+            <b *ngIf="FacilitislimitPage==200">200</b>
+            <span *ngIf="FacilitislimitPage!=200">200</span>
+          </button>
+        </mat-menu>
+      </div>
+
+      <div *ngIf="tab==2 && currentProvinceCode>0" class="" style="display: grid;margin-left: 5px;">
+        <div>
+          <img style="    margin-top: 24px;"
+               src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
+               alt="Girl in a jacket" width="17" height="25">
+          <span style="    position: relative;top: 20px;">Distcenters</span>
+        </div>
+        <div>
+          <img style="    margin-top: 24px;"
+               src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png"
+               alt="Girl in a jacket" width="17" height="25">
+          <span style="    position: relative;top: 20px;">Mosques</span>
+        </div>
+        <div>
+          <img style="    margin-top: 24px;"
+               src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png"
+               alt="Girl in a jacket" width="17" height="25">
+          <span style="    position: relative;top: 20px;">Schools</span>
+        </div>
+      </div>
+
+      <div *ngIf="tab==3 && currentProvinceCode>0" class="roadFilters">
+
+        <div style="display: grid">
+               <span style="margin-bottom: 10px;    "><b>Villages Filters</b>
+                         <span class="material-icons resetFilters" matTooltip="Rese Filters"
+                               (click)="resetFiltersVillages()">cached</span>
+               </span>
+          <mat-checkbox [(ngModel)]="selectAllCheckVillages" (click)="selectAllCheckMethodVillages()"
+                        class="example-margin">
+            <span *ngIf="!selectAllCheckVillages">
+              Select All
+            </span>
+            <span *ngIf="selectAllCheckVillages">
+              Unselect All
+            </span>
+          </mat-checkbox>
+        </div>
+
+        <mat-form-field class="example-full-width" style="width: 91%">
+          <mat-label>Search by name</mat-label>
+          <input matInput placeholder="name.." [(ngModel)]="villageNameFilter" (keyup)="updateNameVillageFilter()">
+        </mat-form-field>
+        <button class="btn" style="position: relative; left: -15px;top: -6px;" [matMenuTriggerFor]="menu2">
+          Items per page: ({{villageLimitPage}})
+          <span style="    position: relative;top: 7px;" class="material-icons">
+                    unfold_more
+                  </span>
+        </button>
+        <mat-menu #menu2="matMenu">
+          <button mat-menu-item (click)="setPageNgxvillageLimitPage(5)">
+            <b *ngIf="villageLimitPage==5">5</b>
+            <span *ngIf="villageLimitPage!=5">5</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgxvillageLimitPage(10)">
+            <b *ngIf="villageLimitPage==10">10</b>
+            <span *ngIf="villageLimitPage!=10">10</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgxvillageLimitPage(16)">
+            <b *ngIf="villageLimitPage==16">16</b>
+            <span *ngIf="villageLimitPage!=16">16</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgxvillageLimitPage(20)">
+            <b *ngIf="villageLimitPage==20">20</b>
+            <span *ngIf="villageLimitPage!=20">20</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgxvillageLimitPage(50)">
+            <b *ngIf="villageLimitPage==50">50</b>
+            <span *ngIf="villageLimitPage!=50">50</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgxvillageLimitPage(100)">
+            <b *ngIf="villageLimitPage==100">100</b>
+            <span *ngIf="villageLimitPage!=100">100</span>
+          </button>
+          <button mat-menu-item (click)="setPageNgxvillageLimitPage(200)">
+            <b *ngIf="villageLimitPage==200">200</b>
+            <span *ngIf="villageLimitPage!=200">200</span>
+          </button>
+        </mat-menu>
+      </div>
+
+
+      <div *ngIf="tab==3 && currentProvinceCode>0" class="" style="display: grid;    margin-left: 5px;">
+        <div>
+          <img style="    margin-top: 24px;"
+               src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png"
+               alt="Girl in a jacket" width="17" height="25">
+          <span style="    position: relative;top: 20px;">Villages</span>
+        </div>
+      </div>
+    </div>
+
+
+  </mat-drawer>
+  <mat-drawer-content>
+    <span *ngIf="currentStatus" (click)="openClosedSideNav()" class="material-icons buttonNav">
+        navigate_before
+    </span>
+    <span *ngIf="!currentStatus" (click)="openClosedSideNav()" class="material-icons buttonNav">
+        navigate_next
+    </span>
+    <mat-tab-group style="    position: relative;  top: -30px;" (selectedTabChange)="switchTab($event)">
+      <mat-tab label="Map" style="    background-color: white;">
+        <mat-drawer-container class="example-container">
+          <mat-drawer style="width: 46%;background: whitesmoke;    box-shadow: -2px 2px 2px 0px #888888!important;"
+                      #sideNav mode="side" opened="false" position="end" #drawerMapSelections>
+            <div style="padding: 0;margin: 0">
+              <mat-tab-group class="mycustomTabClass">
+                <mat-tab label="Roads selections">
+                  <div class="search-hero">
+                    <input *ngIf="roadTab2.length>0"
+                           class="form-control searchFilter"
+                           type="text"
+                           name="search"
+                           [(ngModel)]="searchTextRoads"
+                           autocomplete="off"
+                           style="width: 45%;"
+                           placeholder="Search.."
+                    />
+                  </div>
+                  <mat-selection-list #shoes>
+                    <mat-list-option style="    height: 80px;width: 99%;" *ngFor="let road of roadTab2|filter: searchTextRoads;"
+                                     on-mouseout="out(road)" on-mouseover='over(road)' (click)="hitRoad(road)">
+                      <div class="row" style="padding: 0;margin: 0">
+                        <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
+                        <span>
+                            <span style="font-weight: bold">Name :</span> {{road.name}}
+                        </span>
+                          <span>
+                            <span style="font-weight: bold">Road condition :</span>    {{road.Road_Condition}}
+                            </span>
+                          <span>
+                         <span style="font-weight: bold"> LVRR_ID:</span>    {{road.LVRR_ID}}
+                        </span>
+                          <span>
+                       <span style="font-weight: bold">  Osm_id:</span>      {{road.osm_id}}
+                    </span>
+                        </div>
+                        <div class="col-md-1" style="margin: 0;padding-top: 30px">
+                          <mat-checkbox [disabled]="true" (change)="road.checkedFilter=!road.checkedFilter"
+                                        [(ngModel)]="road.checkedFilter" class="example-margin"></mat-checkbox>
+                        </div>
+                      </div>
+                    </mat-list-option>
+                  </mat-selection-list>
+                </mat-tab>
+                <mat-tab label="Facilities Selections">
+                  <div class="search-hero">
+                    <input *ngIf="this.filterService.facilitiesArray.length>0"
+                           class="form-control searchFilter"
+                           type="text"
+                           name="search"
+                           [(ngModel)]="searchTextFacilities"
+                           autocomplete="off"
+                           style="width: 45%;"
+                           placeholder="Search.."
+                    />
+                  </div>
+                  <mat-selection-list #facilities>
+                    <mat-list-option [hidden]="!facilitie.checked" style="    height: 116px;width: 99%;"
+                                     *ngFor="let facilitie of this.filterService.facilitiesArray|filter: searchTextFacilities;"
+                                     (click)="hitFacilitie(facilitie)">
+
+
+                      <div class="row" style="padding: 0;margin: 0">
+
+                        <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
+
+                      <span>
+                          <span style="font-weight: bold">NAME :</span> {{facilitie.NAME}}
+                      </span>
+
+                          <span>
+                           <span style="font-weight: bold">Pro_Center :</span>    {{facilitie.Pro_Center}}
+                          </span>
+                          <span>
+                       <span style="font-weight: bold"> Center_Typ:</span>    {{facilitie.Center_Typ}}
+                      </span>
+                          <span>
+                     <span style="font-weight: bold">  main_type:</span>      {{facilitie.main_type}}
+                    </span>
+
+                          <span>
+                     <span style="font-weight: bold">  Type:</span>      {{facilitie.Type}}
+                    </span>
+
+                        </div>
+
+                        <div class="col-md-1" style="margin: 0;padding-top: 30px">
+                          <mat-checkbox [disabled]="true" (change)="facilitie.checkedFilter=!facilitie.checkedFilter"
+                                        [(ngModel)]="facilitie.checkedFilter" class="example-margin"></mat-checkbox>
+
+                        </div>
+                      </div>
+
+                    </mat-list-option>
+                  </mat-selection-list>
+                </mat-tab>
+                <mat-tab label="Villages Selections">
+                  <div class="search-hero">
+                    <input *ngIf="this.filterService.villagesArray.length>0"
+                           class="form-control searchFilter"
+                           type="text"
+                           name="search"
+                           [(ngModel)]="searchTextVillages"
+                           autocomplete="off"
+                           style="width: 45%;"
+                           placeholder="Search.."
+                    />
+                  </div>
+                  <mat-selection-list #villages>
+                    <mat-list-option [hidden]="!village.checked" style="    height: 116px;width: 99%;"
+                                     *ngFor="let village of this.filterService.villagesArray|filter: searchTextVillages;"
+                                     (click)="hitVillage(village)">
+                      <div class="row" style="padding: 0;margin: 0">
+                        <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
+                      <span>
+                          <span style="font-weight: bold">village_name :</span> {{village.village_name}}
+                      </span>
+                          <span>
+                           <span style="font-weight: bold">Population :</span>    {{village.VillagePop}}
+                          </span>
+                          <span>
+                       <span style="font-weight: bold"> Village_Co:</span>    {{village.Village_Co}}
+                      </span>
+                          <span>
+                     <span style="font-weight: bold">  Map_Long:</span>      {{village.Map_Long}}
+                    </span>
+                          <span>
+                     <span style="font-weight: bold">  Map_Lat:</span>      {{village.Map_Lat}}
+                    </span>
+                        </div>
+                        <div class="col-md-1" style="margin: 0;padding-top: 30px">
+                          <mat-checkbox [disabled]="true" (change)="village.checkedFilter=!village.checkedFilter"
+                                        [(ngModel)]="village.checkedFilter" class="example-margin"></mat-checkbox>
+                        </div>
+                      </div>
+                    </mat-list-option>
+                  </mat-selection-list>
+                </mat-tab>
+              </mat-tab-group>
+            </div>
+          </mat-drawer>
+          <mat-drawer-content>
+            <div class="row" style="	    display: flex;flex-direction: row;justify-content: flex-end;">
+              <span *ngIf="currentStatusMapSelection" style="    position: relative;left: -18px;top: 3px;z-index: 30;"
+                    (click)="openClosedSideNavMapSelections()" class="material-icons buttonNav">
+                   navigate_next
+              </span>
+              <span *ngIf="!currentStatusMapSelection" style="    position: relative;left: -18px;top: 3px;z-index: 30;"
+                    (click)="openClosedSideNavMapSelections()" class="material-icons buttonNav">
+                  navigate_before
+              </span>
+            </div>
+            <div class="" style="display: flex">
+              <div class="col-12" style="    padding:0px; z-index: 0;top: -24px;">
+                <div (click)="onClick($event)" id="map"></div>
+              </div>
+            </div>
+          </mat-drawer-content>
+        </mat-drawer-container>
+      </mat-tab>
+      <mat-tab label="Roads">
+        <div style="z-index: 1" *ngIf="tab==1" class="table">
+          <div class="col-md-12" style="    padding: 0;">
+
+
+            <ngx-datatable #mydatatable
+                           class="material"
+                           [sortType]="'multi'"
+                           [headerHeight]="50"
+                           [footerHeight]="40"
+                           [rowHeight]="'50'"
+                           [rows]="roadsTab1"
+                           [columnMode]="'force'"
+                           [limit]="limitPage"
+                           [scrollbarH]="true"
+            >
+              <ngx-datatable-column name="Show on map" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <mat-checkbox [(ngModel)]="row.checked" (change)="addRoadToMap(row,$event)"></mat-checkbox>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="name" prop="name" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div matTooltip={{row.name}} (click)="selectRoad(row)">
+                    <div>{{ row?.name }}
+                    </div>
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="fclass" prop="fclass" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.fclass }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="District" prop="District" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.District }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="oneway" prop="oneway" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.oneway }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="maxspeed" prop="maxspeed" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.maxspeed }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="bridge" prop="bridge" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.bridge }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Road_Condition" prop="Road_Condition" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.Road_Condition }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="LVRR_ID" prop="LVRR_ID" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.LVRR_ID }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="osm_id" prop="osm_id" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.osm_id }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Agriculture Facilitation" prop="Agriculture Facilitation" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.agriculture_facilitation }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="tunnel" prop="tunnel" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.tunnel }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="District_id" prop="District_id" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.District_id }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+
+
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Facilities">
+        <app-facilities></app-facilities>
+      </mat-tab>
+      <mat-tab label="Villages">
+
+        <app-villages></app-villages>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-drawer-content>
+</mat-drawer-container>

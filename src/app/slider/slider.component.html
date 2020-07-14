@@ -1,0 +1,33 @@
+<style>
+  .slider-container {
+    /*position:relative;*/
+    /*height: 400px;*/
+    /*width: 400px;*/
+    /*overflow:hidden;*/
+    /*border: 2px solid;*/
+
+    margin: 20px 10px;
+    overflow: hidden;
+    /* z-index: -1; */
+    position: relative;
+    /* height: 405px; */
+    height: 100%;
+    /* width: 400px; */
+    overflow: hidden;
+
+
+}
+.slide {
+  position:absolute;
+}
+</style>
+
+<div style="margin: 20px 10px;">
+  <button (click)="previous()" class="btn btn-default">Previous</button>
+  <button (click)="next()" class="btn btn-default">Next</button>
+  {{selectedIndex+1}} / {{imagesSize}}
+</div>
+
+<div [@slider]="selectedIndex" class="slider-container" style="margin: 20px 10px;">
+  <div class="slide" *ngFor="let image of images"> <img [src]="image" /> </div>
+</div>

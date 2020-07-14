@@ -1,0 +1,301 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+/* You can add global styles to this file, and also import other style files */
+
+/*@import '~@angular/material/prebuilt-themes/indigo-pink.css';*/
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~leaflet/dist/leaflet.css";
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-tab-label-content{
+  color: white;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  /* background-color: #ffffff; */
+  background-color: #ffffff;
+}
+
+::ng-deep .mat-drawer-inner-container{
+  overflow: hidden!important;
+}
+
+::ng-deep .ngx-datatable .datatable-footer .datatable-footer-inner{
+  background: #1a60a8;
+}
+
+c-remove {
+  display: none!important;
+}
+::ng-deep .pure-checkbox input[type=checkbox]+label {
+  display: none!important;
+}
+
+.clear-all {
+  width: 7px;
+  position: absolute;
+  top: 50%;
+  display: none!important;
+  right: 30px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.select-all {
+  display: none!important;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  display: none;
+}
+
+.mat-tab-labels{
+  background: #1a60a8;
+}
+.mycustomTabClass .mat-tab-labels {
+  background: whitesmoke;
+  color: black;
+}
+
+.mycustomTabClass .mat-tab-labels {
+  background: whitesmoke;
+  color: black;
+}
+
+.mycustomTabClass.mat-tab-label .mat-tab-label-content{
+  color: black;
+}
+
+.mycustomTabClass .mat-tab-label-active {
+  background: #9e9e9e!important;
+  color: black;
+}
+
+.mycustomTabClass .mat-tab-label-active {
+  background: #9e9e9e;
+  color: black;
+}
+
+
+::ng-deep.mycustomTabClass.mat-tab-label .mat-tab-label-content{
+  color: black;
+}
+
+.mycustomTabClass div.mat-tab-label-content{
+  color: black;
+}
+
+.datatable-body-row:hover{
+  background-color:  rgba(0, 239, 174, 0.33)!important;;
+  cursor: pointer;
+}
+
+.datatable-body-row.active:hover{
+  background-color:  rgba(0, 239, 174, 0.33)!important;;
+  cursor: pointer;
+}
+
+.ngx-datatable.bootstrap .datatable-body .datatable-body-row:hover{
+  background-color:  rgba(0, 239, 174, 0.33)!important;;
+}
+
+
+/*.datatable-body.datatable-body{*/
+/*max-height: 700px!important;*/
+/*width: 1581px!important;*/
+/*}*/
+
+
+::ng-deep.table{
+  padding-top: 10px!important;
+  margin-bottom: 0rem!important;
+}
+
+.ngx-datatable.bootstrap {
+  box-shadow: none;
+  font-size: 16px; }
+.ngx-datatable.bootstrap .datatable-header {
+  height: unset !important;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+
+
+}
+
+
+.ngx-datatable.material .datatable-header {
+  /*height: unset !important;*/
+  /*font-weight: bold;*/
+  /*font-family: 'Open Sans', sans-serif;*/
+  color: rgba(7, 51, 111, 1);
+
+
+}
+
+.ngx-datatable.material .datatable-header .datatable-header-cell {
+  vertical-align: bottom;
+  padding: 0.75rem;
+  /*border-right: 1px solid #8080808f;*/
+
+  border-bottom: 1px solid #d1d4d7;
+
+
+}
+.ngx-datatable.bootstrap .datatable-header .datatable-header-cell .datatable-header-cell-label {
+  line-height: 24px; }
+
+.ngx-datatable.bootstrap .datatable-body .datatable-body-row {
+  padding: 0.67rem;
+  vertical-align: top;
+  border-top: 1px solid #d1d4d7;
+
+  background: #ffffff !important;
+
+}
+.ngx-datatable.bootstrap .datatable-body .datatable-body-row.datatable-row-even {
+  background-color: rgba(0, 0, 0, 0.05); }
+.ngx-datatable.bootstrap .datatable-body .datatable-body-row.active {
+  background-color: #1483ff;
+  color: #FFF; }
+.ngx-datatable.bootstrap .datatable-body .datatable-body-row .datatable-body-cell {
+  text-align: left;
+  vertical-align: top;
+  overflow-y: hidden;
+
+}
+
+.ngx-datatable.bootstrap .datatable-footer {
+  background: rgb(37, 220, 0);
+  color: #181818;
+  margin-top: -1px;
+
+  height: 45px;
+  color: white;
+
+
+
+}
+
+
+
+
+
+.ngx-datatable.material .datatable-footer .page-count {
+  line-height: 50px;
+  height: 50px;
+  padding: 0 1.2rem; }
+.ngx-datatable.material .datatable-footer .datatable-pager {
+  margin: 0 10px;
+  vertical-align: top; }
+.ngx-datatable.material .datatable-footer .datatable-pager ul li {
+  margin: 10px 0px;
+  color: white;
+
+
+  text-align: center;
+
+
+}
+.ngx-datatable.material .datatable-footer .datatable-pager ul li:not(.disabled).active a, .ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled):hover a {
+  background-color: #545454;
+  color: white;
+  text-align: center;
+  font-weight: bold; }
+.ngx-datatable.material .datatable-footer .datatable-pager a {
+  height: 22px;
+  min-width: 24px;
+  line-height: 22px;
+  padding: 0;
+  border-radius: 3px;
+  margin: 0 3px;
+
+  vertical-align: top;
+  text-decoration: none;
+  vertical-align: bottom;
+  color: #181818; }
+
+
+.sortable .sort-btn:before {
+  font-family: data-table;
+  content: "c";
+}
+.sortable .sort-btn.datatable-icon-down:before {
+
+  content: "▼";
+}
+.sortable .sort-btn.datatable-icon-up:before {
+  content: "▲";
+
+}
+
+
+.cuppa-dropdown{
+  background-color: white;
+  width: 91%;
+  border-radius: 7px;
+
+}
+
+/*.cuppa-dropdown:hover{*/
+/*background-color: rgba(0, 137, 196, 0.18);*/
+/*border: 1px solid #00a1ea;*/
+/*}*/
+
+.select-all {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+.ngx-datatable.material .datatable-footer{
+  overflow-y: hidden;
+  background: #1a60a8!important;
+  color: white;
+
+}
+
+/*#0073aa*/
+
+
+
+::ng-deep.mat-pseudo-checkbox{
+  display: none!important;
+}
+
+
+
+
+.ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-left,
+.ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-skip,
+.ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-right,
+.ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-prev {
+  font-size: 18px;
+  line-height: 27px;
+  padding: 0 3px;
+  text-align: center!important;
+  color: white;
+
+
+
+
+
+
+
+
+
+}
+.ngx-datatable.bootstrap .datatable-summary-row .datatable-body-row .datatable-body-cell {
+  font-weight: bold; }
+
+/*::ng-deep datatable-body{*/
+/*height: 805px;*/
+/*}*/
+
+/*.ngx-datatable.bootstrap .datatable-body {*/
+/*height: 805px!important;*/
+
+
+/*}*/

@@ -1,0 +1,103 @@
+<style>
+
+  .logout:hover {
+    color: #9493b5 !important;
+  }
+
+
+  .exit:hover{
+    color: #9493b5 !important;
+
+    cursor: pointer;
+  }
+
+  .logout {
+    cursor: pointer;
+  }
+
+
+
+
+</style>
+
+
+
+<div class="mat-app-background basic-container" style="background-color:#3f51b5 " >
+
+  <div class="row" style="color: white">
+    <div class="col-md-10">
+      <button  style="color:#fafafa " matTooltip="Home"  (click)="goHome()" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+        <mat-icon>home</mat-icon>
+      </button>
+      <button   style="color:#fafafa " routerLink="/homeProducer/products"    matTooltip="Products"  mat-icon-button color="primary" aria-label="Example icon button with a heart icon">
+          <span class="material-icons">
+          local_grocery_store
+          </span>
+      </button>
+
+
+      <!---->
+
+      <!--<button mat-button [matMenuTriggerFor]="belowMenu">Below</button>-->
+      <!--<mat-menu #belowMenu="matMenu" yPosition="below">-->
+      <!--<button mat-menu-item>Item 1</button>-->
+      <!--<button mat-menu-item>Item 2</button>-->
+      <!--</mat-menu>-->
+
+      <!--<button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>-->
+      <!--<mat-menu #beforeMenu="matMenu" xPosition="before">-->
+      <!--<button mat-menu-item>Item 1</button>-->
+      <!--<button mat-menu-item>Item 2</button>-->
+      <!--</mat-menu>-->
+
+
+      <!--<button mat-button [matMenuTriggerFor]="afterMenu">After</button>-->
+      <!--<mat-menu #afterMenu="matMenu" xPosition="after">-->
+      <!--<button mat-menu-item>Item 1</button>-->
+      <!--<button mat-menu-item>Item 2</button>-->
+      <!--</mat-menu>-->
+
+    </div>
+
+    <div class="col-md-2" >
+
+      {{username}}/{{companyName}}
+
+
+      <span (click)="logout()" class="material-icons logout" style=" position: relative;top: 4px;">
+          login
+      </span>
+      <span style="   " >
+       Έξοδος
+     </span>
+
+      <!--<button mat-raised-button color="basic">Primary</button>-->
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<div style="display: flex">
+
+
+
+  <div class="col-md-12">
+    <router-outlet></router-outlet>
+
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+

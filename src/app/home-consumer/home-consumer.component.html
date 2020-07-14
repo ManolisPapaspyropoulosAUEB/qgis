@@ -1,0 +1,138 @@
+<style>
+
+  .logout:hover{
+    color: #3f51b5!important;
+  }
+
+  .logout{
+    cursor: pointer;
+  }
+
+
+</style>
+
+
+<div class="mat-app-background basic-container">
+
+  <div class="row" >
+    <div class="col-md-10">
+      <button (click)="goHome()" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+        <mat-icon>home</mat-icon>
+      </button>
+
+      <button mat-button [matMenuTriggerFor]="belowMenu">Below</button>
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+
+      <button mat-button [matMenuTriggerFor]="beforeMenu">Before</button>
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+
+
+      <button mat-button [matMenuTriggerFor]="afterMenu">After</button>
+      <mat-menu #afterMenu="matMenu" xPosition="after">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+
+    </div>
+
+    <div class="col-md-2">
+      {{username}}
+
+      <span (click)="logout()" class="material-icons logout" style=" position: relative;top: 4px;">
+          login
+      </span>
+     <span style="   ">
+       Έξοδος
+     </span>
+
+      <!--<button mat-raised-button color="basic">Primary</button>-->
+
+    </div>
+
+  </div>
+
+
+
+
+
+</div>
+
+
+
+
+<div style="display: flex">
+  <div class="col-md-2" style="    margin-top: 24px;">
+
+
+
+    <mat-card>
+
+      <mat-form-field>
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput type="search" placeholder="search here" class="search-input">
+      </mat-form-field>
+
+      <mat-card-content>
+        <mat-checkbox>Φίλτρο 1</mat-checkbox>
+      </mat-card-content>
+      <mat-card-content>
+        <mat-checkbox>Φίλτρο 2</mat-checkbox>
+
+      </mat-card-content>
+      <mat-card-content>
+        <mat-checkbox>Φίλτρο 3</mat-checkbox>
+
+      </mat-card-content>
+      <mat-card-content>
+        <mat-checkbox>Φίλτρο 4</mat-checkbox>
+
+      </mat-card-content>
+      <mat-card-content>
+        <mat-checkbox>Φίλτρο 5</mat-checkbox>
+
+      </mat-card-content>
+      <mat-card-content>
+        <mat-checkbox>Φίλτρο 6</mat-checkbox>
+
+      </mat-card-content>
+
+
+
+
+    </mat-card>
+
+  </div>
+  <div class="col-md-6">
+
+    <mat-card style="margin-top: 23px">
+
+
+      <img mat-card-avatar src="https://hello.manana.gr/wp-content/uploads/2020/03/kerasia-247x247.jpg">
+
+      <mat-card-title></mat-card-title>
+      <mat-card-content>
+        Το hello! ήρθε για να φέρει όλη τη μαναβική στην πόρτα σου.
+        Μπες, στο hellomanana.gr, κάνε τα ψώνια σου μέσα από μια μεγάλη ποικιλία φρούτων και λαχανικών, διάλεξε χυμούς και σούπες ημέρας, και την επόμενη ημέρα είμαστε στην πόρτα σου.
+      </mat-card-content>
+    </mat-card>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
