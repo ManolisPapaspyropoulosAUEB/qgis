@@ -27,8 +27,9 @@ import {DataService} from '../../services/data.service';
 import {MatTabChangeEvent} from '@angular/material/tabs';
 import {FacilitiesComponent} from '../facilities/facilities.component';
 import {FilterService} from '../../services/filter.service';
-// import {VillagesComponent} from '../villages/villages.component';
+ import {VillagesComponent} from '../villages/villages.component';
 import {MatDrawer} from '@angular/material/sidenav';
+
 
 
 
@@ -134,7 +135,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   @ViewChild('fclassSelect') fclassSelect;
   @ViewChild('roadConditionSelect') roadConditionSelect;
   @ViewChild(FacilitiesComponent) facilitiesComponent: FacilitiesComponent;
-  //@ViewChild(VillagesComponent) villagesComponent: VillagesComponent;
+  @ViewChild(VillagesComponent) villagesComponent: VillagesComponent;
   @ViewChild('drawer') drawer: MatDrawer;
   @ViewChild('drawerMapSelections') drawerMapSelections: MatDrawer;
   public resetFilters() {
@@ -218,10 +219,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
       } else if (this.tab == 3) {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
-      //  this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
+        this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
       } else {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
-     //   this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+        this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
       }
     } else {
       this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
@@ -240,10 +241,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
       } else if (this.tab == 3) {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
-   //     this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
+       this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
       } else {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
-    //    this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
       }
     }
   }
@@ -286,7 +287,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   setPageNgxvillageLimitPage($event: any) {
     this.villageLimitPage = $event;
-   // this.villagesComponent.setLimit(this.villageLimitPage);
+    this.villagesComponent.setLimit(this.villageLimitPage);
   }
 
   public resetFiltersFacilities() {
@@ -298,10 +299,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   public resetFiltersVillages() {
- //   this.villagesComponent.setLimit(16);
+   this.villagesComponent.setLimit(16);
     this.villageLimitPage = 16;
     this.villageNameFilter = '';
-   // this.villagesComponent.resetFilters(this.villageNameFilter);
+    this.villagesComponent.resetFilters(this.villageNameFilter);
   }
 
   getRoadsByNum_district_code(num_district_code) {
@@ -460,7 +461,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   public updateNameVillageFilter() { //unclassified primary secondary tertiary
-  //  this.villagesComponent.updateFilters(this.villageNameFilter);
+    this.villagesComponent.updateFilters(this.villageNameFilter);
   }
 
   public updateFilterTabFacilities() { //unclassified primary secondary tertiary
@@ -641,15 +642,15 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     } else if (tab == 1) {
       this.ngOnChanges2();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
-   //   this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+      this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
     } else if (tab == 2) {
       this.initMapRoadsArray();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
-   //   this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+      this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
     } else if (tab == 3) {
       this.initMapRoadsArray();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
-  //    this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
+      this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
     }
   }
 
@@ -743,10 +744,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
     } else if (this.tab == 3) {
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
-   //   this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
+      this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
     } else {
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
-   //   this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+      this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
     }
   }
 
@@ -779,7 +780,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   public selectAllCheckMethodVillages() {
- //   this.villagesComponent.selectAllCheckMethod(this.selectAllCheckVillages);
+    this.villagesComponent.selectAllCheckMethod(this.selectAllCheckVillages);
 
   }
 
