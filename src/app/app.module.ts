@@ -72,7 +72,7 @@ import { UnitProductComponent } from './products/unit-product/unit-product.compo
 import { FileuploadComponent } from './fileupload/fileupload.component';
 import {FileUploadModule} from 'ng2-file-upload';
 import { SliderComponent } from './slider/slider.component';
-import { QgisMapComponent } from './qgis-map/qgis-map.component';
+import {EditRoadDialog, QgisMapComponent} from './qgis-map/qgis-map.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
 import {FilterService} from '../services/filter.service';
@@ -140,6 +140,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    EditRoadDialog,
     AppComponent,
     RegisterComponent,
     VillagesComponent,
@@ -223,6 +224,10 @@ const routes: Routes = [
     BrowserAnimationsModule
 
 
+  ],
+  entryComponents: [
+
+    EditRoadDialog
   ],
 
 

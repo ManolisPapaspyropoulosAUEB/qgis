@@ -26,6 +26,7 @@
     "autolinker": "^3.14.1",
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
+    "jquery.scrollto": "^2.1.2",
     "jsdom": "^16.2.2",
     "leaflet": "1.5.1",
     "ng2-file-upload": "^1.4.0",

@@ -26,6 +26,8 @@ import {FilterService} from '../../services/filter.service';
 import {VillagesComponent} from '../villages/villages.component';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 import {MatDrawer} from '@angular/material/sidenav';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {ScrollService} from '../../services/scroll.service';
 
 interface Options {
   width?: number, height?: number, left?: number, top?: number, toolbar?: number, location?: number;
@@ -44,6 +46,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public roads = [];
   public roadsTab1 = [];
   public headerHeight = 50;
+  public mcaActive ;
   public rowHeight = 50;
   public pageLimit = 10;
   public searchTextRoads: "";
@@ -116,7 +119,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   private roadsTab1Cpy = [];
   public selectionArrayRoads;
   public layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8: L.geoJson;
-  constructor(private  dataservice: DataService, public filterService: FilterService,private snackBar: MatSnackBar) {
+  constructor(private  dataservice: DataService, public filterService: FilterService,private snackBar: MatSnackBar,public dialog: MatDialog,private scrollService: ScrollService) {
   }
 
   @ViewChild('fclassSelect') fclassSelect;
@@ -152,6 +155,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
   //
   public ngOnInit() {
+    this.mcaActive=true;
 
     this.dataservice.getRoadsByParams({}).subscribe(response=>{
       this.filterService.mapRoadsArrayAll=response.data;
@@ -181,6 +185,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.FacilitislimitPage = 16;
     this.villageLimitPage = 16;
     this.getDistrictsTab2();
+  }
+
+
+  public showCriteriaOrMca(){
+    this.mcaActive=!this.mcaActive;
   }
 
   selectProvince(province) {
@@ -1985,16 +1994,32 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   public setMapArray(teampRoads: any[]) {
+    //$(container).scrollTo(target)
+
+  }
+
+
+
+
+  scrollToId(id: string) {
+    console.log("element id : ", id);
+    this.scrollService.scrollToElementById(id);
   }
 
 
   public openClosedSideNav() {
     this.drawer.toggle();
     this.currentStatus = !this.currentStatus;
+    if(this.currentNum_district_code>0){
+      this.getRoadsPyParams();
+      //this.roadsTab1[1]=this.roadsTab1[1];
+
+    }
   }
 
   public openClosedSideNavMapSelections() {
     this.drawerMapSelections.toggle();
+
     this.currentStatusMapSelection = !this.currentStatusMapSelection;
   }
   getProvinces() {
@@ -2070,6 +2095,74 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   }
+
+
+  editRoad(item): void {
+    const dialogRef = this.dialog.open(EditRoadDialog, {
+      width: '510px',
+      height: '495px',
+      data: item
+    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result) {
+    //     result.leadId = this.id;
+    //     this.dataService.updateTimelineNode(result).subscribe(response => {
+    //       if (response.status == 'ok') {
+    //         this.snackBar.open(
+    //           response.message,
+    //           'x',
+    //           <MatSnackBarConfig>{duration: 3000}
+    //         );
+    //         this.dataService.getAllLeads({id: this.id}).subscribe(response => {
+    //           this.items = response.data[0].timeLineList;
+    //         });
+    //       } else {
+    //         this.snackBar.open(
+    //           response.message,
+    //           'x',
+    //           <MatSnackBarConfig>{duration: 3000}
+    //         );
+    //       }
+    //     });
+    //   }
+    // });
+  }
 }
 
 
+
+@Component({
+  selector: './edit-road-dialog',
+  templateUrl: './edit-road-dialog.html'
+})
+export class EditRoadDialog implements OnInit {
+  // editForm: FormGroup;
+  // title;
+  // choosenDate = moment(new Date()).isValid() ? moment(new Date()).format('YYYY-MM-DD') : '';
+  // description;
+  // organator;
+  constructor(    public dialogRef: MatDialogRef<EditRoadDialog>,
+
+                  // private formBuilder2: FormBuilder,
+    // @Inject(MAT_DIALOG_DATA) public data: any,
+    // public dialogRef: MatDialogRef<AddNewNodeTimeline>,
+    // private dataService: DataService
+  ) {
+  }
+
+  ngOnInit() {
+
+  }
+
+
+  onSubmit() {
+
+  }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  ok(): void {
+    this.dialogRef.close(true);
+  }
+}
