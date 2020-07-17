@@ -55,6 +55,7 @@ c-remove {
 .mat-tab-labels{
   background: #1a60a8;
 }
+
 .mycustomTabClass .mat-tab-labels {
   background: whitesmoke;
   color: black;
@@ -88,15 +89,15 @@ c-remove {
   color: black;
 }
 
-.datatable-body-row:hover{
-  background-color:  rgba(0, 239, 174, 0.33)!important;;
-  cursor: pointer;
-}
+/*.datatable-body-row:hover{*/
+  /*background-color:  rgba(0, 239, 174, 0.33)!important;;*/
+  /*cursor: pointer;*/
+/*}*/
 
-.datatable-body-row.active:hover{
-  background-color:  rgba(0, 239, 174, 0.33)!important;;
-  cursor: pointer;
-}
+/*.datatable-body-row.active:hover{*/
+  /*background-color:  rgba(0, 239, 174, 0.33)!important;;*/
+  /*cursor: pointer;*/
+/*}*/
 
 .ngx-datatable.bootstrap .datatable-body .datatable-body-row:hover{
   background-color:  rgba(0, 239, 174, 0.33)!important;;
@@ -144,6 +145,8 @@ c-remove {
 
 
 }
+
+
 .ngx-datatable.bootstrap .datatable-header .datatable-header-cell .datatable-header-cell-label {
   line-height: 24px; }
 
@@ -162,10 +165,91 @@ c-remove {
   color: #FFF; }
 .ngx-datatable.bootstrap .datatable-body .datatable-body-row .datatable-body-cell {
   text-align: left;
-  vertical-align: top;
+
   overflow-y: hidden;
 
 }
+
+.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
+  text-align: left;
+padding-left: 5px;
+
+  overflow-y: hidden;
+
+}
+
+
+
+.ngx-datatable.material .datatable-body .datatable-body-row  {
+  box-shadow: 2px 0px 1px 0px #adadad;
+
+}
+
+
+
+
+.datatable-row-left{
+  background: #f9f9f9 !important;
+  /*box-shadow: 2px 0px 1px 0px #adadad;*/
+
+
+
+}
+.datatable-row-group.datatable-row-left{
+  background: #f9f9f9 !important;
+  /*box-shadow: 0px 0px 4px 0px #adadad;*/
+  box-shadow: 0px 0px 4px 0px #adadad;
+
+
+}
+
+
+
+.datatable-row-group.datatable-row-left:hover{
+
+  background-color: #8affd9 !important;
+  backface-visibility: hidden;
+  cursor: pointer;
+}
+
+
+
+
+.datatable-row-center.datatable-row-group:hover{
+  background-color: #8affd9 !important;
+  cursor: pointer;
+
+}
+
+.datatable-row-right{
+  background: #f9f9f9 !important;
+  /*box-shadow: -2px 0px 1px 0px #adadad;*/
+  /*box-shadow: 0px 0px 4px 0px #adadad;*/
+
+
+}
+.datatable-row-group.datatable-row-right{
+  background: #f9f9f9 !important;
+  /*box-shadow: -2px 0px 1px 0px #adadad;*/
+  box-shadow: 0px 0px 4px 0px #adadad;
+
+
+}
+
+
+
+
+
+
+.datatable-row-group.datatable-row-right:hover{
+  background-color: #8affd9 !important;
+  backface-visibility: hidden;
+  cursor: pointer;
+}
+
+
+
+
 
 .ngx-datatable.bootstrap .datatable-footer {
   background: rgb(37, 220, 0);

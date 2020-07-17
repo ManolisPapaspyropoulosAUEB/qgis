@@ -4,6 +4,9 @@
     overflow: hidden !important;
   }
 
+  .frozenLeft{
+    background: #e9e9e9!important;
+  }
   .searchFilter {
     width: 45%;
     margin-top: 20px;
@@ -563,7 +566,11 @@
       <mat-tab label="Roads">
         <div style="z-index: 1" *ngIf="tab==1" class="table">
           <div class="col-md-12" style="    padding: 0;">
-            <button (click)="calculateCriteria()" style="    margin-left: 22px;" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+
+
+            <button matTooltip="calculate creteria" *ngIf="this.currentNum_district_code>0" (click)="calculateCriteria()" style="    position: relative;
+    top: -6px;
+    left: 16px;" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
                         <span class="material-icons">
                           calculate
                         </span>
@@ -583,13 +590,30 @@
                            [limit]="limitPage"
                            [scrollbarH]="true"
             >
-              <ngx-datatable-column name="Show on map" [flexGrow]="1">
+              <ngx-datatable-column name="Show on map" [flexGrow]="1"  [frozenLeft]="true" >
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <mat-checkbox [(ngModel)]="row.checked" (change)="addRoadToMap(row,$event)"></mat-checkbox>
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column name="name" prop="name" [flexGrow]="1">
+              <ngx-datatable-column name="LVRR_ID" prop="LVRR_ID" [flexGrow]="1"  [frozenLeft]="true"   >
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.LVRR_ID }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="osm_id" prop="osm_id" [flexGrow]="1"  [frozenLeft]="true"   >
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.osm_id }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+
+              <ngx-datatable-column name="name" prop="name" [flexGrow]="1"  [frozenLeft]="true" >
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip={{row.name}} (click)="selectRoad(row)">
                     <div>{{ row?.name }}
@@ -639,20 +663,8 @@
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="LVRR_ID" prop="LVRR_ID" [flexGrow]="1">
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
-                    {{ row?.LVRR_ID }}
-                  </div>
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="osm_id" prop="osm_id" [flexGrow]="1">
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
-                    {{ row?.osm_id }}
-                  </div>
-                </ng-template>
-              </ngx-datatable-column>
+
+
               <ngx-datatable-column name="Agriculture Facilitation" prop="Agriculture Facilitation" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
@@ -667,13 +679,202 @@
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="District_id" prop="District_id" [flexGrow]="1">
+
+
+              <ngx-datatable-column name="Length in metres" prop="Length_in_metres" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
-                    {{ row?.District_id }}
+                    {{ row?.Length_in_metres }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
+
+
+
+
+
+
+
+
+
+              <ngx-datatable-column name="Width in metres" prop="Width_in_metres" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.Width_in_metres }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Elevation in metres" prop="Elevation_in_metres" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.Elevation_in_metres }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Population served" prop="Population_served" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.Population_served }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Facilities served" prop="Facilities_served" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.Facilities_served }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Access to GCsRMs" prop="Access_to_GCsRMs" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.Access_to_GCsRMs }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Farm to the Market" prop="Farm_to_the_Market" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.Farm_to_the_Market }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Agricultural Facilities" prop="Agricultural_Facilities" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.Agricultural_Facilities }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Links to major activity centres" prop="Links_to_major_activity_centres" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.Links_to_major_activity_centres }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+
+              <ngx-datatable-column name="Number of connections" prop="Number_of_connections" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.Number_of_connections }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+
+
+
+
+              <ngx-datatable-column name="Width in metres creteria scored" prop="c1_score" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.c1_score }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Elevation in metres creteria scored" prop="c2_score" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.c2_score }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Population served creteria scored" prop="c3_score" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.c3_score }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Facilities served creteria scored" prop="c4_score" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.c4_score }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Access to GCsRMs creteria scored" prop="c5_score" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.c5_score }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Farm to the Market creteria scored" prop="c6_score" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.c6_score }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Agricultural Facilities creteria scored" prop="c7_score" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.c7_score }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Links to major activity centres creteria scored" prop="c8_score" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.c8_score }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+
+              <ngx-datatable-column name="Number of connections creteria scored" prop="c9_score" [flexGrow]="1">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.c9_score }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+
+
+
+
+
+              <ngx-datatable-column name="MCA" prop="mca" [flexGrow]="1" [frozenRight]="true">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.mca }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+
+
+              <ngx-datatable-column name="cbi" prop="cbi" [flexGrow]="1" [frozenRight]="true">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div (click)="selectRoad(row)">
+                    {{ row?.cbi }}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+
+
+
+
+
+
             </ngx-datatable>
           </div>
         </div>

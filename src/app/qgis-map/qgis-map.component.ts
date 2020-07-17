@@ -24,10 +24,14 @@ import {MatTabChangeEvent} from '@angular/material/tabs';
 import {FacilitiesComponent} from '../facilities/facilities.component';
 import {FilterService} from '../../services/filter.service';
 import {VillagesComponent} from '../villages/villages.component';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 import {MatDrawer} from '@angular/material/sidenav';
+
 interface Options {
   width?: number, height?: number, left?: number, top?: number, toolbar?: number, location?: number;
 }
+
+
 @Component({
   selector: 'app-qgis-map',
   templateUrl: './index.html',
@@ -67,6 +71,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     primaryKey: 'num_province_code',
     enableCheckAll: false
   };
+
   dropdownSettings3 = {
     singleSelection: true,
     badgeShowlimitPage: 3,
@@ -76,6 +81,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     primaryKey: 'num_district_code',
     enableCheckAll: false
   };
+
   public provinces = [];
   public unclassifiedCheck;
   public primaryCheck;
@@ -97,9 +103,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public layer_KhostProvincedistrictsKhost_Province_UTM42n_1;
   public layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3;
   public layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3;
-
-
-
   public diakopthsDromwn = true;
   private layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14: L.geoJson;
   public currentNum_district_code: any;
@@ -113,7 +116,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   private roadsTab1Cpy = [];
   public selectionArrayRoads;
   public layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8: L.geoJson;
-  constructor(private  dataservice: DataService, public filterService: FilterService) {
+  constructor(private  dataservice: DataService, public filterService: FilterService,private snackBar: MatSnackBar) {
   }
 
   @ViewChild('fclassSelect') fclassSelect;
@@ -138,7 +141,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   private windowHandle: Window;
   private windowFeatures: Options = { width: 500, height: 500, left: 0, top: 0, location: 0 }
   public onClick2() {
-    /* Create the window object by passing url and optional window title */
     this.windowHandle = this.createNewWindow('http://admin.synergic.gr:9030/', 'newWindow', this.windowFeatures);
   }
   private createNewWindow(url: string, name = 'newWindow', options: Options) {
@@ -150,6 +152,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
   //
   public ngOnInit() {
+
     this.dataservice.getRoadsByParams({}).subscribe(response=>{
       this.filterService.mapRoadsArrayAll=response.data;
     });
@@ -367,83 +370,55 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   over(road){
     var findRoad = this.roadsTab1.find(x => x.LVRR_ID == road.LVRR_ID);
-
-
-    if(this.currentNum_district_code=1411){ //-->spera
-
+    if(road.District_id==1411){ //-->spera
       this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID && road.checkedFilter==true) {
           layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
           layer.openPopup();
-
         }
       });
-
-    }else if (this.currentNum_district_code=1406){  //Sand or gravel
-
+    }else if (road.District_id==1406){  //Sand or gravel
       this.layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID && road.checkedFilter==true) {
           layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
           layer.openPopup();
-
         }
       });
 
-    }else if (this.currentNum_district_code=1403){
+    }else if (road.District_id==1403){
       this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID && road.checkedFilter==true) {
           layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
           layer.openPopup();
-
         }
       });
-
     }
-
-
-
   }
 
   out(road){
     var findRoad = this.roadsTab1.find(x => x.LVRR_ID == road.LVRR_ID);
-
-
-    if(this.currentNum_district_code=1411){ //-->spera
-
-
-      this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
+    if(road.District_id==1411){ //-->spera
+     this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID && road.checkedFilter==true) {
           layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
           layer.closePopup();
-
         }
       });
-
-    }else if (this.currentNum_district_code=1406){  //Sand or gravel
-
+    }else if (road.District_id==1406){  //Sand or gravel
       this.layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID && road.checkedFilter==true) {
           layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
           layer.closePopup();
-
         }
       });
-
-    }else if (this.currentNum_district_code=1403){
+    }else if (road.District_id==1403){
       this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID && road.checkedFilter==true) {
           layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
           layer.closePopup();
-
         }
       });
-
     }
-
-
-
-
-
   }
 
   public hitRoad(road){
@@ -458,9 +433,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       findRoad2.checkedFilter=false;
       road.checkedFilter=false;
     }
-    road.LVRR_ID
-
-    if(this.currentNum_district_code==1411){ //-->spera
+    if(road.District_id==1411){ //-->spera
       this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID ) {
           if(layer.feature.geometry.type === 'editMapRoad'){
@@ -477,9 +450,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         }
       });
-    }else if (this.currentNum_district_code==1406){  //Nadir
-
-
+    }else if (road.District_id==1406){  //Nadir
       this.layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID ) {
           if(layer.feature.geometry.type === 'editMapRoad'){
@@ -496,11 +467,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         }
       });
-
-
-
-
-    }else if (this.currentNum_district_code==1403){
+    }else if (road.District_id==1403){
       this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID ) {
           if(layer.feature.geometry.type === 'editMapRoad'){
@@ -517,16 +484,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         }
       });
-
     }
-
-
-
-
-
-
-
-
   }
 
   ngOnChanges2(){
@@ -706,7 +664,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
 
-      if(this.currentNum_district_code=1411){ //-->spera
+      if(this.currentNum_district_code==1411){ //-->spera
 
 
         this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
@@ -725,7 +683,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         });
 
-      }else if (this.currentNum_district_code=1406){  //Nadir
+      }else if (this.currentNum_district_code==1406){  //Nadir
 
 
         this.layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.eachLayer(function (layer) {
@@ -745,7 +703,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         });
 
 
-      }else if (this.currentNum_district_code=1403){ //gurbuz
+      }else if (this.currentNum_district_code==1403){ //gurbuz
 
         this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
           if (layer.feature.properties.LVRR_ID ===LVRR_ID && checked==true) {
@@ -861,11 +819,23 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   public calculateCriteria(){
 
-    // this.dataservice.calculateCriteria({
-    //   "district_id":
-    // }).subscribe(response=>{
-    //
-    // })
+    this.dataservice.calculateCriteria({
+      "district_id":this.currentNum_district_code
+    }).subscribe(response=>{
+
+      if(response.status=="ok"){
+        this.snackBar.open(response.message, "x", <MatSnackBarConfig>{ duration: 4000 });
+
+        this.getRoadsPyParams();
+
+      }else{
+        this.snackBar.open(response.message, "x", <MatSnackBarConfig>{ duration: 4000 });
+
+        //"Not selected District"
+      }
+
+
+    })
 
 
   }
