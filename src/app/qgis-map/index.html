@@ -563,6 +563,13 @@
       <mat-tab label="Roads">
         <div style="z-index: 1" *ngIf="tab==1" class="table">
           <div class="col-md-12" style="    padding: 0;">
+            <button (click)="calculateCriteria()" style="    margin-left: 22px;" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+                        <span class="material-icons">
+                          calculate
+                        </span>
+            </button>
+
+
 
 
             <ngx-datatable #mydatatable
@@ -668,8 +675,6 @@
                 </ng-template>
               </ngx-datatable-column>
             </ngx-datatable>
-
-
           </div>
         </div>
       </mat-tab>

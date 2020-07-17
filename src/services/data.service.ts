@@ -138,23 +138,30 @@ export class DataService {
 
 
   getVillages(data) {
-
-
-    console.log(data);
-    console.log("fe");
-
-
     return this.http.post<any>('http://afggis.synergic.systems/api/get_villages.php', data)
       .map(
         (response) => {
           return response;
         },
         (error) => {
-
-
         }
       );
   }
+
+
+
+  calculateCriteria(data) {
+    return this.http.post<any>('http://afggis.synergic.systems/api/calculate_criteria.php', data)
+      .map(
+        (response) => {
+          return response;
+        },
+        (error) => {
+        }
+      );
+  }
+
+
 
 
   getUserById(data) {
