@@ -24,6 +24,26 @@ export class DataService {
   }
 
 
+  getRoadsByParams(data) {
+
+
+    console.log(data);
+    console.log("fe");
+
+
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllFromRoads', data).map(
+        (response) => {
+          return response;
+        },
+        (error) => {
+
+
+        }
+      );
+  }
+
+
+
   get_facilities(data) {
 
     return this.http.post<any>('http://afggis.synergic.systems/api/get_facilities.php', data)
@@ -38,24 +58,24 @@ export class DataService {
 
 
 
-  getRoadsByParams(data) {
-
-
-    console.log(data);
-    console.log("fe");
-
-
-    return this.http.post<any>('http://afggis.synergic.systems/api/get_roads.php', data)
-      .map(
-        (response) => {
-          return response;
-        },
-        (error) => {
-
-
-        }
-      );
-  }
+  // getRoadsByParams(data) {
+  //
+  //
+  //   console.log(data);
+  //   console.log("fe");
+  //
+  //
+  //   return this.http.post<any>('http://afggis.synergic.systems/api/get_roads.php', data)
+  //     .map(
+  //       (response) => {
+  //         return response;
+  //       },
+  //       (error) => {
+  //
+  //
+  //       }
+  //     );
+  // }
 
 
   get_province() {

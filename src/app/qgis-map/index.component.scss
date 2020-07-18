@@ -1,0 +1,64 @@
+
+
+
+
+.datatable-row-group.datatable-row-left:hover{
+
+  background-color: #8affd9 !important;
+  backface-visibility: hidden;
+  cursor: pointer;
+  .datatable-row-center.datatable-row-group:hover{
+    background-color: #8affd9 !important;
+    cursor: pointer;
+
+  }
+
+  .datatable-row-group.datatable-row-right:hover{
+    background-color: #8affd9 !important;
+    backface-visibility: hidden;
+    cursor: pointer;
+  }
+
+
+
+
+}
+
+
+
+
+
+
+.datatable-row-center.datatable-row-group:hover{
+  background-color: #8affd9 !important;
+  cursor: pointer;
+
+}
+
+.datatable-row-right{
+  background: #f9f9f9 !important;
+  /*box-shadow: -2px 0px 1px 0px #adadad;*/
+  /*box-shadow: 0px 0px 4px 0px #adadad;*/
+
+
+}
+.datatable-row-group.datatable-row-right{
+  background: #f9f9f9 !important;
+  /*box-shadow: -2px 0px 1px 0px #adadad;*/
+  box-shadow: 0px 0px 4px 0px #adadad;
+
+
+}
+
+
+
+
+
+
+.datatable-row-group.datatable-row-right:hover{
+  background-color: #8affd9 !important;
+  backface-visibility: hidden;
+  cursor: pointer;
+}
+
+

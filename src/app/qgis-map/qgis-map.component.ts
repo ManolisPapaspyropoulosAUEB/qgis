@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import * as $ from 'jquery';
-import {ColumnMode} from '@swimlane/ngx-datatable';
+import {ColumnMode, NgxDatatableModule} from '@swimlane/ngx-datatable';
 import * as L from 'leaflet';
 // import * as Le2 from 'leaflet/dist/bundle.js';
 // import FILTER from 'filter-search';
@@ -34,11 +34,12 @@ interface Options {
 }
 
 
+
 @Component({
   selector: 'app-qgis-map',
   templateUrl: './index.html',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./qgis-map.component.css']
+  styleUrls: ['./index.component.scss']
 })
 export class QgisMapComponent implements OnInit, AfterViewInit {
   title = 'Look jQuery Animation working in action!';
@@ -47,6 +48,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public roadsTab1 = [];
   public headerHeight = 50;
   public mcaActive ;
+
+
   public rowHeight = 50;
   public pageLimit = 10;
   public searchTextRoads: "";
@@ -55,6 +58,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public roadsToMap = [];
   public selectAllCheck;
   public selectAllCheckFacilities;
+  public showOnMapWidth;
+
+
+
+
   public roadWayRadio;
   public typeFacilities = this.filterService.facilitiesType;
   public villageNameFilter = this.filterService.villageNameFilter;
@@ -122,6 +130,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   constructor(private  dataservice: DataService, public filterService: FilterService,private snackBar: MatSnackBar,public dialog: MatDialog,private scrollService: ScrollService) {
   }
 
+  @ViewChild('mydatatable') mydatatable;
+
   @ViewChild('fclassSelect') fclassSelect;
   @ViewChild('roadConditionSelect') roadConditionSelect;
   @ViewChild(FacilitiesComponent) facilitiesComponent: FacilitiesComponent;
@@ -155,7 +165,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
   //
   public ngOnInit() {
+    this.showOnMapWidth=100;
     this.mcaActive=true;
+    this.rowHeight=50;
 
     this.dataservice.getRoadsByParams({}).subscribe(response=>{
       this.filterService.mapRoadsArrayAll=response.data;
@@ -181,7 +193,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.asphaltFilter = '\'asphalt\'';
     this.diakopthsDromwn = true;
     this.getProvinces();
-    this.limitPage = 16;
+    this.limitPage = 15;
     this.FacilitislimitPage = 16;
     this.villageLimitPage = 16;
     this.getDistrictsTab2();
@@ -746,12 +758,15 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     var tab = $event.index;
     this.tab = tab;
     if (tab == 0) {
+
       this.ngOnChanges2();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode); //mhn kaleseis thn get sou gia ta fereis ta facilities
       this.removeAllMarkersFromMap();
       this.setRoadsToMap();
       this.addFacilitiesToMap();
       this.addVillagesToMap();
+      window.dispatchEvent(new Event('resize'));
+
     } else if (tab == 1) {
       this.ngOnChanges2();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
@@ -2008,17 +2023,17 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   public openClosedSideNav() {
-    this.drawer.toggle();
+    this.drawer.toggle().finally(()=>{
+      window.dispatchEvent(new Event('resize'));
+    });
     this.currentStatus = !this.currentStatus;
-    if(this.currentNum_district_code>0){
-      this.getRoadsPyParams();
-      //this.roadsTab1[1]=this.roadsTab1[1];
-
-    }
   }
 
   public openClosedSideNavMapSelections() {
-    this.drawerMapSelections.toggle();
+    this.drawerMapSelections.toggle().finally(()=>{
+      window.dispatchEvent(new Event('resize'));
+
+    });
 
     this.currentStatusMapSelection = !this.currentStatusMapSelection;
   }
