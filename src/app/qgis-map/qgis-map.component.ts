@@ -391,14 +391,14 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   over(road){
     var findRoad = this.roadsTab1.find(x => x.LVRR_ID == road.LVRR_ID);
-    if(road.District_id==1411){ //-->spera
+    if(road.districtId==1411){ //-->spera
       this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID && road.checkedFilter==true) {
           layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
           layer.openPopup();
         }
       });
-    }else if (road.District_id==1406){  //Sand or gravel
+    }else if (road.districtId==1406){  //Sand or gravel
       this.layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID && road.checkedFilter==true) {
           layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
@@ -406,7 +406,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
 
-    }else if (road.District_id==1403){
+    }else if (road.districtId==1403){
       this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID && road.checkedFilter==true) {
           layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
@@ -418,21 +418,21 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   out(road){
     var findRoad = this.roadsTab1.find(x => x.LVRR_ID == road.LVRR_ID);
-    if(road.District_id==1411){ //-->spera
+    if(road.districtId==1411){ //-->spera
      this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID && road.checkedFilter==true) {
           layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
           layer.closePopup();
         }
       });
-    }else if (road.District_id==1406){  //Sand or gravel
+    }else if (road.districtId==1406){  //Sand or gravel
       this.layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID && road.checkedFilter==true) {
           layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
           layer.closePopup();
         }
       });
-    }else if (road.District_id==1403){
+    }else if (road.districtId==1403){
       this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID && road.checkedFilter==true) {
           layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
@@ -454,9 +454,16 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       findRoad2.checkedFilter=false;
       road.checkedFilter=false;
     }
-    if(road.District_id==1411){ //-->spera
+    if(road.districtId==1411){ //-->spera
       this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
+
+
+        console.log(layer.feature.properties.LVRR_ID);
+
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID ) {
+
+          console.log(layer);
+
           if(layer.feature.geometry.type === 'editMapRoad'){
             layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
             layer.feature.geometry.type = 'editMapRoadSelection';
@@ -471,7 +478,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         }
       });
-    }else if (road.District_id==1406){  //Nadir
+    }else if (road.districtId==1406){  //Nadir
       this.layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID ) {
           if(layer.feature.geometry.type === 'editMapRoad'){
@@ -488,7 +495,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         }
       });
-    }else if (road.District_id==1403){
+    }else if (road.districtId==1403){
       this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID ===road.LVRR_ID ) {
           if(layer.feature.geometry.type === 'editMapRoad'){
@@ -685,6 +692,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
 
+
+
       if(this.currentNum_district_code==1411){ //-->spera
 
 
@@ -726,8 +735,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       }else if (this.currentNum_district_code==1403){ //gurbuz
 
+
         this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
+
+
           if (layer.feature.properties.LVRR_ID ===LVRR_ID && checked==true) {
+
             if(layer.feature.geometry.type == 'editMapRoadSelection'){
               layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
               layer.feature.geometry.type = 'editMapRoadSelection';
@@ -758,6 +771,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     var tab = $event.index;
     this.tab = tab;
     if (tab == 0) {
+      window.dispatchEvent(new Event('resize'));
+
 
       this.ngOnChanges2();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode); //mhn kaleseis thn get sou gia ta fereis ta facilities
@@ -765,7 +780,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.setRoadsToMap();
       this.addFacilitiesToMap();
       this.addVillagesToMap();
-      window.dispatchEvent(new Event('resize'));
 
     } else if (tab == 1) {
       this.ngOnChanges2();
@@ -809,6 +823,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   public selectRoad(road) {
   }
+
+
+
 
   public getRoadsPyParams() {
     this.dataservice.getRoadsByParams(
