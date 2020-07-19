@@ -25,6 +25,7 @@
     "angular2-multiselect-dropdown": "^4.6.3",
     "autolinker": "^3.14.1",
     "bootstrap": "^4.5.0",
+    "executor": "^1.0.6",
     "jquery": "^3.5.1",
     "jquery.scrollto": "^2.1.2",
     "jsdom": "^16.2.2",

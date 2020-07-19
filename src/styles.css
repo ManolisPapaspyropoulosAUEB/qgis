@@ -232,8 +232,12 @@ padding-left: 5px;
 }
 .datatable-row-group.datatable-row-right{
   background: #f9f9f9 !important;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
+
   /*box-shadow: -2px 0px 1px 0px #adadad;*/
-  box-shadow: 0px 0px 4px 0px #adadad;
+  /*box-shadow: 0px 0px 4px 0px #adadad;*/
+
 
 
 }

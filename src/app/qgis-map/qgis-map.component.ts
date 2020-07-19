@@ -782,14 +782,21 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.addVillagesToMap();
 
     } else if (tab == 1) {
+      window.dispatchEvent(new Event('resize'));
+
       this.ngOnChanges2();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
     } else if (tab == 2) {
+      window.dispatchEvent(new Event('resize'));
+
       this.initMapRoadsArray();
+      this.facilitiesComponent.getFacilities();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
     } else if (tab == 3) {
+      window.dispatchEvent(new Event('resize'));
+
       this.initMapRoadsArray();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
       this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
@@ -2033,9 +2040,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
 
-  scrollToId(id: string) {
-    console.log("element id : ", id);
-    this.scrollService.scrollToElementById(id);
+  scrollToId(param: string) {//
+    this.scrollService.scrollToElementById(param);
   }
 
 

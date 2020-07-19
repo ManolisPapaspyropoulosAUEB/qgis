@@ -27,10 +27,13 @@ export class ScrollService {
     }
   }
 
-  scrollToElementById(id: string) {
+  scrollToElementById(param: string) {
+//checkpox
+    const className = this.__getElementByClass('datatable-body');
+    this.scrollToElement(className,param);
 
-    const element = this.__getElementById(id);
-    this.scrollToElement(element);
+
+
   }
 
   private __getElementById(id: string): HTMLElement {
@@ -39,8 +42,39 @@ export class ScrollService {
     return element;
   }
 
-  scrollToElement(element: HTMLElement) {
-    element.scrollIntoView({behavior:"smooth"});
+
+  private __getElementByClass(className: string): HTMLElement {
+    console.log("element class : ", className);
+    const element = <HTMLElement>document.querySelector(`.${className}`);
+    return element;
+  }//datatable-body
+
+
+
+  scrollToElement(myTble:HTMLElement,param) {
+
+    if(param=='mciCbiRates'){
+      myTble.scrollTo({
+        top: 0,
+        left: 5500,
+        behavior: 'smooth'
+      });
+
+    }else if (param=='c1_location'){
+      myTble.scrollTo({
+        top: 0,
+        left: 2900,
+        behavior: 'smooth'
+      });
+    }else if (param=='init'){
+      myTble.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
+
 
   }
+
 }
