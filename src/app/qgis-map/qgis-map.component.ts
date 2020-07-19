@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import * as $ from 'jquery';
 import {ColumnMode, NgxDatatableModule} from '@swimlane/ngx-datatable';
 import * as L from 'leaflet';
@@ -26,8 +26,9 @@ import {FilterService} from '../../services/filter.service';
 import {VillagesComponent} from '../villages/villages.component';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 import {MatDrawer} from '@angular/material/sidenav';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {ScrollService} from '../../services/scroll.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 interface Options {
   width?: number, height?: number, left?: number, top?: number, toolbar?: number, location?: number;
@@ -2136,8 +2137,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   editRoad(item): void {
     const dialogRef = this.dialog.open(EditRoadDialog, {
-      width: '510px',
-      height: '495px',
+      width: '800px',
       data: item
     });
     // dialogRef.afterClosed().subscribe(result => {
@@ -2173,28 +2173,75 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   templateUrl: './edit-road-dialog.html'
 })
 export class EditRoadDialog implements OnInit {
-  // editForm: FormGroup;
-  // title;
-  // choosenDate = moment(new Date()).isValid() ? moment(new Date()).format('YYYY-MM-DD') : '';
-  // description;
-  // organator;
-  constructor(    public dialogRef: MatDialogRef<EditRoadDialog>,
-
-                  // private formBuilder2: FormBuilder,
-    // @Inject(MAT_DIALOG_DATA) public data: any,
-    // public dialogRef: MatDialogRef<AddNewNodeTimeline>,
-    // private dataService: DataService
-  ) {
+  editForm: FormGroup;
+  name;
+  fclass;
+  ref;
+  oneway;
+  maxspeed: number = 0;
+  layer: number = 0;
+  bridgeMat: boolean;
+  tunnelMat: boolean;
+  source;
+  lengthInMetres;
+  elevationInMetres;
+  constructor(public dialogRef: MatDialogRef<EditRoadDialog>,private formBuilder: FormBuilder,@Inject(MAT_DIALOG_DATA) public data: any,private dataService: DataService) {
   }
+
 
   ngOnInit() {
 
+    console.log(this.data);
+
+    this.name=this.data.name;
+    this.fclass=this.data.fclass;
+    this.ref=this.data.ref;
+    this.oneway=this.data.oneway;
+    this.maxspeed=this.data.maxspeed;
+    this.layer=this.data.layer;
+    this.bridgeMat=this.data.bridgeMat;
+    this.tunnelMat=this.data.tunnelMat;
+    this.source=this.data.source;
+    this.lengthInMetres=this.data.lengthInMetres;
+    this.elevationInMetres=this.data.elevationInMetres;
+
+
+
+    this.editForm = this.formBuilder.group({
+      name: [ this.name],
+      fclass: [ this.fclass, Validators.required],
+      ref: [ this.ref],
+      oneway: [ this.oneway],
+      maxspeed: [ this.maxspeed, Validators.min(0)],
+      layer: [ this.layer, Validators.min(0)],
+      bridgeMat: [ this.bridgeMat],
+      tunnelMat: [ this.tunnelMat],
+      source: [ this.source],
+      lengthInMetres: [ this.lengthInMetres, Validators.min(0)],
+      elevationInMetres: [ this.elevationInMetres, Validators.min(0)]
+    });
+
   }
 
+  get f() {
+    return this.editForm.controls;
+  }
 
   onSubmit() {
-
+    if (this.editForm.invalid) {
+      return;
+    }
+    // let resultObject = {
+    //   title: this.f.title.value,
+    //   description: this.f.description.value,
+    //   id: this.data.id,
+    //   organator:this.f.organator.value,
+    //   choosenDate: moment(this.f.choosenDate.value).isValid() ? moment(this.f.choosenDate.value).format('YYYY-MM-DD') : ''
+    // };
+    // this.dialogRef.close(resultObject);
   }
+
+
   onNoClick(): void {
     this.dialogRef.close();
   }
