@@ -8,6 +8,7 @@ export class DataService {
 
 
   public cases = 0;
+  //updateSoftwareAccount
 
   constructor(private http: HttpClient, private remoteDataService: RemoteDataService) {
   }
@@ -19,6 +20,18 @@ export class DataService {
         return response;
       },
       (error) => {
+      }
+    );
+  }
+
+  updateSoftwareAccount(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'updateSoftwareAccount', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+
       }
     );
   }

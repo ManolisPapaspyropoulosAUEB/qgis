@@ -2140,29 +2140,19 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       width: '800px',
       data: item
     });
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     result.leadId = this.id;
-    //     this.dataService.updateTimelineNode(result).subscribe(response => {
-    //       if (response.status == 'ok') {
-    //         this.snackBar.open(
-    //           response.message,
-    //           'x',
-    //           <MatSnackBarConfig>{duration: 3000}
-    //         );
-    //         this.dataService.getAllLeads({id: this.id}).subscribe(response => {
-    //           this.items = response.data[0].timeLineList;
-    //         });
-    //       } else {
-    //         this.snackBar.open(
-    //           response.message,
-    //           'x',
-    //           <MatSnackBarConfig>{duration: 3000}
-    //         );
-    //       }
-    //     });
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dataservice.updateSoftwareAccount(result).subscribe(response=>{
+          if (response.status=='ok'){
+            this.getRoadsPyParams();
+            this.snackBar.open(response.message, "x", <MatSnackBarConfig>{ duration: 4000 });
+          }else{
+            this.snackBar.open(response.message, "x", <MatSnackBarConfig>{ duration: 4000 });
+
+          }
+        });
+      }
+    });
   }
 }
 
@@ -2185,6 +2175,14 @@ export class EditRoadDialog implements OnInit {
   source;
   lengthInMetres;
   elevationInMetres;
+  populationServed;
+  facilitiesServed;
+  accessToGCsRMs;
+  farmToTheMarket;
+  agricultureFacilitaties;
+  linksToMajorActivityCentres;
+  numberOfConnections;
+  roadCondition;
   constructor(public dialogRef: MatDialogRef<EditRoadDialog>,private formBuilder: FormBuilder,@Inject(MAT_DIALOG_DATA) public data: any,private dataService: DataService) {
   }
 
@@ -2204,13 +2202,21 @@ export class EditRoadDialog implements OnInit {
     this.source=this.data.source;
     this.lengthInMetres=this.data.lengthInMetres;
     this.elevationInMetres=this.data.elevationInMetres;
+    this.populationServed=this.data.populationServed;
+    this.facilitiesServed=this.data.facilitiesServed;
+    this.accessToGCsRMs=this.data.accessToGCsRMs;
+    this.farmToTheMarket=this.data.farmToTheMarket;
+    this.agricultureFacilitaties=this.data.agricultureFacilitaties;
+    this.linksToMajorActivityCentres=this.data.linksToMajorActivityCentres;
+    this.numberOfConnections=this.data.numberOfConnections;
+    this.roadCondition=this.data.roadCondition;
 
 
 
     this.editForm = this.formBuilder.group({
       name: [ this.name],
       fclass: [ this.fclass, Validators.required],
-      ref: [ this.ref],
+      ref: [ this.ref,Validators.required],
       oneway: [ this.oneway],
       maxspeed: [ this.maxspeed, Validators.min(0)],
       layer: [ this.layer, Validators.min(0)],
@@ -2218,27 +2224,61 @@ export class EditRoadDialog implements OnInit {
       tunnelMat: [ this.tunnelMat],
       source: [ this.source],
       lengthInMetres: [ this.lengthInMetres, Validators.min(0)],
-      elevationInMetres: [ this.elevationInMetres, Validators.min(0)]
+      elevationInMetres: [ this.elevationInMetres, Validators.min(0)],
+      populationServed: [ this.populationServed, Validators.min(0)],
+      facilitiesServed: [ this.facilitiesServed, Validators.min(0)],
+      accessToGCsRMs: [ this.accessToGCsRMs, [Validators.min(5), Validators.max(10)]],
+      farmToTheMarket: [ this.farmToTheMarket],
+      agricultureFacilitaties: [ this.agricultureFacilitaties],
+      linksToMajorActivityCentres: [ this.linksToMajorActivityCentres],
+      numberOfConnections: [ this.numberOfConnections,[Validators.min(0), Validators.max(10)]],
+      roadCondition: [ this.roadCondition]
     });
 
   }
 
+
+
   get f() {
+
     return this.editForm.controls;
   }
 
-  onSubmit() {
+
+  public save() {
     if (this.editForm.invalid) {
+
+      console.log("invalid")
       return;
     }
-    // let resultObject = {
-    //   title: this.f.title.value,
-    //   description: this.f.description.value,
-    //   id: this.data.id,
-    //   organator:this.f.organator.value,
-    //   choosenDate: moment(this.f.choosenDate.value).isValid() ? moment(this.f.choosenDate.value).format('YYYY-MM-DD') : ''
-    // };
-    // this.dialogRef.close(resultObject);
+    let resultObject = {
+      name: this.f.name.value,
+      fclass: this.f.fclass.value,
+      ref: this.f.ref.value,
+      oneway: this.f.oneway.value,
+      maxspeed: this.f.maxspeed.value,
+      layer: this.f.layer.value,
+      bridgeMat: this.f.bridgeMat.value,
+      tunnelMat: this.f.tunnelMat.value,
+      source: this.source,
+      lengthInMetres: this.f.lengthInMetres.value,
+      elevationInMetres: this.f.elevationInMetres.value,
+      populationServed: this.f.populationServed.value,
+      facilitiesServed: this.f.facilitiesServed.value,
+      accessToGCsRMs: this.f.accessToGCsRMs.value,
+      farmToTheMarket: this.f.farmToTheMarket.value,
+      agricultureFacilitation:this.agricultureFacilitaties,
+      linksToMajorActivityCentres: this.f.linksToMajorActivityCentres.value,
+      numberOfConnections: this.f.numberOfConnections.value,
+      roadCondition: this.f.roadCondition.value
+
+    };
+
+    console.log(resultObject)
+
+
+
+     this.dialogRef.close(resultObject);
   }
 
 
@@ -2246,7 +2286,7 @@ export class EditRoadDialog implements OnInit {
     this.dialogRef.close();
   }
 
-  ok(): void {
-    this.dialogRef.close(true);
-  }
+  // ok(): void {
+  //   this.dialogRef.close(true);
+  // }
 }

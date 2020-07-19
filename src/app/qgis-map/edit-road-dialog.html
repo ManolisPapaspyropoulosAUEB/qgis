@@ -4,14 +4,32 @@
     position: relative;
     top: 1px;
     left: 31px;
-    background: #0008ff9e;
+    background: #3f51b5;
     border-radius: 5px;
   }
+
 
   .closeIcon:hover {
 
     cursor: pointer;
   }
+
+  ::ng-deep .mat-dialog-container{
+    padding-top: 5px!important;
+  }
+
+  mat-form-field{
+    width: 95%!important;
+    background-color: white!important;
+  }
+  ::ng-deep .mat-form-field-flex{
+    background-color: #ffffff !important;
+    padding-left: 0px!important;
+
+  }
+
+
+
 
 </style>
 
@@ -27,84 +45,200 @@
     </div>
   </div>
 
-  <form  [formGroup]="editForm" class="example-form" style="display: grid" >
-    <mat-form-field class="example-full-width">
-      <mat-label>Name</mat-label>
-      <input  formControlName="name"   matInput placeholder="name" [(ngModel)]="name">
-    </mat-form-field>
+  <form  [formGroup]="editForm" class="example-form" style="display: grid"  (ngSubmit)="save()">
 
-    <mat-form-field  appearance="fill">
-      <mat-label>fclass</mat-label>
-      <mat-select  formControlName="fclass" [(value)]="fclass">
-        <mat-option>None</mat-option>
-        <mat-option value="primary">primary</mat-option>
-        <mat-option value="tertiary">tertiary</mat-option>
-        <mat-option value="unclassified">unclassified</mat-option>
-        <mat-option value="secondary">secondary</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <mat-tab-group class="mycustomTabClassUpdateRoad">
+      <mat-tab label="General Information">
 
+        <div class="" style="display: flex;    margin-top: 18px;">
 
-    <mat-form-field class="example-full-width">
-      <mat-label>Ref</mat-label>
-      <input  formControlName="ref"   matInput placeholder="Ref" [(ngModel)]="ref">
-    </mat-form-field>
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <mat-label>Name</mat-label>
+              <input  formControlName="name"   matInput placeholder="name" [(ngModel)]="name">
+            </mat-form-field>
 
-
-    <mat-form-field  appearance="fill">
-      <mat-label>Oneway</mat-label>
-      <mat-select  formControlName="oneway" [(value)]="oneway">
-        <mat-option>None</mat-option>
-        <mat-option value="B">Both Way</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-      <mat-label>Max Speed</mat-label>
-      <input  type="number" formControlName="maxspeed"   matInput placeholder="Max Speed" [(ngModel)]="maxspeed">
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-      <mat-label>Layer</mat-label>
-      <input  type="number" formControlName="layer"   matInput placeholder="layer" [(ngModel)]="layer">
-    </mat-form-field>
+            <mat-form-field  appearance="fill">
+              <mat-label>fclass</mat-label>
+              <mat-select  formControlName="fclass" [(value)]="fclass">
+                <mat-option>None</mat-option>
+                <mat-option value="primary">primary</mat-option>
+                <mat-option value="tertiary">tertiary</mat-option>
+                <mat-option value="unclassified">unclassified</mat-option>
+                <mat-option value="secondary">secondary</mat-option>
+              </mat-select>
+            </mat-form-field>
 
 
+            <mat-form-field class="example-full-width">
+              <mat-label>Ref</mat-label>
+              <input  formControlName="ref"   matInput placeholder="Ref" [(ngModel)]="ref">
+            </mat-form-field>
 
 
-    <mat-form-field  appearance="fill">
-      <mat-label>Source</mat-label>
-      <mat-select  formControlName="source" [(value)]="source">
-        <mat-option>None</mat-option>
-        <mat-option value="OSM">OSM</mat-option>
-        <mat-option value="World Imagery">World Imagery</mat-option>
-      </mat-select>
-    </mat-form-field>
+            <mat-form-field  appearance="fill">
+              <mat-label>Oneway</mat-label>
+              <mat-select  formControlName="oneway" [(value)]="oneway">
+                <mat-option>None</mat-option>
+                <mat-option value="B">Both Way</mat-option>
+              </mat-select>
+            </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <mat-label>length In Metres</mat-label>
-      <input  type="number"  formControlName="lengthInMetres"   matInput placeholder="length In Metres" [(ngModel)]="lengthInMetres">
-    </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-      <mat-label>elevation In Metres</mat-label>
-      <input  type="number"  formControlName="elevationInMetres"   matInput placeholder="elevation In Metres" [(ngModel)]="elevationInMetres">
-    </mat-form-field>
-
-
-    <mat-checkbox formControlName="bridgeMat" class="example-margin" [(ngModel)]="bridgeMat">
-      Bidge
-    </mat-checkbox>
-
-    <mat-checkbox formControlName="tunnelMat" class="example-margin" [(ngModel)]="tunnelMat">
-      Tunnel
-    </mat-checkbox>
+            <mat-form-field class="example-full-width">
+              <mat-label>Max Speed</mat-label>
+              <input  type="number" formControlName="maxspeed"   matInput placeholder="Max Speed" [(ngModel)]="maxspeed">
+              <span *ngIf=" f.maxspeed.errors">   please give a positive number
+                 </span>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field class="example-full-width">
+              <mat-label>Layer</mat-label>
+              <input  type="number" formControlName="layer"   matInput placeholder="layer" [(ngModel)]="layer">
+              <span *ngIf=" f.layer.errors">   please give a positive number
+                 </span>
+            </mat-form-field>
 
 
 
 
+            <mat-form-field  appearance="fill">
+              <mat-label>Source</mat-label>
+              <mat-select  formControlName="source" [(value)]="source">
+                <mat-option>None</mat-option>
+                <mat-option value="OSM">OSM</mat-option>
+                <mat-option value="World Imagery">World Imagery</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>length In Metres</mat-label>
+              <input  type="number"  formControlName="lengthInMetres"   matInput placeholder="length In Metres" [(ngModel)]="lengthInMetres">
+              <span *ngIf=" f.lengthInMetres.errors">   please give a positive number
+                 </span>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>elevation In Metres</mat-label>
+              <input  type="number"  formControlName="elevationInMetres"   matInput placeholder="elevation In Metres" [(ngModel)]="elevationInMetres">
+              <span *ngIf=" f.elevationInMetres.errors">   please give a positive number
+                 </span>
+            </mat-form-field>
+
+            <mat-form-field  appearance="fill">
+              <mat-label>Source</mat-label>
+              <mat-select  formControlName="roadCondition" [(value)]="roadCondition">
+                <mat-option>None</mat-option>
+                <mat-option value="concreteFilter">OSM</mat-option>
+                <mat-option value="sand or gravel">sand or gravel</mat-option>
+                <mat-option value="asphalt">asphalt</mat-option>
+              </mat-select>
+            </mat-form-field>
 
 
+
+
+
+            <mat-checkbox style="    margin-right: 10px;" formControlName="bridgeMat" class="example-margin" [(ngModel)]="bridgeMat">
+              Bidge
+            </mat-checkbox>
+
+            <mat-checkbox formControlName="tunnelMat" class="example-margin" [(ngModel)]="tunnelMat">
+              Tunnel
+            </mat-checkbox>
+
+          </div>
+
+        </div>
+
+
+      </mat-tab>
+      <mat-tab label="Criteria">
+
+        <div class="" style="display: flex;margin-top: 10px">
+
+          <div class="col-md-6" style="    padding-top: 12px;">
+            <mat-form-field class="example-full-width">
+              <mat-label>Population Served </mat-label>
+              <input  type="number"  formControlName="populationServed"   matInput placeholder="population Served" [(ngModel)]="populationServed">
+              <span *ngIf=" f.populationServed.errors" style="color: red">   please give a positive number
+                 </span>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Facilities Served</mat-label>
+              <input  type="number"  formControlName="facilitiesServed"   matInput placeholder="facilities Served" [(ngModel)]="facilitiesServed">
+              <span *ngIf=" f.facilitiesServed.errors" style="color: red">   please give a numbers > 1
+                 </span>
+            </mat-form-field>
+
+
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Access To GCsRMs</mat-label>
+              <input  type="number"  formControlName="accessToGCsRMs"   matInput placeholder="access To GCsRMs" [(ngModel)]="accessToGCsRMs">
+              <span *ngIf=" f.accessToGCsRMs.errors" style="color: red">   please give a numbers > 5 and <10
+                 </span>
+            </mat-form-field>
+
+
+            <mat-form-field  appearance="fill">
+              <mat-label>Farm to the Market </mat-label>
+              <mat-select  formControlName="source" [(value)]="farmToTheMarket">
+                <mat-option>None</mat-option>
+                <mat-option value="0">0</mat-option>
+                <mat-option value="5">5</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+
+
+
+          </div>
+
+
+          <div class="col-md-6">
+
+            <mat-form-field  appearance="fill">
+              <mat-label>Agriculture Facilitation </mat-label>
+              <mat-select  formControlName="agricultureFacilitaties" [(value)]="agricultureFacilitaties">
+                <mat-option>None</mat-option>
+                <mat-option value="0">0</mat-option>
+                <mat-option value="5">5</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field  appearance="fill">
+              <mat-label>links To Major Activity Centres</mat-label>
+              <mat-select  formControlName="linksToMajorActivityCentres" [(value)]="linksToMajorActivityCentres">
+                <mat-option>None</mat-option>
+                <mat-option value="0">0</mat-option>
+                <mat-option value="5">5</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>​Number of Connections to other roads</mat-label>
+              <input  type="number"  formControlName="numberOfConnections"   matInput placeholder="number Of Connections" [(ngModel)]="numberOfConnections">
+              <span *ngIf=" f.numberOfConnections.errors"  style="color: red">   please give a numbers > 5 and <10
+                 </span>
+            </mat-form-field>
+
+
+
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+      </mat-tab>
+    </mat-tab-group>
 
 
 
@@ -119,7 +253,7 @@
 
 
 <mat-dialog-actions>
-  <button mat-raised-button color="primary">Save</button>
+  <button (click)="save()"   type="submit" mat-raised-button color="primary">Save</button>
 
   <button mat-raised-button>Cancel</button>
 </mat-dialog-actions>
