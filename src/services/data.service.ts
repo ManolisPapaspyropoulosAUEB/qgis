@@ -25,12 +25,6 @@ export class DataService {
 
 
   getRoadsByParams(data) {
-
-
-    console.log(data);
-    console.log("fe");
-
-
     return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllFromRoads', data).map(
         (response) => {
           return response;
@@ -41,6 +35,26 @@ export class DataService {
         }
       );
   }
+
+  calculateCriteria(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'calculateCriteria', data).map(
+        (response) => {
+          return response;
+        },
+        (error) => {
+        }
+      );
+  }
+
+  // calculateCriteria(data) {
+  //   return this.http.post<any>('http://afggis.synergic.systems/api/calculate_criteria.php', data).map(
+  //       (response) => {
+  //         return response;
+  //       },
+  //       (error) => {
+  //       }
+  //     );
+  // }
 
 
 
@@ -170,16 +184,16 @@ export class DataService {
 
 
 
-  calculateCriteria(data) {
-    return this.http.post<any>('http://afggis.synergic.systems/api/calculate_criteria.php', data)
-      .map(
-        (response) => {
-          return response;
-        },
-        (error) => {
-        }
-      );
-  }
+  // calculateCriteria(data) {
+  //   return this.http.post<any>('http://afggis.synergic.systems/api/calculate_criteria.php', data)
+  //     .map(
+  //       (response) => {
+  //         return response;
+  //       },
+  //       (error) => {
+  //       }
+  //     );
+  // }
 
 
 

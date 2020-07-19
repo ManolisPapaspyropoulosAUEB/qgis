@@ -771,7 +771,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     var tab = $event.index;
     this.tab = tab;
     if (tab == 0) {
-      window.dispatchEvent(new Event('resize'));
 
 
       this.ngOnChanges2();
@@ -788,10 +787,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
     } else if (tab == 2) {
-      window.dispatchEvent(new Event('resize'));
 
       this.initMapRoadsArray();
-      this.facilitiesComponent.getFacilities();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
     } else if (tab == 3) {
@@ -801,6 +798,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
       this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
     }
+    window.dispatchEvent(new Event('resize'));
+
   }
 
   public initMapRoadsArray() { //

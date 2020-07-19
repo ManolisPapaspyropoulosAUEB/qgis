@@ -193,6 +193,8 @@ export class FacilitiesComponent implements OnInit {
           }
         }
       });
+      window.dispatchEvent(new Event('resize'));
+
     });
   }
 
@@ -200,6 +202,7 @@ export class FacilitiesComponent implements OnInit {
     this.type=type;
     this.getFacilities();
   }
+
 
 
   setDistrict(currentNum_district_code: any,currentTab,current_province_code: any) {

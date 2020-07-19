@@ -72,6 +72,12 @@ export class ScrollService {
         left: 0,
         behavior: 'smooth'
       });
+    }else if (param=='criteria'){
+      myTble.scrollTo({
+        top: 0,
+        left: 1700,
+        behavior: 'smooth'
+      });
     }
 
 

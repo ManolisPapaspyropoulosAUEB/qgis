@@ -19,14 +19,14 @@
     left: 16px;"
   }
 
-  /*.matCardSelection:hover{*/
-    /*background-color: whitesmoke;*/
-    /*cursor: pointer!important;*/
-  /*}*/
-
-  ::ng-deep.matCardSelection:hover{
-    cursor: pointer;
+  .matCardSelection:hover{
+    background-color: whitesmoke;
+    cursor: pointer!important;
   }
+
+  /*::ng-deep.matCardSelection:hover{*/
+    /*cursor: pointer;*/
+  /*}*/
 
   .frozenLeft{
     background: #e9e9e9!important;
@@ -617,9 +617,21 @@
                 </button>
               </div>
               <div class="col-md-5">
-                <button style="margin-right: 4px" (click)="scrollToId('init')" mat-raised-button color="primary">< Navigate to start</button>
-                <button style="margin-right: 4px" (click)="scrollToId('c1_location')" mat-raised-button color="primary">Navigate to creteria</button>
-                <button (click)="scrollToId('mciCbiRates')" mat-raised-button color="primary">Navigate to MCA,CBI rates ></button>
+                <button style="margin-right: 4px" (click)="scrollToId('init')" mat-raised-button color="primary">
+                  <span class="material-icons">
+                    arrow_left
+                  </span>
+                  START</button>
+                <button style="margin-right: 4px" (click)="scrollToId('criteria')" mat-raised-button color="primary">CRITERIA</button>
+                <button style="margin-right: 4px" (click)="scrollToId('c1_location')" mat-raised-button color="primary">SCORES</button>
+                <button (click)="scrollToId('mciCbiRates')" mat-raised-button color="primary">MCA,CBI
+
+                  <span class="material-icons">
+                    arrow_right
+                  </span>
+
+
+                </button>
               </div>
             </div>
             <ngx-datatable #mydatatable
@@ -636,7 +648,7 @@
             >
               <ngx-datatable-column [width]="100"   name="Show on map" [flexGrow]="1"  [frozenLeft]="true" >
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <mat-checkbox id="checkpox" [(ngModel)]="row.checked" (change)="addRoadToMap(row,$event)"></mat-checkbox>
+                  <mat-checkbox  [(ngModel)]="row.checked" (change)="addRoadToMap(row,$event)"></mat-checkbox>
                 </ng-template>
               </ngx-datatable-column>
 
