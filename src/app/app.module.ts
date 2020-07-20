@@ -77,6 +77,7 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
 import {FilterService} from '../services/filter.service';
 import {VillagesComponent} from './villages/villages.component';
+import { CoreDataComponent } from './core-data/core-data.component';
 
 
 
@@ -156,7 +157,8 @@ const routes: Routes = [
     UnitProductComponent,
     FileuploadComponent,
     SliderComponent,
-    QgisMapComponent
+    QgisMapComponent,
+    CoreDataComponent
   ],
 
   imports: [

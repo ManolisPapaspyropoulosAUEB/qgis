@@ -48,6 +48,16 @@ export class DataService {
       );
   }
 
+  getAllCriteriaMaster(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllCriteriaMaster', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+      }
+    );
+  }
+
 
   getRoadsByParams(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllFromRoads', data).map(
