@@ -65,6 +65,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public searchTextVillages: '';
   public roadsToMap = [];
   public selectAllCheck;
+  public  flagMap;
   public selectAllCheckFacilities;
   public showOnMapWidth;
   public roadWayRadio;
@@ -170,6 +171,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     return window.open(url, name, features);
   }
   public ngOnInit() {
+
+    this.flagMap=false;
     this.showOnMapWidth = 100;
     this.mcaActive = true;
     this.rowHeight = 50;
@@ -530,7 +533,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
 
-  onClick(event) {
+
+
+
+  onClick(event) {//
+
+
+
   }
 
   public addRoadToMap(object, event) {
@@ -868,6 +877,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           this.myMap.setView([this.district[0].x_distance, this.district[0].y_distance], Number(this.district[0].zoom_info_district) + 1);
         }
       });
+      window.dispatchEvent(new Event('resize'));
+
     }
   }
 
@@ -943,6 +954,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.setRoadsToMap();
       this.addFacilitiesToMap();
       this.addVillagesToMap();
+      window.dispatchEvent(new Event('resize'));
+
     } else if (tab == 1) {
       this.coreDataComponent.emptyTable();
 
@@ -2193,6 +2206,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       window.dispatchEvent(new Event('resize'));
     });
     this.currentStatus = !this.currentStatus;
+
   }
 
   public openClosedSideNavMapSelections() {
@@ -2226,6 +2240,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   private getDistrictsTab2() {
     this.dataservice.get_districts({}).subscribe(response => {
       this.districtsTabRoads = response.data;
+
       this.districtsTabRoads.sort((a, b) => {
         if (a.district_name < b.district_name) {
           return -1;
@@ -2334,6 +2349,8 @@ export class EditRoadDialog implements OnInit {
 
 
   ngOnInit() {
+
+
 
     console.log(this.data);
 

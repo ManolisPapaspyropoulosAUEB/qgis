@@ -50,9 +50,32 @@
     box-shadow: 2px 3px 3px 0px #888888;
   }
 
-  #map {
-    min-height: 920px;
-    max-height: 95vh !important;
+
+  /*#map {*/
+    /*min-height: 95vh;*/
+    /*position: relative;*/
+    /*top: 0px;*/
+  /*}*/
+
+
+
+
+
+
+
+
+  .map-container {
+    position: fixed;
+    top: 49px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  /*style="background-color: #3f51b5"*/
+
+  .map-frame {
+    border: 2px solid black;
   }
 
   .mat-drawer-content {
@@ -538,8 +561,18 @@
             </div>
             <div class="" style="display: flex">
               <div class="col-12" style="    padding:0px; z-index: 0;top: -24px;">
-                <div (click)="onClick($event)" id="map"></div>
+
+                <div class="map-container" (click)="onClick($event)" id="map"></div>
               </div>
+
+              <!--<div class="map-frame">-->
+                <!--<div class="map-container">-->
+                  <!--<div (click)="onClick($event)" id="map"></div>-->
+                <!--</div>-->
+              <!--</div>-->
+
+
+
             </div>
           </mat-drawer-content>
         </mat-drawer-container>
