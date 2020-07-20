@@ -12,7 +12,7 @@ import {FilterService} from '../../services/filter.service';
 
 
 export class FacilitiesComponent implements OnInit {
-  public Dist_Code;
+  public distCode;
   public currentTab;
   public facilitiesMerged=[];
   public finalfacilitiesMerged=[];
@@ -48,138 +48,138 @@ export class FacilitiesComponent implements OnInit {
       if(this.type=='Both'){
         this.dataDistCenters.forEach(element=>{
           this.facilitiesMerged.push({
-            "Pro_Name":element.Pro_Name,
-            "NAME":"",
-            "Pro_Center":element.Pro_Center,
-            "Pro_Code":element.Pro_Code,
-            "Dist_Name":element.Dist_Name,
-            "Dist_Code":element.Dist_Code,
-            "Center_Typ":element.Center_Typ,
-            "East":element.East,
+            "proName":element.proName,
+            "name":"",
+            "proCenter":element.proCenter,
+            "proCode":element.proCode,
+            "distName":element.distName,
+            "distCode":element.distCode,
+            "centerType":element.centerType,
+            "east":element.east,
             "id":element.id,
-            "customId":element.id+"distcenters",
-            "North":element.North,
-            "East_UTM42":element.East_UTM42,
-            "Nort_UTM42":element.Nort_UTM42,
+            "customId":element.id+"customId",
+            "north":element.north,
+            "eastUtm42":element.eastUtm42,
+            "northUtm42":element.northUtm42,
             "main_type":"distcenters",
-            "From_":"",
+            "from":"",
             "checked":false,
             "checkedFilter":false,
-            "Type":"distcenters"
+            "type":"distcenters"
           });
         });
         this.dataMosques.forEach(element=>{
           this.facilitiesMerged.push({
-            "Pro_Name":"",
-            "NAME":element.NAME,
-            "Pro_Center":"",
-            "Pro_Code":"",
+            "proName":"",
+            "name":element.NAME,
+            "proCenter":"",
+            "proCode":"",
             "id":element.id,
-            "Dist_Name":"",
+            "distName":"",
             "customId":element.id+element.Type,
-            "Dist_Code":"",
-            "Center_Typ":"",
-            "East":element.East,
-            "North":element.North,
-            "East_UTM42":element.East_UTM42,
-            "Nort_UTM42":element.Nort_UTM42,
+            "distCode":"",
+            "centerType":"",
+            "east":element.east,
+            "north":element.north,
+            "eastUtm42":element.eastUtm42,
+            "northUtm42":element.northUtm42,
             "main_type":"mosques",
             "checked":false,
             "checkedFilter":false,
 
-            "From_":element.From_,
-            "Type":element.Type,
+            "from":element.from,
+            "type":element.type,
           });
         });
         this.dataSchools.forEach(element=>{
           this.facilitiesMerged.push({
-            "Pro_Name":"",
-            "NAME":element.NAME,
-            "Pro_Center":"",
-            "Pro_Code":"",
-            "Dist_Name":"",
-            "Dist_Code":"",
-            "customId":element.id+element.Type,
-            "Center_Typ":"",
-            "East":element.East,
+            "proName":"",
+            "name":element.NAME,
+            "proCenter":"",
+            "proCode":"",
+            "distName":"",
+            "distCode":"",
+            "customId":element.id+element.type,
+            "centerType":"",
+            "east":element.east,
             "id":element.id,
-            "North":element.North,
-            "East_UTM42":element.East_UTM42,
-            "Nort_UTM42":element.Nort_UTM42,
+            "north":element.north,
+            "eastUtm42":element.eastUtm42,
+            "northUtm42":element.northUtm42,
             "main_type":"schools",
-            "From_":element.From_,
+            "from":element.from,
             "checked":false,
             "checkedFilter":false,
-            "Type":element.Type,
+            "type":element.type,
           });
         });
       }else if (this.type=='Schools'){
         this.dataSchools.forEach(element=>{
           this.facilitiesMerged.push({
-            "Pro_Name":"",
-            "NAME":element.NAME,
-            "Pro_Center":"",
-            "Pro_Code":"",
-            "Dist_Name":"",
-            "Dist_Code":"",
-            "Center_Typ":"",
-            "East":element.East,
+            "proName":"",
+            "name":element.NAME,
+            "proCenter":"",
+            "proCode":"",
+            "distName":"",
+            "distCode":"",
+            "centerType":"",
+            "east":element.east,
             "id":element.id,
-            "North":element.North,
-            "East_UTM42":element.East_UTM42,
-            "Nort_UTM42":element.Nort_UTM42,
+            "north":element.north,
+            "eastUtm42":element.eastUtm42,
+            "northUtm42":element.northUtm42,
             "main_type":"schools",
-            "From_":element.From_,
+            "from":element.from,
 
             "checked":false,
             "checkedFilter":false,
-            "Type":element.Type,
+            "type":element.type,
           });
         });
       }else if (this.type=='Mosques'){
         this.dataMosques.forEach(element=>{
 
           this.facilitiesMerged.push({
-            "Pro_Name":"",
-            "NAME":element.NAME,
-            "Pro_Center":"",
-            "Pro_Code":"",
+            "proName":"",
+            "name":element.NAME,
+            "proCenter":"",
+            "proCode":"",
             "id":element.id,
-            "Dist_Name":"",
-            "Dist_Code":"",
-            "Center_Typ":"",
-            "East":element.East,
-            "North":element.North,
-            "East_UTM42":element.East_UTM42,
-            "Nort_UTM42":element.Nort_UTM42,
+            "distName":"",
+            "distCode":"",
+            "centerType":"",
+            "east":element.east,
+            "north":element.north,
+            "eastUtm42":element.eastUtm42,
+            "northUtm42":element.northUtm42,
             "main_type":"mosques",
             "checked":false,
             "checkedFilter":false,
-            "From_":element.From_,
-            "Type":element.Type,
+            "from":element.from,
+            "type":element.type,
           });
 
         });
       }else if (this.type=='Distcenters') {
         this.dataDistCenters.forEach(element=>{
           this.facilitiesMerged.push({
-            "Pro_Name":element.Pro_Name,
-            "NAME":"",
-            "Pro_Center":element.Pro_Center,
-            "Pro_Code":element.Pro_Code,
-            "Dist_Name":element.Dist_Name,
-            "Dist_Code":element.Dist_Code,
-            "Center_Typ":element.Center_Typ,
-            "East":element.East,
+            "proName":element.proName,
+            "name":"",
+            "proCenter":element.proCenter,
+            "proCode":element.proCode,
+            "distName":element.distName,
+            "distCode":element.distCode,
+            "centerType":element.centerType,
+            "east":element.east,
             "id":element.id,
-            "North":element.North,
-            "East_UTM42":element.East_UTM42,
-            "Nort_UTM42":element.Nort_UTM42,
+            "north":element.north,
+            "eastUtm42":element.eastUtm42,
+            "northUtm42":element.northUtm42,
             "main_type":"distcenters",
-            "From_":"",
+            "from":"",
             "checked":false,
             "checkedFilter":false,
-            "Type":"distcenters"
+            "type":"distcenters"
           });
 
         });
@@ -225,13 +225,18 @@ export class FacilitiesComponent implements OnInit {
     }else{
       row.checkedFilter=false;
       for(var i=0;i< this.userSelectionsForMapShow.length;i++ ){
-        if( this.userSelectionsForMapShow[i].id==row.id && this.userSelectionsForMapShow[i].Type==row.Type  ){
+        if( this.userSelectionsForMapShow[i].id==row.id && this.userSelectionsForMapShow[i].type==row.type  ){
           this.userSelectionsForMapShow.splice(i, 1);
 
         }
       }
     }
     this.filterService.facilitiesArray=this.userSelectionsForMapShow;
+
+
+    console.log(this.filterService.facilitiesArray);
+    console.log(this.userSelectionsForMapShow);
+
   }
 
  public  setLimit(FacilitislimitPage) {

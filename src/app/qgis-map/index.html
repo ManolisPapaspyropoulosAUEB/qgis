@@ -508,21 +508,21 @@
                       <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
 
                       <span>
-                          <span style="font-weight: bold">NAME :</span> {{facilitie.NAME}}
+                          <span style="font-weight: bold">NAME :</span> {{facilitie.name}}
                       </span>
 
                         <span>
-                           <span style="font-weight: bold">Pro_Center :</span>    {{facilitie.Pro_Center}}
+                           <span style="font-weight: bold">Pro_Center :</span>    {{facilitie.proCenter}}
                           </span>
                         <span>
-                       <span style="font-weight: bold"> Center_Typ:</span>    {{facilitie.Center_Typ}}
+                       <span style="font-weight: bold"> Center_Typ:</span>    {{facilitie.centerType}}
                       </span>
                         <span>
                      <span style="font-weight: bold">  main_type:</span>      {{facilitie.main_type}}
                     </span>
 
                         <span>
-                     <span style="font-weight: bold">  Type:</span>      {{facilitie.Type}}
+                     <span style="font-weight: bold">  Type:</span>      {{facilitie.type}}
                     </span>
 
                       </div>
@@ -551,23 +551,25 @@
 
 
 
+
+
                     <mat-card class="matCardSelection" [hidden]="!village.checked" *ngFor="let village of this.filterService.villagesArray|filter: searchTextVillages;"(click)="hitVillage(village)">
                       <div class="row" style="padding: 0;margin: 0">
                         <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
                       <span>
-                          <span style="font-weight: bold">village_name :</span> {{village.village_name}}
+                          <span style="font-weight: bold">village_name :</span> {{village.villageName}}
                       </span>
                           <span>
                            <span style="font-weight: bold">Population :</span>    {{village.VillagePop}}
                           </span>
                           <span>
-                       <span style="font-weight: bold"> Village_Co:</span>    {{village.Village_Co}}
+                       <span style="font-weight: bold"> Village_Co:</span>    {{village.villageCo}}
                       </span>
                           <span>
-                     <span style="font-weight: bold">  Map_Long:</span>      {{village.Map_Long}}
+                     <span style="font-weight: bold">  Map_Long:</span>      {{village.mapLong}}
                     </span>
                           <span>
-                     <span style="font-weight: bold">  Map_Lat:</span>      {{village.Map_Lat}}
+                     <span style="font-weight: bold">  Map_Lat:</span>      {{village.mapLat}}
                     </span>
                         </div>
                         <div class="col-md-1" style="margin: 0;padding-top: 30px">
@@ -612,22 +614,39 @@
                         (click)="calculateCriteria()"  mat-mini-fab color="primary"
                         class="calcButton"
                 >
-                        <span class="material-icons">
+                        <span class="material-icons" >
                           calculate
                         </span>
                 </button>
               </div>
+
+
               <div class="col-md-5">
-                <button style="margin-right: 4px" (click)="scrollToId('init')" mat-raised-button color="primary">
-                  <span class="material-icons">
+                <button style="margin-right: 4px;height: 25px" (click)="scrollToId('init')" mat-raised-button color="primary">
+                  <span class="material-icons"  style="position: relative;top: -3px;">
                     arrow_left
                   </span>
-                  START</button>
-                <button style="margin-right: 4px" (click)="scrollToId('criteria')" mat-raised-button color="primary">CRITERIA</button>
-                <button style="margin-right: 4px" (click)="scrollToId('c1_location')" mat-raised-button color="primary">SCORES</button>
-                <button (click)="scrollToId('mciCbiRates')" mat-raised-button color="primary">MCA,CBI
+                <span  style="position: relative;top: -3px;">START</span>
+                </button>
+                <button style="margin-right: 4px;height: 25px" (click)="scrollToId('criteria')" mat-raised-button color="primary">
+                <span  style="position: relative;top: -3px;">
+                  CRITERIA
+                </span>
 
-                  <span class="material-icons">
+                </button>
+                <button style="margin-right: 4px;height: 25px" (click)="scrollToId('c1_location')" mat-raised-button color="primary">
+                <span  style="position: relative;top: -3px;">
+                  SCORES
+                </span>
+
+                </button>
+                <button style="height: 25px" (click)="scrollToId('mciCbiRates')" mat-raised-button color="primary">
+                  <span style="position: relative;top: -3px;">
+                    MCA,CBI
+                  </span>
+
+
+                  <span class="material-icons"  style="position: relative;top: -3px;">
                     arrow_right
                   </span>
 
@@ -733,6 +752,8 @@
                   </div>
                 </ng-template>
               </ngx-datatable-column>
+
+
 
               <ngx-datatable-column name="tunnel" prop="tunnel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>

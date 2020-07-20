@@ -39,7 +39,7 @@
     <div class="col-md-11">
     </div>
     <div class="col-md-1">
-    <span class="material-icons closeIcon">
+    <span  (click)="onNoClick()"   class="material-icons closeIcon">
       close
     </span>
     </div>
@@ -129,7 +129,7 @@
               <mat-label>Source</mat-label>
               <mat-select  formControlName="roadCondition" [(value)]="roadCondition">
                 <mat-option>None</mat-option>
-                <mat-option value="concreteFilter">OSM</mat-option>
+                <mat-option value="concrete">concrete</mat-option>
                 <mat-option value="sand or gravel">sand or gravel</mat-option>
                 <mat-option value="asphalt">asphalt</mat-option>
               </mat-select>
@@ -182,12 +182,16 @@
             </mat-form-field>
 
 
+
+
+
+
             <mat-form-field  appearance="fill">
               <mat-label>Farm to the Market </mat-label>
-              <mat-select  formControlName="source" [(value)]="farmToTheMarket">
+              <mat-select  formControlName="farmToTheMarket" [(ngModel)]="farmToTheMarket">
                 <mat-option>None</mat-option>
-                <mat-option value="0">0</mat-option>
-                <mat-option value="5">5</mat-option>
+                <mat-option value="0.0">0</mat-option>
+                <mat-option value="5.0">5</mat-option>
               </mat-select>
             </mat-form-field>
 
@@ -201,20 +205,21 @@
           <div class="col-md-6">
 
             <mat-form-field  appearance="fill">
-              <mat-label>Agriculture Facilitation </mat-label>
+              <mat-label>Agriculture Facilitaties </mat-label>
               <mat-select  formControlName="agricultureFacilitaties" [(value)]="agricultureFacilitaties">
                 <mat-option>None</mat-option>
-                <mat-option value="0">0</mat-option>
-                <mat-option value="5">5</mat-option>
+                <mat-option value="0.0">0</mat-option>
+                <mat-option value="5.0">5</mat-option>
               </mat-select>
             </mat-form-field>
+
 
             <mat-form-field  appearance="fill">
               <mat-label>links To Major Activity Centres</mat-label>
               <mat-select  formControlName="linksToMajorActivityCentres" [(value)]="linksToMajorActivityCentres">
                 <mat-option>None</mat-option>
-                <mat-option value="0">0</mat-option>
-                <mat-option value="5">5</mat-option>
+                <mat-option value="0.0">0</mat-option>
+                <mat-option value="5.0">5</mat-option>
               </mat-select>
             </mat-form-field>
 
@@ -255,5 +260,5 @@
 <mat-dialog-actions>
   <button (click)="save()"   type="submit" mat-raised-button color="primary">Save</button>
 
-  <button mat-raised-button>Cancel</button>
+  <button mat-raised-button (click)="onNoClick()" >Cancel</button>
 </mat-dialog-actions>

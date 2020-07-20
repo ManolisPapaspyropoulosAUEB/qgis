@@ -565,6 +565,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
 
+
+
   public removeAllMarkersFromMap() {
     this.markers.forEach(element => {
       this.myMap.removeLayer(element);
@@ -574,8 +576,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public addFacilitiesToMap() {
     if (this.filterService.facilitiesArray) {
       var marker;
+
+      console.log(this.filterService.facilitiesArray);
+
       this.filterService.facilitiesArray.forEach(element => {
-        marker = L.marker([element.North, element.East]);
+        marker = L.marker([element.north, element.east]);
         if (element.main_type == 'distcenters') {
           var icon = new L.Icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
@@ -587,12 +592,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           });
           var popupContent = '<table>\
                      <tr>\
-                         <td colspan="2">' + 'Center Type: ' + element.Center_Typ + '</td>\
+                         <td colspan="2">' + 'Center Type: ' + element.centerType + '</td>\
                     </tr>\
                 </table>';
           marker.bindPopup(popupContent,{ autoClose: false});
           marker.setIcon(icon);
-          marker.customId=element.id+element.Type;
+          marker.customId=element.id+element.type;
         } else if (element.main_type == 'schools') {
           var icon = new L.Icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
@@ -607,7 +612,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                          <td colspan="2">' + 'Name: ' + element.NAME + '</td>\
                     </tr>\
                      <tr>\
-                         <td colspan="2">' + 'Type: ' + element.Type + '</td>\
+                         <td colspan="2">' + 'Type: ' + element.type + '</td>\
                     </tr>\
                 </table>';
           marker.bindPopup(popupContent,{ autoClose: false});
@@ -624,15 +629,15 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           });
           var popupContent = '<table>\
                      <tr>\
-                         <td colspan="2">' + 'Name: ' + element.NAME + '</td>\
+                         <td colspan="2">' + 'Name: ' + element.name + '</td>\
                     </tr>\
                      <tr>\
-                         <td colspan="2">' + 'Type: ' + element.Type + '</td>\
+                         <td colspan="2">' + 'Type: ' + element.type + '</td>\
                     </tr>\
                 </table>';
           marker.bindPopup(popupContent,{ autoClose: false});
           marker.setIcon(icon);
-          marker.customId=element.id+element.Type;
+          marker.customId=element.id+element.type;
         }
         marker.addTo(this.myMap);
         if (this.currentNum_district_code) {
@@ -646,12 +651,14 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     }
   }
 
+
+
   public addVillagesToMap() {
 
     if (this.filterService.villagesArray) {
       var marker;
       this.filterService.villagesArray.forEach(element => {
-        marker = L.marker([element.Map_Lat, element.Map_Long]);
+        marker = L.marker([element.mapLat, element.mapLong]);
         var icon = new L.Icon({
           iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png',
           shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -662,7 +669,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         });
         var popupContent = '<table>\
                      <tr>\
-                         <td colspan="2">' + 'Name: ' + element.village_name + '</td>\
+                         <td colspan="2">' + 'Name: ' + element.villageName + '</td>\
                     </tr>\
                      <tr>\
                          <td colspan="2">' + 'Population: ' + element.VillagePop + '</td>\
@@ -2267,12 +2274,15 @@ export class EditRoadDialog implements OnInit {
       facilitiesServed: this.f.facilitiesServed.value,
       accessToGCsRMs: this.f.accessToGCsRMs.value,
       farmToTheMarket: this.f.farmToTheMarket.value,
-      agricultureFacilitation:this.agricultureFacilitaties,
+      agricultureFacilitaties:this.agricultureFacilitaties,
       linksToMajorActivityCentres: this.f.linksToMajorActivityCentres.value,
       numberOfConnections: this.f.numberOfConnections.value,
-      roadCondition: this.f.roadCondition.value
+      roadCondition: this.f.roadCondition.value,
+      id: this.data.id
 
     };
+
+
 
     console.log(resultObject)
 

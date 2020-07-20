@@ -37,6 +37,18 @@ export class DataService {
   }
 
 
+
+  getVillages(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllVillages', data).map(
+        (response) => {
+          return response;
+        },
+        (error) => {
+        }
+      );
+  }
+
+
   getRoadsByParams(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllFromRoads', data).map(
         (response) => {
@@ -59,6 +71,45 @@ export class DataService {
       );
   }
 
+
+  get_districts(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllDistricts', data).map(
+        (response) => {
+          return response;
+        },
+        (error) => {
+        }
+      );
+  }
+
+
+
+
+
+  get_province() {
+    let query_data : any = {};
+
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllProvinces', query_data).map(
+        (response) => {
+          return response;
+        },
+        (error) => {
+
+        }
+      );
+  }
+
+  get_facilities(data) {
+
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllFacilities', data).map(
+        (response) => {
+          return response;
+        },
+        (error) => {
+        }
+      );
+  }
+
   // calculateCriteria(data) {
   //   return this.http.post<any>('http://afggis.synergic.systems/api/calculate_criteria.php', data).map(
   //       (response) => {
@@ -70,18 +121,19 @@ export class DataService {
   // }
 
 
+  //
+  // get_facilities(data) {
+  //
+  //   return this.http.post<any>('http://afggis.synergic.systems/api/get_facilities.php', data)
+  //     .map(
+  //       (response) => {
+  //         return response;
+  //       },
+  //       (error) => {
+  //       }
+  //     );
+  // }
 
-  get_facilities(data) {
-
-    return this.http.post<any>('http://afggis.synergic.systems/api/get_facilities.php', data)
-      .map(
-        (response) => {
-          return response;
-        },
-        (error) => {
-        }
-      );
-  }
 
 
 
@@ -102,40 +154,21 @@ export class DataService {
   //
   //       }
   //     );
-  // }
-
-
-  get_province() {
-    let query_data : any = {};
-
-    return this.http.post<any>('http://afggis.synergic.systems/api/get_province.php', query_data)
-      .map(
-        (response) => {
-          return response;
-        },
-        (error) => {
-
-        }
-      );
-  }
-
-
-  get_districts(data) {
-    // let query_data : any = {};
-    // query_data.num_province_code = 1;
 
 
 
-    return this.http.post<any>('http://afggis.synergic.systems/api/get_districts.php', data)
-      .map(
-        (response) => {
-          return response;
-        },
-        (error) => {
-        }
-      );
-  }
-
+  // get_province() {
+  //   let query_data : any = {};
+  //
+  //   return this.http.post<any>('http://afggis.synergic.systems/api/get_province.php', query_data)
+  //     .map(
+  //       (response) => {
+  //         return response;
+  //       },
+  //       (error) => {
+  //
+  //       }
+  //     );
 
 
 
@@ -183,17 +216,6 @@ export class DataService {
     );
   }
 
-
-  getVillages(data) {
-    return this.http.post<any>('http://afggis.synergic.systems/api/get_villages.php', data)
-      .map(
-        (response) => {
-          return response;
-        },
-        (error) => {
-        }
-      );
-  }
 
 
 
