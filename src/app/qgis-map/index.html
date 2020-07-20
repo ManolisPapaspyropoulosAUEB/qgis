@@ -331,7 +331,6 @@
             </span>
           </mat-checkbox>
         </div>
-
         <mat-form-field class="example-full-width" style="width: 91%">
           <mat-label>Search by name</mat-label>
           <input matInput placeholder="name.." [(ngModel)]="villageNameFilter" (keyup)="updateNameVillageFilter()">
@@ -381,27 +380,16 @@
           <span style="    position: relative;top: 20px;">Villages</span>
         </div>
       </div>
-
-
       <div *ngIf="tab==4 " class="roadFilters">
         <div style="display: grid">
                <span style="margin-bottom: 10px;    "><b>Core Data Filters</b>
-
                </span>
         </div>
-
         <mat-form-field class="example-full-width" style="width: 91%">
           <mat-label>Search by label</mat-label>
           <input matInput placeholder="label.." [(ngModel)]="coreDataLabelFilter" (keyup)="updateCoreDataFilter()">
         </mat-form-field>
-
-
       </div>
-
-
-
-
-
     </div>
   </mat-drawer>
   <mat-drawer-content>
