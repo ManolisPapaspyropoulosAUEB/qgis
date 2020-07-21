@@ -1,0 +1,163 @@
+<style>
+  .closeIcon {
+    color: white;
+    position: relative;
+    top: 1px;
+    left: 31px;
+    background: #3f51b5;
+    border-radius: 5px;
+  }
+
+
+  .closeIcon:hover {
+
+    cursor: pointer;
+  }
+</style>
+
+
+<mat-dialog-content>
+
+<div style="display: flex">
+  <div class="col-md-11">
+    <h2>Add District Center</h2>
+
+  </div>
+  <div class="col-md-1">
+    <span  (click)="onNoClick()"   class="material-icons closeIcon">
+      close
+    </span>
+  </div>
+</div>
+
+
+
+<form   [formGroup]="editForm2" class="example-form" style="display: grid;padding-left: 24px;
+    padding-right: 24px;"  (ngSubmit)="saveDC()">
+
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input  formControlName="nameDC"   matInput placeholder="name" [(ngModel)]="nameDC">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Pro Center</mat-label>
+    <input  formControlName="proCenter"   matInput placeholder="pro Center" [(ngModel)]="proCenter">
+  </mat-form-field>
+
+
+
+
+  <div style="height: 70px">
+    <div [ngStyle]="styleObjectPr()">
+      <ngx-select
+
+        #prov
+
+        formControlName="num_province_code"
+        [(ngModel)]="num_province_code"
+        [formControl]="selectControlProvince"
+        [allowClear]="true"
+        [items]="provinces"
+        optionValueField="num_province_code"
+        optionTextField="province_name"
+        placeholder="Select...">
+      </ngx-select>
+
+      <span *ngIf=" f.num_province_code.errors" style="color: red">  province is required
+   </span>
+    </div>
+  </div>
+
+
+
+  <div style="height: 70px">
+  <div [ngStyle]="styleObjectD()">
+    <ngx-select
+      #distr
+
+
+      [disabled]="!num_province_code"
+
+      formControlName="num_district_code_dialog"
+      [(ngModel)]="num_district_code_dialog"
+      [formControl]="selectControlDistrict"
+      [allowClear]="true"
+      [items]="districts"
+      optionValueField="num_district_code"
+      optionTextField="district_name"
+      placeholder="Select...">
+    </ngx-select>
+
+    <span *ngIf=" f.num_district_code_dialog.errors" style="color: red">  district is required
+   </span>
+  </div>
+</div>
+
+
+  <mat-form-field  appearance="fill">
+    <mat-label>District Type</mat-label>
+    <mat-select  formControlName="districtType" [(value)]="districtType">
+      <mat-option value="District">District</mat-option>
+      <mat-option value="Province">Province</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+
+  <div class="" style="display: flex">
+    <mat-form-field class="example-full-width" style="width: 25%;margin-right: 4px">
+      <mat-label>East</mat-label>
+      <input type="number"  formControlName="east"   matInput placeholder="east" [(ngModel)]="east">
+      <span *ngIf=" f.east.errors" style="color: red">  please fill with positive number
+   </span>
+    </mat-form-field>
+
+
+
+    <mat-form-field class="example-full-width" style="width: 25%;margin-right: 4px">
+      <mat-label>North</mat-label>
+      <input type="number"  formControlName="north"   matInput placeholder="north" [(ngModel)]="north">
+      <span *ngIf=" f.north.errors" style="color: red">  please fill with positive number
+   </span>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" style="width: 25%;margin-right: 4px">
+      <mat-label>East utm42</mat-label>
+      <input type="number"  formControlName="eastUtm42"   matInput placeholder="east Utm42" [(ngModel)]="east">
+      <span *ngIf=" f.eastUtm42.errors" style="color: red">  please fill with positive number
+   </span>
+    </mat-form-field>
+
+
+
+    <mat-form-field class="example-full-width" style="width: 25%">
+      <mat-label>North utm42</mat-label>
+      <input type="number"  formControlName="northUtm42"   matInput placeholder="north Utm42" [(ngModel)]="northUtm42">
+      <span *ngIf=" f.northUtm42.errors" style="color: red">  please fill with positive number
+   </span>
+    </mat-form-field>
+
+
+  </div>
+
+
+
+  <mat-form-field class="example-full-width" style="width: 25%">
+    <mat-label>Pro Code</mat-label>
+    <input type="number"  formControlName="proCode"   matInput placeholder="pro Code" [(ngModel)]="proCode">
+  </mat-form-field>
+
+
+
+
+
+
+</form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="saveDC()"   type="submit" mat-raised-button color="primary">Save</button>
+
+  <button mat-raised-button (click)="onNoClick()" >Cancel</button>
+</mat-dialog-actions>

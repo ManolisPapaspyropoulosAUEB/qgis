@@ -11,9 +11,75 @@
     padding-bottom: 4%;
 
   }
+
+  .addBtn{
+    position: relative;
+    left: -10px;
+    top: 3px;
+    height: 30px;
+    width: 30px;
+  }
+
+  .addCrcle{
+    position: relative;
+    top: -5px;
+    font-size: 19px;
+  }
+
+
 </style>
-<div class="table">
-  <ngx-datatable  #mydatatable
+
+
+
+<div    *ngIf="this.finalfacilitiesMerged.length>0" class="" style="text-align: end">
+  <button   mat-button [matMenuTriggerFor]="menu" matTooltip="add facilitie" class="addBtn" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+        <span class="material-icons addCrcle">
+          add
+        </span>
+  </button>
+
+
+  <!--<button style="background: cornflowerblue;color: white;" mat-button [matMenuTriggerFor]="menu">Export</button>-->
+  <mat-menu #menu="matMenu" >
+
+
+
+
+    <button (click)="addDistrictCenter()" mat-menu-item >
+           <span class="material-icons">
+              domain
+           </span>
+      District Center
+    </button>
+
+    <!--<button (click)="addSchool()" mat-menu-item >-->
+          <!--<span class="material-icons">-->
+          <!--school-->
+          <!--</span>-->
+      <!--School-->
+    <!--</button>-->
+
+    <!--<button (click)="addMosque()" mat-menu-item >-->
+      <!--<img style="height: 24px" src="../assets/mosques.png"/>-->
+
+      <!--Mosque-->
+    <!--</button>-->
+
+
+
+  </mat-menu>
+
+
+
+</div>
+
+
+
+<div class="table" style="display: flex">
+
+
+
+  <ngx-datatable style="width: 100%"  #mydatatable
                   class="material"
 
                   [sortType]="'multi'"
@@ -28,11 +94,11 @@
 
 
   >
-      <ngx-datatable-column name="Show on map" [flexGrow]="1">
-        <ng-template let-row="row" ngx-datatable-cell-template>
-          <mat-checkbox [(ngModel)]="row.checked" (change)="selectRow(row,$event)"></mat-checkbox>
-        </ng-template>
-      </ngx-datatable-column>
+    <ngx-datatable-column name="Show on map" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <mat-checkbox [(ngModel)]="row.checked" (change)="selectRow(row,$event)"></mat-checkbox>
+      </ng-template>
+    </ngx-datatable-column>
 
     <ngx-datatable-column name="id" prop="id" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
@@ -45,75 +111,75 @@
 
 
 
-      <ngx-datatable-column name="name" prop="name" [flexGrow]="1">
-        <ng-template let-row="row" ngx-datatable-cell-template>
-          <div >
-            {{ row?.name }}
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="Pro Center" prop="proCenter" [flexGrow]="1">
-        <ng-template let-row="row" ngx-datatable-cell-template>
-          <div >
-            {{ row?.proCenter }}
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="Pro Code" prop="proCode" [flexGrow]="1">
-        <ng-template let-row="row" ngx-datatable-cell-template>
-          <div >
-            {{ row?.proCode }}
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="center Type" prop="centerType" [flexGrow]="1">
-        <ng-template let-row="row" ngx-datatable-cell-template>
-          <div >
-            {{ row?.centerType }}
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="East" prop="east" [flexGrow]="1">
-        <ng-template let-row="row" ngx-datatable-cell-template>
-          <div >
-            {{ row?.east }}
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="North" prop="north" [flexGrow]="1">
-        <ng-template let-row="row" ngx-datatable-cell-template>
-          <div >
-            {{ row?.north }}
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="east Utm42" prop="eastUtm42" [flexGrow]="1">
-        <ng-template let-row="row" ngx-datatable-cell-template>
-          <div >
-            {{ row?.eastUtm42 }}
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="north Utm42" prop="northUtm42" [flexGrow]="1">
-        <ng-template let-row="row" ngx-datatable-cell-template>
-          <div >
-            {{ row?.northUtm42 }}
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="From" prop="from" [flexGrow]="1">
-        <ng-template let-row="row" ngx-datatable-cell-template>
-          <div >
-            {{ row?.from }}
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
-      <ngx-datatable-column name="main_type" prop="main_type" [flexGrow]="1">
-        <ng-template let-row="row" ngx-datatable-cell-template>
-          <div >
-            {{ row?.main_type }}
-          </div>
-        </ng-template>
-      </ngx-datatable-column>
-    </ngx-datatable>
+    <ngx-datatable-column name="name" prop="name" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.name }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Pro Center" prop="proCenter" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.proCenter }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Pro Code" prop="proCode" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.proCode }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="center Type" prop="centerType" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.centerType }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="East" prop="east" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.east }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="North" prop="north" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.north }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="east Utm42" prop="eastUtm42" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.eastUtm42 }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="north Utm42" prop="northUtm42" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.northUtm42 }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="From" prop="from" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.from }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="main_type" prop="main_type" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.main_type }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
 </div>

@@ -132,6 +132,15 @@ c-remove {
 }
 
 
+::ng-deep .custom-dialog-container .mat-dialog-container {
+  overflow: visible!important;
+}
+
+.mat-dialog-content, .mat-dialog-container{overflow: visible !important;}
+.mat-dialog-actions{clear: both;}
+
+
+
 
 /*.datatable-body-row:hover{*/
   /*background-color:  rgba(0, 239, 174, 0.33)!important;;*/

@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {FilterService} from '../../services/filter.service';
+import {EditRoadDialog} from '../qgis-map/qgis-map.component';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-facilities',
@@ -13,6 +17,8 @@ import {FilterService} from '../../services/filter.service';
 
 export class FacilitiesComponent implements OnInit {
   public distCode;
+  public proCode;
+
   public currentTab;
   public facilitiesMerged=[];
   public finalfacilitiesMerged=[];
@@ -28,7 +34,7 @@ export class FacilitiesComponent implements OnInit {
     this.type="Both";
     this.limit=16;
   }
-  constructor(public dataservice : DataService,public filterService : FilterService) {
+  constructor(public dataservice : DataService,public filterService : FilterService,public dialog: MatDialog) {
   }
   public test (){
   }
@@ -47,6 +53,9 @@ export class FacilitiesComponent implements OnInit {
       console.log(this.type);
       if(this.type=='Both'){
         this.dataDistCenters.forEach(element=>{
+          if(element.proCode!=null && element.proCode!=""){
+            this.proCode=element.proCode;
+          }
           this.facilitiesMerged.push({
             "proName":element.proName,
             "name":"",
@@ -205,6 +214,8 @@ export class FacilitiesComponent implements OnInit {
 
 
 
+
+
   setDistrict(currentNum_district_code: any,currentTab,current_province_code: any) {
     if( currentTab==true && current_province_code ){
       if(current_province_code==this.num_province_code && currentNum_district_code==this.num_district_code){
@@ -267,4 +278,141 @@ export class FacilitiesComponent implements OnInit {
     }
     this.filterService.facilitiesArray=this.userSelectionsForMapShow;
   }
+
+
+
+
+  public addDistrictCenter(){
+    const dialogRef = this.dialog.open(AddDCDialog, {
+      width: '800px',
+      data:{"proCode":this.proCode}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+
+        //this.dataservice.get_province()
+
+      }
+    });
+  }
+
 }
+
+
+
+
+@Component({
+  selector: './add-dc-dialog',
+  templateUrl: './add-dc-dialog.html'
+})
+export class AddDCDialog implements OnInit {
+  editForm2: FormGroup;
+  nameDC;
+  proCenter;
+  proCode;
+  east;
+  northUtm42;
+  eastUtm42;
+  north;
+  districtType;
+  num_district_code_dialog;
+  num_province_code;
+  public selectControlProvince = new FormControl();
+  public selectControlDistrict = new FormControl();
+  districts=[];
+  provinces=[];
+  constructor(public dialogRef: MatDialogRef<AddDCDialog>,
+              private formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any,
+              private dataService: DataService, private snackBar: MatSnackBar
+  ) {
+  }
+//proCode
+  ngOnInit() {
+    this.getDistricts();
+    this.getProvinces();
+    this.nameDC='';
+    this.east=0;
+    this.north=0;
+    this.northUtm42=0;
+    this.eastUtm42=0;
+    this.districtType='District';
+    this.proCode=this.data.proCode;
+    this.editForm2 = this.formBuilder.group({
+      nameDC: [this.nameDC,Validators.required],
+      proCenter: [this.proCenter],
+      num_district_code_dialog: [this.num_district_code_dialog,Validators.required],
+      districtType: [this.districtType],
+      num_province_code: [this.num_province_code,Validators.required],
+      proCode: [this.proCode],
+      east: [this.east,Validators.min(0)],
+      north: [this.north,Validators.min(0)],
+      northUtm42: [this.northUtm42,Validators.min(0)],
+      eastUtm42: [this.eastUtm42,Validators.min(0)]
+    });
+  }
+  public getProvinces(){
+    this.dataService.get_province().subscribe(response=>{
+      this.provinces=response.data;
+    })
+  }
+  public getDistricts(){
+    this.dataService.get_districts({num_province_code:this.num_province_code}).subscribe(response=>{
+      this.districts=response.data;
+    })
+  }
+
+
+  styleObjectPr(): Object { // //{'border-color':f.districtId.errors?'#ff0000!important':'#e6e6e6!important'}
+    if (this.f.num_province_code.errors ){
+      return {
+        border: '1px solid red',
+        height: '40px',
+        "border-radius": '6px',
+      }
+    }
+    return {}
+  }
+
+  styleObjectD(): Object { // //{'border-color':f.districtId.errors?'#ff0000!important':'#e6e6e6!important'}
+    if (this.f.num_district_code_dialog.errors){
+      return {
+        border: '1px solid red',
+        height: '40px',
+        "border-radius": '6px',
+      }
+    }
+    return {}
+  }
+
+  get f() {
+    return this.editForm2.controls;
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  public saveDC(){
+    if (this.editForm2.invalid) {
+      this.snackBar.open("Your form is not valid,make sure you fill in all required fields", 'x', <MatSnackBarConfig>{duration: 4000});
+
+      return;
+    }
+    let resultObject = {
+      nameDC: this.f.nameDC.value,
+      proCenter: this.f.proCenter.value,
+      num_district_code_dialog: this.f.num_district_code_dialog.value,
+      proCode: this.f.proCode.value,
+      east: this.f.east.value,
+      north: this.f.north.value,
+      northUtm42: this.f.northUtm42.value,
+      eastUtm42: this.f.eastUtm42.value
+
+
+    };
+    console.log(resultObject);
+    this.dialogRef.close(resultObject);
+  }
+}
+
+

@@ -109,6 +109,20 @@ export class DataService {
       );
   }
 
+
+  addDistrictCenter() {
+    let query_data : any = {};
+
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'addDistrictCenter', query_data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
   get_facilities(data) {
 
     return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllFacilities', data).map(

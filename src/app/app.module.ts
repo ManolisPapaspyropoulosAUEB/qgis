@@ -41,8 +41,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { FacilitiesComponent } from './facilities/facilities.component';
+import {AddDCDialog, FacilitiesComponent} from './facilities/facilities.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
+
 
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDividerModule} from '@angular/material/divider';
@@ -79,6 +81,7 @@ import {FilterService} from '../services/filter.service';
 import {VillagesComponent} from './villages/villages.component';
 import { CoreDataComponent } from './core-data/core-data.component';
 import {ExcelPdfExporterService} from './services/excel-pdf-exporter.service';
+import {NgxSelectModule} from 'ngx-select-ex';
 
 
 
@@ -143,6 +146,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     EditRoadDialog,
+    AddDCDialog,
     AppComponent,
     RegisterComponent,
     VillagesComponent,
@@ -161,8 +165,13 @@ const routes: Routes = [
     QgisMapComponent,
     CoreDataComponent
   ],
+  exports: [
+    FormsModule,
+    ReactiveFormsModule
+  ],
 
   imports: [
+    NgxSelectModule,
     Ng2SearchPipeModule,
     FormsModule,
     MatSnackBarModule,
@@ -177,8 +186,7 @@ const routes: Routes = [
     A11yModule,
     ClipboardModule,
 
-
-
+    FormsModule,
     FileUploadModule,
     CdkStepperModule,
     CdkTableModule,
@@ -229,8 +237,8 @@ const routes: Routes = [
 
   ],
   entryComponents: [
-
-    EditRoadDialog
+    EditRoadDialog,
+    AddDCDialog
   ],
 
 
