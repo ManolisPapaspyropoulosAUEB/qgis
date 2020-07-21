@@ -60,7 +60,7 @@ export class FacilitiesComponent implements OnInit {
           if (element.proCode != null && element.proCode != '') {
             this.proCode = element.proCode;
           }
-          this.facilitiesMerged.push({
+          this.facilitiesMerged.push({//
             'proName': element.proName,
             'name': '',
             'proCenter': element.proCenter,
@@ -70,6 +70,8 @@ export class FacilitiesComponent implements OnInit {
             'centerType': element.centerType,
             'east': element.east,
             'id': element.id,
+            'altDistName': "",
+            'targetFid': "",
             'customId': element.id + 'customId',
             'north': element.north,
             'eastUtm42': element.eastUtm42,
@@ -88,11 +90,14 @@ export class FacilitiesComponent implements OnInit {
             'proCenter': '',
             'proCode': '',
             'id': element.id,
-            'distName': '',
+            'distName': element.distName,  //todo:ferto apo join
+
+            'altDistName': element.altDistName,
             'customId': element.id + element.Type,
             'distCode': '',
             'centerType': '',
             'east': element.east,
+            'targetFid': element.targetFid,
             'north': element.north,
             'eastUtm42': element.eastUtm42,
             'northUtm42': element.northUtm42,
@@ -107,13 +112,16 @@ export class FacilitiesComponent implements OnInit {
         this.dataSchools.forEach(element => {
           this.facilitiesMerged.push({
             'proName': '',
-            'name': element.NAME,
+            'name': element.name,
             'proCenter': '',
-            'proCode': '',
-            'distName': '',
-            'distCode': '',
+            'proCode': element.proCode,
+            'distName': element.distName,
+
+            'distCode': element.distCode,
             'customId': element.id + element.type,
             'centerType': '',
+            'altDistName': element.altDistName,
+            'targetFid': element.targetFid,
             'east': element.east,
             'id': element.id,
             'north': element.north,
@@ -130,20 +138,21 @@ export class FacilitiesComponent implements OnInit {
         this.dataSchools.forEach(element => {
           this.facilitiesMerged.push({
             'proName': '',
-            'name': element.NAME,
+            'name': element.name,
             'proCenter': '',
-            'proCode': '',
-            'distName': '',
-            'distCode': '',
+            'proCode': element.proCode,
+            'distName': element.distName,
+            'distCode': element.distCode,
             'centerType': '',
+            'altDistName': element.altDistName,
             'east': element.east,
             'id': element.id,
+            'targetFid': element.targetFid,
             'north': element.north,
             'eastUtm42': element.eastUtm42,
             'northUtm42': element.northUtm42,
             'main_type': 'schools',
             'from': element.from,
-
             'checked': false,
             'checkedFilter': false,
             'type': element.type,
@@ -156,13 +165,15 @@ export class FacilitiesComponent implements OnInit {
             'proName': '',
             'name': element.NAME,
             'proCenter': '',
-            'proCode': '',
+            'proCode': element.proCode,
             'id': element.id,
             'distName': '',
-            'distCode': '',
+            'distCode': element.distCode,
             'centerType': '',
+            'altDistName': element.altDistName,
             'east': element.east,
             'north': element.north,
+            'targetFid': element.targetFid,
             'eastUtm42': element.eastUtm42,
             'northUtm42': element.northUtm42,
             'main_type': 'mosques',
@@ -185,6 +196,8 @@ export class FacilitiesComponent implements OnInit {
             'centerType': element.centerType,
             'east': element.east,
             'id': element.id,
+            'altDistName': "",
+            'targetFid': "",
             'north': element.north,
             'eastUtm42': element.eastUtm42,
             'northUtm42': element.northUtm42,
@@ -288,30 +301,70 @@ export class FacilitiesComponent implements OnInit {
 
 
   public editFacilitie(row) {
+
+    console.log(row);
+
     row.proCode = this.num_province_code;
     row.distrCode = this.num_district_code;
     row.district_name = this.district_name;
     row.proName = this.provinceName;
     row.updateMode = 1;
-    const dialogRef = this.dialog.open(AddDCDialog, {
-      width: '800px',
-      data: row
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log(result);
-        this.dataservice.updateDistrictCenter(result).subscribe(response => {
-          if (response.status == 'ok') {
-            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
-            if (this.num_province_code != null || this.num_district_code != null) {
-              this.getFacilities();
+
+    if(row.main_type=='distcenters'){
+
+
+      const dialogRef = this.dialog.open(AddDCDialog, {
+        width: '800px',
+        data: row
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          console.log(result);
+          this.dataservice.updateDistrictCenter(result).subscribe(response => {
+            if (response.status == 'ok') {
+              this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+              if (this.num_province_code != null || this.num_district_code != null) {
+                this.getFacilities();
+              }
+            } else {
+              this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
             }
-          } else {
-            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
-          }
-        });
-      }
-    });
+          });
+        }
+      });
+    }else if (row.main_type=='schools'){
+
+
+
+      const dialogRef = this.dialog.open(AddSchoolDialog, {
+        width: '800px',
+        data: row
+      });
+
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          console.log(result);
+          this.dataservice.updateSchool(result).subscribe(response => {
+            if (response.status == 'ok') {
+              this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+              if (this.num_province_code != null || this.num_district_code != null) {
+                this.getFacilities();
+              }
+            } else {
+              this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+            }
+          });
+        }
+      });
+
+
+
+    }else if (row.facilitie=='mosque'){
+
+    }
+
+
   }
 
   public deleteDC(row){
@@ -381,15 +434,25 @@ export class FacilitiesComponent implements OnInit {
         'updateMode': 0
       }
     });
-
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log(result);
+        this.dataservice.addSchool(result).subscribe(response => {
+          if (response.status == 'ok') {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+            if (this.num_province_code != null || this.num_district_code != null) {
+              this.getFacilities();
+            }
+          } else {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+          }
+        });
+      }
+    });
   }
-
-
-
-
-
-
 }
+
+
 
 
 @Component({
@@ -398,16 +461,29 @@ export class FacilitiesComponent implements OnInit {
 })
 export class AddSchoolDialog implements OnInit {
   editForm2: FormGroup;
-  nameDC;
-  proCenter;
-  proCode;
-  east;
-  northUtm42;
-  eastUtm42;
-  north;
-  districtType;
-  num_district_code;
-  num_province_code;
+
+
+
+
+
+  targetFid:number;
+  name:string;
+  type:string;
+  east:number;
+  north:number;
+  eastUtm42:number;
+  northUtm42:number;
+  from:string;
+  distName:string;
+  distCode:number;
+
+  proCode:number;
+  districtType:string;
+  proCenter:string;
+  num_province_code:number;
+  num_district_code:number;
+  altDistName:string;
+  distrCode;
   public selectControlProvince = new FormControl();
   public selectControlDistrict = new FormControl();
   districts = [];
@@ -421,25 +497,41 @@ export class AddSchoolDialog implements OnInit {
   ) {
   }
   ngOnInit() {
+
+
+
+    console.log(this.data);
     this.editForm2 = this.formBuilder.group({
-      proCenter: ["", Validators.required],
+
       num_district_code: [0, Validators.required],
-      districtType: [""],
-      num_province_code: ["", Validators.required],
+      num_province_code: [0, Validators.required],
       east: [0, Validators.min(0)],
       north: [0, Validators.min(0)],
       northUtm42: [0, Validators.min(0)],
-      eastUtm42: [0, Validators.min(0)]
+      eastUtm42: [0, Validators.min(0)],
+      targetFid: [0, Validators.min(0)],
+      name: ["", Validators.required],
+      type: ["",Validators.required],
+      from: ["",Validators.required],
+      altDistName: ["", Validators.required]
+
+
+
     });
     if (this.data.updateMode == 1) {
 
       this.id=this.data.id;
+
       this.east = this.data.east;
       this.north = this.data.north;
       this.northUtm42 =this.data.northUtm42;
       this.eastUtm42 =this.data.eastUtm42;
-      this.districtType = this.data.centerType;
       this.proCode = this.data.proCode;
+      this.targetFid = this.data.targetFid;
+      this.name = this.data.name;
+      this.type = this.data.type;
+      this.from = this.data.from;
+      this.altDistName = this.data.altDistName;
       this.proCenter = this.data.proCenter;
       this.num_province_code = this.proCode;
       this.provinces.push({
@@ -452,25 +544,49 @@ export class AddSchoolDialog implements OnInit {
         'num_district_code': this.num_district_code,
         'district_name': this.data.distName,
       });
+
+
       this.editForm2.setValue({
-        proCenter: this.proCenter,
-        num_district_code: this.num_district_code,
-        districtType: this.districtType,
-        num_province_code: this.num_province_code,
-        east: this.east,
-        north: this.north,
-        northUtm42: this.northUtm42,
-        eastUtm42: this.eastUtm42
+        num_district_code: [this.num_district_code, Validators.required],
+        num_province_code: [this.num_province_code, Validators.required],
+        east: [ this.east, Validators.min(0)],
+        north: [this.north, Validators.min(0)],
+        northUtm42: [this.northUtm42, Validators.min(0)],
+        eastUtm42: [this.eastUtm42, Validators.min(0)],
+        targetFid: [this.targetFid, Validators.min(0)],
+        name: [this.name, Validators.required],
+        type: [this.type,Validators.required],
+        from: [this.from,Validators.required],
+        altDistName: [this.altDistName, Validators.required]
       });
     }else{
+
+      console.log(this.data);
+
       this.east = 0;
       this.north = 0;
       this.northUtm42 = 0;
       this.eastUtm42 = 0;
-      this.districtType = 'District';
       this.proCode = this.data.proCode;
-      this.proCenter ="";
+      this.distrCode = this.data.distrCode;
+
+      this.targetFid =0;
+      this.name ="";
+      this.type ="";
+      this.from ="";
+      this.altDistName ="";
+
+
+      this.validateAllFormFields(this.editForm2);
+
+
+
+
+
+
     }
+
+
     if ((this.data.proCode != null && this.data.distrCode != null) && (this.data.proCode != '' && this.data.distrCode != '')) {
       this.num_district_code = this.data.distrCode;
       this.num_province_code = this.data.proCode;
@@ -478,6 +594,9 @@ export class AddSchoolDialog implements OnInit {
         'num_district_code': this.num_district_code,
         'district_name': this.data.district_name,
       });
+
+      console.log(this.districts);
+
       this.num_province_code = this.proCode;
       this.provinces.push({
         'num_province_code': this.proCode,
@@ -492,6 +611,9 @@ export class AddSchoolDialog implements OnInit {
     } else {
       this.getProvinces();
     }
+
+
+
   }
 
   public getProvinces() {
@@ -537,29 +659,40 @@ export class AddSchoolDialog implements OnInit {
     this.dialogRef.close();
   }
 
+  validateAllFormFields(formGroup: FormGroup) {         //{1}
+    Object.keys(formGroup.controls).forEach(field => {  //{2}
+      const control = formGroup.get(field);             //{3}
+      if (control instanceof FormControl) {             //{4}
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {        //{5}
+        this.validateAllFormFields(control);            //{6}
+      }
+    });
+  }
+
+
   public saveDC() {
     if (this.editForm2.invalid) {
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
 
+      this.validateAllFormFields(this.editForm2);
       return;
     }
 
-
-    let resultObject = {//centerType
-      proCenter: this.f.proCenter.value,
+    let resultObject = {//centerType altDistName
       num_district_code: this.f.num_district_code.value,
       num_province_code: this.f.num_province_code.value,
-      proCode: this.proCode,
-      districtType: this.districtType,
+      type: this.type,
+      from: this.from,
+      altDistName: this.f.altDistName.value,
+      name: this.f.name.value,
+      targetFid: this.f.targetFid.value,
       east: this.f.east.value,
       north: this.f.north.value,
       northUtm42: this.f.northUtm42.value,
+      eastUtm42: this.f.eastUtm42.value,
       id: this.id,
-      eastUtm42: this.f.eastUtm42.value
-
-
     };
-    console.log(resultObject);
     this.dialogRef.close(resultObject);
   }
 }
@@ -693,6 +826,18 @@ export class AddDCDialog implements OnInit {
     } else {
       this.getProvinces();
     }
+    this.validateAllFormFields(this.editForm2);
+  }
+
+  validateAllFormFields(formGroup: FormGroup) {         //{1}
+    Object.keys(formGroup.controls).forEach(field => {  //{2}
+      const control = formGroup.get(field);             //{3}
+      if (control instanceof FormControl) {             //{4}
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {        //{5}
+        this.validateAllFormFields(control);            //{6}
+      }
+    });
   }
 
   public getProvinces() {

@@ -178,10 +178,25 @@
         </div>
       </ng-template>
     </ngx-datatable-column>
+
+    <ngx-datatable-column name="Target Fid" prop="from" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.targetFid }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
     <ngx-datatable-column name="main_type" prop="main_type" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div >
           {{ row?.main_type }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Alternative Dist Name" prop="altDistName" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.altDistName }}
         </div>
       </ng-template>
     </ngx-datatable-column>

@@ -227,6 +227,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   selectProvince(province) {
+
+
+    console.log(province);
+    console.log("eeeeeeeeeeeeeeee");
     this.currentProvinceCode = '';
     this.currentNum_district_code = '';
     if (this.filterService.firstInit == 0) {
@@ -242,6 +246,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.currentProvinceName = province[0].province_name;
       this.district = [];
       if (this.tab == 2) {
+
+        console.log(this.currentProvinceName);
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       } else if (this.tab == 3) {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
@@ -251,6 +257,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
       }
     } else {
+      this.currentProvinceCode = province[0].num_province_code;
+      this.currentProvinceName = province[0].province_name;
       this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
         layer.closePopup();
         layer.setStyle({fillColor: 'rgba(189,72,75,1.0)'});

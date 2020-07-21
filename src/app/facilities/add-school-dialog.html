@@ -1,10 +1,9 @@
-
 <style>
   .closeIcon {
     color: white;
     position: relative;
-    top: -14px;
-    left: 18px;
+    top: 1px;
+    left: 31px;
     background: #3f51b5;
     border-radius: 5px;
   }
@@ -21,7 +20,8 @@
 
   <div style="display: flex">
     <div class="col-md-11">
-      <h2>Add School</h2>
+      <h2 *ngIf="this.data.updateMode==0">Add School</h2>
+      <h2 *ngIf="this.data.updateMode==1">Update School </h2>
 
     </div>
     <div class="col-md-1">
@@ -30,17 +30,158 @@
     </span>
     </div>
   </div>
-  <div style="display: flex" style="display: flex;
-    margin-left: 8px;
-    font-size: 18px;
-    margin-bottom: 20px;">
-
-  </div>
 
 
+
+  <form   [formGroup]="editForm2" class="example-form" style="display: grid;padding-left: 24px;
+    padding-right: 24px;"  (ngSubmit)="saveDC()">
+
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input  formControlName="name"   matInput placeholder="Name" [(ngModel)]="name">
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Alternative Dist Name</mat-label>
+      <input  formControlName="altDistName"   matInput placeholder="Alternative Dist Name" [(ngModel)]="altDistName">
+    </mat-form-field>
+
+
+
+
+    <div style="height: 70px">
+      <div [ngStyle]="styleObjectPr()">
+        <ngx-select
+
+
+
+          (click)="getProvinces()"
+          #prov
+          (select)="getDistricts()"
+          formControlName="num_province_code"
+          [(ngModel)]="num_province_code"
+          [formControl]="selectControlProvince"
+          [allowClear]="true"
+          [items]="provinces"
+          optionValueField="num_province_code"
+          optionTextField="province_name"
+          placeholder="Select...">
+        </ngx-select>
+
+        <span *ngIf=" f.num_province_code.errors" style="color: red">  province is required</span>
+      </div>
+    </div>
+
+
+
+    <div style="height: 70px">
+      <div [ngStyle]="styleObjectD()">
+        <ngx-select
+          (click)="getDistricts()"
+
+          #distr
+
+
+
+
+          [disabled]="!num_province_code"
+
+          formControlName="num_district_code"
+          [(ngModel)]="num_district_code"
+          [formControl]="selectControlDistrict"
+          [allowClear]="true"
+          [items]="districts"
+          optionValueField="num_district_code"
+          optionTextField="district_name"
+          placeholder="Select...">
+        </ngx-select>
+
+        <span *ngIf=" f.num_district_code.errors" style="color: red">  district is required</span>
+      </div>
+    </div>
+
+
+
+
+    <mat-form-field  appearance="fill">
+      <mat-label>Type</mat-label>
+      <mat-select  formControlName="type" [(ngModel)]="type">
+        <mat-option value="Vocation school">Vocation school</mat-option>
+        <mat-option value="Secondary School">Secondary School</mat-option>
+        <mat-option value="Primary School">Primary School</mat-option>
+        <mat-option value="Preschool">Preschool</mat-option>
+        <mat-option value="Madrassa">Madrassa</mat-option>
+        <mat-option value="Highschool">Highschool</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+
+    <mat-form-field  appearance="fill">
+      <mat-label>From</mat-label>
+      <mat-select  formControlName="from" [(ngModel)]="from">
+        <mat-option value="Polling Stations">Polling Stations</mat-option>
+        <mat-option value="Google Maps">Google Maps</mat-option>
+        <mat-option value="Open Street Map">Open Street Map</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+
+    <div class="" style="display: flex">
+      <mat-form-field class="example-full-width" style="width: 25%;margin-right: 4px">
+        <mat-label>East</mat-label>
+        <input type="number"  formControlName="east"   matInput placeholder="east" [(ngModel)]="east">
+        <span *ngIf=" f.east.errors" style="color: red">  please fill with positive number</span>
+      </mat-form-field>
+
+
+
+      <mat-form-field class="example-full-width" style="width: 25%;margin-right: 4px">
+        <mat-label>North</mat-label>
+        <input type="number"  formControlName="north"   matInput placeholder="north" [(ngModel)]="north">
+        <span *ngIf=" f.north.errors" style="color: red">  please fill with positive number</span>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" style="width: 25%;margin-right: 4px">
+        <mat-label>East utm42</mat-label>
+        <input type="number"  formControlName="eastUtm42"   matInput placeholder="east Utm42" [(ngModel)]="eastUtm42">
+        <span *ngIf=" f.eastUtm42.errors" style="color: red">  please fill with positive numbe</span>
+      </mat-form-field>
+
+
+
+      <mat-form-field class="example-full-width" style="width: 25%">
+        <mat-label>North utm42</mat-label>
+        <input type="number"  formControlName="northUtm42"   matInput placeholder="north Utm42" [(ngModel)]="northUtm42">
+        <span *ngIf=" f.northUtm42.errors" style="color: red">  please fill with positive number</span>
+      </mat-form-field>
+
+
+    </div>
+
+    <mat-form-field class="example-full-width" style="width: 25%">
+      <mat-label>Target Fid</mat-label>
+      <input type="number"  formControlName="targetFid"   matInput placeholder="target Fid" [(ngModel)]="targetFid">
+      <span *ngIf=" f.targetFid.errors" style="color: red">  please fill with positive number</span>
+    </mat-form-field>
+
+
+
+
+
+
+
+
+
+
+
+  </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button (click)="delete()"   type="submit" mat-raised-button color="primary">Save</button>
+  <button (click)="saveDC()"   type="submit" mat-raised-button color="primary">Save</button>
 
   <button mat-raised-button (click)="onNoClick()" >Cancel</button>
 </mat-dialog-actions>

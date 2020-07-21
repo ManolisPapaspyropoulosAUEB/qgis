@@ -38,6 +38,20 @@ export class DataService {
 
 
 
+  addSchool(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'addSchool', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+
+      }
+    );
+  }
+
+
+
   getVillages(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllVillages', data).map(
         (response) => {
@@ -110,6 +124,17 @@ export class DataService {
   }
 
   //
+  updateSchool(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'updateSchool', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
 
   updateDistrictCenter(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'updateDistrictCenter', data).map(
