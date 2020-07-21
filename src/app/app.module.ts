@@ -41,7 +41,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {AddDCDialog, FacilitiesComponent} from './facilities/facilities.component';
+import {AddDCDialog, AddSchoolDialog, DeleteDcDialog, FacilitiesComponent} from './facilities/facilities.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
@@ -146,6 +146,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     EditRoadDialog,
+    DeleteDcDialog,
+    AddSchoolDialog,
     AddDCDialog,
     AppComponent,
     RegisterComponent,
@@ -238,6 +240,8 @@ const routes: Routes = [
   ],
   entryComponents: [
     EditRoadDialog,
+    DeleteDcDialog,
+    AddSchoolDialog,
     AddDCDialog
   ],
 

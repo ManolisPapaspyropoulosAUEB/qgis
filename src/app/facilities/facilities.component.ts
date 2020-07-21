@@ -283,6 +283,62 @@ export class FacilitiesComponent implements OnInit {
   }
 
 
+
+
+
+
+  public editFacilitie(row) {
+    row.proCode = this.num_province_code;
+    row.distrCode = this.num_district_code;
+    row.district_name = this.district_name;
+    row.proName = this.provinceName;
+    row.updateMode = 1;
+    const dialogRef = this.dialog.open(AddDCDialog, {
+      width: '800px',
+      data: row
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log(result);
+        this.dataservice.updateDistrictCenter(result).subscribe(response => {
+          if (response.status == 'ok') {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+            if (this.num_province_code != null || this.num_district_code != null) {
+              this.getFacilities();
+            }
+          } else {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+          }
+        });
+      }
+    });
+  }
+
+  public deleteDC(row){
+    const dialogRef = this.dialog.open(DeleteDcDialog, {
+      width: '600px',
+      data: row
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+
+        console.log(result)
+
+        this.dataservice.deleteDistrictCenter(row).subscribe(response => {
+          if (response.status == 'ok') {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+            this.getFacilities();
+          } else {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+          }
+        });
+      }
+    });
+
+  }
+
+
   public addDistrictCenter() {
     const dialogRef = this.dialog.open(AddDCDialog, {
       width: '800px',
@@ -313,44 +369,229 @@ export class FacilitiesComponent implements OnInit {
     });
   }
 
-  editFacilitie(row) {
-    row.proCode = this.num_province_code;
-    row.distrCode = this.num_district_code;
-    row.district_name = this.district_name;
-    row.proName = this.provinceName;
-    row.updateMode = 1;
 
-
-    const dialogRef = this.dialog.open(AddDCDialog, {
+  public addSchool (){
+    const dialogRef = this.dialog.open(AddSchoolDialog, {
       width: '800px',
-      data: row
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-
-
-        console.log(result);
-
-        this.dataservice.updateDistrictCenter(result).subscribe(response => {
-          if (response.status == 'ok') {
-            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
-            if (this.num_province_code != null || this.num_district_code != null) {
-              this.getFacilities();
-            }
-          } else {
-            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
-          }
-        });
+      data: {
+        'proCode': this.num_province_code,
+        'distrCode': this.num_district_code,
+        'district_name': this.district_name,
+        'proName': this.provinceName,
+        'updateMode': 0
       }
     });
 
+  }
 
 
 
+
+
+
+}
+
+
+@Component({
+  selector: './add-school-dialog',
+  templateUrl: './add-school-dialog.html'
+})
+export class AddSchoolDialog implements OnInit {
+  editForm2: FormGroup;
+  nameDC;
+  proCenter;
+  proCode;
+  east;
+  northUtm42;
+  eastUtm42;
+  north;
+  districtType;
+  num_district_code;
+  num_province_code;
+  public selectControlProvince = new FormControl();
+  public selectControlDistrict = new FormControl();
+  districts = [];
+  provinces = [];
+  id;
+
+
+  constructor(public dialogRef: MatDialogRef<AddSchoolDialog>,
+              private formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any,
+              private dataService: DataService, private snackBar: MatSnackBar
+  ) {
+  }
+  ngOnInit() {
+    this.editForm2 = this.formBuilder.group({
+      proCenter: ["", Validators.required],
+      num_district_code: [0, Validators.required],
+      districtType: [""],
+      num_province_code: ["", Validators.required],
+      east: [0, Validators.min(0)],
+      north: [0, Validators.min(0)],
+      northUtm42: [0, Validators.min(0)],
+      eastUtm42: [0, Validators.min(0)]
+    });
+    if (this.data.updateMode == 1) {
+
+      this.id=this.data.id;
+      this.east = this.data.east;
+      this.north = this.data.north;
+      this.northUtm42 =this.data.northUtm42;
+      this.eastUtm42 =this.data.eastUtm42;
+      this.districtType = this.data.centerType;
+      this.proCode = this.data.proCode;
+      this.proCenter = this.data.proCenter;
+      this.num_province_code = this.proCode;
+      this.provinces.push({
+        'num_province_code': this.proCode,
+        'province_name': this.data.proName,
+      });
+      this.num_district_code = this.data.distCode;
+      this.num_province_code = this.data.proCode;
+      this.districts.push({
+        'num_district_code': this.num_district_code,
+        'district_name': this.data.distName,
+      });
+      this.editForm2.setValue({
+        proCenter: this.proCenter,
+        num_district_code: this.num_district_code,
+        districtType: this.districtType,
+        num_province_code: this.num_province_code,
+        east: this.east,
+        north: this.north,
+        northUtm42: this.northUtm42,
+        eastUtm42: this.eastUtm42
+      });
+    }else{
+      this.east = 0;
+      this.north = 0;
+      this.northUtm42 = 0;
+      this.eastUtm42 = 0;
+      this.districtType = 'District';
+      this.proCode = this.data.proCode;
+      this.proCenter ="";
+    }
+    if ((this.data.proCode != null && this.data.distrCode != null) && (this.data.proCode != '' && this.data.distrCode != '')) {
+      this.num_district_code = this.data.distrCode;
+      this.num_province_code = this.data.proCode;
+      this.districts.push({
+        'num_district_code': this.num_district_code,
+        'district_name': this.data.district_name,
+      });
+      this.num_province_code = this.proCode;
+      this.provinces.push({
+        'num_province_code': this.proCode,
+        'province_name': this.data.proName,
+      });
+    } else if (this.data.proCode != null) {
+      this.num_province_code = this.proCode;
+      this.provinces.push({
+        'num_province_code': this.proCode,
+        'province_name': this.data.proName,
+      });
+    } else {
+      this.getProvinces();
+    }
+  }
+
+  public getProvinces() {
+    this.dataService.get_province().subscribe(response => {
+      this.provinces = response.data;
+    });
+  }
+
+  public getDistricts() {
+    this.dataService.get_districts({num_province_code: this.num_province_code}).subscribe(response => {
+      this.districts = response.data;
+    });
+  }
+
+
+  styleObjectPr(): Object { // //{'border-color':f.districtId.errors?'#ff0000!important':'#e6e6e6!important'}
+    if (this.f.num_province_code.errors) {
+      return {
+        border: '1px solid red',
+        height: '40px',
+        'border-radius': '6px',
+      };
+    }
+    return {};
+  }
+
+  styleObjectD(): Object { // //{'border-color':f.districtId.errors?'#ff0000!important':'#e6e6e6!important'}
+    if (this.f.num_district_code.errors) {
+      return {
+        border: '1px solid red',
+        height: '40px',
+        'border-radius': '6px',
+      };
+    }
+    return {};
+  }
+
+  get f() {
+    return this.editForm2.controls;
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  public saveDC() {
+    if (this.editForm2.invalid) {
+      this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
+
+      return;
+    }
+
+
+    let resultObject = {//centerType
+      proCenter: this.f.proCenter.value,
+      num_district_code: this.f.num_district_code.value,
+      num_province_code: this.f.num_province_code.value,
+      proCode: this.proCode,
+      districtType: this.districtType,
+      east: this.f.east.value,
+      north: this.f.north.value,
+      northUtm42: this.f.northUtm42.value,
+      id: this.id,
+      eastUtm42: this.f.eastUtm42.value
+
+
+    };
+    console.log(resultObject);
+    this.dialogRef.close(resultObject);
+  }
+}
+
+
+
+
+
+
+@Component({
+  selector: './delete-dc-dialog',
+  templateUrl: './delete-dc-dialog.html'
+})
+export class DeleteDcDialog implements OnInit {
+
+  constructor(public dialogRef: MatDialogRef<DeleteDcDialog>,
+              @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+  }
+  ngOnInit() {}
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  public delete() {
+    this.dialogRef.close(true);
 
   }
 }
+
 
 
 @Component({

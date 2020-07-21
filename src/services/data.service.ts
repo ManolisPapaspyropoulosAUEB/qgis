@@ -122,6 +122,20 @@ export class DataService {
     );
   }
 
+  deleteDistrictCenter(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'deleteDistrictCenter', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
+  //updateDistrictCenter
+
+
   addDistrictCenter(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'addDistrictCenter', data).map(
       (response) => {
