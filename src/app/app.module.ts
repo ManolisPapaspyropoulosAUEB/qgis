@@ -78,6 +78,7 @@ import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
 import {FilterService} from '../services/filter.service';
 import {VillagesComponent} from './villages/villages.component';
 import { CoreDataComponent } from './core-data/core-data.component';
+import {ExcelPdfExporterService} from './services/excel-pdf-exporter.service';
 
 
 
@@ -233,7 +234,7 @@ const routes: Routes = [
   ],
 
 
-  providers: [AuthGuardService, AuthService, DataService, RemoteDataService,FilterService,
+  providers: [AuthGuardService, AuthService, DataService, RemoteDataService,FilterService,ExcelPdfExporterService,
 
     {provide:MAT_DIALOG_DATA,useValue: {}}
 

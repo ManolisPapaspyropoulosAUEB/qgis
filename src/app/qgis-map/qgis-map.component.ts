@@ -32,6 +32,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import {ExcelService} from '../services/excel.service';
+import {ExcelPdfExporterService} from '../services/excel-pdf-exporter.service';
 import * as Excel from 'exceljs/dist/exceljs.min.js';
 import * as ExcelProper from 'exceljs';
 import * as FileSaver from 'file-saver';
@@ -132,7 +133,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   private roadsTab1Cpy = [];
   public selectionArrayRoads;
   public layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8: L.geoJson;
-  constructor(private  dataservice: DataService, public filterService: FilterService, private snackBar: MatSnackBar, public dialog: MatDialog, private scrollService: ScrollService) {
+  constructor(private  dataservice: DataService, public filterService: FilterService, private snackBar: MatSnackBar, public dialog: MatDialog, private scrollService: ScrollService,public excelPdfExporterService: ExcelPdfExporterService) {
   }
 
   @ViewChild('mydatatable') mydatatable;
@@ -208,224 +209,18 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public showCriteriaOrMca() {
     this.mcaActive = !this.mcaActive;
   }
-  temp = [];
-  tempBody2 = [];
-  public convertAsPdf() { //https://pdfmake.github.io/docs/document-definition-object/page/
-    var itemNew2 = [];
-    this.temp = [
-      'osm_id',
-      'fclass',
-      'LVRR_ID',
-      'name',
-      'ref',
-      'commentsOnConnections',
-      'oneway',
-      'maxspeed',
-      'layer',
-      'bridge',
-      'tunnel',
-      'district',
-      'source',
-      'districtCode',
-      'lengthInMetres',
-      'populationServed',
-      'facilitiesServed',
-      'accessToGCsRMs',
-      'farmToTheMarket',
-      'agriculturalFacilities',
-      'linksToMajorActivityCentres',
-      'numberOfConnections',
-      'c1Score',
-      'c2Score',
-      'c3Score',
-      'c4Score',
-      'c5Score',
-      'c6Score',
-      'c7Score',
-      'c8Score',
-      'c9Score',
-      'c10Score',
-      'c11Score',
-      'c12Score',
-      'c13Score',
-      'c14Score',
-      'c15Score',
-      'MCA',
-      'CBI'
-    ];
-    this.tempBody2.push(this.temp);
-    itemNew2 = this.roadsTab1;
-    itemNew2.forEach(element => {
-      this.temp = [
-        element.osm_id,
-        element.fclass,
-        element.LVRR_ID,
-        element.name,
-        element.ref,
-        element.commentsOnConnections,
-        element.oneway,
-        element.maxspeed,
-        element.layer,
-        element.bridge,
-        element.tunnel,
-        element.district,
-        element.source,
-        element.districtCode,
-        element.lengthInMetres,
-        element.populationServed,
-        element.facilitiesServed,
-        element.accessToGCsRMs,
-        element.farmToTheMarket,
-        element.agriculturalFacilities,
-        element.linksToMajorActivityCentres,
-        element.numberOfConnections,
-        element.c1Score,
-        element.c2Score,
-        element.c3Score,
-        element.c4Score,
-        element.c5Score,
-        element.c6Score,
-        element.c7Score,
-        element.c8Score,
-        element.c9Score,
-        element.c10Score,
-        element.c11Score,
-        element.c12Score,
-        element.c13Score,
-        element.c14Score,
-        element.c15Score,
-        element.mca,
-        element.cbi
-      ];
-      this.tempBody2.push(this.temp);
-    });
-    var docDefinition = {
-      pageOrientation: 'landscape',
-      pageSize: 'A3',
-      pageMargins: [5, 50, 50, 0],
-      content: [
-        {
-          table: {
-            pageSize: 'A5',
-            headerRows: 1,
-            body: this.tempBody2
-          }
-        }
-      ],
-      defaultStyle: {
-        fontSize: 4.2,
-        bold: true
-      }
-    };
-    pdfMake.createPdf(docDefinition).download();
+
+
+
+  public convertAsPdf(){//
+    this.excelPdfExporterService.convertAsPdf(this.roadsTab1);
   }
 
-  public convertAsXls(): void {//
-    const workbook = new Excel.Workbook();
-
-    let worksheet = this.workbook.addWorksheet('My Sheet', {
-      properties: {
-        defaultRowHeight: 100,
-      }
-    });
-    worksheet.columns = [
-      {header: 'osm_id', key: 'osmId', width: 30},
-      {header: 'code', key: 'code', width: 30},
-      {header: 'fclass', key: 'fclass', width: 30},
-      {header: 'LVRR_ID', key: 'LVRR_ID', width: 30},
-      {header: 'name', key: 'name', width: 50},
-      {header: 'ref', key: 'ref', width: 20},
-      {header: 'commentsOnConnections', key: 'comments On Connections', width: 20},
-      {header: 'oneway', key: 'oneway', width: 20},
-      {header: 'maxspeed', key: 'maxspeed', width: 20},
-      {header: 'layer', key: 'layer', width: 20},
-      {header: 'bridge', key: 'bridge', width: 20},
-      {header: 'tunnel', key: 'tunnel', width: 20},
-      {header: 'district', key: 'district', width: 20},
-      {header: 'source', key: 'source', width: 20},
-      {header: 'districtCode', key: 'districtCode', width: 20},
-      {header: 'lengthInMetres', key: 'lengthInMetres', width: 20},
-      {header: 'populationServed', key: 'populationServed', width: 20},
-      {header: 'facilitiesServed', key: 'facilitiesServed', width: 20},
-      {header: 'accessToGCsRMs', key: 'accessToGCsRMs', width: 20},
-      {header: 'farmToTheMarket', key: 'farmToTheMarket', width: 20},
-      {header: 'agriculturalFacilities', key: 'agriculturalFacilities', width: 20},
-      {header: 'linksToMajorActivityCentres', key: 'linksToMajorActivityCentres', width: 20},
-      {header: 'numberOfConnections', key: 'numberOfConnections', width: 20},
-      {header: 'c1Score', key: 'c1Score', width: 20},
-      {header: 'c2Score', key: 'c2Score', width: 20},
-      {header: 'c3Score', key: 'c3Score', width: 20},
-      {header: 'c4Score', key: 'c4Score', width: 20},
-      {header: 'c5Score', key: 'c5Score', width: 20},
-      {header: 'c6Score', key: 'c6Score', width: 20},
-      {header: 'c7Score', key: 'c7Score', width: 20},
-      {header: 'c8Score', key: 'c8Score', width: 20},
-      {header: 'c9Score', key: 'c9Score', width: 20},
-      {header: 'c10Score', key: 'c10Score', width: 20},
-      {header: 'c11Score', key: 'c11Score', width: 20},
-      {header: 'c12Score', key: 'c12Score', width: 20},
-      {header: 'c13Score', key: 'c13Score', width: 20},
-      {header: 'c14Score', key: 'c14Score', width: 20},
-      {header: 'c15Score', key: 'c15Score', width: 20},
-      {header: 'mca', key: 'mca', width: 20},
-      {header: 'cbi', key: 'cbi', width: 20},
-    ];
-    worksheet.properties.defaultRowHeight = 12;
-    var itemNew2 = [];
-      itemNew2 = this.roadsTab1;
-      itemNew2.forEach(element => {
-        worksheet.addRow({
-          osm_id:element.osm_id,
-          fclass:element.fclass,
-          LVRR_ID:element.LVRR_ID,
-          name:element.name,
-          ref:element.ref,
-          commentsOnConnections:element.commentsOnConnections,
-          oneway:element.oneway,
-          maxspeed:element.maxspeed,
-          layer:element.layer,
-          bridge:element.bridge,
-          tunnel:element.tunnel,
-          district:element.district,
-          source:element.source,
-          districtCode:element.districtCode,
-          lengthInMetres:element.lengthInMetres,
-          populationServed:element.populationServed,
-          facilitiesServed:element.facilitiesServed,
-          accessToGCsRMs:element.accessToGCsRMs,
-          farmToTheMarket:element.farmToTheMarket,
-          agriculturalFacilities:element.agriculturalFacilities,
-          linksToMajorActivityCen:element.linksToMajorActivityCen,
-          numberOfConnections:element.numberOfConnections,
-          c1Score:element.c1Score,
-          c2Score:element.c2Score,
-          c3Score:element.c3Score,
-          c4Score:element.c4Score,
-          c5Score:element.c5Score,
-          c6Score:element.c6Score,
-          c7Score:element.c7Score,
-          c8Score:element.c8Score,
-          c9Score:element.c9Score,
-          c10Score:element.c10Score,
-          c11Score:element.c11Score,
-          c12Score:element.c12Score,
-          c13Score:element.c13Score,
-          c14Score:element.c14Score,
-          c15Score:element.c15Score,
-          mca:element.mca,
-          cbi:element.cbi
-        });
-      });
-
-
-      this.workbook.xlsx.writeBuffer().then(data => {
-        const blob = new Blob([data], { type: this.blobType });
-        console.log(data);
-        console.log(blob);
-        // this.excelService.exportAsExcelFile(data, 'sample');
-        FileSaver.saveAs(blob, 'ROADS.xlsx');
-      });
+  public  convertAsXls (){
+    this.excelPdfExporterService.convertAsXls(this.roadsTab1);
   }
+
+
 
   selectProvince(province) {
     this.currentProvinceCode = '';
@@ -2344,7 +2139,9 @@ export class EditRoadDialog implements OnInit {
   constructor(public dialogRef: MatDialogRef<EditRoadDialog>,
               private formBuilder: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public data: any,
-              private dataService: DataService, private snackBar: MatSnackBar) {
+              private dataService: DataService, private snackBar: MatSnackBar
+
+  ) {
   }
 
 
