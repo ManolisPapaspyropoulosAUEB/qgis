@@ -124,6 +124,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   private layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14: L.geoJson;
   public currentNum_district_code: any;
   public currentProvinceCode: any;
+
+  public  currentProvinceName;
+  public  currentDistrictName;
+
   private sqlInFclass;
   private sqlInRoadConditions;
   public tab;
@@ -235,14 +239,15 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         this.myMap.setView([33.857, 67.758], 7);
       }
       this.currentProvinceCode = province[0].num_province_code;
+      this.currentProvinceName = province[0].province_name;
       this.district = [];
       if (this.tab == 2) {
-        this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
+        this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       } else if (this.tab == 3) {
-        this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+        this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
         this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
       } else {
-        this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+        this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
         this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
       }
     } else {
@@ -259,16 +264,18 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
       this.currentProvinceCode = province[0].num_province_code;
       if (this.tab == 2) {
-        this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
+        this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       } else if (this.tab == 3) {
-        this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+        this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
         this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
       } else {
-        this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+        this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
         this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
       }
     }
   }
+
+
 
   get_districts(data) {
     this.dataservice.get_districts(data).subscribe(response => {
@@ -569,6 +576,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       console.log(this.filterService.facilitiesArray);
 
       this.filterService.facilitiesArray.forEach(element => {
+
         marker = L.marker([element.north, element.east]);
         if (element.main_type == 'distcenters') {
           var icon = new L.Icon({
@@ -744,7 +752,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.coreDataComponent.emptyTable();
 
       this.ngOnChanges2();
-      this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode); //mhn kaleseis thn get sou gia ta fereis ta facilities
+      this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName); //mhn kaleseis thn get sou gia ta fereis ta facilities
       this.removeAllMarkersFromMap();
       this.setRoadsToMap();
       this.addFacilitiesToMap();
@@ -756,22 +764,22 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       window.dispatchEvent(new Event('resize'));
       this.ngOnChanges2();
-      this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+      this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
     } else if (tab == 2) {
       this.coreDataComponent.emptyTable();
 
       this.initMapRoadsArray();
-      this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
+      this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
     } else if (tab == 3) {
       window.dispatchEvent(new Event('resize'));
       this.initMapRoadsArray();
-      this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+      this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
       this.coreDataComponent.emptyTable();
     }else if (tab==4){
-      this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+      this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
 
       this.coreDataComponent.getCriteriaMaster();
@@ -872,16 +880,17 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
     this.highlightOnDistrictByName(district[0]);
     this.currentNum_district_code = district[0].num_district_code;
+    this.currentDistrictName = district[0].district_name;
     console.log(district);
     console.log(this.currentNum_district_code);
     this.getRoadsPyParams();
     if (this.tab == 2) {
-      this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
+      this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
     } else if (this.tab == 3) {
-      this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+      this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
     } else {
-      this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+      this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
     }
   }
@@ -2232,22 +2241,11 @@ export class EditRoadDialog implements OnInit {
       numberOfConnections: this.f.numberOfConnections.value,
       roadCondition: this.f.roadCondition.value,
       id: this.data.id
-
     };
-
-
     console.log(resultObject);
-
-
     this.dialogRef.close(resultObject);
   }
-
-
   onNoClick(): void {
     this.dialogRef.close();
   }
-
-  // ok(): void {
-  //   this.dialogRef.close(true);
-  // }
 }

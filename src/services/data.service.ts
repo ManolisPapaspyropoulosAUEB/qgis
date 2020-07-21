@@ -109,11 +109,21 @@ export class DataService {
       );
   }
 
+  //
 
-  addDistrictCenter() {
-    let query_data : any = {};
+  updateDistrictCenter(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'updateDistrictCenter', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
 
-    return this.http.post<any>(this.remoteDataService.serviceURL + 'addDistrictCenter', query_data).map(
+      }
+    );
+  }
+
+  addDistrictCenter(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'addDistrictCenter', data).map(
       (response) => {
         return response;
       },
