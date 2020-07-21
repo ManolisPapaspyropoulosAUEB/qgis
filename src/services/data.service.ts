@@ -135,6 +135,20 @@ export class DataService {
     );
   }
 
+  deleteSchool(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'deleteSchool', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
+
+  //
+
 
   updateDistrictCenter(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'updateDistrictCenter', data).map(

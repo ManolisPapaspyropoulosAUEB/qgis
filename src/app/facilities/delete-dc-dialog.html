@@ -20,7 +20,10 @@
 
   <div style="display: flex">
     <div class="col-md-11">
-      <h2>Delete District Center</h2>
+      <h2 *ngIf="this.data.main_type=='distcenters'">Delete District Center</h2>
+      <h2 *ngIf="this.data.main_type=='schools'">Delete School</h2>
+
+
 
     </div>
     <div class="col-md-1">
@@ -33,13 +36,20 @@
     margin-left: 8px;
     font-size: 18px;
     margin-bottom: 20px;">
-    Are you sure want to delete this District Center?
+    <div *ngIf="this.data.main_type=='distcenters'" style="padding: 0;margin: 0px">
+      Are you sure want to delete this District Center?
+
+    </div>
+    <div *ngIf="this.data.main_type=='schools'" style="padding: 0;margin: 0px">
+      Are you sure want to delete this School?
+
+    </div>
   </div>
 
 
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button (click)="delete()"   type="submit" mat-raised-button color="primary">Save</button>
+  <button (click)="delete()"   type="submit" mat-raised-button color="primary">Yes</button>
 
   <button mat-raised-button (click)="onNoClick()" >Cancel</button>
 </mat-dialog-actions>
