@@ -220,10 +220,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.getDistrictsTab2();
 
    // const className = this.__getElementByClass('ngx-datatable.material .datatable-header .datatable-header-cell');
-    const className = this.__getElementByClass('datatable-header-cell');
-    className.style.width = null;
-    className.style.removeProperty("width");
-    className.style.width ='600px';
 
 
     //  min-width: 100px;
@@ -893,6 +889,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           findRoad.checkedFilter = false;
         }
       });
+
+      const className = this.__getElementByClass('.datatable-header-cell');
+   //   className.style.width = null;
+     className.style.removeProperty("width");
+//      className.style.width ='600px';
+
+
     });
   }
 

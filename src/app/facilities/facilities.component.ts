@@ -216,6 +216,9 @@ export class FacilitiesComponent implements OnInit {
 
         });
       }
+
+
+
       this.finalfacilitiesMerged = this.facilitiesMerged;
       this.userSelectionsForMapShow.forEach(e => {
         for (var i = 0; i < this.finalfacilitiesMerged.length; i++) {
@@ -229,6 +232,9 @@ export class FacilitiesComponent implements OnInit {
 
     });
   }
+
+
+
 
   public getFiltersType(type) {
     this.type = type;

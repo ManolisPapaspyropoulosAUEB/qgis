@@ -108,10 +108,10 @@
   }
 
   .roadFilters {
-    margin-top: 55px;
+    margin-top: 17px;
     margin-right: 5px;
     margin-left: 5px;
-
+    border-radius: 5px;
     background-color: white;
     padding: 9px;
     box-shadow: 1px 1px 2px 0px #888888;
@@ -154,54 +154,26 @@
 
 
 
-    <button mat-stroked-button (click)="logOut()">
-          <span matTooltip="LOG OUT"  class="material-icons logout" style="
-    top: 0px;
-    left: -2px;
-    position: relative;
-    cursor: pointer;
 
-
-">
-login
-</span>
-      <span style="
-         margin-right: 5px;
-    font-weight: bold;
-    font-family: 'Open Sans', sans-serif;
-    margin-left: -4px;
-    position: relative;
-    top: 0px;
-">
-
-
-        Log Out
-
-
-      </span>
-    </button>
-
-
-
-
-
-
-    <div class="float-right">
-
-      <button matTooltip="Refrash All" onClick="window.location.reload();" mat-button style="    margin-right: -15px;">
-
-
-      </button>
-
-      <button mat-stroked-button onClick="window.location.reload();">
-        <span class="material-icons">cached</span>
-        <span style="margin-right: 5px;font-weight: bold;font-family: 'Open Sans', sans-serif">Refresh All</span>
-      </button>
-
-
-
-
+    <div class="" style="display: flex;margin-top: 24px">
+      <div class="col-md-6">
+        <button style="background: #1a60a8;color: #ffffff;" mat-raised-button (click)="logOut()">
+          <span matTooltip="LOG OUT"  class="material-icons logout" >login</span>
+          <span> Log Out</span>
+        </button>
+      </div>
+      <div class="col-md-6">
+        <button style="background: #ffffff;color: #1a60a8;" mat-raised-button onClick="window.location.reload();" >
+          <span class="material-icons">cached</span>
+          <span >Refresh All</span>
+        </button>
+      </div>
     </div>
+
+
+
+
+
 
     <div class="">
       <div style="margin-top: 40px;margin-left: 14px;">
