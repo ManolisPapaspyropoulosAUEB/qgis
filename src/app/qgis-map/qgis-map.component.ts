@@ -79,6 +79,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   province: any = '';
   district: any = '';
   road: any = '';
+  nameFilterFacilitie;
   dropdownSettings2 = {
     singleSelection: true,
     badgeShowlimitPage: 3,
@@ -251,10 +252,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       } else if (this.tab == 3) {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
-        this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
+        this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       } else {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
-        this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+        this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       }
     } else {
       this.currentProvinceCode = province[0].num_province_code;
@@ -275,10 +276,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       } else if (this.tab == 3) {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
-        this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
+        this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       } else {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
-        this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+        this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       }
     }
   }
@@ -541,6 +542,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.villagesComponent.updateFilters(this.villageNameFilter);
   }
 
+  public updateNameFilterTabFacilities() { //unclassified primary secondary tertiary
+    this.facilitiesComponent.updateFilters(this.nameFilterFacilitie);
+  }
+
 
   public updateCoreDataFilter() { //unclassified primary secondary tertiary
     this.coreDataComponent.updateFilters(this.coreDataLabelFilter);
@@ -773,22 +778,22 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       window.dispatchEvent(new Event('resize'));
       this.ngOnChanges2();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
-      this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+      this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
     } else if (tab == 2) {
       this.coreDataComponent.emptyTable();
 
       this.initMapRoadsArray();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
-      this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+      this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
     } else if (tab == 3) {
       window.dispatchEvent(new Event('resize'));
       this.initMapRoadsArray();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
-      this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
+      this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       this.coreDataComponent.emptyTable();
     }else if (tab==4){
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
-      this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+      this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
 
       this.coreDataComponent.getCriteriaMaster();
 
@@ -896,10 +901,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
     } else if (this.tab == 3) {
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
-      this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode);
+      this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
     } else {
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
-      this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode);
+      this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
     }
   }
 

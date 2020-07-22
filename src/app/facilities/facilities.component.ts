@@ -29,8 +29,10 @@ export class FacilitiesComponent implements OnInit {
   public num_province_code;
   public type;
   public userSelectionsForMapShow = [];
+  private nameFilter: string;
 
   ngOnInit(): void {
+    this.nameFilter='';
     this.proCode = 0;
     this.type = 'Both';
     this.limit = 16;
@@ -46,7 +48,11 @@ export class FacilitiesComponent implements OnInit {
     this.dataservice.get_facilities({
       'num_district_code': this.num_district_code,
       'num_province_code': this.num_province_code,
+      'nameFilter': this.nameFilter,
       'type': this.type
+
+
+
     }).subscribe(response => {
       this.finalfacilitiesMerged = [];
       this.facilitiesMerged = [];
@@ -86,15 +92,15 @@ export class FacilitiesComponent implements OnInit {
         this.dataMosques.forEach(element => {
           this.facilitiesMerged.push({
             'proName': '',
-            'name': element.NAME,
+            'name': element.name,
             'proCenter': '',
             'proCode': '',
             'id': element.id,
-            'distName': element.distName,  //todo:ferto apo join
+            'distName': element.distName,
 
             'altDistName': element.altDistName,
             'customId': element.id + element.Type,
-            'distCode': '',
+            'distCode':  element.distCode,
             'centerType': '',
             'east': element.east,
             'targetFid': element.targetFid,
@@ -163,11 +169,11 @@ export class FacilitiesComponent implements OnInit {
 
           this.facilitiesMerged.push({
             'proName': '',
-            'name': element.NAME,
+            'name': element.name,
             'proCenter': '',
             'proCode': element.proCode,
             'id': element.id,
-            'distName': '',
+            'distName': element.distName,
             'distCode': element.distCode,
             'centerType': '',
             'altDistName': element.altDistName,
@@ -229,6 +235,11 @@ export class FacilitiesComponent implements OnInit {
     this.getFacilities();
   }
 
+  updateFilters(nameFilter: string) {
+    this.nameFilter=nameFilter;
+    this.getFacilities();
+  }
+
 
   setDistrict(currentNum_district_code: any, currentTab, current_province_code: any, provinceName, districtName) {
     if (currentTab == true && current_province_code) {
@@ -274,6 +285,7 @@ export class FacilitiesComponent implements OnInit {
   public resetFilters(type) {
     this.type = type;
     this.limit = 16;
+    this.nameFilter ="";
     this.filterService.facilitiesLimitTab = 16;
     this.filterService.facilitiesType = type;
     this.getFacilities();
@@ -332,6 +344,8 @@ export class FacilitiesComponent implements OnInit {
           });
         }
       });
+
+
     }else if (row.main_type=='schools'){
 
 
@@ -360,8 +374,29 @@ export class FacilitiesComponent implements OnInit {
 
 
 
-    }else if (row.facilitie=='mosque'){
+    }else if (row.main_type=='mosques'){
 
+      const dialogRef = this.dialog.open(MosqueDialog, {
+        width: '800px',
+        data: row
+      });
+
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          console.log(result);
+          this.dataservice.updateMosque(result).subscribe(response => {
+            if (response.status == 'ok') {
+              this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+              if (this.num_province_code != null || this.num_district_code != null) {
+                this.getFacilities();
+              }
+            } else {
+              this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+            }
+          });
+        }
+      });
     }
 
 
@@ -392,6 +427,15 @@ export class FacilitiesComponent implements OnInit {
           });
         }else if (row.main_type=='schools'){
           this.dataservice.deleteSchool(row).subscribe(response => {
+            if (response.status == 'ok') {
+              this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+              this.getFacilities();
+            } else {
+              this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+            }
+          });
+        }else if (row.main_type=='mosques') {
+          this.dataservice.deleteMosque(row).subscribe(response => {
             if (response.status == 'ok') {
               this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
               this.getFacilities();
@@ -469,6 +513,7 @@ export class FacilitiesComponent implements OnInit {
 
 
 
+
   public addMosque() {
     const dialogRef = this.dialog.open(MosqueDialog, {
       width: '800px',
@@ -480,23 +525,23 @@ export class FacilitiesComponent implements OnInit {
         'updateMode': 0
       }
     });
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //
-    //     console.log(result);
-    //
-    //     this.dataservice.addDistrictCenter(result).subscribe(response => {
-    //       if (response.status == 'ok') {
-    //         this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
-    //         if (this.num_province_code != null || this.num_district_code != null) {
-    //           this.getFacilities();
-    //         }
-    //       } else {
-    //         this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
-    //       }
-    //     });
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+
+        console.log(result);
+
+        this.dataservice.addMosque(result).subscribe(response => {
+          if (response.status == 'ok') {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+            if (this.num_province_code != null || this.num_district_code != null) {
+              this.getFacilities();
+            }
+          } else {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+          }
+        });
+      }
+    });
   }
 
 
@@ -622,7 +667,7 @@ export class MosqueDialog implements OnInit {
       this.altDistName ="";
 
 
-      this.validateAllFormFields(this.editForm2);
+    //  this.validateAllFormFields(this.editForm2);
 
 
 
@@ -1118,7 +1163,7 @@ export class AddDCDialog implements OnInit {
     } else {
       this.getProvinces();
     }
-    this.validateAllFormFields(this.editForm2);
+   // this.validateAllFormFields(this.editForm2);
   }
 
   validateAllFormFields(formGroup: FormGroup) {         //{1}

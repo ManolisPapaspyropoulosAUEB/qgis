@@ -13,12 +13,6 @@
 
     cursor: pointer;
   }
-
-  .addCrcle{
-    position: relative;
-    top: -5px;
-    font-size: 19px;
-  }
 </style>
 
 
@@ -26,8 +20,8 @@
 
   <div style="display: flex">
     <div class="col-md-11">
-      <h2 *ngIf="this.data.updateMode==0">Add Mosque</h2>
-      <h2 *ngIf="this.data.updateMode==1">Update Mosque </h2>
+      <h2 *ngIf="this.data.updateMode==0">Add School</h2>
+      <h2 *ngIf="this.data.updateMode==1">Update School </h2>
 
     </div>
     <div class="col-md-1">
@@ -43,15 +37,18 @@
     padding-right: 24px;"  (ngSubmit)="saveDC()">
 
 
-    <mat-form-field class="example-full-width">
-      <mat-label>Name</mat-label>
-      <input  formControlName="name"   matInput placeholder="Name" [(ngModel)]="name">
+    <mat-form-field class="example-full-width" style="width: 25%;margin-right: 4px;   ">
+      <mat-label>Village Co</mat-label>
+      <input type="number"  formControlName="villageCo"   matInput placeholder="Map Long" [(ngModel)]="villageCo">
+      <span *ngIf=" f.villageCo.errors" style="color: red">  please fill with positive number</span>
     </mat-form-field>
 
 
-    <mat-form-field class="example-full-width">
-      <mat-label>Alternative Dist Name</mat-label>
-      <input  formControlName="altDistName"   matInput placeholder="Alternative Dist Name" [(ngModel)]="altDistName">
+
+
+    <mat-form-field class="example-full-width" style=" margin-bottom: 20px;">
+      <mat-label>Village 1</mat-label>
+      <input  formControlName="village1"   matInput placeholder="Alternative Dist Name" [(ngModel)]="village1">
     </mat-form-field>
 
 
@@ -111,26 +108,39 @@
 
 
 
-    <mat-form-field  appearance="fill">
-      <mat-label>Type</mat-label>
-      <mat-select  formControlName="type" [(ngModel)]="type">
-        <mat-option value="muslim_sunni">muslim_sunni</mat-option>
-        <mat-option value="muslim">muslim</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="" style="display: flex">
+      <mat-form-field class="example-full-width" style="width: 25%;margin-right: 4px">
+        <mat-label>Map Long</mat-label>
+        <input type="number"  formControlName="mapLong"   matInput placeholder="Map Long" [(ngModel)]="mapLong">
+        <span *ngIf=" f.mapLong.errors" style="color: red">  please fill with positive number</span>
+      </mat-form-field>
 
 
 
-    <mat-form-field  appearance="fill">
-      <mat-label>From</mat-label>
-      <mat-select  formControlName="from" [(ngModel)]="from">
-        <mat-option value="Polling Stations">Polling Stations</mat-option>
-        <mat-option value="Google Maps">Google Maps</mat-option>
-        <mat-option value="Open Street Map">Open Street Map</mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field class="example-full-width" style="width: 25%;margin-right: 4px">
+        <mat-label>Map Lat</mat-label>
+        <input type="number"  formControlName="mapLat"   matInput placeholder="Map Lat" [(ngModel)]="mapLat">
+        <span *ngIf=" f.mapLat.errors" style="color: red">  please fill with positive number</span>
+      </mat-form-field>
 
 
+
+      <mat-form-field class="example-full-width" style="width: 25%;margin-right: 4px">
+        <mat-label>Village Pop</mat-label>
+        <input type="number"  formControlName="villagePop"   matInput placeholder="east Utm42" [(ngModel)]="villagePop">
+        <span *ngIf=" f.villagePop.errors" style="color: red">  please fill with positive numbe</span>
+      </mat-form-field>
+
+
+
+      <mat-form-field class="example-full-width" style="width: 25%">
+        <mat-label>Village Hh</mat-label>
+        <input type="number"  formControlName="villageHh"   matInput placeholder="Village Hh" [(ngModel)]="villageHh">
+        <span *ngIf=" f.villageHh.errors" style="color: red">  please fill with positive number</span>
+      </mat-form-field>
+
+
+    </div>
 
 
     <div class="" style="display: flex">
@@ -164,19 +174,6 @@
 
 
     </div>
-
-    <mat-form-field class="example-full-width" style="width: 25%">
-      <mat-label>Target Fid</mat-label>
-      <input type="number"  formControlName="targetFid"   matInput placeholder="target Fid" [(ngModel)]="targetFid">
-      <span *ngIf=" f.targetFid.errors" style="color: red">  please fill with positive number</span>
-    </mat-form-field>
-
-
-
-
-
-
-
 
 
 

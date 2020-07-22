@@ -78,7 +78,7 @@ import {EditRoadDialog, QgisMapComponent} from './qgis-map/qgis-map.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
 import {FilterService} from '../services/filter.service';
-import {VillagesComponent} from './villages/villages.component';
+import {VillageDialog, VillagesComponent} from './villages/villages.component';
 import { CoreDataComponent } from './core-data/core-data.component';
 import {ExcelPdfExporterService} from './services/excel-pdf-exporter.service';
 import {NgxSelectModule} from 'ngx-select-ex';
@@ -149,6 +149,7 @@ const routes: Routes = [
     DeleteDcDialog,
     MosqueDialog,
     AddSchoolDialog,
+    VillageDialog,
     AddDCDialog,
     AppComponent,
     RegisterComponent,
@@ -242,6 +243,7 @@ const routes: Routes = [
   entryComponents: [
     EditRoadDialog,
     DeleteDcDialog,
+    VillageDialog,
     AddSchoolDialog,
     MosqueDialog,
     AddDCDialog

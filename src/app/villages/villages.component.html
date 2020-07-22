@@ -10,9 +10,38 @@
     padding-bottom: 4%;
   }
 
+  .addBtn{
+    position: relative;
+    left: -10px;
+    top: 3px;
+    height: 30px;
+    width: 30px;
+  }
+  .addCrcle{
+    position: relative;
+    top: -5px;
+    font-size: 19px;
+  }
+
+
 </style>
+
+
+<div     class="" style="text-align: end">
+  <button (click)="addVillage()"   mat-button  matTooltip="Add Village" class="addBtn" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+        <span class="material-icons addCrcle">
+          add
+        </span>
+  </button>
+
+
+</div>
+
+
 <div class="table">
-  <ngx-datatable  #mydatatable
+  <ngx-datatable
+    style="display: flex"
+    #mydatatable
                   class="material"
                   [sortType]="'multi'"
                   [headerHeight]="50"
@@ -77,5 +106,19 @@
         </div>
       </ng-template>
     </ngx-datatable-column>
+
+
+    <ngx-datatable-column   name="Actions" [flexGrow]="1" [frozenRight]="true">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <mat-icon class="editRoad" (click)="editVillage(row)" style="color: #000000;cursor: pointer;margin-left: 24px">edit</mat-icon>
+        <span class="material-icons delete" style="color: #000000;cursor: pointer;"  (click)="deleteVillage(row)">delete</span>
+
+      </ng-template>
+    </ngx-datatable-column>
+
+
   </ngx-datatable>
+
+
+
 </div>

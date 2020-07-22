@@ -273,6 +273,14 @@
             </span>
           </mat-checkbox>
         </div>
+
+
+        <mat-form-field class="example-full-width" style="width: 91%">
+          <mat-label>Search by name</mat-label>
+          <input matInput placeholder="name.." [(ngModel)]="nameFilterFacilitie" (keyup)="updateNameFilterTabFacilities()">
+        </mat-form-field>
+
+
         <mat-radio-group style="    margin-top: 14px;" (change)="updateFilterTabFacilities()"
                          [(ngModel)]="typeFacilities" aria-label="Select an option" style="    display: grid;    ">
           <mat-radio-button value="Distcenters">Distcenters</mat-radio-button>

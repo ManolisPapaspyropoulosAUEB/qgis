@@ -22,6 +22,7 @@
     <div class="col-md-11">
       <h2 *ngIf="this.data.main_type=='distcenters'">Delete District Center</h2>
       <h2 *ngIf="this.data.main_type=='schools'">Delete School</h2>
+      <h2 *ngIf="this.data.main_type=='mosques'">Delete Mosque</h2>
 
 
 
@@ -42,6 +43,11 @@
     </div>
     <div *ngIf="this.data.main_type=='schools'" style="padding: 0;margin: 0px">
       Are you sure want to delete this School?
+
+    </div>
+
+    <div *ngIf="this.data.main_type=='mosques'" style="padding: 0;margin: 0px">
+      Are you sure want to delete this Mosque?
 
     </div>
   </div>

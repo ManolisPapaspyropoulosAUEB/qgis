@@ -146,6 +146,38 @@ export class DataService {
     );
   }
 
+  addMosque(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'addMosque', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
+  updateMosque(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'updateMosque', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
+  deleteMosque(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'deleteMosque', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
 
   //
 
@@ -185,6 +217,34 @@ export class DataService {
       }
     );
   }
+
+  addVillage(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'addVillage', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
+
+  updateVillage(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'updateVillage', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
+
+
+  //updateVillage
+
 
   get_facilities(data) {
 
