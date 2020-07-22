@@ -30,13 +30,19 @@ loading;
 
     this.editForm = this.formBuilder.group({
 
-      email: ['', Validators.required],
+      email: ['', [Validators.required,Validators.email]],
       recaptcha: [this.recaptcha, Validators.required],
       password: ['', Validators.required]
 
     });
 
+
+    console.log(this.authService.isAuthenticated());
+
     if(this.authService.isAuthenticated()){
+
+      console.log(this.authService.isAuthenticated());
+
       this.router.navigate(['/map'])
     }
 

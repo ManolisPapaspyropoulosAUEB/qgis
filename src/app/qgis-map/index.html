@@ -17,6 +17,16 @@
     left: 16px;"
   }
 
+
+  .resetFilters{
+    cursor: pointer;
+    position: relative;
+    top: 8px;
+    left: 13px;
+  }
+
+
+
   .matCardSelection:hover{
     background-color: whitesmoke;
     cursor: pointer!important;
@@ -91,6 +101,8 @@
     width: 100% !important;;
   }
 
+
+
   ::ng-deep.datatable-body {
     width: 100% !important;;
   }
@@ -127,27 +139,68 @@
 
   }
 
+  .mat-tab-body-content{
+    height: 100vh;
+    overflow-y: hidden!important;
+  }
 
 
 </style>
 <mat-drawer-container class="example-container">
   <mat-drawer style="width:17%;
+
+
   background: whitesmoke" #drawer [mode]="'side'" opened>
-          <span matTooltip="LOG OUT" (click)="logOut()" class="material-icons logout" style="    top: 5px;
-    left: 5px;
+
+
+
+    <button mat-stroked-button (click)="logOut()">
+          <span matTooltip="LOG OUT"  class="material-icons logout" style="
+    top: 0px;
+    left: -2px;
     position: relative;
-    cursor: pointer;">
+    cursor: pointer;
+
+
+">
 login
 </span>
+      <span style="
+         margin-right: 5px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: -4px;
+    position: relative;
+    top: 0px;
+">
+
+
+        Log Out
+
+
+      </span>
+    </button>
+
+
 
 
 
 
     <div class="float-right">
 
-      <button onClick="window.location.reload();" mat-button style="    margin-right: 15px;">
-        <span class="material-icons">cached</span>
+      <button matTooltip="Refrash All" onClick="window.location.reload();" mat-button style="    margin-right: -15px;">
+
+
       </button>
+
+      <button mat-stroked-button onClick="window.location.reload();">
+        <span class="material-icons">cached</span>
+        <span style="margin-right: 5px;font-weight: bold;font-family: 'Open Sans', sans-serif">Refresh All</span>
+      </button>
+
+
+
+
     </div>
 
     <div class="">
@@ -168,7 +221,7 @@ login
       <div *ngIf="tab==1 && currentNum_district_code>0" class="roadFilters">
         <div style="display: grid">
                <span style="margin-bottom: 10px;    "><b>Road Filters</b>
-                         <span class="material-icons resetFilters" matTooltip="Rese Filters" (click)="resetFilters()">cached</span>
+                         <span class="material-icons resetFilters" matTooltip="Reset Filters" (click)="resetFilters()">cached</span>
                </span>
           <mat-checkbox [(ngModel)]="selectAllCheck" (click)="selectAllCheckMethod()" class="example-margin">
             <span *ngIf="!selectAllCheck">
@@ -197,7 +250,7 @@ login
           </mat-select>
         </mat-form-field>
         <mat-radio-group (change)="updateFilter()" [(ngModel)]="roadWayRadio" aria-label="Select an option"
-                         style="    display: grid;">
+                         style="    display: grid;margin-top: 15px;    margin-bottom: 15px;">
           <mat-radio-button value="F">Oneway</mat-radio-button>
           <mat-radio-button value="B">Both way</mat-radio-button>
           <mat-radio-button value="FB">Oneway and Both way</mat-radio-button>
@@ -208,7 +261,7 @@ login
         </mat-form-field>
 
         <mat-radio-group (change)="updateFilter()" [(ngModel)]="bridgeFilter" aria-label="Select an option"
-                         style="    display: grid;">
+                         style="    display: grid;margin-top: 15px;    margin-bottom: 15px;">
           <mat-radio-button value="T">Having bridge</mat-radio-button>
           <mat-radio-button value="F">With no bridge</mat-radio-button>
           <mat-radio-button value="TF">Both</mat-radio-button>
@@ -227,7 +280,7 @@ login
         </mat-form-field>
 
         <mat-radio-group (change)="updateFilter()" [(ngModel)]="agriculturFacilitationFilter"
-                         aria-label="Select an option" style="    display: grid;">
+                         aria-label="Select an option" style="    display: grid;margin-top: 15px;    margin-bottom: 15px;">
           <mat-radio-button value="TRUE">Agriculture Facilitation True</mat-radio-button>
           <mat-radio-button value="FALSE">Agriculture Facilitation False</mat-radio-button>
           <mat-radio-button value="TF">Both</mat-radio-button>
@@ -274,7 +327,7 @@ login
       <div *ngIf="tab==2 && currentProvinceCode>0" class="roadFilters">
         <div style="display: grid;">
                <span style="margin-bottom: 10px;    "><b>Road Filters</b>
-                         <span class="material-icons resetFilters" matTooltip="Rese Filters"
+                         <span class="material-icons resetFilters" matTooltip="Reset Filters"
                                (click)="resetFiltersFacilities()">cached</span>
                </span>
           <mat-checkbox [(ngModel)]="selectAllCheckFacilities" (click)="selectAllCheckMethodFacilities()"
@@ -296,7 +349,7 @@ login
 
 
         <mat-radio-group style="    margin-top: 14px;" (change)="updateFilterTabFacilities()"
-                         [(ngModel)]="typeFacilities" aria-label="Select an option" style="    display: grid;    ">
+                         [(ngModel)]="typeFacilities" aria-label="Select an option" style="    display: grid; margin-top: 15px;    margin-bottom: 15px;   ">
           <mat-radio-button value="Distcenters">Distcenters</mat-radio-button>
           <mat-radio-button value="Schools">Schools</mat-radio-button>
           <mat-radio-button value="Mosques">Mosques</mat-radio-button>
@@ -363,7 +416,7 @@ login
       <div *ngIf="tab==3 && currentProvinceCode>0" class="roadFilters">
         <div style="display: grid">
                <span style="margin-bottom: 10px;    "><b>Villages Filters</b>
-                         <span class="material-icons resetFilters" matTooltip="Rese Filters"
+                         <span class="material-icons resetFilters" matTooltip="Reset Filters"
                                (click)="resetFiltersVillages()">cached</span>
                </span>
           <mat-checkbox [(ngModel)]="selectAllCheckVillages" (click)="selectAllCheckMethodVillages()"
@@ -680,21 +733,21 @@ login
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="osm_id" prop="osmId" [flexGrow]="1"  [frozenLeft]="true"   >
+              <ngx-datatable-column name="OSM_ID" prop="osmId" [flexGrow]="1"  [frozenLeft]="true"   >
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.osmId }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="code" prop="code" [flexGrow]="1"    >
+              <ngx-datatable-column name="Code" prop="code" [flexGrow]="1"    >
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.code }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="fclass" prop="fclass" [flexGrow]="1"  [frozenLeft]="true" >
+              <ngx-datatable-column name="Fclass" prop="fclass" [flexGrow]="1"  [frozenLeft]="true" >
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip={{row.fclass}} (click)="selectRoad(row)">
                     <div>{{ row?.fclass }}
@@ -702,35 +755,35 @@ login
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="name" prop="name" [flexGrow]="1" [frozenLeft]="true" >
+              <ngx-datatable-column name="Name" prop="name" [flexGrow]="1" [frozenLeft]="true" >
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip={{row.name}} (click)="selectRoad(row)">
                     {{ row?.name }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="ref" prop="ref" [flexGrow]="1">
+              <ngx-datatable-column name="Ref" prop="ref" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.ref }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="oneway" prop="oneway" [flexGrow]="1">
+              <ngx-datatable-column name="Oneway" prop="oneway" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.oneway }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="maxspeed" prop="maxspeed" [flexGrow]="1">
+              <ngx-datatable-column name="Maxspeed" prop="maxspeed" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.maxspeed }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="layer" prop="layer" [flexGrow]="1">
+              <ngx-datatable-column name="Layer" prop="layer" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.layer }}
@@ -744,7 +797,7 @@ login
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="tunnel" prop="tunnel" [flexGrow]="1">
+              <ngx-datatable-column name="Tunnel" prop="tunnel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.tunnel }}
@@ -842,77 +895,77 @@ login
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column  name="c1_score" prop="c1Score" [flexGrow]="1" #c1location>
+              <ngx-datatable-column  name="C1_score" prop="c1Score" [flexGrow]="1" #c1location>
                 <ng-template  let-row="row" ngx-datatable-cell-template>
                   <div   matTooltip="Population Served score">
                     {{ row?.c1Score }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="c2_score" prop="c2Score" [flexGrow]="1">
+              <ngx-datatable-column name="C2_score" prop="c2Score" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip="Facilities Served score">
                     {{ row?.c2Score }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="c3_score" prop="c3Score" [flexGrow]="1">
+              <ngx-datatable-column name="C3_score" prop="c3Score" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip="GCs & RMs Served  score">
                     {{ row?.c3Score }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="c4_score" prop="c4Score" [flexGrow]="1">
+              <ngx-datatable-column name="C4_score" prop="c4Score" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip="Farm to the Market  score">
                     {{ row?.c4Score }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="c5_score" prop="c5Score" [flexGrow]="1">
+              <ngx-datatable-column name="C5_score" prop="c5Score" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div  id="c1_location" matTooltip="Agriculture Facilitation  score">
                     {{ row?.c5Score }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="c6_score" prop="c6Score" [flexGrow]="1">
+              <ngx-datatable-column name="C6_score" prop="c6Score" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip="Connectivity score">
                     {{ row?.c6Score }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="c7_score" prop="c7Score" [flexGrow]="1">
+              <ngx-datatable-column name="C7_score" prop="c7Score" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip="Road Accessibility score">
                     {{ row?.c7Score }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="c8_score" prop="c8Score" [flexGrow]="1">
+              <ngx-datatable-column name="C8_score" prop="c8Score" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip="Number of Connections to other roads  score">
                     {{ row?.c8Score }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="c9_score" prop="c9Score" [flexGrow]="1">
+              <ngx-datatable-column name="C9_score" prop="c9Score" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip="Road condition  score">
                     {{ row?.c9Score }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="c10_score" prop="c10Sore" [flexGrow]="1">
+              <ngx-datatable-column name="C10_score" prop="c10Sore" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip="Road quality and needs  score">
                     {{ row?.c10Score }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="c11_score" prop="c11Score" [flexGrow]="1">
+              <ngx-datatable-column name="C11_score" prop="c11Score" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div  matTooltip="Requirements for earth works  score">
                     {{ row?.c11Score }}

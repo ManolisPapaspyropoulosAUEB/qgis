@@ -2144,10 +2144,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         this.dataservice.updateRoad(result).subscribe(response => {
           if (response.status == 'ok') {
 
+            //console.log(response);
 
             this.dataservice.calculateCriteria({
               'district_id': this.currentNum_district_code,
-              'lvrr_id': item.lvrr_id
+              'lvrr_id': response.lvrr_id
             }).subscribe(response => {
               if (response.status == 'ok') {
                 this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});

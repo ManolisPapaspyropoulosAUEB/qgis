@@ -21,127 +21,151 @@
   }
 
 
+  .update{
+    cursor: pointer;
+  }
+
+
 </style>
 
 
-<div     class="" >
+<mat-tab-group class="mycustomTabClassCiteria" (selectedTabChange)="switchTabChange($event)" >
 
 
-  <mat-form-field class="example-full-width" style="margin-left: 27px;margin-right: 16px;">
-    <mat-label>Estimated Maintenance Cost</mat-label>
-    <input [(ngModel)]="this.opParam" matInput placeholder="Estimated Maintenance Cost" value="Sushi">
-  </mat-form-field>
+  <mat-tab label="Criteria">
 
-      <span class="material-icons" style="    position: relative;
+    <div class="table">
+
+      <ngx-datatable
+        #myTable
+        class="material expandable"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="50"
+        [limit]="120"
+        [scrollbarH]="true"
+
+
+        [rows]="criteriaMaster"
+        (page)="onPage($event)"
+      >
+
+        <!-- Row Detail Template -->
+        <ngx-datatable-row-detail   #myDetailRow (toggle)="onDetailToggle($event)">
+          <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+            <div style="padding-left:35px;display: grid">
+              <div><strong>Criteria Master Detail</strong></div>
+              <table>
+                <tr >
+                  <th>label</th>
+                  <th>score</th>
+                </tr>
+                <tr *ngFor="let r of row.cmdList">
+                  <td>{{r.label}}</td>
+                  <td>{{r.score}}</td>
+                </tr>
+              </table>
+            </div>
+          </ng-template>
+        </ngx-datatable-row-detail>
+
+
+        <!-- Column Templates -->
+        <ngx-datatable-column
+          [width]="50"
+          [resizeable]="false"
+          [sortable]="false"
+          [draggable]="false"
+          [canAutoResize]="false"
+        >
+
+
+          <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+            <a
+              href="javascript:void(0)"
+              [class.datatable-icon-right]="!expanded"
+              [class.datatable-icon-down]="expanded"
+              title="Expand/Collapse Row"
+              (click)="toggleExpandRow(row)"
+            >
+            </a>
+          </ng-template>
+        </ngx-datatable-column>
+
+
+
+        <ngx-datatable-column name="label" prop="label" [flexGrow]="1" >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <div>
+              {{ row?.label }}
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+
+
+
+
+
+
+        <ngx-datatable-column name="Score Range" prop="scoreRange" [flexGrow]="1" >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <div>
+              {{ row?.scoreRange }}
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Weight Factor (%)" prop="weightFactor" [flexGrow]="1" >
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <div>
+              {{ row?.weightFactor }}
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+
+
+
+
+
+
+      </ngx-datatable>
+
+
+
+
+    </div>
+
+  </mat-tab>
+
+
+  <mat-tab label="Operating Systems">
+    <div     class="" >
+
+
+
+
+
+      <mat-form-field class="example-full-width" style="margin-left: 27px;margin-right: 16px;">
+        <mat-label>Estimated Maintenance Cost</mat-label>
+        <input type="number" [(ngModel)]="this.opParam" matInput placeholder="Estimated Maintenance Cost" value="Sushi">
+      </mat-form-field>
+
+      <span class="material-icons update" style="    position: relative;
     top: 13px;
     margin-top: 10px" (click)="updateMainCost()">
     save
     </span>
 
 
-</div>
+    </div>
+  </mat-tab>
 
 
-
-
-<div class="table">
-
-  <ngx-datatable
-    #myTable
-    class="material expandable"
-    [columnMode]="'force'"
-    [headerHeight]="50"
-    [footerHeight]="50"
-    [rowHeight]="50"
-    [limit]="120"
-    [scrollbarH]="true"
-
-
-    [rows]="criteriaMaster"
-    (page)="onPage($event)"
-  >
-
-    <!-- Row Detail Template -->
-    <ngx-datatable-row-detail   #myDetailRow (toggle)="onDetailToggle($event)">
-      <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
-        <div style="padding-left:35px;display: grid">
-          <div><strong>Criteria Master Detail</strong></div>
-          <table>
-            <tr >
-              <th>label</th>
-              <th>score</th>
-            </tr>
-            <tr *ngFor="let r of row.cmdList">
-              <td>{{r.label}}</td>
-              <td>{{r.score}}</td>
-            </tr>
-          </table>
-        </div>
-      </ng-template>
-    </ngx-datatable-row-detail>
-
-
-    <!-- Column Templates -->
-    <ngx-datatable-column
-      [width]="50"
-      [resizeable]="false"
-      [sortable]="false"
-      [draggable]="false"
-      [canAutoResize]="false"
-    >
-
-
-      <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
-        <a
-          href="javascript:void(0)"
-          [class.datatable-icon-right]="!expanded"
-          [class.datatable-icon-down]="expanded"
-          title="Expand/Collapse Row"
-          (click)="toggleExpandRow(row)"
-        >
-        </a>
-      </ng-template>
-    </ngx-datatable-column>
-
-
-
-    <ngx-datatable-column name="label" prop="label" [flexGrow]="1" >
-      <ng-template let-row="row" ngx-datatable-cell-template>
-        <div>
-          {{ row?.label }}
-        </div>
-      </ng-template>
-    </ngx-datatable-column>
+</mat-tab-group>
 
 
 
 
 
 
-    <ngx-datatable-column name="Score Range" prop="scoreRange" [flexGrow]="1" >
-      <ng-template let-row="row" ngx-datatable-cell-template>
-        <div>
-          {{ row?.scoreRange }}
-        </div>
-      </ng-template>
-    </ngx-datatable-column>
-
-    <ngx-datatable-column name="Weight Factor (%)" prop="weightFactor" [flexGrow]="1" >
-      <ng-template let-row="row" ngx-datatable-cell-template>
-        <div>
-          {{ row?.weightFactor }}
-        </div>
-      </ng-template>
-    </ngx-datatable-column>
-
-
-
-
-
-
-  </ngx-datatable>
-
-
-
-
-</div>

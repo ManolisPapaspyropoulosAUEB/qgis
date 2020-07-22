@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {DataService} from '../../services/data.service';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-core-data',
@@ -13,7 +14,7 @@ export class CoreDataComponent implements OnInit {
   opParam;
   opId;
   criteriaMaster;
-  constructor(private dataService :DataService) { }
+  constructor(private dataService :DataService,private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.label="";
@@ -61,11 +62,20 @@ export class CoreDataComponent implements OnInit {
     console.log('Detail Toggled', event);
   }
 
+  public switchTabChange(event){
+    window.dispatchEvent(new Event('resize'));
+
+  }
+
 
   updateMainCost() { //opId
     this.dataService.updateEstimatedMaintenanceCost({
       "opParam":this.opParam,
       "opId":this.opId
+    }).subscribe(response=>{
+      this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+
+      this.getCriteriaMaster();
     })
   }
 }

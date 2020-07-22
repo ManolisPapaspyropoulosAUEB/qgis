@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {AuthService} from '../services/auth.service';
 
 
 @Component({
@@ -11,11 +12,23 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AppComponent  {
   title = 'manabiko-app';
 
-  constructor(  private router: Router) {
+  constructor(  private router: Router,private authService: AuthService) {
 
     // this.router.navigate(['/login'])
     // this.router.navigate([''])
 
+  }
+
+  ngOnInit(){
+    if(this.authService.isAuthenticated()){
+
+      console.log(this.authService.isAuthenticated());
+
+      this.router.navigate(['/map'])
+    }else{
+      this.router.navigate([''])
+
+    }
   }
 
 
