@@ -37,6 +37,7 @@ import * as Excel from 'exceljs/dist/exceljs.min.js';
 import * as ExcelProper from 'exceljs';
 import * as FileSaver from 'file-saver';
 import {CoreDataComponent} from '../core-data/core-data.component';
+import {Router} from '@angular/router';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 interface Options {
   width?: number,
@@ -138,7 +139,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   private roadsTab1Cpy = [];
   public selectionArrayRoads;
   public layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8: L.geoJson;
-  constructor(private  dataservice: DataService, public filterService: FilterService, private snackBar: MatSnackBar, public dialog: MatDialog, private scrollService: ScrollService,public excelPdfExporterService: ExcelPdfExporterService) {
+  constructor(private  dataservice: DataService,public router: Router, public filterService: FilterService, private snackBar: MatSnackBar, public dialog: MatDialog, private scrollService: ScrollService,public excelPdfExporterService: ExcelPdfExporterService) {
   }
 
   @ViewChild('mydatatable') mydatatable;
@@ -215,6 +216,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.mcaActive = !this.mcaActive;
   }
 
+
+  logOut() {
+    localStorage.removeItem('id');
+    localStorage.removeItem('email');
+    this.router.navigate(['']);
+  }
 
 
   public convertAsPdf(){//
@@ -2181,8 +2188,7 @@ export class EditRoadDialog implements OnInit {
   constructor(public dialogRef: MatDialogRef<EditRoadDialog>,
               private formBuilder: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public data: any,
-              private dataService: DataService, private snackBar: MatSnackBar
-
+              private dataService: DataService, private snackBar: MatSnackBar, public router: Router,
   ) {
   }
 

@@ -82,16 +82,20 @@ import {DeleteVillageDialog, VillageDialog, VillagesComponent} from './villages/
 import { CoreDataComponent } from './core-data/core-data.component';
 import {ExcelPdfExporterService} from './services/excel-pdf-exporter.service';
 import {NgxSelectModule} from 'ngx-select-ex';
+import {NgxCaptchaModule} from 'ngx-captcha';
 
 
 
 const routes: Routes = [
 
-  {path: '', component: QgisMapComponent},
+  {path: 'map', component: QgisMapComponent},
   {
     path: 'qgis',
     component: QgisMapComponent
   },
+
+  {path: '', component: LoginComponent},
+  {path: 'forgotPassword', component: RegisterComponent},
 
 
 
@@ -176,6 +180,7 @@ const routes: Routes = [
   ],
 
   imports: [
+    NgxCaptchaModule,
     NgxSelectModule,
     Ng2SearchPipeModule,
     FormsModule,

@@ -37,6 +37,21 @@ export class DataService {
   }
 
 
+  forgotPwd(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'forgotPwd', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+
+      }
+    );
+  }
+
+  //
+
+
 
   addSchool(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'addSchool', data).map(

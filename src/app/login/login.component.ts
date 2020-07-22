@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {DataService} from '../../services/data.service';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
@@ -13,34 +13,31 @@ import {AuthService} from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   editForm: FormGroup;
-  username = "";
+  email = "";
   pwd = "";
   password = "";
 loading;
+  public reactiveForm: FormGroup = new FormGroup({
+    recaptchaReactive: new FormControl(null, Validators.required)
+  });
+  recaptcha: string;
 
   constructor(private authService: AuthService,private snackBar: MatSnackBar,private formBuilder: FormBuilder, private router: Router,private dataService : DataService) {
 
   }
   ngOnInit() {
+    this.recaptcha = null;
+
     this.editForm = this.formBuilder.group({
 
-      username: ['', Validators.required],
+      email: ['', Validators.required],
+      recaptcha: [this.recaptcha, Validators.required],
       password: ['', Validators.required]
 
     });
 
-
     if(this.authService.isAuthenticated()){
-
-      if(localStorage.getItem("role")=='Producer'){
-        this.router.navigate(['/homeProducer'])
-
-      }else if (localStorage.getItem("role")=='Consumer'){
-        this.router.navigate(['/homeConsumer'])
-
-      }
-
-
+      this.router.navigate(['/map'])
     }
 
     this.loading=false;
@@ -49,6 +46,15 @@ loading;
 
   }
 
+
+  handleSuccess(e) {
+    this.recaptcha=e;
+    console.log("ReCaptcha", e);
+  }
+
+  resolved(captchaResponse: string) {
+    this.recaptcha = captchaResponse;
+  }
 
 
 
@@ -61,10 +67,9 @@ loading;
       return;
     }
     this.loading=true;
-
     this.dataService.login({
-      "username":this.f.username.value,
-      "password":this.f.password.value
+      "email":this.f.email.value,
+      "pwd":this.f.password.value
     }).subscribe(response=>{
       if(response.status=='ok'){
         this.snackBar.open(
@@ -72,48 +77,9 @@ loading;
           'x',
           <MatSnackBarConfig>{duration: 3000}
         );
-
-        localStorage.setItem("role",response.role);
+        localStorage.setItem("email",response.role);
         localStorage.setItem("id",response.id);
-
-
-
-
-
-        this.loading=false;
-
-        if(response.role=='Consumer'){
-
-          this.dataService.getUserById({id:response.id}).subscribe(response=>{
-            if(response.status=='ok'){
-              localStorage.setItem("username",response.data[0].username);
-              this.router.navigate(['/homeConsumer',{ queryParams: { username: response.data[0].username } }]);
-
-            }
-
-          });
-
-
-
-        }else if (response.role=='Producer'){
-
-          this.dataService.getUserById({id:response.id}).subscribe(response=>{
-            console.log(response);
-            if(response.status=='ok'){
-              localStorage.setItem("username",response.data[0].username);
-              localStorage.setItem("companyName",response.data[0].company.companyName);
-              this.router.navigate(['/homeProducer'] ,{ queryParams: { username: response.data[0].username, companyName:response.data[0].company.companyName   } });
-            }
-          });
-
-
-
-
-
-
-        }
-
-
+        this.router.navigate(['/qgis'])
       }else{
         this.loading=false;
 
@@ -134,4 +100,8 @@ loading;
   }
 
 
+  forgotPassword() {
+    this.router.navigate(['/forgotPassword'])
+
+  }
 }

@@ -19,16 +19,38 @@
   <mat-card>
     <form  [formGroup]="editForm" class="example-form" style="" (submit)="onSubmitForm()" >
       <mat-form-field style="width: 100%;" class="example-full-width">
-        <mat-label>Username</mat-label>
-        <input  formControlName="username"   matInput placeholder="username" [(ngModel)]="username">
+        <mat-label>Email</mat-label>
+        <input  formControlName="email"   matInput placeholder="email" [(ngModel)]="email">
       </mat-form-field>
 
       <mat-form-field style="width: 100%;" class="example-full-width">
         <mat-label>Password</mat-label>
         <input  type="password"  formControlName="password"   matInput placeholder="Password" [(ngModel)]="password">
       </mat-form-field>
-      <button mat-raised-button color="primary">Login</button>
-      <a   (click)="goToRegisterPage()"    style="    margin-left: 5px;" mat-button >Register</a>
+
+      <div class="form-group" style="    margin-bottom: 45px;
+    margin-top: 28px;">
+
+        <ngx-recaptcha2  #captchaElem
+                        [siteKey]="'6LeOZ4YUAAAAAJ8clQYNtOXNDHsd58KZHyJeILk6'"
+                        (success)="handleSuccess($event)"
+                        [useGlobalDomain]="false"
+
+                        formControlName="recaptcha"
+        >
+        </ngx-recaptcha2>
+
+        <!--<button  mat-raised-button [disabled]="loading || recaptcha==null" color="primary">Login</button>-->
+        <!--<img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />-->
+
+        <button style="    margin-top: 36px;" [disabled]="loading || recaptcha==null" mat-raised-button color="primary">Login</button>
+        <a   (click)="forgotPassword()"    style="    margin-left: 5px;" mat-button >ForgotPassword</a>
+
+
+      </div>
+
+
+      <!--<button mat-raised-button color="primary">Login</button>-->
     </form>
   </mat-card>
 </div>

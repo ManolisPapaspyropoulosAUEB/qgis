@@ -1,5 +1,5 @@
 <body style="background-color: #5c6b94">
-<div class="container" style="justify-items: center;width: 614px;    position: relative;top: 10%;">
+<div class="container" style="justify-items: center;width: 478px;    position: relative;top: 10%;">
   <div style="
     height: 51px;
     font-size: 20px;
@@ -17,78 +17,21 @@
     Register</div>
   <mat-card>
     <form  [formGroup]="editForm" class="example-form" style="" (submit)="onSubmitForm()" >
-      <mat-form-field style="width: 100%;" class="example-full-width">
-        <mat-label>Firstname</mat-label>
-        <input  formControlName="firstname"   matInput placeholder="firstname" [(ngModel)]="firstname">
-      </mat-form-field>
 
-
-      <mat-form-field style="width: 100%;" class="example-full-width">
-        <mat-label>Lastname</mat-label>
-        <input  formControlName="lastname"   matInput placeholder="lastname" [(ngModel)]="lastname">
-      </mat-form-field>
 
 
 
       <mat-form-field style="width: 100%;" class="example-full-width">
         <mat-label>Email</mat-label>
         <input  formControlName="email"   matInput placeholder="email" [(ngModel)]="email">
+
+
       </mat-form-field>
 
 
-      <mat-form-field style="width: 100%;" class="example-full-width">
-        <mat-label>Username</mat-label>
-        <input  formControlName="username"   matInput placeholder="username" [(ngModel)]="username">
-      </mat-form-field>
-
-      <mat-radio-group (change)="onChaneRole()"   formControlName="role" [(ngModel)]="role" formControlName="role" aria-label="Select an option">
-        <mat-radio-button  style="    margin-right: 9px;"  value="Consumer">Consumer</mat-radio-button>
-        <mat-radio-button value="Producer">Producer</mat-radio-button>
-      </mat-radio-group>
 
 
-      <div class="row" *ngIf="role=='Producer'">
-        <div class="col-md-3">
-          <mat-form-field  style="width: 100%;" class="example-full-width">
-            <mat-label>Company Name</mat-label>
-            <input  formControlName="company"   matInput placeholder="company" [(ngModel)]="company">
-          </mat-form-field>
-        </div>
-        <div class="col-md-3">
-          <mat-form-field  style="width: 100%;" class="example-full-width">
-            <mat-label>City</mat-label>
-            <input  formControlName="city"   matInput placeholder="city" [(ngModel)]="city">
-          </mat-form-field>
-        </div>
-        <div class="col-md-3">
-          <mat-form-field  style="width: 100%;" class="example-full-width">
-            <mat-label>Street</mat-label>
-            <input  formControlName="street"   matInput placeholder="street" [(ngModel)]="street">
-          </mat-form-field>
-        </div>
-        <div class="col-md-3">
-          <mat-form-field  style="width: 100%;" class="example-full-width">
-            <mat-label>Str.No</mat-label>
-            <input  formControlName="numberStreet"   matInput placeholder="number" [(ngModel)]="numberStreet">
-          </mat-form-field>
-        </div>
-
-
-      </div>
-
-
-
-
-
-
-
-
-
-      <mat-form-field style="width: 100%;" class="example-full-width">
-        <mat-label>Password</mat-label>
-        <input  type="password"  formControlName="password"   matInput placeholder="Password" [(ngModel)]="password">
-      </mat-form-field>
-      <button mat-raised-button color="primary">Sign Up</button>
+      <button mat-raised-button color="primary">Send</button>
       <a   (click)="goToLoginPage()"    style="    margin-left: 5px;text-underline: black" mat-button >click to return login page</a>
     </form>
   </mat-card>

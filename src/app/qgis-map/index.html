@@ -130,7 +130,14 @@
 <mat-drawer-container class="example-container">
   <mat-drawer style="width:17%;
   background: whitesmoke" #drawer [mode]="'side'" opened>
+          <span (click)="logOut()" class="material-icons" style="    top: 5px;
+    left: 5px;
+    position: relative;
+    cursor: pointer;">
+login
+</span>
     <div class="float-right">
+
       <button onClick="window.location.reload();" mat-button style="    margin-right: 15px;">
         <span class="material-icons">cached</span>
       </button>
@@ -969,6 +976,8 @@
         <app-core-data></app-core-data>
 
       </mat-tab>
+
+
 
 
 
