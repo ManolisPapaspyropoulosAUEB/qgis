@@ -726,7 +726,7 @@ login
                   <mat-checkbox  [(ngModel)]="row.checked" (change)="addRoadToMap(row,$event)"></mat-checkbox>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="LVRR_ID" prop="LVRR_ID" [flexGrow]="1" [frozenLeft]="true">
+              <ngx-datatable-column name="LVRR_ID" [minWidth]="100"     prop="LVRR_ID" [flexGrow]="1" [frozenLeft]="true">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.LVRR_ID }}
@@ -1014,7 +1014,7 @@ login
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column   name="Update Road" [flexGrow]="1" [frozenRight]="true">
+              <ngx-datatable-column   name="Actions" [flexGrow]="1" [frozenRight]="true">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <mat-icon class="editRoad" (click)="editRoad(row)" style="color: #000000;cursor: pointer;    margin-left: 53px;">edit</mat-icon>
                 </ng-template>

@@ -28,7 +28,7 @@ import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 import {MatDrawer} from '@angular/material/sidenav';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {ScrollService} from '../../services/scroll.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import {ExcelService} from '../services/excel.service';
@@ -179,6 +179,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
   public ngOnInit() {
 
+
+
+    //.ngx-datatable.material .datatable-header .datatable-header-cell
+
+
+
+
     this.flagMap=false;
     this.showOnMapWidth = 100;
     this.mcaActive = true;
@@ -211,7 +218,28 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.FacilitislimitPage = 16;
     this.villageLimitPage = 16;
     this.getDistrictsTab2();
+
+   // const className = this.__getElementByClass('ngx-datatable.material .datatable-header .datatable-header-cell');
+    const className = this.__getElementByClass('datatable-header-cell');
+    className.style.width = null;
+    className.style.removeProperty("width");
+    className.style.width ='600px';
+
+
+    //  min-width: 100px;
+    //   max-width: 900px!important;
+
+
   }
+
+
+  private __getElementByClass(className: string): HTMLElement {
+    console.log("element class : ", className);
+    const element = <HTMLElement>document.querySelector(`.${className}`);
+    return element;
+  }//datatable-body
+
+
   public showCriteriaOrMca() {
     this.mcaActive = !this.mcaActive;
   }
@@ -280,13 +308,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
       this.currentProvinceCode = province[0].num_province_code;
       if (this.tab == 2) {
-        this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
+        this.facilitiesComponent.setDistrict(this.currentNum_district_code, true,  this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       } else if (this.tab == 3) {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
-        this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
+          this.villagesComponent.setDistrict(this.currentNum_district_code, true,  this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       } else {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
-        this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
+          this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode,this.currentProvinceName,this.currentDistrictName);
       }
     }
   }
@@ -2033,7 +2061,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   public setMapArray(teampRoads: any[]) {
     //$(container).scrollTo(target)
-
   }
 
 
@@ -2047,15 +2074,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       window.dispatchEvent(new Event('resize'));
     });
     this.currentStatus = !this.currentStatus;
-
   }
 
   public openClosedSideNavMapSelections() {
     this.drawerMapSelections.toggle().finally(() => {
       window.dispatchEvent(new Event('resize'));
-
     });
-
     this.currentStatusMapSelection = !this.currentStatusMapSelection;
   }
 
@@ -2125,8 +2149,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         maxNativeZoom: 19
       }
     );
-
-
     this.myMap.addLayer(layer_OpenStreetMap_0);
     setBounds();
 
@@ -2143,9 +2165,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       if (result) {
         this.dataservice.updateRoad(result).subscribe(response => {
           if (response.status == 'ok') {
-
             //console.log(response);
-
             this.dataservice.calculateCriteria({
               'district_id': this.currentNum_district_code,
               'lvrr_id': response.lvrr_id
@@ -2157,13 +2177,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                 this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
               }
             });
-
-
-
             this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
           } else {
             this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
-
           }
         });
       }
@@ -2207,11 +2223,7 @@ export class EditRoadDialog implements OnInit {
 
 
   ngOnInit() {
-
-
-
     console.log(this.data);
-
     this.name = this.data.name;
     this.fclass = this.data.fclass;
     this.ref = this.data.ref;
@@ -2259,17 +2271,23 @@ export class EditRoadDialog implements OnInit {
   get f() {
     return this.editForm.controls;
   }
-
-
+  validateAllFormFields(formGroup: FormGroup) {         //{1}
+    Object.keys(formGroup.controls).forEach(field => {  //{2}
+      const control = formGroup.get(field);             //{3}
+      if (control instanceof FormControl) {             //{4}
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {        //{5}
+        this.validateAllFormFields(control);            //{6}
+      }
+    });
+  }
 
 
 
   public save() {
     if (this.editForm.invalid) {
       this.snackBar.open("Your form is not valid,make sure you fill in all required fields", 'x', <MatSnackBarConfig>{duration: 4000});
-
-
-
+      this.validateAllFormFields(this.editForm);
       return;
     }
     let resultObject = {
