@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {FilterService} from '../../services/filter.service';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
-import {AddDCDialog, AddSchoolDialog} from '../facilities/facilities.component';
+import {AddDCDialog, AddSchoolDialog, DeleteDcDialog} from '../facilities/facilities.component';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
@@ -135,8 +135,7 @@ export class VillagesComponent implements OnInit {
 
 
     village.proCode = this.num_province_code;
-    village.distrCode = this.num_district_code;
-    village.distCode = this.num_district_code;
+
     village.district_name = this.district_name;
     village.proName = this.provinceName;
     village.updateMode = 1;
@@ -165,6 +164,31 @@ export class VillagesComponent implements OnInit {
 
 
   public deleteVillage(village) {
+
+    const dialogRef = this.dialog.open(DeleteVillageDialog, {
+      width: '600px',
+      data: village
+    });
+
+
+
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dataservice.deleteVillage(village).subscribe(response => {
+          if (response.status == 'ok') {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+            this.getVillages();
+          } else {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+          }
+        });
+      }
+
+    });
+
+
 
   }
 
@@ -198,6 +222,31 @@ export class VillagesComponent implements OnInit {
   }
 
 
+}
+
+@Component({
+  selector: './delete-village-dialog',
+  templateUrl: './delete-village-dialog.html'
+})
+export class DeleteVillageDialog implements OnInit {
+
+  constructor(public dialogRef: MatDialogRef<DeleteVillageDialog>,
+              @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+  }
+  ngOnInit() {}
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  public yes() {
+    this.dialogRef.close(true);
+
+
+
+  }
 }
 
 
@@ -273,6 +322,7 @@ export class VillageDialog implements OnInit {
       this.villageCo = this.data.villageCo;
       this.village1 = this.data.village1;
       this.mapLong = this.data.mapLong;
+      this.mapLat = this.data.mapLat;
       this.villagePop = this.data.villagePop;
       this.villageHh = this.data.villageHh;
 

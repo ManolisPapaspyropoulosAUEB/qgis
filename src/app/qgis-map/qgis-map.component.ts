@@ -861,9 +861,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
   }
 
+
+  //item
+
   public calculateCriteria() {
     this.dataservice.calculateCriteria({
-      'district_id': this.currentNum_district_code
+      'district_id': this.currentNum_district_code,
+      'lvrr_id': this.currentNum_district_code
     }).subscribe(response => {
       if (response.status == 'ok') {
         this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
@@ -2117,9 +2121,25 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.dataservice.updateSoftwareAccount(result).subscribe(response => {
+        this.dataservice.updateRoad(result).subscribe(response => {
           if (response.status == 'ok') {
-            this.getRoadsPyParams();
+
+            this.calculateCriteria();
+
+            this.dataservice.calculateCriteria({
+              'district_id': this.currentNum_district_code,
+              'lvrr_id': item.lvrr_id
+            }).subscribe(response => {
+              if (response.status == 'ok') {
+                this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+                this.getRoadsPyParams();
+              } else {
+                this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+              }
+            });
+
+
+
             this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
           } else {
             this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});

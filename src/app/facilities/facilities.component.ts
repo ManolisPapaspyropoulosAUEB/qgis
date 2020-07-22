@@ -411,6 +411,7 @@ export class FacilitiesComponent implements OnInit {
 
 
 
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
 
@@ -1056,7 +1057,7 @@ export class DeleteDcDialog implements OnInit {
     this.dialogRef.close();
   }
 
-  public delete() {
+  public deleteYes() {
     this.dialogRef.close(true);
 
   }

@@ -24,8 +24,8 @@ export class DataService {
     );
   }
 
-  updateSoftwareAccount(data) {
-    return this.http.post<any>(this.remoteDataService.serviceURL + 'updateSoftwareAccount', data).map(
+  updateRoad(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'updateRoad', data).map(
       (response) => {
         return response;
       },
@@ -229,6 +229,17 @@ export class DataService {
     );
   }
 
+
+  deleteVillage(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'deleteVillage', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
 
   updateVillage(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'updateVillage', data).map(

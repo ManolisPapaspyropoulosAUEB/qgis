@@ -1,0 +1,54 @@
+<style>
+  .closeIcon {
+    color: white;
+    position: relative;
+    top: -14px;
+    left: 18px;
+    background: #3f51b5;
+    border-radius: 5px;
+  }
+
+
+  .closeIcon:hover {
+
+    cursor: pointer;
+  }
+</style>
+
+
+<mat-dialog-content>
+
+  <div style="display: flex">
+    <div class="col-md-11">
+
+      <h2 >Delete Village</h2>
+
+
+
+    </div>
+    <div class="col-md-1">
+    <span  (click)="onNoClick()"   class="material-icons closeIcon">
+      close
+    </span>
+    </div>
+  </div>
+  <div style="display: flex" style="display: flex;
+    margin-left: 8px;
+    font-size: 18px;
+    margin-bottom: 20px;">
+    <div  style="padding: 0;margin: 0px">
+      Are you sure want to delete this Village?
+
+    </div>
+
+  </div>
+
+
+
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="yes()"   type="submit" mat-raised-button color="primary">Yes</button>
+
+  <button mat-raised-button (click)="onNoClick()" >Cancel</button>
+</mat-dialog-actions>
