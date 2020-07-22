@@ -871,10 +871,23 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   //item
 
-  public calculateCriteria() {
+  public calculateCriteriaRoad() {
     this.dataservice.calculateCriteria({
       'district_id': this.currentNum_district_code,
       'lvrr_id': this.currentNum_district_code
+    }).subscribe(response => {
+      if (response.status == 'ok') {
+        this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+        this.getRoadsPyParams();
+      } else {
+        this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+      }
+    });
+  }
+
+  public calculateCriteria() {
+    this.dataservice.calculateCriteria({
+      'district_id': this.currentNum_district_code
     }).subscribe(response => {
       if (response.status == 'ok') {
         this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
@@ -2131,7 +2144,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         this.dataservice.updateRoad(result).subscribe(response => {
           if (response.status == 'ok') {
 
-            this.calculateCriteria();
 
             this.dataservice.calculateCriteria({
               'district_id': this.currentNum_district_code,

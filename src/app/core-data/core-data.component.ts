@@ -10,19 +10,23 @@ export class CoreDataComponent implements OnInit {
   timeout: any;
   @ViewChild('myTable') table: any;
   label;
+  opParam;
+  opId;
   criteriaMaster;
   constructor(private dataService :DataService) { }
 
   ngOnInit(): void {
     this.label="";
   }
-
+//opId
 
  public  getCriteriaMaster(){
     this.dataService.getAllCriteriaMaster({
       "label":this.label
     }).subscribe(response=>{
       this.criteriaMaster=response.data;
+      this.opParam=response.opParam;
+      this.opId=response.opId;
     });
 
   }
@@ -58,4 +62,10 @@ export class CoreDataComponent implements OnInit {
   }
 
 
+  updateMainCost() { //opId
+    this.dataService.updateEstimatedMaintenanceCost({
+      "opParam":this.opParam,
+      "opId":this.opId
+    })
+  }
 }

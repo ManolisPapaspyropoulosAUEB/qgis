@@ -22,6 +22,28 @@
 
 
 </style>
+
+
+<div     class="" >
+
+
+  <mat-form-field class="example-full-width" style="margin-left: 27px;margin-right: 16px;">
+    <mat-label>Estimated Maintenance Cost</mat-label>
+    <input [(ngModel)]="this.opParam" matInput placeholder="Estimated Maintenance Cost" value="Sushi">
+  </mat-form-field>
+
+      <span class="material-icons" style="    position: relative;
+    top: 13px;
+    margin-top: 10px" (click)="updateMainCost()">
+    save
+    </span>
+
+
+</div>
+
+
+
+
 <div class="table">
 
   <ngx-datatable

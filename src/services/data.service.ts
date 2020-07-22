@@ -36,6 +36,19 @@ export class DataService {
     );
   }
 
+  //
+
+  updateEstimatedMaintenanceCost(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'updateEstimatedMaintenanceCost', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+
+      }
+    );
+  }
 
   forgotPwd(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'forgotPwd', data).map(
