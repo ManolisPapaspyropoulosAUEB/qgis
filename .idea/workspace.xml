@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="68ed80c4-b22d-4519-bb39-34fb22c75790" name="Default Changelist" comment="" />
+    <list default="true" id="68ed80c4-b22d-4519-bb39-34fb22c75790" name="Default Changelist" comment="second commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/qgis-map/edit-road-dialog.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/qgis-map/edit-road-dialog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/qgis-map/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/qgis-map/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.ts" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,91 +20,151 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="edit-road-dialog.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/qgis-map/edit-road-dialog.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="327">
+              <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#mat-tab#0;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-checkbox#0;n#div#1;n#div#0;n#mat-tab#0;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#mat-form-field#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#mat-form-field#1;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#mat-form-field#2;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#mat-form-field#2;n#div#1;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/qgis-map/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1267">
-              <caret line="566" selection-start-line="566" selection-end-line="566" />
+            <state relative-caret-position="294">
+              <caret line="883" column="89" selection-start-line="883" selection-start-column="76" selection-end-line="883" selection-end-column="89" />
               <folding>
                 <element signature="n#style#0;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-form-field#0;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-form-field#1;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-radio-group#0;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-form-field#2;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-radio-group#1;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-form-field#3;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-radio-group#2;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#button#0;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#3;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-form-field#0;n#div#3;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-radio-group#0;n#div#3;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#1;n#mat-radio-group#0;n#div#3;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#3;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#button#0;n#div#3;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#4;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#4;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#1;n#div#4;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#1;n#div#4;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#2;n#div#4;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#2;n#div#4;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#5;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#5;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-form-field#0;n#div#5;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#5;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#button#0;n#div#5;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#6;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#6;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#6;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#7;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#7;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-form-field#0;n#div#7;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#mat-card#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#2;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#3;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#mat-card#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#2;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#3;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#4;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#2;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#3;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#span#4;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#div#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#mat-drawer-content#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#mat-drawer-content#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#button#0;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#button#0;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#1;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#button#1;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#2;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#button#2;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#3;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#button#3;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#button#3;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#button#1;n#mat-menu#0;n#div#2;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.component.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/app.component.css">
+      <file leaf-file-name="login.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/login/login.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="facilities.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/facilities/facilities.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+            <state relative-caret-position="500">
+              <caret line="49" column="92" selection-start-line="49" selection-start-column="92" selection-end-line="49" selection-end-column="92" />
               <folding>
-                <element signature="e#0#50#0" expanded="true" />
+                <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-form-field#0;n#form#0;n#mat-card#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#form#0;n#mat-card#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#form#0;n#mat-card#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#form#0;n#mat-card#0;n#div#0;n#body#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="qgis-map.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.ts">
+      <file leaf-file-name="remotedata.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/services/remotedata.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="193" column="18" selection-start-line="193" selection-start-column="9" selection-end-line="193" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#105#0" expanded="true" />
-                <element signature="e#310#434#0" expanded="true" />
-                <element signature="e#78#86#1" expanded="true" />
-                <element signature="e#173#181#1" expanded="true" />
-                <element signature="e#78#86#1" expanded="true" />
-                <element signature="e#173#181#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="villages.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/villages/villages.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="8" column="30" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="161" column="24" selection-start-line="161" selection-start-column="24" selection-end-line="161" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#56#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="villages.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/villages/villages.component.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="data.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/services/data.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="156" column="3" selection-start-line="156" selection-start-column="3" selection-end-line="156" selection-end-column="3" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="289">
+              <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -107,112 +172,192 @@
       <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="283" selection-start-line="283" selection-end-line="283" />
+            <state relative-caret-position="194">
+              <caret line="177" column="56" selection-start-line="177" selection-start-column="35" selection-end-line="177" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="qgis-map.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="890" column="9" lean-forward="true" selection-start-line="890" selection-start-column="9" selection-end-line="890" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#113#0" expanded="true" />
+                <element signature="e#334#458#0" expanded="true" />
+                <element signature="e#78#86#1" expanded="true" />
+                <element signature="e#173#181#1" expanded="true" />
+                <element signature="e#78#86#1" expanded="true" />
+                <element signature="e#173#181#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="facilities.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/facilities/facilities.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="398">
+              <caret line="235" selection-start-line="235" selection-end-line="235" />
+              <folding>
+                <element signature="n#!!block;n#addDistrictCenter#0;n#FacilitiesComponent#0" />
+                <element signature="n#AddSchoolDialog#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scroll.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/services/scroll.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="29" column="2" selection-start-line="29" selection-start-column="2" selection-end-line="29" selection-end-column="2" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/login/login.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="606">
+              <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/register/register.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="16" column="19" selection-end-line="41" />
+              <folding>
+                <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#mat-form-field#0;n#form#0;n#mat-card#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#form#0;n#mat-card#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>selectD</find>
-      <find>dropdownSettings5</find>
-      <find>addRo</find>
-      <find>check</find>
-      <find>ngModel</find>
-      <find>show</find>
-      <find>roadsToMap</find>
-      <find>roads</find>
-      <find>selectPro</find>
-      <find>selectDistr</find>
-      <find>Khost</find>
-      <find>json_KhostProvincedistrictsKhost_Province_UTM42n_1</find>
-      <find>Budget</find>
-      <find>Budg</find>
-      <find>Filters</find>
-      <find>build</find>
-      <find>layer_KhostProvincedistrictsKhost_Province_UTM42n_1</find>
-      <find>filter</find>
-      <find>leaflet-easyprint</find>
-      <find>RegisterComponent</find>
-      <find>providers</find>
-      <find>|filter</find>
-      <find>mat-drawer-container</find>
-      <find>mat-drawer</find>
-      <find>FILTER</find>
-      <find>let village of this.filterS</find>
-      <find>VillagesComponent</find>
-      <find>data</find>
-      <find>16</find>
+      <find>Table</find>
+      <find>mycustomTabClass</find>
+      <find>swi</find>
+      <find>updateEstimatedMaintenanceCost</find>
+      <find>MCA</find>
+      <find>login</find>
+      <find>scro</find>
+      <find>behavior</find>
+      <find>scrollToElementById</find>
+      <find>prop=</find>
+      <find>datatable-header-cell</find>
+      <find>smooth</find>
+      <find>150px</find>
+      <find>ngOni</find>
+      <find>editf</find>
+      <find>editr</find>
+      <find>datatable-header</find>
+      <find>style.</find>
+      <find>style.w</find>
+      <find>setD</find>
+      <find>switchT</find>
+      <find>__getElementByClass</find>
+      <find>roadF</find>
+      <find>.mat-dialog-container</find>
+      <find>selectDistrict</find>
+      <find>scrollToId</find>
+      <find>scrollto</find>
+      <find>refresh</find>
+      <find>scrollToElementbyid</find>
       <find>table</find>
     </findStrings>
     <replaceStrings>
       <replace>selecteRoad</replace>
       <replace>mapS</replace>
+      <replace>centerType</replace>
+      <replace>14</replace>
+      <replace>north</replace>
+      <replace>[minWidth]=&quot;100&quot;   [maxWidth]=&quot;'700!important'&quot;  prop=</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\devlopment\manabiko\manabiko-app\src\services</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/app/login/login.component.html" />
-        <option value="$PROJECT_DIR$/extra-webpack.config.js" />
-        <option value="$PROJECT_DIR$/src/app/app.component.html" />
-        <option value="$PROJECT_DIR$/src/services/remotedata.service.ts" />
-        <option value="$PROJECT_DIR$/src/services/auth-guard.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/register/register.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/home-consumer/home-consumer.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/login/login.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/producer-home/producer-home.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/products/products.component.html" />
-        <option value="$PROJECT_DIR$/src/app/products/products.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/home-consumer/home-consumer.component.html" />
-        <option value="$PROJECT_DIR$/src/app/producer-home/producer-home.component.html" />
-        <option value="$PROJECT_DIR$/src/app/fileupload/fileupload.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/slider/slider.component.css" />
-        <option value="$PROJECT_DIR$/src/app/products/unit-product/unit-product.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/fileupload/fileupload.component.html" />
-        <option value="$PROJECT_DIR$/src/app/products/unit-product/unit-product.component.html" />
-        <option value="$PROJECT_DIR$/src/app/slider/slider.component.html" />
-        <option value="$PROJECT_DIR$/src/app/slider/slider.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.html" />
-        <option value="$PROJECT_DIR$/src/app/qgis-map/css/leaflet.css" />
-        <option value="$PROJECT_DIR$/src/app/app.component.ts" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.css" />
-        <option value="$PROJECT_DIR$/angular.json" />
-        <option value="$PROJECT_DIR$/src/app/qgis-map/data/test.json" />
-        <option value="$PROJECT_DIR$/src/app/qgis-map/data/test.ts" />
         <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Manduzay_District_OSM_roads_UTM42n_6.js" />
         <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Baak_District_OSM_roads_UTM42n_2.js" />
         <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.js" />
         <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4.js" />
         <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Khost_District_OSM_roads_UTM42n_5.js" />
         <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7.js" />
-        <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.js" />
         <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Qalandar_District_OSM_roads_UTM42n_9.js" />
         <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Sabari_District_OSM_roads_UTM42n_10.js" />
-        <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Spera_District_OSM_roads_UTM42n_12.js" />
         <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Tanay_District_OSM_roads_UTM42n_13.js" />
         <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14.js" />
         <option value="$PROJECT_DIR$/src/app/qgis-map/data/KhostProvincedistrictsKhost_Province_UTM42n_1.js" />
         <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Shamul_District_OSM_roads_UTM42n_11.js" />
         <option value="$PROJECT_DIR$/src/index.html" />
-        <option value="$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/facilities/facilities.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/facilities/facilities.component.html" />
-        <option value="$PROJECT_DIR$/src/services/data.service.ts" />
         <option value="$PROJECT_DIR$/src/app/app.component.css" />
-        <option value="$PROJECT_DIR$/src/styles.css" />
+        <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.js" />
+        <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.ts" />
+        <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Spera_District_OSM_roads_UTM42n_12.js" />
+        <option value="$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Spera_District_OSM_roads_UTM42n_12.ts" />
+        <option value="$PROJECT_DIR$/src/style.sass" />
+        <option value="$PROJECT_DIR$/src/style.scss" />
+        <option value="$PROJECT_DIR$/src/app/qgis-map/index.component.scss" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/tsconfig.app.json" />
+        <option value="$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.html" />
+        <option value="$PROJECT_DIR$/src/app/services/excel-pdf-exporter.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/facilities/add-facilitie-fialog.html" />
+        <option value="$PROJECT_DIR$/src/app/facilities/add-school-dialog.html" />
+        <option value="$PROJECT_DIR$/src/app/facilities/add-dc-dialog.html" />
+        <option value="$PROJECT_DIR$/src/app/facilities/mosque-dialog.html" />
+        <option value="$PROJECT_DIR$/src/app/villages/village-dialog.html" />
+        <option value="$PROJECT_DIR$/src/app/villages/delete-village-dialog.html" />
+        <option value="$PROJECT_DIR$/src/app/facilities/delete-dc-dialog.html" />
+        <option value="$PROJECT_DIR$/src/app/villages/villages.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/register/register.component.ts" />
         <option value="$PROJECT_DIR$/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/src/services/data.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/core-data/core-data.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/core-data/core-data.component.html" />
+        <option value="$PROJECT_DIR$/src/app/facilities/facilities.component.html" />
+        <option value="$PROJECT_DIR$/src/app/villages/villages.component.html" />
+        <option value="$PROJECT_DIR$/src/app/app.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/login/login.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/register/register.component.html" />
+        <option value="$PROJECT_DIR$/src/styles.css" />
+        <option value="$PROJECT_DIR$/src/app/facilities/facilities.component.ts" />
+        <option value="$PROJECT_DIR$/src/services/remotedata.service.ts" />
+        <option value="$PROJECT_DIR$/src/app/login/login.component.html" />
+        <option value="$PROJECT_DIR$/src/app/qgis-map/edit-road-dialog.html" />
+        <option value="$PROJECT_DIR$/src/services/scroll.service.ts" />
         <option value="$PROJECT_DIR$/src/app/qgis-map/index.html" />
+        <option value="$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.ts" />
       </list>
     </option>
   </component>
@@ -252,6 +397,43 @@
               <item name="bckp" type="b2602c69:ProjectViewProjectNode" />
               <item name="bckp" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="bckp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bckp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bckp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bckp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bckp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bckp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bckp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bckp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="register" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bckp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bckp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bckp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bckp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -259,9 +441,10 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SearchEverywhereHistoryKey" value="jq&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../assets/front" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="C:\devlopment\manabiko\manabiko-app\node_modules\tslint" />
@@ -269,16 +452,16 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="ts.external.directory.path" value="C:\developm\qgis_angular\bckp\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\developm\qgis_angular\bckp\src\assets" />
+      <recent name="C:\developm\qgis_angular\bckp\src\app\services" />
       <recent name="C:\developm\qgis_angular\bckp\src\app" />
       <recent name="C:\developm\qgis_angular\bckp\src\app\qgis-map" />
       <recent name="C:\developm\qgis_angular\bckp\src\app\qgis-map\data" />
-      <recent name="C:\developm\qgis_angular\bckp\src\services" />
-      <recent name="C:\developm\qgis_angular\qgisv2\node_modules\leaflet\dist" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -349,388 +532,903 @@
       <workItem from="1592822827894" duration="48329000" />
       <workItem from="1592898182831" duration="1859000" />
       <workItem from="1592901286181" duration="8614000" />
-      <workItem from="1594714334605" duration="6305000" />
+      <workItem from="1594714334605" duration="9933000" />
+      <workItem from="1594768789480" duration="2439000" />
+      <workItem from="1594851867758" duration="611000" />
+      <workItem from="1594917935195" duration="1209000" />
+      <workItem from="1594922530797" duration="51000" />
+      <workItem from="1594971056318" duration="23485000" />
+      <workItem from="1595015846004" duration="40991000" />
+      <workItem from="1595176138780" duration="22743000" />
+      <workItem from="1595232523601" duration="143710000" />
     </task>
+    <task id="LOCAL-00001" summary="second commit">
+      <created>1594730940271</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1594730940271</updated>
+    </task>
+    <task id="LOCAL-00002" summary="trhird commit nadir maps">
+      <created>1594989776959</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1594989776959</updated>
+    </task>
+    <task id="LOCAL-00003" summary="second commit">
+      <created>1594990009977</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1594990009977</updated>
+    </task>
+    <task id="LOCAL-00004" summary="second commit">
+      <created>1594994008828</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1594994008828</updated>
+    </task>
+    <task id="LOCAL-00005" summary="-">
+      <created>1595015953323</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1595015953323</updated>
+    </task>
+    <task id="LOCAL-00006" summary="jqueryscorll">
+      <created>1595025480630</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1595025480630</updated>
+    </task>
+    <task id="LOCAL-00007" summary="window resize">
+      <created>1595113457292</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1595113457292</updated>
+    </task>
+    <task id="LOCAL-00008" summary="second commit">
+      <created>1595116066953</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1595116066953</updated>
+    </task>
+    <task id="LOCAL-00009" summary="second commit">
+      <created>1595125653261</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1595125653261</updated>
+    </task>
+    <task id="LOCAL-00010" summary="second commit">
+      <created>1595171465879</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1595171465879</updated>
+    </task>
+    <task id="LOCAL-00011" summary="second commit">
+      <created>1595180893756</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1595180893756</updated>
+    </task>
+    <task id="LOCAL-00012" summary="second commit">
+      <created>1595196798343</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1595196798343</updated>
+    </task>
+    <task id="LOCAL-00013" summary="switch from php to java">
+      <created>1595250346293</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1595250346294</updated>
+    </task>
+    <task id="LOCAL-00014" summary="second commit">
+      <created>1595250467927</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1595250467927</updated>
+    </task>
+    <task id="LOCAL-00015" summary="save stable version package json">
+      <created>1595250494184</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1595250494184</updated>
+    </task>
+    <task id="LOCAL-00016" summary="second commit">
+      <created>1595269918177</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1595269918177</updated>
+    </task>
+    <task id="LOCAL-00017" summary="test">
+      <created>1595272783913</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1595272783913</updated>
+    </task>
+    <task id="LOCAL-00018" summary="second commit">
+      <created>1595287301463</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1595287301463</updated>
+    </task>
+    <task id="LOCAL-00019" summary="second commit">
+      <created>1595290569476</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1595290569476</updated>
+    </task>
+    <task id="LOCAL-00020" summary="add district center - ngx select">
+      <created>1595335833831</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1595335833831</updated>
+    </task>
+    <task id="LOCAL-00021" summary="second commit">
+      <created>1595353277296</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1595353277296</updated>
+    </task>
+    <task id="LOCAL-00022" summary="second commit">
+      <created>1595357312853</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1595357312853</updated>
+    </task>
+    <task id="LOCAL-00023" summary="second commit">
+      <created>1595370054733</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1595370054755</updated>
+    </task>
+    <task id="LOCAL-00024" summary="second commit">
+      <created>1595371841382</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1595371841382</updated>
+    </task>
+    <task id="LOCAL-00025" summary="second commit">
+      <created>1595380707698</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1595380707698</updated>
+    </task>
+    <task id="LOCAL-00026" summary="second commit">
+      <created>1595383166610</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1595383166610</updated>
+    </task>
+    <task id="LOCAL-00027" summary="ngx recaptha login forgot pwd">
+      <created>1595413140544</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1595413140544</updated>
+    </task>
+    <task id="LOCAL-00028" summary="second commit">
+      <created>1595415702855</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1595415702855</updated>
+    </task>
+    <task id="LOCAL-00029" summary="second commit">
+      <created>1595432820916</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1595432820916</updated>
+    </task>
+    <task id="LOCAL-00030" summary="second commit">
+      <created>1595439951603</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1595439951603</updated>
+    </task>
+    <task id="LOCAL-00031" summary="second commit">
+      <created>1595446270352</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1595446270352</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152073000" />
+    <option name="totallyTimeSpent" value="390940000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32890365" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.24945533" />
-      <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15226555" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.24363233" />
+      <window_info anchor="bottom" id="TypeScript" order="10" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1512118" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="trhird commit nadir maps" />
+    <MESSAGE value="-" />
+    <MESSAGE value="jqueryscorll" />
+    <MESSAGE value="window resize" />
+    <MESSAGE value="switch from php to java" />
+    <MESSAGE value="save stable version package json" />
+    <MESSAGE value="test" />
+    <MESSAGE value="add district center - ngx select" />
+    <MESSAGE value="ngx recaptha login forgot pwd" />
+    <MESSAGE value="second commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="second commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/app.module.ts</url>
-          <line>112</line>
+          <line>121</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/node_modules/jsdom/lib/jsdom/living/helpers/namespaces.js</url>
           <line>10</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.ts</url>
-          <line>753</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.ts</url>
-          <line>751</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.ts</url>
-          <line>338</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
       </breakpoints>
       <option name="time" value="8" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/app.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/fontawesome-all.min.css">
+    <entry file="file://$PROJECT_DIR$/src/style.sass" />
+    <entry file="file://$PROJECT_DIR$/src/style.scss">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/L.Control.Locate.min.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/leaflet.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/qgis2web.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/leaflet-control-geocoder.Geocoder.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/MarkerCluster.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/MarkerCluster.Default.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="uml://JavaScript-modules-diagram/C:/developm/qgis_angular/qgisv2/src/app/qgis-map/data/KhostProvincedistrictsKhost_Province_UTM42n_1.js">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JavaScript-modules-diagram</ID>
-          <OriginalElement>$PROJECT_DIR$/src/app/qgis-map/data/KhostProvincedistrictsKhost_Province_UTM42n_1.js</OriginalElement>
-          <nodes />
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="774.0" y="318.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>All</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>Details</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angular.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-40">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/js/Autolinker.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/leaflet/dist/Autolinker.min.js" />
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/test.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/EditRoadDialog.html" />
     <entry file="file://$PROJECT_DIR$/node_modules/typescript/lib/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="19606" column="26" selection-start-line="19606" selection-start-column="12" selection-end-line="19606" selection-end-column="26" />
+        <state relative-caret-position="168">
+          <caret line="19686" column="12" selection-start-line="19686" selection-start-column="12" selection-end-line="19686" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Baak_District_OSM_roads_UTM42n_2.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/@swimlane/ngx-datatable/lib/ngx-datatable.module.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="10" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Khost_District_OSM_roads_UTM42n_5.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Qalandar_District_OSM_roads_UTM42n_9.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Sabari_District_OSM_roads_UTM42n_10.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Spera_District_OSM_roads_UTM42n_12.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Tanay_District_OSM_roads_UTM42n_13.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Shamul_District_OSM_roads_UTM42n_11.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Manduzay_District_OSM_roads_UTM42n_6.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="57" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@swimlane/ngx-datatable/index.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="10" column="83" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/KhostProvincedistrictsKhost_Province_UTM42n_1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="16" column="391" selection-start-line="16" selection-start-column="379" selection-end-line="16" selection-end-column="391" />
+        <state relative-caret-position="85">
+          <caret line="5" column="44" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/@swimlane/ngx-datatable/swimlane-ngx-datatable.metadata.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret column="95477" selection-start-column="95477" selection-end-column="95477" />
+        <state relative-caret-position="68">
+          <caret column="4759" selection-start-column="4745" selection-end-column="4759" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/remotedata.service.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="102" lean-forward="true" selection-start-line="14" selection-start-column="102" selection-end-line="14" selection-end-column="102" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/index.component.scss">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/services/filter.service.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/app.component.html">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/webstorm.jar!/resources/html5-schema/html5/core-scripting.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-end-line="1" />
+        <state relative-caret-position="187">
+          <caret line="311" column="14" selection-start-line="311" selection-start-column="14" selection-end-line="311" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@angular/forms/forms.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="465" column="4" selection-start-line="465" selection-start-column="4" selection-end-line="465" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.ts">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-774">
+          <caret line="58" column="432" selection-start-line="58" selection-start-column="432" selection-end-line="58" selection-end-column="432" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Baak_District_OSM_roads_UTM42n_2.ts">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Khost_District_OSM_roads_UTM42n_5.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="110" column="21" selection-end-line="248" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/test.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/data/Khost_Province_Manduzay_District_OSM_roads_UTM42n_6.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tsconfig.app.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@swimlane/ngx-datatable/lib/types/column-mode.type.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="11" selection-start-column="11" selection-end-column="11" />
+          <caret column="20" selection-start-column="20" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/facilities/facilities.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1258">
-          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/app/services/excel-pdf-exporte.ts">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/services/data.service.ts">
+    <entry file="file://$PROJECT_DIR$/node_modules/exceljs/dist/exceljs.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/services/excel.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="156" column="3" selection-start-line="156" selection-start-column="3" selection-end-line="156" selection-end-column="3" />
+        <state relative-caret-position="153">
+          <caret line="9" column="25" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="25" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/villages/villages.component.ts">
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="30" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="30" />
+        <state relative-caret-position="187">
+          <caret line="15745" column="14" selection-start-line="15745" selection-start-column="14" selection-end-line="15745" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/villages/villages.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/facilities/add-facilitie-fialog.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/app.component.css">
+    <entry file="file://$PROJECT_DIR$/src/app/services/excel-pdf-exporter.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/facilities/facilities.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
+        <state relative-caret-position="199">
+          <caret line="198" column="8" selection-start-line="198" selection-start-column="8" selection-end-line="198" selection-end-column="8" />
           <folding>
-            <element signature="e#0#50#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/facilities/add-dc-dialog.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="161" column="24" selection-start-line="161" selection-start-column="24" selection-end-line="161" selection-end-column="24" />
+        <state relative-caret-position="199">
+          <caret line="36" column="8" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="8" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#1;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#1;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#2;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#2;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#3;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#3;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/villages/village-dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="23" column="56" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#1;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#1;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#1;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#2;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#2;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#3;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#3;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" />
+            <element signature="n#style#0;n#mat-form-field#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#1;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#1;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#2;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#2;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#3;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#3;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/facilities/delete-dc-dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="519">
+          <caret line="59" column="35" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#div#1;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#mat-dialog-content#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/villages/delete-village-dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="50" column="22" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#div#1;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#mat-dialog-content#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/villages/villages.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="243" column="12" selection-start-line="243" selection-start-column="12" selection-end-line="243" selection-end-column="12" />
           <folding>
             <element signature="e#0#56#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/facilities/add-school-dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="72" column="30" selection-start-line="72" selection-end-line="73" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#1;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#1;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#2;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#2;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#3;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#3;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/facilities/mosque-dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="160" column="57" selection-start-line="160" selection-start-column="47" selection-end-line="160" selection-end-column="57" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#0;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#1;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#1;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#2;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#2;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#3;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#3;n#div#2;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#4;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#4;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/register/register.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="55" column="26" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/data.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="40" column="32" selection-start-line="40" selection-start-column="2" selection-end-line="40" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/facilities/facilities.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="186" column="24" selection-end-line="207" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#!!top" />
+            <element signature="n#style#0;n#img#0;n#button#2;n#mat-menu#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ngx-datatable#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/villages/villages.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="99" column="19" lean-forward="true" selection-end-line="124" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-icon#0;n#ng-template#0;n#ngx-datatable-column#8;n#ngx-datatable#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#ng-template#0;n#ngx-datatable-column#8;n#ngx-datatable#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/core-data/core-data.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="21" selection-end-line="171" />
+          <folding>
+            <element signature="n#div#0;n#mat-tab#0;n#mat-tab-group#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#ng-template#0;n#ngx-datatable-row-detail#0;n#ngx-datatable#0;n#div#0;n#mat-tab#0;n#mat-tab-group#0;n#!!top" expanded="true" />
+            <element signature="n#ng-template#0;n#ngx-datatable-column#0;n#ngx-datatable#0;n#div#0;n#mat-tab#0;n#mat-tab-group#0;n#!!top" />
+            <element signature="n#mat-tab#0;n#mat-tab-group#0;n#!!top" />
+            <element signature="n#style#0;n#mat-form-field#0;n#div#0;n#mat-tab#0;n#mat-tab-group#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#mat-tab#0;n#mat-tab-group#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/core-data/core-data.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/auth.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="90" column="34" lean-forward="true" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/login/login.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/register/register.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="16" column="19" selection-end-line="41" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#0;n#form#0;n#mat-card#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#form#0;n#mat-card#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/facilities/facilities.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="235" selection-start-line="235" selection-end-line="235" />
+          <folding>
+            <element signature="n#!!block;n#addDistrictCenter#0;n#FacilitiesComponent#0" />
+            <element signature="n#AddSchoolDialog#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/remotedata.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="283" selection-start-line="283" selection-end-line="283" />
+        <state relative-caret-position="194">
+          <caret line="177" column="56" selection-start-line="177" selection-start-column="35" selection-end-line="177" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/services/scroll.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="29" column="2" selection-start-line="29" selection-start-column="2" selection-end-line="29" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/login/login.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="49" column="92" selection-start-line="49" selection-start-column="92" selection-end-line="49" selection-end-column="92" />
+          <folding>
+            <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#0;n#form#0;n#mat-card#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#mat-card#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#form#0;n#mat-card#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#form#0;n#mat-card#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/edit-road-dialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#mat-tab#0;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-checkbox#0;n#div#1;n#div#0;n#mat-tab#0;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#1;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#2;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#mat-form-field#2;n#div#1;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#form#0;n#mat-dialog-content#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="883" column="89" selection-start-line="883" selection-start-column="76" selection-end-line="883" selection-end-column="89" />
+          <folding>
+            <element signature="n#style#0;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#0;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#1;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-radio-group#0;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#2;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-radio-group#1;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#3;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-radio-group#2;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#button#0;n#div#2;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#3;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#0;n#div#3;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-radio-group#0;n#div#3;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#1;n#mat-radio-group#0;n#div#3;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#3;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#button#0;n#div#3;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#4;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#4;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#4;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#4;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#2;n#div#4;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#2;n#div#4;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#5;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#5;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#0;n#div#5;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#5;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#button#0;n#div#5;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#6;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#6;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#6;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#7;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#7;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-form-field#0;n#div#7;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#mat-card#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#2;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#3;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#mat-card#0;n#mat-tab#0;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#2;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#3;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#4;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#mat-card#0;n#mat-tab#1;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#0;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#2;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#3;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#span#4;n#div#0;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#mat-card#0;n#mat-tab#2;n#mat-tab-group#0;n#div#0;n#mat-drawer#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#div#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#mat-drawer-content#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#mat-drawer-content#0;n#mat-drawer-container#0;n#mat-tab#0;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#button#0;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#button#0;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#button#1;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#2;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#button#2;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#3;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#button#3;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#button#3;n#div#1;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#button#1;n#mat-menu#0;n#div#2;n#div#0;n#div#0;n#div#0;n#mat-tab#1;n#mat-tab-group#0;n#mat-drawer-content#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/qgis-map/qgis-map.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="193" column="18" selection-start-line="193" selection-start-column="9" selection-end-line="193" selection-end-column="18" />
+        <state relative-caret-position="204">
+          <caret line="890" column="9" lean-forward="true" selection-start-line="890" selection-start-column="9" selection-end-line="890" selection-end-column="9" />
           <folding>
-            <element signature="e#0#105#0" expanded="true" />
-            <element signature="e#310#434#0" expanded="true" />
+            <element signature="e#0#113#0" expanded="true" />
+            <element signature="e#334#458#0" expanded="true" />
             <element signature="e#78#86#1" expanded="true" />
             <element signature="e#173#181#1" expanded="true" />
             <element signature="e#78#86#1" expanded="true" />
             <element signature="e#173#181#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.editorconfig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/qgis-map/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1267">
-          <caret line="566" selection-start-line="566" selection-end-line="566" />
-          <folding>
-            <element signature="n#style#0;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#mat-drawer#0;n#mat-drawer-container#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
