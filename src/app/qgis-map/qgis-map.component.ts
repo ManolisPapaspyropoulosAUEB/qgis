@@ -425,7 +425,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
           layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
-         // layer.openPopup();
+          // layer.openPopup();
         }
       });
 
@@ -433,7 +433,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
           layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
-         // layer.openPopup();
+          // layer.openPopup();
         }
       });
     }
@@ -445,21 +445,21 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
           layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
-        //  layer.closePopup();
+          //  layer.closePopup();
         }
       });
     } else if (road.districtId == 1406) {  //Sand or gravel
       this.layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
           layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
-       //   layer.closePopup();
+          //   layer.closePopup();
         }
       });
     } else if (road.districtId == 1403) {
       this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
           layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
-       //   layer.closePopup();
+          //   layer.closePopup();
         }
       });
     }
@@ -958,37 +958,39 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.diakopthsDromwn = true;
     this.roadsTab1 = [];
     this.initGlobalMap();
-      this.district=[];
-      this.province=[];
-      if(localStorage.getItem("num_province_code")!="null" && localStorage.getItem("num_district_code")!="null"){
-        this.province[0]={
-          "itemName": localStorage.getItem("provinceItemName"),
-          "num_province_code":Number(localStorage.getItem("num_province_code")),
-          "province_name":localStorage.getItem("provinceItemName")
-        };
-        this.selectProvince(this.province,'ngOninit');
-        this.district[0]={
-          "alpha_district_code":Number(localStorage.getItem("num_district_code")),
-          "itemName":localStorage.getItem("districtItemName"),
-          "num_district_code":Number(localStorage.getItem("num_district_code")),
-          "district_name":localStorage.getItem("districtItemName"),
-          "id":Number(localStorage.getItem("distId")),
-          "x_distance":Number(localStorage.getItem("x_distance")),
-          "y_distance":Number(localStorage.getItem("y_distance")),
-          "zoom_info_district":Number(localStorage.getItem("zoom_info_district")),
-        };
-        setTimeout(() => {
-          this.selectDistrict(this.district,'ngOninit');
-        }, 900);
-        //district_name
-      }else if (localStorage.getItem("num_province_code")!="null"){
-        this.province[0]={
-          "itemName": localStorage.getItem("provinceItemName"),
-          "num_province_code":Number(localStorage.getItem("num_province_code")),
-          "province_name":localStorage.getItem("provinceItemName")
-        };
-        this.selectProvince(this.province,'ngOninit');
-      }
+    this.district=[];
+    this.province=[];
+
+
+    if((localStorage.getItem("num_province_code")!="null" && localStorage.getItem("num_district_code")!="null")&&(localStorage.getItem("num_province_code")!=null && localStorage.getItem("num_district_code")!=null)){
+      this.province[0]={
+        "itemName": localStorage.getItem("provinceItemName"),
+        "num_province_code":Number(localStorage.getItem("num_province_code")),
+        "province_name":localStorage.getItem("provinceItemName")
+      };
+      this.selectProvince(this.province,'ngOninit');
+      this.district[0]={
+        "alpha_district_code":Number(localStorage.getItem("num_district_code")),
+        "itemName":localStorage.getItem("districtItemName"),
+        "num_district_code":Number(localStorage.getItem("num_district_code")),
+        "district_name":localStorage.getItem("districtItemName"),
+        "id":Number(localStorage.getItem("distId")),
+        "x_distance":Number(localStorage.getItem("x_distance")),
+        "y_distance":Number(localStorage.getItem("y_distance")),
+        "zoom_info_district":Number(localStorage.getItem("zoom_info_district")),
+      };
+      setTimeout(() => {
+        this.selectDistrict(this.district,'ngOninit');
+      }, 900);
+      //district_name
+    }else if (localStorage.getItem("num_province_code")!="null" && localStorage.getItem("num_province_code")!=null){
+      this.province[0]={
+        "itemName": localStorage.getItem("provinceItemName"),
+        "num_province_code":Number(localStorage.getItem("num_province_code")),
+        "province_name":localStorage.getItem("provinceItemName")
+      };
+      this.selectProvince(this.province,'ngOninit');
+    }
   }
   public selectAllCheckMethodFacilities() {
     this.facilitiesComponent.selectAllCheckMethod(this.selectAllCheckFacilities);
