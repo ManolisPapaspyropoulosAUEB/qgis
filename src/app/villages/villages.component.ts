@@ -5,6 +5,7 @@ import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 import {AddDCDialog, AddSchoolDialog, DeleteDcDialog} from '../facilities/facilities.component';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ScrollService} from '../../services/scroll.service';
 
 @Component({
   selector: 'app-villages',
@@ -21,18 +22,25 @@ export class VillagesComponent implements OnInit {
   private provinceName: any;
   private district_name: any;
 
-  constructor(public dataservice: DataService, public filterService: FilterService, public dialog: MatDialog, private snackBar: MatSnackBar) {
+  constructor(public dataservice: DataService, public filterService: FilterService, public dialog: MatDialog, private snackBar: MatSnackBar, private scrollService: ScrollService) {
   }
 
   ngOnInit(): void {
     this.limit = 16;
   }
 
+  enableNgx(){
+    setTimeout(() => {
+      this.scrollService.scrollToElementById('top')
+    }, 600);
+
+  }
 
   //        'district_name': this.district_name,
   //         'proName': this.provinceName,
 
   setDistrict(currentNum_district_code: any, currentTab, current_province_code: any, proName, district_name) {
+
     if (currentTab == true && current_province_code) {
       if (current_province_code == this.num_province_code && currentNum_district_code == this.num_district_code) {
       } else {

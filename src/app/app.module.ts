@@ -83,6 +83,7 @@ import { CoreDataComponent } from './core-data/core-data.component';
 import {ExcelPdfExporterService} from './services/excel-pdf-exporter.service';
 import {NgxSelectModule} from 'ngx-select-ex';
 import {NgxCaptchaModule} from 'ngx-captcha';
+import { LoaderComponent } from './loader/loader.component';
 
 
 
@@ -96,6 +97,7 @@ const routes: Routes = [
 
   {path: '', component: LoginComponent},
   {path: 'forgotPassword', component: RegisterComponent},
+  {path: 'loader', component: LoaderComponent},
 
 
 
@@ -172,7 +174,8 @@ const routes: Routes = [
     FileuploadComponent,
     SliderComponent,
     QgisMapComponent,
-    CoreDataComponent
+    CoreDataComponent,
+    LoaderComponent
   ],
   exports: [
     FormsModule,

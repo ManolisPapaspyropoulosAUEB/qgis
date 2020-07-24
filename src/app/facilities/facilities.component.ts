@@ -1,10 +1,11 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, ElementRef, Inject, OnInit} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {FilterService} from '../../services/filter.service';
 import {EditRoadDialog} from '../qgis-map/qgis-map.component';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
+import {ScrollService} from '../../services/scroll.service';
 
 @Component({
   selector: 'app-facilities',
@@ -13,7 +14,7 @@ import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 })
 
 
-export class FacilitiesComponent implements OnInit {
+export class FacilitiesComponent implements OnInit  {
   public distCode;
   public proCode;
   public provinceName;
@@ -32,17 +33,26 @@ export class FacilitiesComponent implements OnInit {
   private nameFilter: string;
 
   ngOnInit(): void {
+
+
     this.nameFilter='';
     this.proCode = 0;
     this.type = 'Both';
     this.limit = 16;
   }
 
-  constructor(public dataservice: DataService, public filterService: FilterService, public dialog: MatDialog, private snackBar: MatSnackBar) {
+  constructor(private el: ElementRef,public dataservice: DataService, public filterService: FilterService, public dialog: MatDialog, private snackBar: MatSnackBar, private scrollService: ScrollService,) {
+
   }
+  private __getElementByClass(className: string): HTMLElement {
+    console.log("element class : ", className);
+    const element = <HTMLElement>document.querySelector(`.${className}`);
+    return element;
+  }//datatable-body
 
   public test() {
   }
+
 
   public getFacilities() {
     this.dataservice.get_facilities({
@@ -248,6 +258,11 @@ export class FacilitiesComponent implements OnInit {
 
 
   setDistrict(currentNum_district_code: any, currentTab, current_province_code: any, provinceName, districtName) {
+
+    setTimeout(() => {
+      this.scrollService.scrollToElementById('top')
+    }, 100);
+
     if (currentTab == true && current_province_code) {
       if (current_province_code == this.num_province_code && currentNum_district_code == this.num_district_code) {
       } else {
@@ -259,6 +274,30 @@ export class FacilitiesComponent implements OnInit {
       }
     }
   }
+
+
+  // onScroll(offsetY: number) {
+  //   // total height of all rows in the viewport
+  //   const viewHeight = this.el.nativeElement.getBoundingClientRect().height - this.headerHeight;
+  //
+  //   // check if we scrolled to the end of the viewport
+  //   if (!this.isLoading && offsetY + viewHeight >= this.rows.length * this.rowHeight) {
+  //     // total number of results to load
+  //     let limit = this.pageLimit;
+  //
+  //     // check if we haven't fetched any results yet
+  //     if (this.rows.length === 0) {
+  //       // calculate the number of rows that fit within viewport
+  //       const pageSize = Math.ceil(viewHeight / this.rowHeight);
+  //
+  //       // change the limit to pageSize such that we fill the first page entirely
+  //       // (otherwise, we won't be able to scroll past it)
+  //       limit = Math.max(pageSize, this.pageLimit);
+  //     }
+  //     this.loadPage(limit);
+  //   }
+  // }
+
 
   public selectRow(row, event) {
 
@@ -595,6 +634,7 @@ export class MosqueDialog implements OnInit {
   }
   ngOnInit() {
 
+    window.dispatchEvent(new Event('resize'));
 
 
     console.log(this.data);

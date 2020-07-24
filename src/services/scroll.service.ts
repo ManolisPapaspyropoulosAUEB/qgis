@@ -28,13 +28,12 @@ export class ScrollService {
   }
 
   scrollToElementById(param: string) {
-//checkpox
     const className = this.__getElementByClass('datatable-body');
     this.scrollToElement(className,param);
+ }
 
 
 
-  }
 
   private __getElementById(id: string): HTMLElement {
     console.log("element id : ", id);
@@ -76,6 +75,13 @@ export class ScrollService {
       myTble.scrollTo({
         top: 0,
         left: 1700,
+        behavior: 'smooth'
+      });
+    }else if(param=='top'){
+      console.log("------------------")
+      myTble.scrollTo({
+        top: 2,
+        left: 0,
         behavior: 'smooth'
       });
     }

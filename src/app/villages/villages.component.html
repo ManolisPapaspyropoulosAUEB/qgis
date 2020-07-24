@@ -38,25 +38,29 @@
 </div>
 
 
-<div class="table">
-  <ngx-datatable
-    style="display: flex"
-    #mydatatable
-                  class="material"
-                  [sortType]="'multi'"
-                  [headerHeight]="50"
-                  [footerHeight]="40"
-                  [rowHeight]="'50'"
-                  [rows]="villages"
-                  [columnMode]="'force'"
-                  [limit]="limit"
-                  [scrollbarH]="true"
+
+<ng-container class="" style="display: flex">
+
+  <ngx-datatable style="margin-top: 15px"
+                 class="material"
+
+                 [sortType]="'multi'"
+                 [rowHeight]="'50'"
+                 [rows]="villages"
+                 [headerHeight]="50"
+                 [footerHeight]="50"
+                 [rowHeight]="50"  [limit]="limit"
+                 [scrollbarH]="true"
+                 [scrollbarV]="true"
+
   >
+
     <ngx-datatable-column name="Show on map" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
         <mat-checkbox [(ngModel)]="row.checked" (change)="selectRow(row,$event)"></mat-checkbox>
       </ng-template>
     </ngx-datatable-column>
+
     <ngx-datatable-column name="Village Co" prop="villageCo" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div >
@@ -64,6 +68,8 @@
         </div>
       </ng-template>
     </ngx-datatable-column>
+
+
     <ngx-datatable-column name="Village 1" prop="village1" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div >
@@ -71,6 +77,9 @@
         </div>
       </ng-template>
     </ngx-datatable-column>
+
+
+
     <ngx-datatable-column name="Village Pop" prop="villagePop" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div >
@@ -108,6 +117,24 @@
     </ngx-datatable-column>
 
 
+    <ngx-datatable-column name="Map Long" prop="mapLong" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.mapLong }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+
+
+    <ngx-datatable-column name="Map Lat" prop="mapLat" [flexGrow]="1">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div >
+          {{ row?.mapLat }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
+
+
     <ngx-datatable-column   name="Actions" [flexGrow]="1" [frozenRight]="true">
       <ng-template let-row="row" ngx-datatable-cell-template>
         <mat-icon class="editRoad" (click)="editVillage(row)" style="color: #000000;cursor: pointer;margin-left: 24px">edit</mat-icon>
@@ -116,9 +143,6 @@
       </ng-template>
     </ngx-datatable-column>
 
-
   </ngx-datatable>
+</ng-container>
 
-
-
-</div>
