@@ -1,9 +1,6 @@
 import {AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, Inject, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import * as $ from 'jquery';
-import {ColumnMode, NgxDatatableModule} from '@swimlane/ngx-datatable';
 import * as L from 'leaflet';
-// import * as Le2 from 'leaflet/dist/bundle.js';
-// import FILTER from 'filter-search';
 import {json_Khost_Province_Baak_District_OSM_roads_UTM42n_2} from './data/Khost_Province_Baak_District_OSM_roads_UTM42n_2';
 import {json_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3} from './data/Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3';
 import {json_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4} from './data/Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4';
@@ -56,7 +53,7 @@ interface Options {
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./index.component.scss']
 })
-export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked {
+export class QgisMapComponent implements OnInit, AfterViewInit {
   title = 'Look jQuery Animation working in action!';
   public myMap;
   public roads = [];
@@ -131,10 +128,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
   private layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14: L.geoJson;
   public currentNum_district_code: any;
   public currentProvinceCode: any;
-
   public currentProvinceName;
   public currentDistrictName;
-
   private sqlInFclass;
   private sqlInRoadConditions;
   public tab;
@@ -144,10 +139,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
   private roadsTab1Cpy = [];
   public selectionArrayRoads;
   public layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8: L.geoJson;
-
   constructor(private  dataservice: DataService, public router: Router, public filterService: FilterService, private snackBar: MatSnackBar, public dialog: MatDialog, private scrollService: ScrollService, public excelPdfExporterService: ExcelPdfExporterService) {
   }
-
   @ViewChild('mydatatable') mydatatable;
   @ViewChild('fclassSelect') fclassSelect;
   @ViewChild('roadConditionSelect') roadConditionSelect;
@@ -156,7 +149,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
   @ViewChild(CoreDataComponent) coreDataComponent: CoreDataComponent;
   @ViewChild('drawer') drawer: MatDrawer;
   @ViewChild('drawerMapSelections') drawerMapSelections: MatDrawer;
-
   public resetFilters() {
     this.roadWayRadio = 'FB';
     this.bridgeFilter = 'TF';
@@ -169,7 +161,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
     this.sqlInRoadConditions = '()';
     this.getRoadsPyParams();
   }
-
   workbook: ExcelProper.Workbook = new Excel.Workbook();//
   blobType: string = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
   private windowHandle: Window;
@@ -187,30 +178,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
     return window.open(url, name, features);
   }
 
-
-  // ngDoCheck(){
-  //   var width = screen.width,
-  //     height = screen.height;
-  //   setInterval(function () {
-  //
-  //     if (screen.width !== width || screen.height !== height) {
-  //       width = screen.width;
-  //       height = screen.height;
-  //
-  //       console.log("ddddddddd");
-  //
-  //       $(window).trigger('resolutionchange');
-  //       window.dispatchEvent(new Event('resize'));
-  //
-  //
-  //     }
-  //   }, 50);
-  // }
-
-
   public ngOnInit() {
-
-
     if((localStorage.getItem("province")!=null)&&(localStorage.getItem("district")!=null)){
       console.log(localStorage.getItem("province"))
       this.currentProvinceCode=localStorage.getItem("proCode");
@@ -251,69 +219,41 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
     this.FacilitislimitPage = 16;
     this.villageLimitPage = 16;
     this.getDistrictsTab2();
-
-    // const className = this.__getElementByClass('ngx-datatable.material .datatable-header .datatable-header-cell');
-
-
-    //  min-width: 100px;
-    //   max-width: 900px!important;
-
-
   }
-
 
   private __getElementByClass(className: string): HTMLElement {
     console.log('element class : ', className);
     const element = <HTMLElement>document.querySelector(`.${className}`);
     return element;
-  }//datatable-body
-
-
+  }
   public showCriteriaOrMca() {
     this.mcaActive = !this.mcaActive;
   }
-
-
-
-
-
   logOut() {
 
     localStorage.removeItem('id');
     localStorage.removeItem('email');
-
-
-
     localStorage.setItem("provinceItemName", null);
     localStorage.setItem("num_province_code",null);
     localStorage.setItem("districtItemName",null);
     localStorage.setItem("num_district_code",null);
-
     window.location.reload();
     this.router.navigate(['/loader']);
-
   }
-
-
   public convertAsPdf() {//
     this.excelPdfExporterService.convertAsPdf(this.roadsTab1);
   }
-
   public convertAsXls() {
     this.excelPdfExporterService.convertAsXls(this.roadsTab1);
   }
 
-
   selectProvince(province,param) {
-
     if(param=='manual'){
       localStorage.setItem("provinceItemName", province[0].itemName);
       localStorage.setItem("num_province_code", province[0].num_province_code);
       localStorage.setItem("districtItemName",null);
       localStorage.setItem("num_district_code",null);
     }
-
-
     this.currentProvinceCode = '';
     this.currentNum_district_code = '';
     if (this.filterService.firstInit == 0) {
@@ -329,8 +269,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
       this.currentProvinceName = province[0].province_name;
       this.district = [];
       if (this.tab == 2) {
-
-        console.log(this.currentProvinceName);
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       } else if (this.tab == 3) {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
@@ -353,9 +291,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
       } else {
         this.myMap.setView([33.857, 67.758], 7);
       }
-
-
-
       this.currentProvinceCode = province[0].num_province_code;
       if (this.tab == 2) {
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
@@ -367,10 +302,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
         this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       }
     }
-
-
   }
-
 
   get_districts(data) {
     this.dataservice.get_districts(data).subscribe(response => {
@@ -421,7 +353,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
     this.facilitiesComponent.resetFilters(this.typeFacilities);
   }
 
-
   public resetFiltersVillages() {
     this.villagesComponent.setLimit(16);
     this.villageLimitPage = 16;
@@ -429,9 +360,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
     this.villagesComponent.resetFilters(this.villageNameFilter);
   }
 
-
   onClick(event) {//
-
 
   }
 
@@ -536,11 +465,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
     }
   }
 
-
-
-
-
-
   public hitRoad(road) {
     var findRoad = this.roadsTab1.find(x => x.LVRR_ID == road.LVRR_ID);
     var findRoad2 = this.roadTab2.find(x => x.LVRR_ID == road.LVRR_ID);
@@ -621,25 +545,25 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
     }
   }
 
-  public updateFilter() { //unclassified primary secondary tertiary
+  public updateFilter() {
     this.getRoadsPyParams();
   }
 
-  public updateNameVillageFilter() { //unclassified primary secondary tertiary
+  public updateNameVillageFilter() {
     this.villagesComponent.updateFilters(this.villageNameFilter);
   }
 
-  public updateNameFilterTabFacilities() { //unclassified primary secondary tertiary
+  public updateNameFilterTabFacilities() {
     this.facilitiesComponent.updateFilters(this.nameFilterFacilitie);
   }
 
 
-  public updateCoreDataFilter() { //unclassified primary secondary tertiary
+  public updateCoreDataFilter() {
     this.coreDataComponent.updateFilters(this.coreDataLabelFilter);
   }
 
 
-  public updateFilterTabFacilities() { //unclassified primary secondary tertiary
+  public updateFilterTabFacilities() {
     this.facilitiesComponent.getFiltersType(this.typeFacilities);
   }
 
@@ -652,7 +576,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
       });
     } else {
       this.roadsTab1.forEach(element => {
-        // element);
         element.checked = true;
         this.roadsToMap.push(element);
         element.checkedFilter = false;
@@ -949,10 +872,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
       });
     });
   }
-
-
-  //item
-
   public calculateCriteriaRoad() {
     this.dataservice.calculateCriteria({
       'district_id': this.currentNum_district_code,
@@ -979,8 +898,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
       }
     });
   }
-
-
   deselectProvince(province) {
     this.districts = [];
     this.district = '';
@@ -993,12 +910,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
   }
 
   selectDistrict(district,param) {
-    // localStorage.setItem("distCode",district[0].num_district_code);
-
-
-    console.log(district);
     if(param=='manual'){
-
       localStorage.setItem("districtItemName",district[0].district_name);
       localStorage.setItem("num_district_code",district[0].num_district_code);
       localStorage.setItem("distId",district[0].id);
@@ -1027,7 +939,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
     }
   }
-
   public highlightOnDistrictByName(district) {
     console.log(district)
     this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
@@ -1037,30 +948,19 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
         layer.feature.geometry.type = 'editRow';
       }
     });
-
     if (district.x_distance != null && district.y_distance != null) {
       this.myMap.setView([district.x_distance, district.y_distance], district.zoom_info_district);
     }
   }
-
-
-
   ngAfterViewInit(): void {
     var message;
     this.selectionArrayRoads = [];
     this.diakopthsDromwn = true;
     this.roadsTab1 = [];
     this.initGlobalMap();
-
-
-
       this.district=[];
       this.province=[];
-
       if(localStorage.getItem("num_province_code")!="null" && localStorage.getItem("num_district_code")!="null"){
-
-        console.log(localStorage.getItem("num_district_code"));
-
         this.province[0]={
           "itemName": localStorage.getItem("provinceItemName"),
           "num_province_code":Number(localStorage.getItem("num_province_code")),
@@ -1078,45 +978,25 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
           "zoom_info_district":Number(localStorage.getItem("zoom_info_district")),
         };
         setTimeout(() => {
-
-
           this.selectDistrict(this.district,'ngOninit');
-
         }, 900);
-
-
-
-
         //district_name
-
-
-
-
       }else if (localStorage.getItem("num_province_code")!="null"){
-
         this.province[0]={
           "itemName": localStorage.getItem("provinceItemName"),
           "num_province_code":Number(localStorage.getItem("num_province_code")),
           "province_name":localStorage.getItem("provinceItemName")
         };
-
         this.selectProvince(this.province,'ngOninit');
       }
-
-
   }
-
-
   public selectAllCheckMethodFacilities() {
     this.facilitiesComponent.selectAllCheckMethod(this.selectAllCheckFacilities);
-
   }
 
   public selectAllCheckMethodVillages() {
     this.villagesComponent.selectAllCheckMethod(this.selectAllCheckVillages);
   }
-
-
   private initMap(filterService, roadTab2): void {
     $(window).resize(function() {
       setTimeout(() => {
@@ -1997,7 +1877,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
                 </table>';
       layer.bindPopup(popupContent, {maxHeight: 400});
     }
-
     function style_Khost_Province_Shamul_District_OSM_roads_UTM42n_11_0() {
       return {
         pane: 'pane_Khost_Province_Shamul_District_OSM_roads_UTM42n_11',
@@ -2011,7 +1890,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
         interactive: true,
       };
     }
-
     this.myMap.createPane('pane_Khost_Province_Shamul_District_OSM_roads_UTM42n_11');
     this.myMap.getPane('pane_Khost_Province_Shamul_District_OSM_roads_UTM42n_11').style.zIndex = 411;
     this.myMap.getPane('pane_Khost_Province_Shamul_District_OSM_roads_UTM42n_11').style['mix-blend-mode'] = 'normal';
@@ -2033,7 +1911,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
         mouseover: highlightFeature,
         click: highlightFeatureOnClick
       });
-
       var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>osm_id</strong><br />' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
@@ -2071,7 +1948,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
                 </table>';
       layer.bindPopup(popupContent, {maxHeight: 400});
     }
-
     function style_Khost_Province_Spera_District_OSM_roads_UTM42n_12_0() {
       return {
         pane: 'pane_Khost_Province_Spera_District_OSM_roads_UTM42n_12',
@@ -2085,8 +1961,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
         interactive: true,
       };
     }
-
-
     this.myMap.createPane('pane_Khost_Province_Spera_District_OSM_roads_UTM42n_12');
     this.myMap.getPane('pane_Khost_Province_Spera_District_OSM_roads_UTM42n_12').style.zIndex = 412;
     this.myMap.getPane('pane_Khost_Province_Spera_District_OSM_roads_UTM42n_12').style['mix-blend-mode'] = 'normal';
@@ -2101,7 +1975,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
     });
     bounds_group.addLayer(this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3);
     this.myMap.addLayer(this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3);
-
     function pop_Khost_Province_Tanay_District_OSM_roads_UTM42n_13(feature, layer) {
       layer.on({
         mouseout: function (e) {
@@ -2115,7 +1988,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
 
       layer.bindPopup(popupContent, {maxHeight: 400});
     }
-
     function style_Khost_Province_Tanay_District_OSM_roads_UTM42n_13_0() {
       return {
         pane: 'pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13',
@@ -2129,7 +2001,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
         interactive: true,
       };
     }
-
     this.myMap.createPane('pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13');
     this.myMap.getPane('pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13').style.zIndex = 413;
     this.myMap.getPane('pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13').style['mix-blend-mode'] = 'normal';
@@ -2188,12 +2059,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
     this.myMap.addLayer(this.layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14);
     setBounds();
   }
-
-  public setMapArray(teampRoads: any[]) {
-    //$(container).scrollTo(target)
-  }
-
-
   scrollToId(param: string) {//
     this.scrollService.scrollToElementById(param);
   }
@@ -2205,14 +2070,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
     });
     this.currentStatus = !this.currentStatus;
   }
-
   public openClosedSideNavMapSelections() {
     this.drawerMapSelections.toggle().finally(() => {
       window.dispatchEvent(new Event('resize'));
     });
     this.currentStatusMapSelection = !this.currentStatusMapSelection;
   }
-
   getProvinces() {
     this.dataservice.get_province().subscribe(response => {
       this.provinces = response.data;
@@ -2254,17 +2117,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
 
 
   private  initGlobalMap() {
-
-    var message = "";
-
     this.myMap = L.map('map', {
       zoomControl: true, maxZoom: 28, minZoom: 1
     }).fitBounds([[29.75680629128297, 57.077598100580225], [38.867198097612054, 77.19307423730505]]);
     this.myMap.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
-
     function setBounds() {
     }
-
     this.myMap.createPane('pane_OpenStreetMap_0');
     this.myMap.getPane('pane_OpenStreetMap_0').style.zIndex = 400;
     var layer_OpenStreetMap_0 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -2284,18 +2142,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
     this.myMap.addLayer(layer_OpenStreetMap_0);
     setBounds();
 
-    message="ok";
-    return message;
+
 
   }
-
-
-
-  ngAfterViewChecked(){
-
-  }
-
-
   editRoad(item): void {
     const dialogRef = this.dialog.open(EditRoadDialog, {
       width: '800px',
@@ -2305,7 +2154,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit,AfterViewChecked 
       if (result) {
         this.dataservice.updateRoad(result).subscribe(response => {
           if (response.status == 'ok') {
-            //console.log(response);
             this.dataservice.calculateCriteria({
               'district_id': this.currentNum_district_code,
               'lvrr_id': response.lvrr_id
@@ -2353,25 +2201,13 @@ export class EditRoadDialog implements OnInit {
   linksToMajorActivityCentres;
   numberOfConnections;
   roadCondition;
-
   constructor(public dialogRef: MatDialogRef<EditRoadDialog>,
               private formBuilder: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private dataService: DataService, private snackBar: MatSnackBar, public router: Router,
   ) {
   }
-
-
   ngOnInit() {
-
-    // localStorage.setItem("proCode",province[0].num_province_code);
-    // localStorage.setItem("distCode",null);
-
-
-
-
-
-    console.log(this.data);
     this.name = this.data.name;
     this.fclass = this.data.fclass;
     this.ref = this.data.ref;
@@ -2391,8 +2227,6 @@ export class EditRoadDialog implements OnInit {
     this.linksToMajorActivityCentres = this.data.linksToMajorActivityCentres;
     this.numberOfConnections = this.data.numberOfConnections;
     this.roadCondition = this.data.roadCondition;
-
-
     this.editForm = this.formBuilder.group({
       name: [this.name],
       fclass: [this.fclass, Validators.required],
@@ -2415,23 +2249,19 @@ export class EditRoadDialog implements OnInit {
       roadCondition: [this.roadCondition]
     });
   }
-
   get f() {
     return this.editForm.controls;
   }
-
-  validateAllFormFields(formGroup: FormGroup) {         //{1}
-    Object.keys(formGroup.controls).forEach(field => {  //{2}
-      const control = formGroup.get(field);             //{3}
-      if (control instanceof FormControl) {             //{4}
+  validateAllFormFields(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
         control.markAsTouched({onlySelf: true});
-      } else if (control instanceof FormGroup) {        //{5}
-        this.validateAllFormFields(control);            //{6}
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
       }
     });
   }
-
-
   public save() {
     if (this.editForm.invalid) {
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
@@ -2463,7 +2293,6 @@ export class EditRoadDialog implements OnInit {
     console.log(resultObject);
     this.dialogRef.close(resultObject);
   }
-
   onNoClick(): void {
     this.dialogRef.close();
   }

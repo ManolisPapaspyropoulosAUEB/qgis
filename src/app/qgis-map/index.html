@@ -4,40 +4,40 @@
     overflow: hidden !important;
   }
 
-  .matCardSelection{
+  .matCardSelection {
     padding: 6px;
     margin-bottom: 6px;
     width: 98%;
     margin-left: 7px;
   }
 
-  .calcButton{
+  .calcButton {
     position: relative;
     top: -6px;
-    left: 16px;"
+    left: 16px;
+  "
   }
 
-
-  .resetFilters{
+  .resetFilters {
     cursor: pointer;
     position: relative;
     top: 8px;
     left: 13px;
   }
 
-
-
-  .matCardSelection:hover{
+  .matCardSelection:hover {
     background-color: whitesmoke;
-    cursor: pointer!important;
+    cursor: pointer !important;
   }
 
-  .frozenLeft{
-    background: #e9e9e9!important;
+  .frozenLeft {
+    background: #e9e9e9 !important;
   }
-  .editRoad:hover{
-    color: #3f51b5!important;
+
+  .editRoad:hover {
+    color: #3f51b5 !important;
   }
+
   .searchFilter {
     width: 45%;
     margin-top: 20px;
@@ -60,19 +60,11 @@
     box-shadow: 2px 3px 3px 0px #888888;
   }
 
-
   /*#map {*/
-    /*min-height: 95vh;*/
-    /*position: relative;*/
-    /*top: 0px;*/
+  /*min-height: 95vh;*/
+  /*position: relative;*/
+  /*top: 0px;*/
   /*}*/
-
-
-
-
-
-
-
 
   .map-container {
     position: fixed;
@@ -100,8 +92,6 @@
   ::ng-deep.datatable-header {
     width: 100% !important;;
   }
-
-
 
   ::ng-deep.datatable-body {
     width: 100% !important;;
@@ -139,42 +129,29 @@
 
   }
 
-  .mat-tab-body-content{
+  .mat-tab-body-content {
     height: 100vh;
-    overflow-y: hidden!important;
+    overflow-y: hidden !important;
   }
 
 
 </style>
 <mat-drawer-container class="example-container">
-  <mat-drawer style="width:17%;
-
-
-  background: whitesmoke" #drawer [mode]="'side'" opened>
-
-
-
-
+  <mat-drawer style="width:17%;background: whitesmoke" #drawer [mode]="'side'" opened>
     <div class="" style="display: flex;margin-top: 24px">
       <div class="col-md-6">
-        <button style="background: #1a60a8;color: #ffffff;" mat-raised-button (click)="logOut()">
-          <span matTooltip="LOG OUT"  class="material-icons logout" >login</span>
+        <button style="background: #2F4060;color: #ffffff;" mat-raised-button (click)="logOut()">
+          <span matTooltip="LOG OUT" class="material-icons logout">login</span>
           <span> Log Out</span>
         </button>
       </div>
       <div class="col-md-6">
-        <button style="background: #ffffff;color: #1a60a8;" mat-raised-button onClick="window.location.reload();" >
+        <button style="background: #ffffff;color: #2F4060;" mat-raised-button onClick="window.location.reload();">
           <span class="material-icons">cached</span>
-          <span >Refresh All</span>
+          <span>Refresh All</span>
         </button>
       </div>
     </div>
-
-
-
-
-
-
     <div class="">
       <div style="margin-top: 40px;margin-left: 14px;">
         <angular2-multiselect [data]="provinces" [settings]="dropdownSettings2"
@@ -252,7 +229,8 @@
         </mat-form-field>
 
         <mat-radio-group (change)="updateFilter()" [(ngModel)]="agriculturFacilitationFilter"
-                         aria-label="Select an option" style="    display: grid;margin-top: 15px;    margin-bottom: 15px;">
+                         aria-label="Select an option"
+                         style="    display: grid;margin-top: 15px;    margin-bottom: 15px;">
           <mat-radio-button value="TRUE">Agriculture Facilitation True</mat-radio-button>
           <mat-radio-button value="FALSE">Agriculture Facilitation False</mat-radio-button>
           <mat-radio-button value="TF">Both</mat-radio-button>
@@ -316,12 +294,14 @@
 
         <mat-form-field class="example-full-width" style="width: 91%">
           <mat-label>Search by name</mat-label>
-          <input matInput placeholder="name.." [(ngModel)]="nameFilterFacilitie" (keyup)="updateNameFilterTabFacilities()">
+          <input matInput placeholder="name.." [(ngModel)]="nameFilterFacilitie"
+                 (keyup)="updateNameFilterTabFacilities()">
         </mat-form-field>
 
 
         <mat-radio-group style="    margin-top: 14px;" (change)="updateFilterTabFacilities()"
-                         [(ngModel)]="typeFacilities" aria-label="Select an option" style="    display: grid; margin-top: 15px;    margin-bottom: 15px;   ">
+                         [(ngModel)]="typeFacilities" aria-label="Select an option"
+                         style="    display: grid; margin-top: 15px;    margin-bottom: 15px;   ">
           <mat-radio-button value="Distcenters">Distcenters</mat-radio-button>
           <mat-radio-button value="Schools">Schools</mat-radio-button>
           <mat-radio-button value="Mosques">Mosques</mat-radio-button>
@@ -462,13 +442,26 @@
       </div>
     </div>
   </mat-drawer>
-  <mat-drawer-content>
-    <span *ngIf="currentStatus" (click)="openClosedSideNav()" class="material-icons buttonNav">
+  <mat-drawer-content style="overflow-y: hidden">
+
+
+    <div class="" style="display: flex">
+      <div class="col-md-1">
+            <span *ngIf="currentStatus" (click)="openClosedSideNav()" class="material-icons buttonNav">
         navigate_before
     </span>
-    <span *ngIf="!currentStatus" (click)="openClosedSideNav()" class="material-icons buttonNav">
+        <span *ngIf="!currentStatus" (click)="openClosedSideNav()" class="material-icons buttonNav">
         navigate_next
     </span>
+      </div>
+      <div class="col-md-10">
+
+      </div>
+      <div class="col-md-2">
+
+      </div>
+
+    </div>
     <mat-tab-group style="    position: relative;  top: -30px;" (selectedTabChange)="switchTab($event)">
       <mat-tab label="Map" style="    background-color: white;">
         <mat-drawer-container class="example-container">
@@ -488,7 +481,8 @@
                            placeholder="Search.."
                     />
                   </div>
-                  <mat-card class="matCardSelection" *ngFor="let road of roadTab2|filter: searchTextRoads;" on-mouseout="out(road)" on-mouseover='over(road)' (click)="hitRoad(road)">
+                  <mat-card class="matCardSelection" *ngFor="let road of roadTab2|filter: searchTextRoads;"
+                            on-mouseout="out(road)" on-mouseover='over(road)' (click)="hitRoad(road)">
                     <div class="row" style="padding: 0;margin: 0">
                       <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
                         <span>
@@ -523,7 +517,9 @@
                            placeholder="Search.."
                     />
                   </div>
-                  <mat-card class="matCardSelection" [hidden]="!facilitie.checked" *ngFor="let facilitie of this.filterService.facilitiesArray|filter: searchTextFacilities;"(click)="hitFacilitie(facilitie)">
+                  <mat-card class="matCardSelection" [hidden]="!facilitie.checked"
+                            *ngFor="let facilitie of this.filterService.facilitiesArray|filter: searchTextFacilities;"
+                            (click)="hitFacilitie(facilitie)">
                     <div class="row" style="padding: 0;margin: 0">
 
                       <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
@@ -566,31 +562,33 @@
                            placeholder="Search.."
                     />
                   </div>
-                    <mat-card class="matCardSelection" [hidden]="!village.checked" *ngFor="let village of this.filterService.villagesArray|filter: searchTextVillages;"(click)="hitVillage(village)">
-                      <div class="row" style="padding: 0;margin: 0">
-                        <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
+                  <mat-card class="matCardSelection" [hidden]="!village.checked"
+                            *ngFor="let village of this.filterService.villagesArray|filter: searchTextVillages;"
+                            (click)="hitVillage(village)">
+                    <div class="row" style="padding: 0;margin: 0">
+                      <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
                       <span>
                           <span style="font-weight: bold">village_name :</span> {{village.villageName}}
                       </span>
-                          <span>
+                        <span>
                            <span style="font-weight: bold">Population :</span>    {{village.VillagePop}}
                           </span>
-                          <span>
+                        <span>
                        <span style="font-weight: bold"> Village_Co:</span>    {{village.villageCo}}
                       </span>
-                          <span>
+                        <span>
                      <span style="font-weight: bold">  Map_Long:</span>      {{village.mapLong}}
                     </span>
-                          <span>
+                        <span>
                      <span style="font-weight: bold">  Map_Lat:</span>      {{village.mapLat}}
                     </span>
-                        </div>
-                        <div class="col-md-1" style="margin: 0;padding-top: 30px">
-                          <mat-checkbox [disabled]="true" (change)="village.checkedFilter=!village.checkedFilter"
-                                        [(ngModel)]="village.checkedFilter" class="example-margin"></mat-checkbox>
-                        </div>
                       </div>
-                    </mat-card>
+                      <div class="col-md-1" style="margin: 0;padding-top: 30px">
+                        <mat-checkbox [disabled]="true" (change)="village.checkedFilter=!village.checkedFilter"
+                                      [(ngModel)]="village.checkedFilter" class="example-margin"></mat-checkbox>
+                      </div>
+                    </div>
+                  </mat-card>
                 </mat-tab>
               </mat-tab-group>
             </div>
@@ -613,11 +611,10 @@
               </div>
 
               <!--<div class="map-frame">-->
-                <!--<div class="map-container">-->
-                  <!--<div (click)="onClick($event)" id="map"></div>-->
-                <!--</div>-->
+              <!--<div class="map-container">-->
+              <!--<div (click)="onClick($event)" id="map"></div>-->
               <!--</div>-->
-
+              <!--</div>-->
 
 
             </div>
@@ -627,33 +624,36 @@
       <mat-tab label="Roads">
         <div style="" *ngIf="tab==1" class="table">
           <div class="col-md-12" style="    padding: 0;">
-            <div  *ngIf="this.currentNum_district_code>0 " class="" style="display: flex">
+            <div *ngIf="this.currentNum_district_code>0 " class="" style="display: flex">
               <div class="col-md-7">
                 <button matTooltip="calculate creteria"
                         *ngIf="this.currentNum_district_code>0 "
-                        (click)="calculateCriteria()"  mat-mini-fab color="primary"
+                        (click)="calculateCriteria()" mat-mini-fab color="primary"
                         class="calcButton"
                 >
-                        <span class="material-icons" >
+                        <span class="material-icons">
                           calculate
                         </span>
                 </button>
               </div>
               <div class="col-md-4">
-                <button style="margin-right: 4px;height: 25px" (click)="scrollToId('init')" mat-raised-button color="primary">
-                  <span class="material-icons"  style="position: relative;top: -3px;">
+                <button style="margin-right: 4px;height: 25px" (click)="scrollToId('init')" mat-raised-button
+                        color="primary">
+                  <span class="material-icons" style="position: relative;top: -3px;">
                     arrow_left
                   </span>
-                <span  style="position: relative;top: -3px;">START</span>
+                  <span style="position: relative;top: -3px;">START</span>
                 </button>
-                <button style="margin-right: 4px;height: 25px" (click)="scrollToId('criteria')" mat-raised-button color="primary">
-                <span  style="position: relative;top: -3px;">
+                <button style="margin-right: 4px;height: 25px" (click)="scrollToId('criteria')" mat-raised-button
+                        color="primary">
+                <span style="position: relative;top: -3px;">
                   CRITERIA
                 </span>
 
                 </button>
-                <button style="margin-right: 4px;height: 25px" (click)="scrollToId('c1_location')" mat-raised-button color="primary">
-                <span  style="position: relative;top: -3px;">
+                <button style="margin-right: 4px;height: 25px" (click)="scrollToId('c1_location')" mat-raised-button
+                        color="primary">
+                <span style="position: relative;top: -3px;">
                   SCORES
                 </span>
                 </button>
@@ -661,14 +661,15 @@
                   <span style="position: relative;top: -3px;">
                     MCA,CBI
                   </span>
-                  <span class="material-icons"  style="position: relative;top: -3px;">
+                  <span class="material-icons" style="position: relative;top: -3px;">
                     arrow_right
                   </span>
                 </button>
               </div>
-              <div class="col-md-1" >
-                <button style="background: cornflowerblue;color: white;" mat-button [matMenuTriggerFor]="menu">Export</button>
-                <mat-menu #menu="matMenu" >
+              <div class="col-md-1">
+                <button style="background: cornflowerblue;color: white;" mat-button [matMenuTriggerFor]="menu">Export
+                </button>
+                <mat-menu #menu="matMenu">
                   <button mat-menu-item (click)="convertAsPdf()">
                    <span class="material-icons">
                       picture_as_pdf
@@ -683,50 +684,48 @@
             </div>
 
 
-
-
             <ngx-datatable
               style="margin-top: 5px"
               #mydatatable
-                           id="myTble"
-                           class="material"
-                           [sortType]="'multi'"
-                           [headerHeight]="50"
-                           [footerHeight]="40"
-                           [rowHeight]="rowHeight"
-                           [rows]="roadsTab1"
-                           [columnMode]="'force'"
-                           [limit]="limitPage"
-                           [scrollbarH]="true"
-                           [scrollbarV]="true"
+              id="myTble"
+              class="material"
+              [sortType]="'multi'"
+              [headerHeight]="50"
+              [footerHeight]="40"
+              [rowHeight]="rowHeight"
+              [rows]="roadsTab1"
+              [columnMode]="'force'"
+              [limit]="limitPage"
+              [scrollbarH]="true"
+              [scrollbarV]="true"
             >
-              <ngx-datatable-column  [width]="130"   name="Show on map" [flexGrow]="1"  [frozenLeft]="true" >
+              <ngx-datatable-column [width]="130" name="Show on map" [flexGrow]="1" [frozenLeft]="true">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <mat-checkbox  [(ngModel)]="row.checked" (change)="addRoadToMap(row,$event)"></mat-checkbox>
+                  <mat-checkbox [(ngModel)]="row.checked" (change)="addRoadToMap(row,$event)"></mat-checkbox>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="LVRR_ID"     prop="LVRR_ID" [flexGrow]="1" [frozenLeft]="true">
+              <ngx-datatable-column name="LVRR_ID" prop="LVRR_ID" [flexGrow]="1" [frozenLeft]="true">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.LVRR_ID }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="OSM_ID" class="osmId" prop="osmId" [flexGrow]="1"  [frozenLeft]="true"   >
+              <ngx-datatable-column name="OSM_ID" class="osmId" prop="osmId" [flexGrow]="1" [frozenLeft]="true">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.osmId }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Code"  class="code" prop="code" [flexGrow]="1"    >
+              <ngx-datatable-column name="Code" class="code" prop="code" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.code }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Fclass" class="code" prop="fclass" [flexGrow]="1"  [frozenLeft]="true" >
+              <ngx-datatable-column name="Fclass" class="code" prop="fclass" [flexGrow]="1" [frozenLeft]="true">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip={{row.fclass}} (click)="selectRoad(row)">
                     <div>{{ row?.fclass }}
@@ -734,168 +733,177 @@
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Name"                     class="testinioclass"      prop="name" [flexGrow]="1" [frozenLeft]="true" >
+              <ngx-datatable-column name="Name" class="testinioclass" prop="name" [flexGrow]="1" [frozenLeft]="true">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip={{row.name}} (click)="selectRoad(row)">
                     {{ row?.name }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Ref"                     class="testinioclass"     prop="ref" [flexGrow]="1">
+              <ngx-datatable-column name="Ref" class="testinioclass" prop="ref" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.ref }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Oneway"                   class="testinioclass"     prop="oneway" [flexGrow]="1">
+              <ngx-datatable-column name="Oneway" class="testinioclass" prop="oneway" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.oneway }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Maxspeed"                  class="testinioclass"     prop="maxspeed" [flexGrow]="1">
+              <ngx-datatable-column name="Maxspeed" class="testinioclass" prop="maxspeed" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.maxspeed }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Layer"                 class="testinioclass"     prop="layer" [flexGrow]="1">
+              <ngx-datatable-column name="Layer" class="testinioclass" prop="layer" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.layer }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Bridge"                class="testinioclass"     prop="bridge" [flexGrow]="1">
+              <ngx-datatable-column name="Bridge" class="testinioclass" prop="bridge" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.bridge }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Tunnel"               class="testinioclass"     prop="tunnel" [flexGrow]="1">
+              <ngx-datatable-column name="Tunnel" class="testinioclass" prop="tunnel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.tunnel }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="District"              class="testinioclass"     prop="district" [flexGrow]="1">
+              <ngx-datatable-column name="District" class="testinioclass" prop="district" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.district }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Source"              class="testinioclass"    prop="source" [flexGrow]="1">
+              <ngx-datatable-column name="Source" class="testinioclass" prop="source" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.source }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Length in metres"             class="testinioclass"    prop="lengthInMetres" [flexGrow]="1">
+              <ngx-datatable-column name="Length in metres" class="testinioclass" prop="lengthInMetres" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.lengthInMetres }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Width in metres"            class="testinioclass"    prop="roadWidthInM" [flexGrow]="1">
+              <ngx-datatable-column name="Width in metres" class="testinioclass" prop="roadWidthInM" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.roadWidthInM }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Elevation in metres"   [width]="200"         class="testinioclass"    prop="elevationInMetres" [flexGrow]="1">
+              <ngx-datatable-column name="Elevation in metres" [width]="200" class="testinioclass"
+                                    prop="elevationInMetres" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.elevationInMetres }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Population served"    [width]="200"       class="testinioclass"   prop="populationServed" [flexGrow]="1">
+              <ngx-datatable-column name="Population served" [width]="200" class="testinioclass" prop="populationServed"
+                                    [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.populationServed }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Facilities served"    [width]="200"        class="testinioclass"  prop="facilitiesServed" [flexGrow]="1">
+              <ngx-datatable-column name="Facilities served" [width]="200" class="testinioclass" prop="facilitiesServed"
+                                    [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.facilitiesServed }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Access to GCsRMs"     [width]="200"      class="testinioclass"  prop="accessToGCsRMs" [flexGrow]="1">
+              <ngx-datatable-column name="Access to GCsRMs" [width]="200" class="testinioclass" prop="accessToGCsRMs"
+                                    [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.accessToGCsRMs }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Farm to the Market"   [width]="200"       class="testinioclass"  prop="farmToTheMarket" [flexGrow]="1">
+              <ngx-datatable-column name="Farm to the Market" [width]="200" class="testinioclass" prop="farmToTheMarket"
+                                    [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.farmToTheMarket }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Agricultural Facilities"   [width]="200"       class="testinioclass" prop="agriculturalFacilities" [flexGrow]="1">
+              <ngx-datatable-column name="Agricultural Facilities" [width]="200" class="testinioclass"
+                                    prop="agriculturalFacilities" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.agriculturalFacilities }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Links to major activity centres"   [width]="270"      class="testinioclass" prop="linksToMajorActivityCentres" [flexGrow]="1">
+              <ngx-datatable-column name="Links to major activity centres" [width]="270" class="testinioclass"
+                                    prop="linksToMajorActivityCentres" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.linksToMajorActivityCentres }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Number of connections"   [width]="200"     class="testinioclass" prop="numberOfConnections" [flexGrow]="1">
+              <ngx-datatable-column name="Number of connections" [width]="200" class="testinioclass"
+                                    prop="numberOfConnections" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.numberOfConnections }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Road Condition" [width]="200"      class="testinioclass" prop="roadCondition" [flexGrow]="1">
+              <ngx-datatable-column name="Road Condition" [width]="200" class="testinioclass" prop="roadCondition"
+                                    [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.roadCondition }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column  name="C1_score" prop="c1Score"     class="testinioclass" [flexGrow]="1" #c1location>
-                <ng-template  let-row="row" ngx-datatable-cell-template>
-                  <div   matTooltip="Population Served score">
+              <ngx-datatable-column name="C1_score" prop="c1Score" class="testinioclass" [flexGrow]="1" #c1location>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div matTooltip="Population Served score">
                     {{ row?.c1Score }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="C2_score" prop="c2Score"    class="testinioclass" [flexGrow]="1">
+              <ngx-datatable-column name="C2_score" prop="c2Score" class="testinioclass" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip="Facilities Served score">
                     {{ row?.c2Score }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="C3_score" prop="c3Score"   class="testinioclass" [flexGrow]="1">
+              <ngx-datatable-column name="C3_score" prop="c3Score" class="testinioclass" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip="GCs & RMs Served  score">
                     {{ row?.c3Score }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="C4_score" prop="c4Score"  class="testinioclass" [flexGrow]="1">
+              <ngx-datatable-column name="C4_score" prop="c4Score" class="testinioclass" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip="Farm to the Market  score">
                     {{ row?.c4Score }}
@@ -904,7 +912,7 @@
               </ngx-datatable-column>
               <ngx-datatable-column name="C5_score" prop="c5Score" class="testinioclass" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div  id="c1_location" matTooltip="Agriculture Facilitation  score">
+                  <div id="c1_location" matTooltip="Agriculture Facilitation  score">
                     {{ row?.c5Score }}
                   </div>
                 </ng-template>
@@ -946,7 +954,7 @@
               </ngx-datatable-column>
               <ngx-datatable-column name="C11_score" prop="c11Score" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div  matTooltip="Requirements for earth works  score">
+                  <div matTooltip="Requirements for earth works  score">
                     {{ row?.c11Score }}
                   </div>
                 </ng-template>
@@ -960,7 +968,7 @@
               </ngx-datatable-column>
               <ngx-datatable-column name="c13_score" prop="c13Score" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div  matTooltip="Safety score">
+                  <div matTooltip="Safety score">
                     {{ row?.c13Score }}
                   </div>
                 </ng-template>
@@ -972,30 +980,33 @@
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column  title="my Tooltip" matTooltip="Environmental Impacts score" name="c15_score" prop="c15Score" [flexGrow]="1">
+              <ngx-datatable-column title="my Tooltip" matTooltip="Environmental Impacts score" name="c15_score"
+                                    prop="c15Score" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div  matTooltip="Environmental Impacts score">
+                  <div matTooltip="Environmental Impacts score">
                     {{ row?.c15Score }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="MCA" prop="mca" [flexGrow]="1" >
+              <ngx-datatable-column name="MCA" prop="mca" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.mca }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-                <ngx-datatable-column name="CBI" prop="cbi" [flexGrow]="1" >
+              <ngx-datatable-column name="CBI" prop="cbi" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.cbi }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column   name="Actions" [flexGrow]="1" [frozenRight]="true">
+              <ngx-datatable-column name="Actions" [flexGrow]="1" [frozenRight]="true">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <mat-icon class="editRoad" (click)="editRoad(row)" style="color: #000000;cursor: pointer;    margin-left: 53px;">edit</mat-icon>
+                  <mat-icon class="editRoad" (click)="editRoad(row)"
+                            style="color: #000000;cursor: pointer;    margin-left: 53px;">edit
+                  </mat-icon>
                 </ng-template>
               </ngx-datatable-column>
             </ngx-datatable>
@@ -1009,20 +1020,23 @@
 
         <app-villages></app-villages>
       </mat-tab>
-
       <mat-tab label="Core Data">
 
         <app-core-data></app-core-data>
 
       </mat-tab>
-
-
-
-
-
     </mat-tab-group>
 
 
+    <div class="top-bar">
+      <mat-tab>
+
+      </mat-tab>
+
+      <div class="account-details">
+
+      </div>
+    </div>
 
 
   </mat-drawer-content>

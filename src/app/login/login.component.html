@@ -1,16 +1,28 @@
+
+<style>
+  .loginB{
+    margin-top: 36px;
+    height: 48px;
+    width: 35%;
+    background-color: #8BAA48;
+    margin-bottom: 10px
+  }
+</style>
+
+
 <body style="background-color: #5c6b94">
 <div class="container" style="justify-items: center;width: 445px;
    position: relative;top: 25%">
   <div style="
-    height: 51px;
+    height: 67px;
     font-size: 20px;
-  font-family: 'Open Sans', sans-serif;
-    background-color: #3f51b5;
-    padding-top: 12px;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #2F4060;
+    padding-top: 20px;
     text-align: center;
     color: white;
-    border-radius: 5px;
-        box-shadow: 1px 1px 4px #344e8a;
+    border-radius: 0px;
+    box-shadow: 1px 1px 4px #344e8a;
 ">Login
     <mat-progress-bar style="    top: -33px;" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
   </div>
@@ -24,21 +36,39 @@
         <mat-label>Password</mat-label>
         <input  type="password"  formControlName="password"   matInput placeholder="Password" [(ngModel)]="password">
       </mat-form-field>
-      <div class="form-group" style="    margin-bottom: 45px;
-    margin-top: 28px;">
-        <ngx-recaptcha2  #captchaElem
-                        [siteKey]="'6LfZwLQZAAAAAI8oDKAs15v6mXnE4JTxxuAv_kaj'"
-                        (success)="handleSuccess($event)"
-                        [useGlobalDomain]="false"
-                        formControlName="recaptcha"
-        >
-        </ngx-recaptcha2>
+      <div class="form-group" style="
+        margin-bottom:0px;
+    margin-top: 28px;
+">
+        <div style="padding-left: 40px">
+          <ngx-recaptcha2
+
+            style=""
+            #captchaElem
+            [siteKey]="'6LfZwLQZAAAAAI8oDKAs15v6mXnE4JTxxuAv_kaj'"
+            (success)="handleSuccess($event)"
+            [useGlobalDomain]="false"
+            formControlName="recaptcha"
+          >
+          </ngx-recaptcha2>
+        </div>
+
         <!--6LeOZ4YUAAAAAJ8clQYNtOXNDHsd58KZHyJeILk6-->
         <!--6LfZwLQZAAAAAI8oDKAs15v6mXnE4JTxxuAv_kaj-->
         <!--<button  mat-raised-button [disabled]="loading || recaptcha==null" color="primary">Login</button>-->
         <!--<img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />-->
-        <button style="    margin-top: 36px;" [disabled]="loading || recaptcha==null" mat-raised-button color="primary">Login</button>
-        <a   (click)="forgotPassword()"    style="    margin-left: 5px;" mat-button >Forgot Password</a>
+
+       <div style="display: flex;    justify-content: center;" >
+
+
+         <button class="loginB" [disabled]="loading || recaptcha==null" mat-raised-button color="primary">Login</button>
+       </div>
+        <div class=" " style="display: flex;justify-content: center">
+          <a   (click)="forgotPassword()"    style="    margin-left: 5px;" mat-button >Forgot Password</a>
+
+        </div>
+
+
       </div>
       <!--<button mat-raised-button color="primary">Login</button>-->
     </form>

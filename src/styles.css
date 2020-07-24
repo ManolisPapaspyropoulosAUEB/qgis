@@ -24,7 +24,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 ::ng-deep .ngx-datatable .datatable-footer .datatable-footer-inner{
-  background: #1a60a8;
+  background: #2F4060;
 }
 
 c-remove {
@@ -53,7 +53,7 @@ c-remove {
 }
 
 .mat-tab-labels{
-  background: #1a60a8;
+  background: #2F4060;
 }
 
 .mycustomTabClass .mat-tab-labels {
@@ -439,8 +439,11 @@ padding-left: 5px;
 
 .ngx-datatable.material .datatable-footer{
   overflow-y: hidden;
-  background: #1a60a8!important;
+  background: #2F4060!important;
   color: white;
+
+
+
 
 }
 
