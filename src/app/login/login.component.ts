@@ -95,6 +95,7 @@ loading;
         );
         localStorage.setItem("email",response.role);
         localStorage.setItem("id",response.id);
+        localStorage.setItem("fullName",response.fullName);
         this.router.navigate(['/qgis'])
       }else{
         this.loading=false;

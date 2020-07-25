@@ -84,6 +84,7 @@ import {ExcelPdfExporterService} from './services/excel-pdf-exporter.service';
 import {NgxSelectModule} from 'ngx-select-ex';
 import {NgxCaptchaModule} from 'ngx-captcha';
 import { LoaderComponent } from './loader/loader.component';
+import {RoadsComponent} from './roads/roads.component';
 
 
 
@@ -154,6 +155,7 @@ const routes: Routes = [
     EditRoadDialog,
     DeleteDcDialog,
     MosqueDialog,
+    RoadsComponent,
     AddSchoolDialog,
     DeleteVillageDialog,
     VillageDialog,

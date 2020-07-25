@@ -13,18 +13,22 @@ export class RoadsComponent implements OnInit {
   roadsTab1=[];
   limitPage;
 
-  constructor( private scrollService: ScrollService,@Inject(QgisMapComponent) private qgisMapComponent: QgisMapComponent) { }
+  constructor( private scrollService: ScrollService) { }
 
   ngOnInit(): void {
 
   }
 
-  setParams(){
-    this.roadsTab1=this.qgisMapComponent.roadsTab1;
 
-    console.log(this.roadsTab1);
 
-    this.limitPage=this.qgisMapComponent.limitPage;
+  setParams(roadsTab1,limitPage){
+    this.roadsTab1=roadsTab1;
+
+
+    this.limitPage=limitPage;
+
+    console.log(this.roadsTab1)
+
   }
 
   scrollToId(param: string) {//
@@ -32,11 +36,11 @@ export class RoadsComponent implements OnInit {
   }
 
 editRoad(road){
-    this.qgisMapComponent.editRoad(road);
+
 }
 
   addRoadToMap(object, event){
-    this.qgisMapComponent.addRoadToMap(object, event);
+
   }
 
 }

@@ -47,11 +47,13 @@ interface Options {
   location?: number;
 }
 
+
+
 @Component({
   selector: 'app-qgis-map',
   templateUrl: './index.html',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./index.component.scss']
+  styleUrls: ['./qgis-map.component.css']
 })
 export class QgisMapComponent implements OnInit, AfterViewInit {
   title = 'Look jQuery Animation working in action!';
@@ -130,6 +132,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public currentProvinceCode: any;
   public currentProvinceName;
   public currentDistrictName;
+  public fullName;
   private sqlInFclass;
   private sqlInRoadConditions;
   public tab;
@@ -179,6 +182,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   public ngOnInit() {
+    //        localStorage.setItem("fullName",response.fullName);
+    this.fullName=localStorage.getItem("fullName");
     if((localStorage.getItem("province")!=null)&&(localStorage.getItem("district")!=null)){
       console.log(localStorage.getItem("province"))
       this.currentProvinceCode=localStorage.getItem("proCode");
@@ -230,8 +235,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.mcaActive = !this.mcaActive;
   }
   logOut() {
-
     localStorage.removeItem('id');
+    localStorage.removeItem('fullName');
     localStorage.removeItem('email');
     localStorage.setItem("provinceItemName", null);
     localStorage.setItem("num_province_code",null);

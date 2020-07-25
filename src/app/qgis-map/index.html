@@ -1,102 +1,79 @@
 <style>
+  /*@import "~leaflet/dist/leaflet.css";*/
+
+
+
   mat-drawer-container {
     height: 100vh;
     overflow: hidden !important;
   }
-
   .matCardSelection {
     padding: 6px;
     margin-bottom: 6px;
     width: 98%;
     margin-left: 7px;
   }
-
   .calcButton {
     position: relative;
     top: -6px;
     left: 16px;
-  "
   }
-
   .resetFilters {
     cursor: pointer;
     position: relative;
     top: 8px;
     left: 13px;
   }
-
   .matCardSelection:hover {
     background-color: whitesmoke;
     cursor: pointer !important;
   }
-
   .frozenLeft {
     background: #e9e9e9 !important;
   }
-
   .editRoad:hover {
     color: #3f51b5 !important;
   }
-
   .searchFilter {
     width: 45%;
     margin-top: 20px;
     margin-bottom: 14px !important;
     border: 0px !important;
     border-radius: 0 !important;
-    margin-left: 12px;
-  !important;
+    margin-left: 12px!important;
   }
-
   .mat-list-item-content mat-list-item-content-reverse {
     background: red !important;
   }
-
   mat-list-option {
     box-shadow: 4px 2px 2px 0px #888888 !important;
   }
-
   mat-drawer {
     box-shadow: 2px 3px 3px 0px #888888;
   }
-
-  /*#map {*/
-  /*min-height: 95vh;*/
-  /*position: relative;*/
-  /*top: 0px;*/
-  /*}*/
-
   .map-container {
     position: fixed;
-    top: 49px;
+    top: 48px;
     left: 0;
     right: 0;
     bottom: 0;
   }
-
-  /*style="background-color: #3f51b5"*/
-
   .map-frame {
     border: 2px solid black;
   }
-
   .mat-drawer-content {
     height: 110% !important;
   }
-
   ngx-datatable {
     padding-left: 14px;
     padding-bottom: 4%;
   }
-
   ::ng-deep.datatable-header {
     width: 100% !important;;
   }
-
   ::ng-deep.datatable-body {
     width: 100% !important;;
   }
-
   .roadFilters {
     margin-top: 17px;
     margin-right: 5px;
@@ -106,7 +83,6 @@
     padding: 9px;
     box-shadow: 1px 1px 2px 0px #888888;
   }
-
   .buttonNav {
     cursor: pointer;
     cursor: pointer;
@@ -118,22 +94,17 @@
     top: 9px;
     left: 3px;
   }
-
   .buttonNav:hover {
     color: #0073aa !important;
   }
-
   ::ng-deep .mat-drawer-inner-container {
     overflow: hidden !important;
     padding: 10px;
-
   }
-
   .mat-tab-body-content {
     height: 100vh;
     overflow-y: hidden !important;
   }
-
 
 </style>
 <mat-drawer-container class="example-container">
@@ -208,7 +179,6 @@
           <mat-label>Search by max speed</mat-label>
           <input matInput placeholder="max speed.." [(ngModel)]="maxSpeedFilter" (keyup)="updateFilter()">
         </mat-form-field>
-
         <mat-radio-group (change)="updateFilter()" [(ngModel)]="bridgeFilter" aria-label="Select an option"
                          style="    display: grid;margin-top: 15px;    margin-bottom: 15px;">
           <mat-radio-button value="T">Having bridge</mat-radio-button>
@@ -227,7 +197,6 @@
             <mat-option [value]="asphaltFilter">asphalt</mat-option>
           </mat-select>
         </mat-form-field>
-
         <mat-radio-group (change)="updateFilter()" [(ngModel)]="agriculturFacilitationFilter"
                          aria-label="Select an option"
                          style="    display: grid;margin-top: 15px;    margin-bottom: 15px;">
@@ -235,44 +204,6 @@
           <mat-radio-button value="FALSE">Agriculture Facilitation False</mat-radio-button>
           <mat-radio-button value="TF">Both</mat-radio-button>
         </mat-radio-group>
-
-        <button class="btn" style="position: relative; left: -15px;top: -6px;" [matMenuTriggerFor]="menu2">
-          Items per page: ({{limitPage}})
-          <span style="    position: relative;top: 7px;" class="material-icons">
-                    unfold_more
-                  </span>
-        </button>
-
-        <mat-menu #menu2="matMenu">
-          <button mat-menu-item (click)="setPageNgx(5)">
-            <b *ngIf="limitPage==5">5</b>
-            <span *ngIf="limitPage!=5">5</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgx(10)">
-            <b *ngIf="limitPage==10">10</b>
-            <span *ngIf="limitPage!=10">10</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgx(15)">
-            <b *ngIf="limitPage==15">15</b>
-            <span *ngIf="limitPage!=15">15</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgx(20)">
-            <b *ngIf="limitPage==20">20</b>
-            <span *ngIf="limitPage!=20">20</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgx(50)">
-            <b *ngIf="limitPage==50">50</b>
-            <span *ngIf="limitPage!=50">50</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgx(100)">
-            <b *ngIf="limitPage==100">100</b>
-            <span *ngIf="limitPage!=100">100</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgx(200)">
-            <b *ngIf="limitPage==200">200</b>
-            <span *ngIf="limitPage!=200">200</span>
-          </button>
-        </mat-menu>
       </div>
       <div *ngIf="tab==2 && currentProvinceCode>0" class="roadFilters">
         <div style="display: grid;">
@@ -290,15 +221,11 @@
             </span>
           </mat-checkbox>
         </div>
-
-
         <mat-form-field class="example-full-width" style="width: 91%">
           <mat-label>Search by name</mat-label>
           <input matInput placeholder="name.." [(ngModel)]="nameFilterFacilitie"
                  (keyup)="updateNameFilterTabFacilities()">
         </mat-form-field>
-
-
         <mat-radio-group style="    margin-top: 14px;" (change)="updateFilterTabFacilities()"
                          [(ngModel)]="typeFacilities" aria-label="Select an option"
                          style="    display: grid; margin-top: 15px;    margin-bottom: 15px;   ">
@@ -307,42 +234,7 @@
           <mat-radio-button value="Mosques">Mosques</mat-radio-button>
           <mat-radio-button value="Both">All</mat-radio-button>
         </mat-radio-group>
-        <button class="btn" style="position: relative; left: -15px;top: -6px;" [matMenuTriggerFor]="menu2">
-          Items per page: ({{FacilitislimitPage}})
-          <span style="    position: relative;top: 7px;" class="material-icons">
-                    unfold_more
-                  </span>
-        </button>
-        <mat-menu #menu2="matMenu">
-          <button mat-menu-item (click)="setPageNgxFacilities(5)">
-            <b *ngIf="FacilitislimitPage==5">5</b>
-            <span *ngIf="FacilitislimitPage!=5">5</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgxFacilities(10)">
-            <b *ngIf="FacilitislimitPage==10">10</b>
-            <span *ngIf="FacilitislimitPage!=10">10</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgxFacilities(16)">
-            <b *ngIf="FacilitislimitPage==16">16</b>
-            <span *ngIf="FacilitislimitPage!=16">16</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgxFacilities(20)">
-            <b *ngIf="FacilitislimitPage==20">20</b>
-            <span *ngIf="FacilitislimitPage!=20">20</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgxFacilities(50)">
-            <b *ngIf="FacilitislimitPage==50">50</b>
-            <span *ngIf="FacilitislimitPage!=50">50</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgxFacilities(100)">
-            <b *ngIf="FacilitislimitPage==100">100</b>
-            <span *ngIf="FacilitislimitPage!=100">100</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgxFacilities(200)">
-            <b *ngIf="FacilitislimitPage==200">200</b>
-            <span *ngIf="FacilitislimitPage!=200">200</span>
-          </button>
-        </mat-menu>
+
       </div>
       <div *ngIf="tab==2 && currentProvinceCode>0" class="" style="display: grid;margin-left: 5px;">
         <div>
@@ -364,7 +256,6 @@
           <span style="    position: relative;top: 20px;">Schools</span>
         </div>
       </div>
-
       <div *ngIf="tab==3 && currentProvinceCode>0" class="roadFilters">
         <div style="display: grid">
                <span style="margin-bottom: 10px;    "><b>Villages Filters</b>
@@ -385,42 +276,6 @@
           <mat-label>Search by name</mat-label>
           <input matInput placeholder="name.." [(ngModel)]="villageNameFilter" (keyup)="updateNameVillageFilter()">
         </mat-form-field>
-        <button class="btn" style="position: relative; left: -15px;top: -6px;" [matMenuTriggerFor]="menu2">
-          Items per page: ({{villageLimitPage}})
-          <span style="    position: relative;top: 7px;" class="material-icons">
-                    unfold_more
-                  </span>
-        </button>
-        <mat-menu #menu2="matMenu">
-          <button mat-menu-item (click)="setPageNgxvillageLimitPage(5)">
-            <b *ngIf="villageLimitPage==5">5</b>
-            <span *ngIf="villageLimitPage!=5">5</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgxvillageLimitPage(10)">
-            <b *ngIf="villageLimitPage==10">10</b>
-            <span *ngIf="villageLimitPage!=10">10</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgxvillageLimitPage(16)">
-            <b *ngIf="villageLimitPage==16">16</b>
-            <span *ngIf="villageLimitPage!=16">16</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgxvillageLimitPage(20)">
-            <b *ngIf="villageLimitPage==20">20</b>
-            <span *ngIf="villageLimitPage!=20">20</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgxvillageLimitPage(50)">
-            <b *ngIf="villageLimitPage==50">50</b>
-            <span *ngIf="villageLimitPage!=50">50</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgxvillageLimitPage(100)">
-            <b *ngIf="villageLimitPage==100">100</b>
-            <span *ngIf="villageLimitPage!=100">100</span>
-          </button>
-          <button mat-menu-item (click)="setPageNgxvillageLimitPage(200)">
-            <b *ngIf="villageLimitPage==200">200</b>
-            <span *ngIf="villageLimitPage!=200">200</span>
-          </button>
-        </mat-menu>
       </div>
       <div *ngIf="tab==3 && currentProvinceCode>0" class="" style="display: grid;    margin-left: 5px;">
         <div>
@@ -445,24 +300,39 @@
   <mat-drawer-content style="overflow-y: hidden">
 
 
-    <div class="" style="display: flex">
+    <div class="" style="display:flex;background-color: #2f4060!important;">
+      <div class="col-md-6">
+
+      </div>
+      <div class="col-md-5">
+        <div style="
+    position: relative;
+    top: 13px;
+    z-index: 3;
+    color: white;
+    text-align: right;
+    padding-right: 8px;
+    font-size: 15px;
+
+
+">
+          {{fullName}}
+        </div>
+
+      </div>
       <div class="col-md-1">
-            <span *ngIf="currentStatus" (click)="openClosedSideNav()" class="material-icons buttonNav">
-        navigate_before
-    </span>
-        <span *ngIf="!currentStatus" (click)="openClosedSideNav()" class="material-icons buttonNav">
-        navigate_next
-    </span>
-      </div>
-      <div class="col-md-10">
+        <div style="	position: relative;
+    z-index: 3;
+    top: 12px;
+        left: 11px;
 
+color: white;cursor: pointer" (click)="logOut()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20.483" height="22.098" viewBox="0 0 20.483 22.098"><defs><style>.a{fill:#fff;}</style></defs><g transform="translate(0)"><path class="a" d="M27.086,20.832H21.322a2.841,2.841,0,0,1-2.837-2.837V4.1a2.841,2.841,0,0,1,2.837-2.837H27.18A.633.633,0,0,0,27.18,0H21.322a4.108,4.108,0,0,0-4.1,4.1V17.994a4.108,4.108,0,0,0,4.1,4.1h5.764a.633.633,0,1,0,0-1.266Z" transform="translate(-17.219)"/><path class="a" d="M135.972,140.535l-4.024-4.024a.633.633,0,0,0-.9.9L134,140.352H121.152a.633.633,0,1,0,0,1.266H134l-2.945,2.945a.635.635,0,0,0,.446,1.083.618.618,0,0,0,.446-.188l4.024-4.024A.633.633,0,0,0,135.972,140.535Z" transform="translate(-115.675 -129.932)"/></g></svg>
+          Log out
+        </div>
       </div>
-      <div class="col-md-2">
-
-      </div>
-
     </div>
-    <mat-tab-group style="    position: relative;  top: -30px;" (selectedTabChange)="switchTab($event)">
+    <mat-tab-group style="    position: relative;  top: -22px;" (selectedTabChange)="switchTab($event)">
       <mat-tab label="Map" style="    background-color: white;">
         <mat-drawer-container class="example-container">
           <mat-drawer style="width: 46%;background: whitesmoke;    box-shadow: -2px 2px 2px 0px #888888!important;"
@@ -595,6 +465,7 @@
           </mat-drawer>
           <mat-drawer-content>
             <div class="row" style="	    display: flex;flex-direction: row;justify-content: flex-end;">
+
               <span *ngIf="currentStatusMapSelection" style="    position: relative;left: -18px;top: 3px;z-index: 30;"
                     (click)="openClosedSideNavMapSelections()" class="material-icons buttonNav">
                    navigate_next
@@ -605,18 +476,10 @@
               </span>
             </div>
             <div class="" style="display: flex">
-              <div class="col-12" style="    padding:0px; z-index: 0;top: -24px;">
+              <div class="col-12" style="    padding:0px; z-index: 0;top: 0px;">
 
                 <div class="map-container" (click)="onClick($event)" id="map"></div>
               </div>
-
-              <!--<div class="map-frame">-->
-              <!--<div class="map-container">-->
-              <!--<div (click)="onClick($event)" id="map"></div>-->
-              <!--</div>-->
-              <!--</div>-->
-
-
             </div>
           </mat-drawer-content>
         </mat-drawer-container>
@@ -649,7 +512,6 @@
                 <span style="position: relative;top: -3px;">
                   CRITERIA
                 </span>
-
                 </button>
                 <button style="margin-right: 4px;height: 25px" (click)="scrollToId('c1_location')" mat-raised-button
                         color="primary">
@@ -682,8 +544,6 @@
                 </mat-menu>
               </div>
             </div>
-
-
             <ngx-datatable
               style="margin-top: 5px"
               #mydatatable
@@ -740,32 +600,32 @@
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Ref" class="testinioclass" prop="ref" [flexGrow]="1">
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
-                    {{ row?.ref }}
-                  </div>
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="Oneway" class="testinioclass" prop="oneway" [flexGrow]="1">
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
-                    {{ row?.oneway }}
-                  </div>
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column name="Maxspeed" class="testinioclass" prop="maxspeed" [flexGrow]="1">
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
-                    {{ row?.maxspeed }}
-                  </div>
-                </ng-template>
-              </ngx-datatable-column>
+
               <ngx-datatable-column name="Layer" class="testinioclass" prop="layer" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.layer }}
-                  </div>
+                  </div> <ngx-datatable-column name="Ref" class="testinioclass" prop="ref" [flexGrow]="1">
+                  <ng-template let-row="row" ngx-datatable-cell-template>
+                    <div (click)="selectRoad(row)">
+                      {{ row?.ref }}
+                    </div>
+                  </ng-template>
+                </ngx-datatable-column>
+                  <ngx-datatable-column name="Oneway" class="testinioclass" prop="oneway" [flexGrow]="1">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                      <div (click)="selectRoad(row)">
+                        {{ row?.oneway }}
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column name="Maxspeed" class="testinioclass" prop="maxspeed" [flexGrow]="1">
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                      <div (click)="selectRoad(row)">
+                        {{ row?.maxspeed }}
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Bridge" class="testinioclass" prop="bridge" [flexGrow]="1">
@@ -1026,18 +886,11 @@
 
       </mat-tab>
     </mat-tab-group>
-
-
     <div class="top-bar">
       <mat-tab>
-
       </mat-tab>
-
       <div class="account-details">
-
       </div>
     </div>
-
-
   </mat-drawer-content>
 </mat-drawer-container>
