@@ -278,6 +278,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     } else if (param == 'c1_location') {
 
+
       this.currentBtnNavInit = false;
       this.currentBtnNavScores = true;
       this.currentBtnNavCriteria = false;
