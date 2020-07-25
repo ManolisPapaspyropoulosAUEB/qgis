@@ -52,29 +52,26 @@ export class ScrollService {
 
   scrollToElement(myTble:HTMLElement,param) {
 
+
     if(param=='mciCbiRates'){
       myTble.scrollTo({
-        top: 0,
         left: 5500,
         behavior: 'smooth'
       });
 
     }else if (param=='c1_location'){
       myTble.scrollTo({
-        top: 0,
-        left: 2900,
+        left: 3500,
         behavior: 'smooth'
       });
     }else if (param=='init'){
       myTble.scrollTo({
-        top: 0,
         left: 0,
         behavior: 'smooth'
       });
     }else if (param=='criteria'){
       myTble.scrollTo({
-        top: 0,
-        left: 1700,
+        left: 1820,
         behavior: 'smooth'
       });
     }else if(param=='top'){

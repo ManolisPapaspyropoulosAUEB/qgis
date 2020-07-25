@@ -48,7 +48,6 @@ interface Options {
 }
 
 
-
 @Component({
   selector: 'app-qgis-map',
   templateUrl: './index.html',
@@ -64,6 +63,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public mcaActive;
   public rowHeight = 50;
   public pageLimit = 10;
+  public currentBtnNavInit;
+  public currentBtnNavCriteria;
+  public currentBtnNavScores;
+  public currentBtnNavMcaCbi;
+  public currentBtnNav = '';
   public searchTextRoads: '';
   public searchTextFacilities: '';
   public searchTextVillages: '';
@@ -142,8 +146,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   private roadsTab1Cpy = [];
   public selectionArrayRoads;
   public layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8: L.geoJson;
+
   constructor(private  dataservice: DataService, public router: Router, public filterService: FilterService, private snackBar: MatSnackBar, public dialog: MatDialog, private scrollService: ScrollService, public excelPdfExporterService: ExcelPdfExporterService) {
   }
+
   @ViewChild('mydatatable') mydatatable;
   @ViewChild('fclassSelect') fclassSelect;
   @ViewChild('roadConditionSelect') roadConditionSelect;
@@ -152,6 +158,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   @ViewChild(CoreDataComponent) coreDataComponent: CoreDataComponent;
   @ViewChild('drawer') drawer: MatDrawer;
   @ViewChild('drawerMapSelections') drawerMapSelections: MatDrawer;
+
   public resetFilters() {
     this.roadWayRadio = 'FB';
     this.bridgeFilter = 'TF';
@@ -164,6 +171,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.sqlInRoadConditions = '()';
     this.getRoadsPyParams();
   }
+
   workbook: ExcelProper.Workbook = new Excel.Workbook();//
   blobType: string = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
   private windowHandle: Window;
@@ -182,15 +190,16 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   public ngOnInit() {
+    this.currentBtnNav = 'init';
     //        localStorage.setItem("fullName",response.fullName);
-    this.fullName=localStorage.getItem("fullName");
-    if((localStorage.getItem("province")!=null)&&(localStorage.getItem("district")!=null)){
-      console.log(localStorage.getItem("province"))
-      this.currentProvinceCode=localStorage.getItem("proCode");
-      this.currentNum_district_code=localStorage.getItem("distCode");
+    this.fullName = localStorage.getItem('fullName');
+    if ((localStorage.getItem('province') != null) && (localStorage.getItem('district') != null)) {
+      console.log(localStorage.getItem('province'));
+      this.currentProvinceCode = localStorage.getItem('proCode');
+      this.currentNum_district_code = localStorage.getItem('distCode');
       this.getRoadsPyParams();
-    }else if (localStorage.getItem("proCode")!=null){
-      this.currentProvinceCode=localStorage.getItem("proCode");
+    } else if (localStorage.getItem('proCode') != null) {
+      this.currentProvinceCode = localStorage.getItem('proCode');
     }
     this.flagMap = false;
     this.showOnMapWidth = 100;
@@ -224,6 +233,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.FacilitislimitPage = 16;
     this.villageLimitPage = 16;
     this.getDistrictsTab2();
+
+    this.currentBtnNavInit = true;
+    this.currentBtnNavCriteria = false;
+    this.currentBtnNavScores = false;
+    this.currentBtnNavMcaCbi = false;
+
+
   }
 
   private __getElementByClass(className: string): HTMLElement {
@@ -231,33 +247,180 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     const element = <HTMLElement>document.querySelector(`.${className}`);
     return element;
   }
+
   public showCriteriaOrMca() {
     this.mcaActive = !this.mcaActive;
   }
+
+  reloadAndCleanLs() {
+    localStorage.setItem('provinceItemName', null);
+    localStorage.setItem('num_province_code', null);
+    localStorage.setItem('districtItemName', null);
+    localStorage.setItem('num_district_code', null);
+    window.location.reload();
+  }
+
+
+  scrollToId(param: string) {//
+
+    if (param == 'init') {
+      this.currentBtnNavInit = true;
+      this.currentBtnNavScores = false;
+      this.currentBtnNavCriteria = false;
+      this.currentBtnNavMcaCbi = false;
+
+
+    } else if (param == 'criteria') {
+      this.currentBtnNavInit = false;
+      this.currentBtnNavScores = false;
+      this.currentBtnNavCriteria = true;
+      this.currentBtnNavMcaCbi = false;
+
+    } else if (param == 'c1_location') {
+
+      this.currentBtnNavInit = false;
+      this.currentBtnNavScores = true;
+      this.currentBtnNavCriteria = false;
+      this.currentBtnNavMcaCbi = false;
+    } else if (param == 'mciCbiRates') {
+      this.currentBtnNavInit = false;
+      this.currentBtnNavScores = false;
+      this.currentBtnNavCriteria = false;
+      this.currentBtnNavMcaCbi = true;
+
+    }
+
+    this.scrollService.scrollToElementById(param);
+  }
+
+  btnControlNav(from) {
+
+
+
+    console.log(from);
+    var style;
+    if (from == 1) {
+
+
+      if (this.currentBtnNavInit) {
+        style = {
+          'margin-right': '4px!important',
+          'border-radius': '16px!important',
+          'height': '25px!important',
+          'background': '#939BAC!important'
+        };
+
+      } else {
+
+        style = {
+          'margin-right': '4px!important',
+          'border-radius': '16px!important',
+          'height': '25px!important',
+          'background': '#8BAA48!important'
+        };
+
+
+      }
+
+      console.log(style);
+
+      return style;
+    } else if (from == 2) {
+      if (this.currentBtnNavInit) {
+        style = {
+          'margin-right': '4px!important',
+          'border-radius': '16px!important',
+          'height': '25px!important',
+          'background': '#939BAC!important'
+        };
+      } else {
+
+        style = {
+          'margin-right': '4px!important',
+          'border-radius': '16px!important',
+          'height': '25px!important',
+          'background': '#8BAA48!important'
+        };
+
+
+      }
+
+      return style;
+
+    } else if (from == 3) {
+      if (this.currentBtnNavInit) {
+        style = {
+          'margin-right': '4px!important',
+          'border-radius': '16px!important',
+          'height': '25px!important',
+          'background': '#939BAC!important'
+        };
+      } else {
+
+        style = {
+          'margin-right': '4px!important',
+          'border-radius': '16px!important',
+          'height': '25px!important',
+          'background': '#8BAA48!important'
+        };
+
+
+      }
+      return style;
+
+
+    } else if (from == 4) {
+      if (this.currentBtnNavInit) {
+        style = {
+          'margin-right': '4px!important',
+          'border-radius': '16px!important',
+          'height': '25px!important',
+          'background': '#939BAC!important'
+        };
+        return style;
+      } else {
+
+        style = {
+          'margin-right': '4px!important',
+          'border-radius': '16px!important',
+          'height': '25px!important',
+          'background': '#8BAA48!important'
+        };
+
+
+      }
+      return style;
+
+    }
+
+  }
+
   logOut() {
     localStorage.removeItem('id');
     localStorage.removeItem('fullName');
     localStorage.removeItem('email');
-    localStorage.setItem("provinceItemName", null);
-    localStorage.setItem("num_province_code",null);
-    localStorage.setItem("districtItemName",null);
-    localStorage.setItem("num_district_code",null);
+    localStorage.setItem('provinceItemName', null);
+    localStorage.setItem('num_province_code', null);
+    localStorage.setItem('districtItemName', null);
+    localStorage.setItem('num_district_code', null);
     window.location.reload();
     this.router.navigate(['/loader']);
   }
+
   public convertAsPdf() {//
     this.excelPdfExporterService.convertAsPdf(this.roadsTab1);
   }
+
   public convertAsXls() {
     this.excelPdfExporterService.convertAsXls(this.roadsTab1);
   }
 
-  selectProvince(province,param) {
-    if(param=='manual'){
-      localStorage.setItem("provinceItemName", province[0].itemName);
-      localStorage.setItem("num_province_code", province[0].num_province_code);
-      localStorage.setItem("districtItemName",null);
-      localStorage.setItem("num_district_code",null);
+  selectProvince(province, param) {
+    if (param == 'manual') {
+      localStorage.setItem('provinceItemName', province[0].itemName);
+      localStorage.setItem('num_province_code', province[0].num_province_code);
+      localStorage.setItem('districtItemName', null);
+      localStorage.setItem('num_district_code', null);
     }
     this.currentProvinceCode = '';
     this.currentNum_district_code = '';
@@ -308,6 +471,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     }
   }
+
 
   get_districts(data) {
     this.dataservice.get_districts(data).subscribe(response => {
@@ -877,6 +1041,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       });
     });
   }
+
   public calculateCriteriaRoad() {
     this.dataservice.calculateCriteria({
       'district_id': this.currentNum_district_code,
@@ -903,6 +1068,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
   deselectProvince(province) {
     this.districts = [];
     this.district = '';
@@ -914,14 +1080,14 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.myMap.setView([33.857, 67.758], 7);
   }
 
-  selectDistrict(district,param) {
-    if(param=='manual'){
-      localStorage.setItem("districtItemName",district[0].district_name);
-      localStorage.setItem("num_district_code",district[0].num_district_code);
-      localStorage.setItem("distId",district[0].id);
-      localStorage.setItem("x_distance",district[0].x_distance);
-      localStorage.setItem("y_distance",district[0].y_distance);
-      localStorage.setItem("zoom_info_district",district[0].zoom_info_district);
+  selectDistrict(district, param) {
+    if (param == 'manual') {
+      localStorage.setItem('districtItemName', district[0].district_name);
+      localStorage.setItem('num_district_code', district[0].num_district_code);
+      localStorage.setItem('distId', district[0].id);
+      localStorage.setItem('x_distance', district[0].x_distance);
+      localStorage.setItem('y_distance', district[0].y_distance);
+      localStorage.setItem('zoom_info_district', district[0].zoom_info_district);
     }
 
     this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
@@ -944,8 +1110,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
     }
   }
+
   public highlightOnDistrictByName(district) {
-    console.log(district)
+    console.log(district);
     this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
       if (layer.feature.properties.dist_name_ == district.district_name) {
         layer.setStyle({fillColor: '#ffff00'});
@@ -957,46 +1124,48 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.myMap.setView([district.x_distance, district.y_distance], district.zoom_info_district);
     }
   }
+
   ngAfterViewInit(): void {
     var message;
     this.selectionArrayRoads = [];
     this.diakopthsDromwn = true;
     this.roadsTab1 = [];
     this.initGlobalMap();
-    this.district=[];
-    this.province=[];
+    this.district = [];
+    this.province = [];
 
 
-    if((localStorage.getItem("num_province_code")!="null" && localStorage.getItem("num_district_code")!="null")&&(localStorage.getItem("num_province_code")!=null && localStorage.getItem("num_district_code")!=null)){
-      this.province[0]={
-        "itemName": localStorage.getItem("provinceItemName"),
-        "num_province_code":Number(localStorage.getItem("num_province_code")),
-        "province_name":localStorage.getItem("provinceItemName")
+    if ((localStorage.getItem('num_province_code') != 'null' && localStorage.getItem('num_district_code') != 'null') && (localStorage.getItem('num_province_code') != null && localStorage.getItem('num_district_code') != null)) {
+      this.province[0] = {
+        'itemName': localStorage.getItem('provinceItemName'),
+        'num_province_code': Number(localStorage.getItem('num_province_code')),
+        'province_name': localStorage.getItem('provinceItemName')
       };
-      this.selectProvince(this.province,'ngOninit');
-      this.district[0]={
-        "alpha_district_code":Number(localStorage.getItem("num_district_code")),
-        "itemName":localStorage.getItem("districtItemName"),
-        "num_district_code":Number(localStorage.getItem("num_district_code")),
-        "district_name":localStorage.getItem("districtItemName"),
-        "id":Number(localStorage.getItem("distId")),
-        "x_distance":Number(localStorage.getItem("x_distance")),
-        "y_distance":Number(localStorage.getItem("y_distance")),
-        "zoom_info_district":Number(localStorage.getItem("zoom_info_district")),
+      this.selectProvince(this.province, 'ngOninit');
+      this.district[0] = {
+        'alpha_district_code': Number(localStorage.getItem('num_district_code')),
+        'itemName': localStorage.getItem('districtItemName'),
+        'num_district_code': Number(localStorage.getItem('num_district_code')),
+        'district_name': localStorage.getItem('districtItemName'),
+        'id': Number(localStorage.getItem('distId')),
+        'x_distance': Number(localStorage.getItem('x_distance')),
+        'y_distance': Number(localStorage.getItem('y_distance')),
+        'zoom_info_district': Number(localStorage.getItem('zoom_info_district')),
       };
       setTimeout(() => {
-        this.selectDistrict(this.district,'ngOninit');
+        this.selectDistrict(this.district, 'ngOninit');
       }, 900);
       //district_name
-    }else if (localStorage.getItem("num_province_code")!="null" && localStorage.getItem("num_province_code")!=null){
-      this.province[0]={
-        "itemName": localStorage.getItem("provinceItemName"),
-        "num_province_code":Number(localStorage.getItem("num_province_code")),
-        "province_name":localStorage.getItem("provinceItemName")
+    } else if (localStorage.getItem('num_province_code') != 'null' && localStorage.getItem('num_province_code') != null) {
+      this.province[0] = {
+        'itemName': localStorage.getItem('provinceItemName'),
+        'num_province_code': Number(localStorage.getItem('num_province_code')),
+        'province_name': localStorage.getItem('provinceItemName')
       };
-      this.selectProvince(this.province,'ngOninit');
+      this.selectProvince(this.province, 'ngOninit');
     }
   }
+
   public selectAllCheckMethodFacilities() {
     this.facilitiesComponent.selectAllCheckMethod(this.selectAllCheckFacilities);
   }
@@ -1004,8 +1173,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public selectAllCheckMethodVillages() {
     this.villagesComponent.selectAllCheckMethod(this.selectAllCheckVillages);
   }
+
   private initMap(filterService, roadTab2): void {
-    $(window).resize(function() {
+    $(window).resize(function () {
       setTimeout(() => {
         window.dispatchEvent(new Event('resize'));
       }, 900);
@@ -1038,7 +1208,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         });
       }
     }
-
 
 
     function highlightFeatureOnClick(e) {
@@ -1884,6 +2053,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                 </table>';
       layer.bindPopup(popupContent, {maxHeight: 400});
     }
+
     function style_Khost_Province_Shamul_District_OSM_roads_UTM42n_11_0() {
       return {
         pane: 'pane_Khost_Province_Shamul_District_OSM_roads_UTM42n_11',
@@ -1897,6 +2067,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         interactive: true,
       };
     }
+
     this.myMap.createPane('pane_Khost_Province_Shamul_District_OSM_roads_UTM42n_11');
     this.myMap.getPane('pane_Khost_Province_Shamul_District_OSM_roads_UTM42n_11').style.zIndex = 411;
     this.myMap.getPane('pane_Khost_Province_Shamul_District_OSM_roads_UTM42n_11').style['mix-blend-mode'] = 'normal';
@@ -1955,6 +2126,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                 </table>';
       layer.bindPopup(popupContent, {maxHeight: 400});
     }
+
     function style_Khost_Province_Spera_District_OSM_roads_UTM42n_12_0() {
       return {
         pane: 'pane_Khost_Province_Spera_District_OSM_roads_UTM42n_12',
@@ -1968,6 +2140,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         interactive: true,
       };
     }
+
     this.myMap.createPane('pane_Khost_Province_Spera_District_OSM_roads_UTM42n_12');
     this.myMap.getPane('pane_Khost_Province_Spera_District_OSM_roads_UTM42n_12').style.zIndex = 412;
     this.myMap.getPane('pane_Khost_Province_Spera_District_OSM_roads_UTM42n_12').style['mix-blend-mode'] = 'normal';
@@ -1982,6 +2155,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
     bounds_group.addLayer(this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3);
     this.myMap.addLayer(this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3);
+
     function pop_Khost_Province_Tanay_District_OSM_roads_UTM42n_13(feature, layer) {
       layer.on({
         mouseout: function (e) {
@@ -1995,6 +2169,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       layer.bindPopup(popupContent, {maxHeight: 400});
     }
+
     function style_Khost_Province_Tanay_District_OSM_roads_UTM42n_13_0() {
       return {
         pane: 'pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13',
@@ -2008,6 +2183,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         interactive: true,
       };
     }
+
     this.myMap.createPane('pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13');
     this.myMap.getPane('pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13').style.zIndex = 413;
     this.myMap.getPane('pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13').style['mix-blend-mode'] = 'normal';
@@ -2066,9 +2242,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.myMap.addLayer(this.layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14);
     setBounds();
   }
-  scrollToId(param: string) {//
-    this.scrollService.scrollToElementById(param);
-  }
 
 
   public openClosedSideNav() {
@@ -2077,12 +2250,14 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
     this.currentStatus = !this.currentStatus;
   }
+
   public openClosedSideNavMapSelections() {
     this.drawerMapSelections.toggle().finally(() => {
       window.dispatchEvent(new Event('resize'));
     });
     this.currentStatusMapSelection = !this.currentStatusMapSelection;
   }
+
   getProvinces() {
     this.dataservice.get_province().subscribe(response => {
       this.provinces = response.data;
@@ -2123,13 +2298,15 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
 
-  private  initGlobalMap() {
+  private initGlobalMap() {
     this.myMap = L.map('map', {
       zoomControl: true, maxZoom: 28, minZoom: 1
     }).fitBounds([[29.75680629128297, 57.077598100580225], [38.867198097612054, 77.19307423730505]]);
     this.myMap.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+
     function setBounds() {
     }
+
     this.myMap.createPane('pane_OpenStreetMap_0');
     this.myMap.getPane('pane_OpenStreetMap_0').style.zIndex = 400;
     var layer_OpenStreetMap_0 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -2150,8 +2327,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     setBounds();
 
 
-
   }
+
   editRoad(item): void {
     const dialogRef = this.dialog.open(EditRoadDialog, {
       width: '800px',
@@ -2208,12 +2385,14 @@ export class EditRoadDialog implements OnInit {
   linksToMajorActivityCentres;
   numberOfConnections;
   roadCondition;
+
   constructor(public dialogRef: MatDialogRef<EditRoadDialog>,
               private formBuilder: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private dataService: DataService, private snackBar: MatSnackBar, public router: Router,
   ) {
   }
+
   ngOnInit() {
     this.name = this.data.name;
     this.fclass = this.data.fclass;
@@ -2256,9 +2435,11 @@ export class EditRoadDialog implements OnInit {
       roadCondition: [this.roadCondition]
     });
   }
+
   get f() {
     return this.editForm.controls;
   }
+
   validateAllFormFields(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(field => {
       const control = formGroup.get(field);
@@ -2269,6 +2450,7 @@ export class EditRoadDialog implements OnInit {
       }
     });
   }
+
   public save() {
     if (this.editForm.invalid) {
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
@@ -2300,6 +2482,7 @@ export class EditRoadDialog implements OnInit {
     console.log(resultObject);
     this.dialogRef.close(resultObject);
   }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
