@@ -425,6 +425,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     }
     this.currentProvinceCode = '';
     this.currentNum_district_code = '';
+    //this.getRoadsPyParams();
+    this.roadTab2=[];
+    this.roadsTab1=[];
+
     if (this.filterService.firstInit == 0) {
       this.filterService.firstInit = 1;
       this.initMap(this.filterService, this.roadTab2);
@@ -555,6 +559,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   public hitFacilitie(facilitie) {
+    console.log(this.markers);
     facilitie.checkedFilter = !facilitie.checkedFilter;
     this.markers.forEach(e => {
       if (e.customId == (facilitie.id + facilitie.type)) {
@@ -785,9 +790,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                          <td colspan="2">' + 'Center Type: ' + element.centerType + '</td>\
                     </tr>\
                 </table>';
+
           marker.bindPopup(popupContent, {autoClose: false});
           marker.setIcon(icon);
-          marker.customId = element.id + element.type;
+          marker.customId = (element.id).toString() + element.type;
+          console.log(element.id);
+          console.log(element.type);
         } else if (element.main_type == 'schools') {
           var icon = new L.Icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
@@ -807,7 +815,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                 </table>';
           marker.bindPopup(popupContent, {autoClose: false});
           marker.setIcon(icon);
-          marker.customId = element.id + element.Type;
+          console.log(element.id);
+          console.log(element.type);
+          marker.customId = (element.id).toString() + element.type;
         } else if (element.main_type == 'mosques') {
           var icon = new L.Icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png',
@@ -817,6 +827,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             popupAnchor: [1, -34],
             shadowSize: [41, 41]
           });
+
           var popupContent = '<table>\
                      <tr>\
                          <td colspan="2">' + 'Name: ' + element.name + '</td>\
@@ -827,13 +838,23 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                 </table>';
           marker.bindPopup(popupContent, {autoClose: false});
           marker.setIcon(icon);
-          marker.customId = element.id + element.type;
+
+          console.log(element.id);
+          console.log(element.type);
+
+
+
+
+          marker.customId = (element.id).toString() + element.type;
         }
         marker.addTo(this.myMap);
         if (this.currentNum_district_code) {
           this.myMap.setView([this.district[0].x_distance, this.district[0].y_distance], Number(this.district[0].zoom_info_district) + 1);
         }
         this.markers.push(marker);
+
+        console.log(marker);
+
         if (element.checkedFilter) {
           marker.openPopup();
         }
@@ -994,7 +1015,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   updateFiterFclass(e) {
-    var sqlIn = '(' + e.toString() + ')';
+    var sqlIn = '(' + e.toString()() + ')';
     this.sqlInFclass = sqlIn; ///
     this.getRoadsPyParams();
   }
@@ -1002,7 +1023,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   updateRoadConditionFilter(e) {
     var checks = [];
     checks = e;
-    var sqlIn = '(' + e.toString() + ')';
+    var sqlIn = '(' + e.toString()() + ')';
     this.sqlInRoadConditions = sqlIn; ///
     this.getRoadsPyParams();
   }
@@ -1031,6 +1052,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         e.checked = false;
         e.checkedFilter = false;
       });
+
       this.roadTab2.forEach(e => {  //roadTab2
         var findRoad = this.roadsTab1.find(x => x.LVRR_ID == e.LVRR_ID);
         findRoad.checked = true;
@@ -1040,6 +1062,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           findRoad.checkedFilter = false;
         }
       });
+      this.scrollToId('init');
+      this.scrollToId('top');
+
+
+
     });
   }
 
@@ -1083,7 +1110,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   selectDistrict(district, param) {
     if (param == 'manual') {
-      this.scrollToId('init');
+
       //this.scrollService.scrollToElementById('init');
       localStorage.setItem('districtItemName', district[0].district_name);
       localStorage.setItem('num_district_code', district[0].num_district_code);

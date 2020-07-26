@@ -241,7 +241,8 @@ export class FacilitiesComponent implements OnInit  {
         }
       });
       window.dispatchEvent(new Event('resize'));
-
+      this.scrollService.scrollToElementById('top');
+      this.scrollService.scrollToElementById('init');
     });
   }
 

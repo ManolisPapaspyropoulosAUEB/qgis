@@ -36,8 +36,7 @@ export class VillagesComponent implements OnInit {
 
   }
 
-  //        'district_name': this.district_name,
-  //         'proName': this.provinceName,
+
 
   setDistrict(currentNum_district_code: any, currentTab, current_province_code: any, proName, district_name) {
 
@@ -67,6 +66,8 @@ export class VillagesComponent implements OnInit {
         element.checkedFilter = false;
       });
 
+
+
       this.userSelectionsForMapShow.forEach(e => {
         for (var i = 0; i < this.villages.length; i++) {
           if (this.villages[i].id == e.id) {
@@ -75,6 +76,8 @@ export class VillagesComponent implements OnInit {
           }
         }
       });
+
+      this.enableNgx();
     });
 
 
