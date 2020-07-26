@@ -4,13 +4,10 @@
     position: relative;
     top: 1px;
     left: 31px;
-    background: #3f51b5;
+    background: #2F4060;
     border-radius: 5px;
   }
-
-
   .closeIcon:hover {
-
     cursor: pointer;
   }
 
@@ -28,15 +25,17 @@
 
   }
 
-
-
+  .updtR{
+    font-size: 20px;
+    font-weight: 100;
+    padding-left: 0;
+  }
 
 </style>
-
-
 <mat-dialog-content>
   <div style="display: flex">
-    <div class="col-md-11">
+    <div class="col-md-11 updtR">
+      Update Road : <span>{{this.lvrr_id}}</span>
     </div>
     <div class="col-md-1">
     <span  (click)="onNoClick()"   class="material-icons closeIcon">
@@ -44,20 +43,15 @@
     </span>
     </div>
   </div>
-
   <form  [formGroup]="editForm" class="example-form" style="display: grid"  (ngSubmit)="save()">
-
     <mat-tab-group class="mycustomTabClassUpdateRoad">
       <mat-tab label="General Information">
-
         <div class="" style="display: flex;    margin-top: 18px;">
-
           <div class="col-md-6">
             <mat-form-field class="example-full-width">
               <mat-label>Name</mat-label>
               <input  formControlName="name"   matInput placeholder="name" [(ngModel)]="name">
             </mat-form-field>
-
             <mat-form-field  appearance="fill">
               <mat-label>fclass</mat-label>
               <mat-select  formControlName="fclass" [(value)]="fclass">
@@ -68,14 +62,10 @@
                 <mat-option value="secondary">secondary</mat-option>
               </mat-select>
             </mat-form-field>
-
-
             <mat-form-field class="example-full-width">
               <mat-label>Ref</mat-label>
               <input  formControlName="ref"   matInput placeholder="Ref" [(ngModel)]="ref">
             </mat-form-field>
-
-
             <mat-form-field  appearance="fill">
               <mat-label>Oneway</mat-label>
               <mat-select  formControlName="oneway" [(value)]="oneway">
@@ -98,9 +88,6 @@
               <span *ngIf=" f.layer.errors">   please give a positive number
                  </span>
             </mat-form-field>
-
-
-
 
             <mat-form-field  appearance="fill">
               <mat-label>Source</mat-label>
@@ -135,28 +122,18 @@
               </mat-select>
             </mat-form-field>
 
-
-
-
-
             <mat-checkbox style="    margin-right: 10px;" formControlName="bridgeMat" class="example-margin" [(ngModel)]="bridgeMat">
               Bidge
             </mat-checkbox>
 
             <mat-checkbox formControlName="tunnelMat" class="example-margin" [(ngModel)]="tunnelMat">
               Tunnel
-            </mat-checkbox>
-
+           </mat-checkbox>
           </div>
-
         </div>
-
-
       </mat-tab>
       <mat-tab label="Criteria">
-
         <div class="" style="display: flex;margin-top: 10px">
-
           <div class="col-md-6" style="    padding-top: 12px;">
             <mat-form-field class="example-full-width">
               <mat-label>Population Served </mat-label>
@@ -164,7 +141,6 @@
               <span *ngIf=" f.populationServed.errors" style="color: red">   please give a positive number
                  </span>
             </mat-form-field>
-
             <mat-form-field class="example-full-width">
               <mat-label>Facilities Served</mat-label>
               <input  type="number"  formControlName="facilitiesServed"   matInput placeholder="facilities Served" [(ngModel)]="facilitiesServed">
@@ -172,20 +148,12 @@
                  </span>
             </mat-form-field>
 
-
-
             <mat-form-field class="example-full-width">
               <mat-label>Access To GCsRMs</mat-label>
               <input  type="number"  formControlName="accessToGCsRMs"   matInput placeholder="access To GCsRMs" [(ngModel)]="accessToGCsRMs">
               <span *ngIf=" f.accessToGCsRMs.errors" style="color: red">   please give a numbers > 5 and <10
                  </span>
             </mat-form-field>
-
-
-
-
-
-
             <mat-form-field  appearance="fill">
               <mat-label>Farm to the Market </mat-label>
               <mat-select  formControlName="farmToTheMarket" [(ngModel)]="farmToTheMarket">
@@ -194,16 +162,8 @@
                 <mat-option value="5.0">5</mat-option>
               </mat-select>
             </mat-form-field>
-
-
-
-
-
           </div>
-
-
           <div class="col-md-6">
-
             <mat-form-field  appearance="fill">
               <mat-label>Agriculture Facilitaties </mat-label>
               <mat-select  formControlName="agricultureFacilitaties" [(value)]="agricultureFacilitaties">
@@ -212,7 +172,6 @@
                 <mat-option value="5.0">5</mat-option>
               </mat-select>
             </mat-form-field>
-
 
             <mat-form-field  appearance="fill">
               <mat-label>links To Major Activity Centres</mat-label>
@@ -229,36 +188,13 @@
               <span *ngIf=" f.numberOfConnections.errors"  style="color: red">   please give a numbers > 5 and <10
                  </span>
             </mat-form-field>
-
-
-
-
-
           </div>
-
-
         </div>
-
-
-
-
       </mat-tab>
     </mat-tab-group>
-
-
-
-
-
-
   </form>
-
-
-
 </mat-dialog-content>
-
-
 <mat-dialog-actions>
-  <button (click)="save()"   type="submit" mat-raised-button color="primary">Save</button>
-
+  <button style="background-color: #2F4060" (click)="save()"   type="submit" mat-raised-button color="primary">Save</button>
   <button mat-raised-button (click)="onNoClick()" >Cancel</button>
 </mat-dialog-actions>

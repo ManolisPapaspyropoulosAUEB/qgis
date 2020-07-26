@@ -19,6 +19,11 @@
 
   }
 
+  .logOutBtn .a{
+    fill: white!important;
+  }
+
+
   .btnControlSelected{
     margin-right: 4px!important;
     border-radius: 16px!important;
@@ -265,8 +270,8 @@
         </div>
 
         <mat-form-field class="example-full-width" style="width: 91%">
-          <mat-label>Search by name</mat-label>
-          <input matInput placeholder="name.." [(ngModel)]="nameFilter" (keyup)="updateFilter()">
+          <mat-label>Search by name,LVRR_ID</mat-label>
+          <input matInput placeholder="name,LVRR_ID.." [(ngModel)]="nameFilter" (keyup)="updateFilter()">
         </mat-form-field>
         <mat-form-field style="width: 91%">
           <mat-label>fclass search</mat-label>

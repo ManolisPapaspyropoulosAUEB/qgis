@@ -1083,6 +1083,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   selectDistrict(district, param) {
     if (param == 'manual') {
+      this.scrollToId('init');
+      //this.scrollService.scrollToElementById('init');
       localStorage.setItem('districtItemName', district[0].district_name);
       localStorage.setItem('num_district_code', district[0].num_district_code);
       localStorage.setItem('distId', district[0].id);
@@ -2378,6 +2380,7 @@ export class EditRoadDialog implements OnInit {
   source;
   lengthInMetres;
   elevationInMetres;
+  lvrr_id;
   populationServed;
   facilitiesServed;
   accessToGCsRMs;
@@ -2395,7 +2398,15 @@ export class EditRoadDialog implements OnInit {
   }
 
   ngOnInit() {
+
+
+
+
     this.name = this.data.name;
+    this.ref = this.data.ref;
+    this.oneway = this.data.oneway;
+    this.lvrr_id = this.data.LVRR_ID;
+
     this.fclass = this.data.fclass;
     this.ref = this.data.ref;
     this.oneway = this.data.oneway;

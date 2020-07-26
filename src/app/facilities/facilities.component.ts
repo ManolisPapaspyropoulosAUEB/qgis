@@ -54,6 +54,8 @@ export class FacilitiesComponent implements OnInit  {
   }
 
 
+
+
   public getFacilities() {
     this.dataservice.get_facilities({
       'num_district_code': this.num_district_code,
@@ -104,7 +106,7 @@ export class FacilitiesComponent implements OnInit  {
             'proName': '',
             'name': element.name,
             'proCenter': '',
-            'proCode': '',
+            'proCode': element.proCode,
             'id': element.id,
             'distName': element.distName,
 
@@ -351,6 +353,7 @@ export class FacilitiesComponent implements OnInit  {
     }
     this.filterService.facilitiesArray = this.userSelectionsForMapShow;
   }
+
 
 
 
