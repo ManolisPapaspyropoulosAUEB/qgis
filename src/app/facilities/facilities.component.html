@@ -1,34 +1,32 @@
 <style>
 
   /*::ng-deep.table{*/
-    /*padding-top: 10px!important;*/
-    /*margin-bottom: 0rem!important;*/
+  /*padding-top: 10px!important;*/
+  /*margin-bottom: 0rem!important;*/
 
   /*}*/
 
   /*ngx-datatable{*/
-    /*padding-left: 14px;*/
-    /*padding-bottom: 4%;*/
+  /*padding-left: 14px;*/
+  /*padding-bottom: 4%;*/
 
   /*}*/
 
-
-
-  .delete:hover{
-    color: red!important;
+  .delete:hover {
+    color: red !important;
   }
 
-  .addBtn{
+  .addBtn {
     position: relative;
     left: -10px;
     top: 3px;
     height: 30px;
     width: 30px;
-    background: #2F4060!important;
+    background: #2F4060 !important;
 
   }
 
-  .addCrcle{
+  .addCrcle {
     position: relative;
     top: -5px;
     font-size: 19px;
@@ -39,9 +37,9 @@
 </style>
 
 
-
-<div     class="" style="text-align: end">
-  <button   mat-button [matMenuTriggerFor]="menu" matTooltip="add facilitie" class="addBtn" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+<div class="" style="text-align: end">
+  <button mat-button [matMenuTriggerFor]="menu" matTooltip="add facilitie" class="addBtn" mat-mini-fab color="primary"
+          aria-label="Example icon button with a menu icon">
         <span class="material-icons addCrcle">
           add
         </span>
@@ -49,57 +47,51 @@
 
 
   <!--<button style="background: cornflowerblue;color: white;" mat-button [matMenuTriggerFor]="menu">Export</button>-->
-  <mat-menu #menu="matMenu" >
+  <mat-menu #menu="matMenu">
 
 
-
-
-    <button (click)="addDistrictCenter()" mat-menu-item >
+    <button (click)="addDistrictCenter()" mat-menu-item>
            <span class="material-icons">
               domain
            </span>
       District Center
     </button>
 
-    <button (click)="addSchool()" mat-menu-item >
+    <button (click)="addSchool()" mat-menu-item>
           <span class="material-icons">
           school
           </span>
       School
     </button>
 
-    <button (click)="addMosque()" mat-menu-item >
+    <button (click)="addMosque()" mat-menu-item>
       <img style="height: 24px" src="../assets/mosques.png"/>
 
       Mosque
     </button>
 
 
-
   </mat-menu>
-
 
 
 </div>
 
 
-
-
-
-
 <ng-container class="" style="display: flex">
 
   <ngx-datatable style="margin-top: 15px"
-    class="material"
+                 class="material"
 
-    [sortType]="'multi'"
-    [rowHeight]="'50'"
-    [rows]="finalfacilitiesMerged"
-    [headerHeight]="50"
-    [footerHeight]="50"
-    [rowHeight]="50"  [limit]="limit"
-    [scrollbarH]="true"
-    [scrollbarV]="true"
+                 [rowHeight]="'50'"
+                 [rows]="finalfacilitiesMerged"
+                 [headerHeight]="50"
+                 [footerHeight]="50"
+                 [reorderable]=true
+
+                 [rowHeight]="50" [limit]="limit"
+                 [scrollbarH]="true"
+                 [scrollbarV]="true"
+
 
   >
 
@@ -111,25 +103,24 @@
 
     <ngx-datatable-column name="Name" prop="name" [flexGrow]="1" [frozenLeft]="true">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <div >
+        <div>
           {{ row?.name }}
         </div>
       </ng-template>
     </ngx-datatable-column>
 
-    <ngx-datatable-column name="id" prop="id" [flexGrow]="1" >
+    <ngx-datatable-column name="id" prop="id"  [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <div >
+        <div>
           {{ row?.id }}
         </div>
       </ng-template>
     </ngx-datatable-column>
 
 
-
     <ngx-datatable-column name="Pro Center" prop="proCenter" [flexGrow]="1" [frozenLeft]="true">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <div >
+        <div>
           {{ row?.proCenter }}
         </div>
       </ng-template>
@@ -137,49 +128,50 @@
 
     <ngx-datatable-column name="Pro Code" prop="proCode" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <div >
+        <div>
           {{ row?.proCode }}
         </div>
       </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="center Type" prop="centerType" [flexGrow]="1" [frozenLeft]="true">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <div >
+        <div>
           {{ row?.centerType }}
         </div>
       </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="East" prop="east" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <div >
+        <div>
           {{ row?.east }}
         </div>
       </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="North" prop="north" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <div >
+        <div>
           {{ row?.north }}
         </div>
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="east Utm42" prop="eastUtm42" [flexGrow]="1">
+    <ngx-datatable-column name="east Utm42" [width]="200" prop="eastUtm42" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <div >
+        <div>
           {{ row?.eastUtm42 }}
         </div>
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="north Utm42" prop="northUtm42" [flexGrow]="1">
+
+    <ngx-datatable-column name="north Utm42" [width]="200" prop="northUtm42" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <div >
+        <div>
           {{ row?.northUtm42 }}
         </div>
       </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="From" prop="from" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <div >
+        <div>
           {{ row?.from }}
         </div>
       </ng-template>
@@ -187,30 +179,33 @@
 
     <ngx-datatable-column name="Target Fid" prop="from" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <div >
+        <div>
           {{ row?.targetFid }}
         </div>
       </ng-template>
     </ngx-datatable-column>
     <ngx-datatable-column name="main_type" prop="main_type" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <div >
+        <div>
           {{ row?.main_type }}
         </div>
       </ng-template>
     </ngx-datatable-column>
-    <ngx-datatable-column name="Alternative Dist Name" prop="altDistName" [flexGrow]="1">
+    <ngx-datatable-column name="Alternative Dist Name" [width]="400" prop="altDistName" [flexGrow]="1">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <div >
+        <div>
           {{ row?.altDistName }}
         </div>
       </ng-template>
     </ngx-datatable-column>
 
-    <ngx-datatable-column   name="Actions" [flexGrow]="1" [frozenRight]="true">
+    <ngx-datatable-column name="Actions"  [sortable]=false [flexGrow]="1" [frozenRight]="true">
       <ng-template let-row="row" ngx-datatable-cell-template>
-        <mat-icon class="editRoad" (click)="editFacilitie(row)" style="color: #000000;cursor: pointer;margin-left: 24px">edit</mat-icon>
-        <span class="material-icons delete" style="color: #000000;cursor: pointer;"  (click)="deleteDC(row)">delete</span>
+        <mat-icon class="editRoad" (click)="editFacilitie(row)"
+                  style="color: #000000;cursor: pointer;margin-left: 24px">edit
+        </mat-icon>
+        <span class="material-icons delete" style="color: #000000;cursor: pointer;"
+              (click)="deleteDC(row)">delete</span>
 
       </ng-template>
     </ngx-datatable-column>

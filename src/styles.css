@@ -374,6 +374,7 @@ padding-left: 5px;
   background: #f9f9f9 !important;
   border-top: 1px solid #eeeeee;
   border-bottom: 1px solid #eeeeee;
+
   /*position: relative;*/
   /*left: 17px;*/
 
@@ -465,6 +466,16 @@ padding-left: 5px;
 
 }
 
+.sortable .sort-btn.datatable-icon-up:before {
+  content: "▲";
+
+}
+
+.datatable-iconCustom:before {
+  content: "▲";
+}
+
+/*lvrr_id*/
 
 .cuppa-dropdown{
   background-color: white;
@@ -559,8 +570,14 @@ ngx-datatable {
 }
 datatable-body.datatable-body{
   height: 80vh!important;
+  overflow-y: scroll!important;
+
 }
 
+
+.ngx-datatable.scroll-horz .datatable-body {
+  overflow-y: scroll;
+}
 
 /*.ngx-datatable.material .datatable-header .datatable-header-cell {*/
   /*border-bottom: 1px solid #d1d4d7;*/

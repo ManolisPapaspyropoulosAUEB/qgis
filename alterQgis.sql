@@ -1,4 +1,4 @@
-ALTER TABLE `afggis_db`.`roads` 
+ALTER TABLE `afggis_db`.`roads`
 CHANGE COLUMN `osm_id` `osm_id` VARCHAR(200) NULL DEFAULT '-' ,
 CHANGE COLUMN `code` `code` VARCHAR(200) NULL DEFAULT '-' ,
 CHANGE COLUMN `fclass` `fclass` VARCHAR(200) NULL DEFAULT '-' ,
@@ -18,7 +18,7 @@ CHANGE COLUMN `comments_on_connections` `comments_on_connections` VARCHAR(200) N
 CHANGE COLUMN `average_population_in_persons` `average_population_in_persons` VARCHAR(200) NULL DEFAULT '-' ;
 
 
-ALTER TABLE `afggis_db`.`roads` 
+ALTER TABLE `afggis_db`.`roads`
 CHANGE COLUMN `osm_id` `osm_id` VARCHAR(200) NOT NULL DEFAULT '-' ,
 CHANGE COLUMN `code` `code` VARCHAR(200) NOT NULL DEFAULT '-' ,
 CHANGE COLUMN `fclass` `fclass` VARCHAR(200) NOT NULL DEFAULT '-' ,
@@ -37,7 +37,7 @@ CHANGE COLUMN `agriculture_facilitation` `agriculture_facilitation` VARCHAR(200)
 CHANGE COLUMN `average_population_in_persons` `average_population_in_persons` VARCHAR(200) NOT NULL DEFAULT '-' ;
 
 
-ALTER TABLE `afggis_db`.`mosques` 
+ALTER TABLE `afggis_db`.`mosques`
 CHANGE COLUMN `name` `name` VARCHAR(200) NOT NULL DEFAULT '-' ,
 CHANGE COLUMN `type` `type` VARCHAR(200) NOT NULL DEFAULT '-' ,
 CHANGE COLUMN `from_source` `from_source` VARCHAR(200) NOT NULL DEFAULT '-' ,
@@ -49,7 +49,7 @@ CHANGE COLUMN `alt_dist_name` `alt_dist_name` VARCHAR(200) NOT NULL DEFAULT '-' 
 
 
 
-ALTER TABLE `afggis_db`.`schools` 
+ALTER TABLE `afggis_db`.`schools`
 CHANGE COLUMN `name` `name` VARCHAR(49) NOT NULL DEFAULT '-' ,
 CHANGE COLUMN `type` `type` VARCHAR(16) NOT NULL DEFAULT '-' ,
 CHANGE COLUMN `from_source` `from_source` VARCHAR(200) NOT NULL DEFAULT '-' ,
@@ -58,7 +58,7 @@ CHANGE COLUMN `alt_dist_name` `alt_dist_name` VARCHAR(200) NOT NULL DEFAULT '-' 
 
 
 
-ALTER TABLE `afggis_db`.`district_centers` 
+ALTER TABLE `afggis_db`.`district_centers`
 CHANGE COLUMN `pro_name` `pro_name` VARCHAR(200) NOT NULL DEFAULT '-' ,
 CHANGE COLUMN `pro_center` `pro_center` VARCHAR(200) NOT NULL DEFAULT '-' ,
 CHANGE COLUMN `dist_name` `dist_name` VARCHAR(200) NOT NULL DEFAULT '-' ,
@@ -88,4 +88,14 @@ UPDATE schools SET name = '-' WHERE name='';
 
 
 CHANGE COLUMN `village_1` `village_1` VARCHAR(200) NOT NULL DEFAULT '-' ;
+
+
+
+-------------------------------------------------------27/7------
+
+
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE mosques SET alt_dist_name = '-' WHERE alt_dist_name='';
+
 

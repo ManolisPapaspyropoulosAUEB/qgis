@@ -35,6 +35,7 @@ import * as ExcelProper from 'exceljs';
 import * as FileSaver from 'file-saver';
 import {CoreDataComponent} from '../core-data/core-data.component';
 import {Router} from '@angular/router';
+import {DatatableComponent} from '@swimlane/ngx-datatable';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -72,7 +73,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public searchTextFacilities: '';
   public searchTextVillages: '';
   public roadsToMap = [];
+  //public lvrrid;
   public selectAllCheck;
+
+  public orderCol;
+  public descAsc;
+
+
   public flagMap;
   public asyncResult;
   public selectAllCheckFacilities;
@@ -150,7 +157,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   constructor(private  dataservice: DataService, public router: Router, public filterService: FilterService, private snackBar: MatSnackBar, public dialog: MatDialog, private scrollService: ScrollService, public excelPdfExporterService: ExcelPdfExporterService) {
   }
 
-  @ViewChild('mydatatable') mydatatable;
+  // @ViewChild('mydatatable') mydatatable;
+  @ViewChild('mydatatable') mydatatable: DatatableComponent;
+
   @ViewChild('fclassSelect') fclassSelect;
   @ViewChild('roadConditionSelect') roadConditionSelect;
   @ViewChild(FacilitiesComponent) facilitiesComponent: FacilitiesComponent;
@@ -158,7 +167,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   @ViewChild(CoreDataComponent) coreDataComponent: CoreDataComponent;
   @ViewChild('drawer') drawer: MatDrawer;
   @ViewChild('drawerMapSelections') drawerMapSelections: MatDrawer;
+  @ViewChild('lvrrid') lvrrid;
 
+
+  //
   public resetFilters() {
     this.roadWayRadio = 'FB';
     this.bridgeFilter = 'TF';
@@ -190,6 +202,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   public ngOnInit() {
+
+
+
+    this.orderCol='';
+    this.descAsc='';
+
     this.currentBtnNav = 'init';
     //        localStorage.setItem("fullName",response.fullName);
     this.fullName = localStorage.getItem('fullName');
@@ -425,6 +443,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     }
     this.currentProvinceCode = '';
     this.currentNum_district_code = '';
+    this.orderCol='';
+    this.descAsc='';
     //this.getRoadsPyParams();
     this.roadTab2=[];
     this.roadsTab1=[];
@@ -1036,6 +1056,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public getRoadsPyParams() {
     this.dataservice.getRoadsByParams(
       {
+
+
+        'orderCol': this.orderCol,
+        'descAsc':this.descAsc,
+
         'district_id': this.currentNum_district_code,
         'nameFilter': this.nameFilter,
         'limit': this.limitPage,
@@ -1062,12 +1087,30 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           findRoad.checkedFilter = false;
         }
       });
-      this.scrollToId('init');
-      this.scrollToId('top');
+      if(this.orderCol==''){
+        this.scrollToId('init');
+        this.scrollToId('top');
+      }
+
+
+
+
+
 
 
 
     });
+  }
+
+  onSort(event){//newValue
+    console.log(event.column.prop);
+    console.log(event.newValue);
+
+    this.orderCol=event.column.prop;
+    this.descAsc=event.newValue;
+
+
+    this.getRoadsPyParams();
   }
 
   public calculateCriteriaRoad() {
@@ -1109,7 +1152,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   selectDistrict(district, param) {
+    this.orderCol='';
+    this.descAsc='';
     if (param == 'manual') {
+
 
       //this.scrollService.scrollToElementById('init');
       localStorage.setItem('districtItemName', district[0].district_name);

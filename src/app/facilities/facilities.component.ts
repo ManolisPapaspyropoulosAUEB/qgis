@@ -80,7 +80,7 @@ export class FacilitiesComponent implements OnInit  {
           }
           this.facilitiesMerged.push({//
             'proName': element.proName,
-            'name': '',
+            'name': '-',
             'proCenter': element.proCenter,
             'proCode': element.proCode,
             'distName': element.distName,
@@ -88,14 +88,14 @@ export class FacilitiesComponent implements OnInit  {
             'centerType': element.centerType,
             'east': element.east,
             'id': element.id,
-            'altDistName': "",
-            'targetFid': "",
+            'altDistName': "-",
+            'targetFid': "-",
             'customId': element.id + 'customId',
             'north': element.north,
             'eastUtm42': element.eastUtm42,
             'northUtm42': element.northUtm42,
             'main_type': 'distcenters',
-            'from': '',
+            'from': '-',
             'checked': false,
             'checkedFilter': false,
             'type': 'distcenters'
@@ -103,9 +103,9 @@ export class FacilitiesComponent implements OnInit  {
         });
         this.dataMosques.forEach(element => {
           this.facilitiesMerged.push({
-            'proName': '',
+            'proName': '-',
             'name': element.name,
-            'proCenter': '',
+            'proCenter': '-',
             'proCode': element.proCode,
             'id': element.id,
             'distName': element.distName,
@@ -113,7 +113,7 @@ export class FacilitiesComponent implements OnInit  {
             'altDistName': element.altDistName,
             'customId': element.id + element.Type,
             'distCode':  element.distCode,
-            'centerType': '',
+            'centerType': '-',
             'east': element.east,
             'targetFid': element.targetFid,
             'north': element.north,
@@ -129,15 +129,15 @@ export class FacilitiesComponent implements OnInit  {
         });
         this.dataSchools.forEach(element => {
           this.facilitiesMerged.push({
-            'proName': '',
+            'proName': '-',
             'name': element.name,
-            'proCenter': '',
+            'proCenter': '-',
             'proCode': element.proCode,
             'distName': element.distName,
 
             'distCode': element.distCode,
             'customId': element.id + element.type,
-            'centerType': '',
+            'centerType': '-',
             'altDistName': element.altDistName,
             'targetFid': element.targetFid,
             'east': element.east,
@@ -155,13 +155,13 @@ export class FacilitiesComponent implements OnInit  {
       } else if (this.type == 'Schools') {
         this.dataSchools.forEach(element => {
           this.facilitiesMerged.push({
-            'proName': '',
+            'proName': '-',
             'name': element.name,
-            'proCenter': '',
+            'proCenter': '-',
             'proCode': element.proCode,
             'distName': element.distName,
             'distCode': element.distCode,
-            'centerType': '',
+            'centerType': '-',
             'altDistName': element.altDistName,
             'east': element.east,
             'id': element.id,
@@ -180,14 +180,14 @@ export class FacilitiesComponent implements OnInit  {
         this.dataMosques.forEach(element => {
 
           this.facilitiesMerged.push({
-            'proName': '',
+            'proName': '-',
             'name': element.name,
-            'proCenter': '',
+            'proCenter': '-',
             'proCode': element.proCode,
             'id': element.id,
             'distName': element.distName,
             'distCode': element.distCode,
-            'centerType': '',
+            'centerType': '-',
             'altDistName': element.altDistName,
             'east': element.east,
             'north': element.north,
@@ -206,7 +206,7 @@ export class FacilitiesComponent implements OnInit  {
         this.dataDistCenters.forEach(element => {
           this.facilitiesMerged.push({
             'proName': element.proName,
-            'name': '',
+            'name': '-',
             'proCenter': element.proCenter,
             'proCode': element.proCode,
             'distName': element.distName,
@@ -214,13 +214,13 @@ export class FacilitiesComponent implements OnInit  {
             'centerType': element.centerType,
             'east': element.east,
             'id': element.id,
-            'altDistName': "",
-            'targetFid': "",
+            'altDistName': "-",
+            'targetFid': "-",
             'north': element.north,
             'eastUtm42': element.eastUtm42,
             'northUtm42': element.northUtm42,
             'main_type': 'distcenters',
-            'from': '',
+            'from': '-',
             'checked': false,
             'checkedFilter': false,
             'type': 'distcenters'
