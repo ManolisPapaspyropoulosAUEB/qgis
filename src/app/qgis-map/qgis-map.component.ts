@@ -36,6 +36,9 @@ import * as FileSaver from 'file-saver';
 import {CoreDataComponent} from '../core-data/core-data.component';
 import {Router} from '@angular/router';
 import {DatatableComponent} from '@swimlane/ngx-datatable';
+import {VERSION} from '@angular/material/core';
+import { NgxImageGalleryComponent, GALLERY_IMAGE, GALLERY_CONF } from "ngx-image-gallery";
+import {Gallery} from 'ng-gallery';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -1088,8 +1091,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
       if(this.orderCol==''){
-        this.scrollToId('init');
-        this.scrollToId('top');
+        // this.scrollToId('init');
+        // this.scrollToId('top');
       }
 
 
@@ -2405,6 +2408,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   }
 
+
+
+
   editRoad(item): void {
     const dialogRef = this.dialog.open(EditRoadDialog, {
       width: '800px',
@@ -2433,7 +2439,129 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
+
+  photoGalley(item){
+    const dialogRef = this.dialog.open(PhotoGallery, {
+      data: item
+    });
+  }
+
 }
+
+
+
+const dataI = [
+  {
+    srcUrl: 'https://preview.ibb.co/jrsA6R/img12.jpg',
+    previewUrl: 'https://preview.ibb.co/jrsA6R/img12.jpg'
+  },
+  {
+    srcUrl: 'https://preview.ibb.co/kPE1D6/clouds.jpg',
+    previewUrl: 'https://preview.ibb.co/kPE1D6/clouds.jpg'
+  },
+  {
+    srcUrl: 'https://preview.ibb.co/mwsA6R/img7.jpg',
+    previewUrl: 'https://preview.ibb.co/mwsA6R/img7.jpg'
+  },
+  {
+    srcUrl: 'https://preview.ibb.co/kZGsLm/img8.jpg',
+    previewUrl: 'https://preview.ibb.co/kZGsLm/img8.jpg'
+  }
+];
+
+@Component({
+  selector: './photo-gallery-road',
+  templateUrl: './photo-gallery-road.html',
+  styleUrls: ['./photo-gallery-road.css']
+
+})
+export class PhotoGallery implements OnInit {
+  base64File: string = null;
+  filename: string = null;
+  version = VERSION;
+  imgObjHttp;
+  imageData ;
+
+
+  constructor(public dialogRef: MatDialogRef<EditRoadDialog>,public gallery: Gallery,
+              private formBuilder: FormBuilder,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private dataService: DataService, private snackBar: MatSnackBar, public router: Router,
+  ) {
+  }
+
+  ngOnInit() {
+
+    this.dataService.getPhotoByRoadId(this.data).subscribe(response=>{
+      this.imageData=response.data;
+    });
+
+
+
+
+  }
+
+
+
+
+  onFileSelect(e: any): void {
+    try {
+      const file = e.target.files[0];
+      const fReader = new FileReader()
+      fReader.readAsDataURL(file);
+      console.log( file);
+
+      fReader.onloadend = (_event: any) => {
+        this.filename = file.name;
+        this.base64File = _event.target.result;
+
+        console.log( this.base64File);
+        console.log( this.filename);
+
+        this. imgObjHttp={
+
+          "base64String":this.base64File,
+          "name":this.filename,
+          "district":this.data.district,
+          "roadId":this.data.id
+
+
+        };
+
+
+
+
+      }
+    } catch (error) {
+      this.filename = null;
+      this.base64File = null;
+      console.log('no file was selected...');
+    }
+  }
+
+
+
+
+  public save() {
+    this.dataService.uploadPhotoTest(this.imgObjHttp).subscribe(response=>{
+      if(response.status=='ok'){
+        this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+      }else{
+        this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+
+      }
+    });
+
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}
+
+
+
 
 
 @Component({

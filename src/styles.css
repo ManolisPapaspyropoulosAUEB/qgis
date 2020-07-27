@@ -157,6 +157,10 @@ c-remove {
 }
 
 
+.mycustomTabClassUpdateRoad .mat-tab-label-active .mat-tab-label-content {
+  color: #fff!important;
+}
+
 
 
 
@@ -400,7 +404,9 @@ padding-left: 5px;
 
 
 
-
+.mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
+  transform: none !important;
+}
 
 .ngx-datatable.bootstrap .datatable-footer {
   background: rgb(37, 220, 0);
@@ -574,6 +580,17 @@ datatable-body.datatable-body{
 
 }
 
+.mycustomTabClassUpdateRoad .mat-tab-label-active .mat-tab-label-content {
+  color: #fff!important;
+}
+
+.mycustomTabClassUpdateRoad .mat-tab-label-active .mat-tab-label-content {
+  color: #fff!important;
+}
+
+.mycustomTabClass .mat-tab-label-active .mat-tab-label-content {
+  color: #fff!important;
+}
 
 .ngx-datatable.scroll-horz .datatable-body {
   overflow-y: scroll;

@@ -1108,9 +1108,39 @@
               </ngx-datatable-column>
               <ngx-datatable-column name="Actions" [sortable]=false [flexGrow]="1" [frozenRight]="true">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <mat-icon class="editRoad" (click)="editRoad(row)"
-                            style="color: #000000;cursor: pointer;    margin-left: 53px;">edit
-                  </mat-icon>
+
+
+
+                  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                      <mat-icon class="editRoad" (click)="editRoad(row)"
+                                style="color: #000000;cursor: pointer;">edit
+                      </mat-icon>
+                      <span>Edit</span>
+                    </button>
+
+
+                    <button  mat-menu-item (click)="photoGalley(row)">
+
+                      <span class="material-icons">
+                          insert_photo
+                      </span>
+
+
+                      <span>Photo Gallery</span>
+                    </button>
+
+
+
+
+
+                  </mat-menu>
+
+
+
                 </ng-template>
               </ngx-datatable-column>
             </ngx-datatable>

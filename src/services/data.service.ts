@@ -36,6 +36,18 @@ export class DataService {
     );
   }
 
+  uploadPhotoTest(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'uploadPhotoTest', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+
+      }
+    );
+  }
+
   //
 
   updateEstimatedMaintenanceCost(data) {
@@ -135,7 +147,19 @@ export class DataService {
   }
 
 
+  getPhotoByRoadId(data) {
+    let query_data : any = {};
 
+
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'getPhotoByRoadId', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
 
 
   get_province() {

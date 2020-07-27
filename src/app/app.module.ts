@@ -74,7 +74,7 @@ import { UnitProductComponent } from './products/unit-product/unit-product.compo
 import { FileuploadComponent } from './fileupload/fileupload.component';
 import {FileUploadModule} from 'ng2-file-upload';
 import { SliderComponent } from './slider/slider.component';
-import {EditRoadDialog, QgisMapComponent} from './qgis-map/qgis-map.component';
+import {EditRoadDialog, PhotoGallery, QgisMapComponent} from './qgis-map/qgis-map.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
 import {FilterService} from '../services/filter.service';
@@ -85,6 +85,11 @@ import {NgxSelectModule} from 'ngx-select-ex';
 import {NgxCaptchaModule} from 'ngx-captcha';
 import { LoaderComponent } from './loader/loader.component';
 import {RoadsComponent} from './roads/roads.component';
+import { CarouselComponent } from './qgis-map/carousel/carousel.component';
+import {NgImageSliderModule} from 'ng-image-slider';
+import {NgxImageGalleryModule} from 'ngx-image-gallery';
+import { GalleryModule } from 'ng-gallery';
+import {LightboxModule} from 'ng-gallery/lightbox';
 
 
 
@@ -158,6 +163,7 @@ const routes: Routes = [
     RoadsComponent,
     AddSchoolDialog,
     DeleteVillageDialog,
+    PhotoGallery,
     VillageDialog,
     AddDCDialog,
     AppComponent,
@@ -177,7 +183,8 @@ const routes: Routes = [
     SliderComponent,
     QgisMapComponent,
     CoreDataComponent,
-    LoaderComponent
+    LoaderComponent,
+    CarouselComponent
   ],
   exports: [
     FormsModule,
@@ -185,13 +192,17 @@ const routes: Routes = [
   ],
 
   imports: [
+    NgImageSliderModule,
+    NgxImageGalleryModule,
     NgxCaptchaModule,
     NgxSelectModule,
     Ng2SearchPipeModule,
     FormsModule,
+    LightboxModule,
     MatSnackBarModule,
     MatProgressBarModule,
     HttpClientModule,
+    GalleryModule,
     MatButtonModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
@@ -253,6 +264,7 @@ const routes: Routes = [
   ],
   entryComponents: [
     EditRoadDialog,
+    PhotoGallery,
     DeleteDcDialog,
     VillageDialog,
     AddSchoolDialog,
