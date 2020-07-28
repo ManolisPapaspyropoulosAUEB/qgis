@@ -16,6 +16,7 @@ export class RemoteDataService {
 
   //public serviceURL = 'http://192.168.1.64:9015/';
 public serviceURL = 'http://192.168.1.2:9023/'
+  imageURL: any;
 
 
 

@@ -32,6 +32,13 @@ export class CoreDataComponent implements OnInit {
 
   }
 
+  toggleExpandRowActivate(e){
+    if(e.type == 'click') {
+
+      this.toggleExpandRow(e.row);
+    }
+  }
+
 
   public updateFilters(label){
     this.label=label;

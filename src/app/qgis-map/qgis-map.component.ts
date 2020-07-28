@@ -1,4 +1,15 @@
-import {AfterViewChecked, AfterViewInit, Component, DoCheck, ElementRef, Inject, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  DoCheck,
+  ElementRef, EventEmitter,
+  Inject,
+  OnInit,
+  Output,
+  ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
 import * as $ from 'jquery';
 import * as L from 'leaflet';
 import {json_Khost_Province_Baak_District_OSM_roads_UTM42n_2} from './data/Khost_Province_Baak_District_OSM_roads_UTM42n_2';
@@ -20,7 +31,7 @@ import {DataService} from '../../services/data.service';
 import {MatTabChangeEvent} from '@angular/material/tabs';
 import {FacilitiesComponent} from '../facilities/facilities.component';
 import {FilterService} from '../../services/filter.service';
-import {VillagesComponent} from '../villages/villages.component';
+import {DeleteVillageDialog, VillagesComponent} from '../villages/villages.component';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 import {MatDrawer} from '@angular/material/sidenav';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
@@ -39,6 +50,10 @@ import {DatatableComponent} from '@swimlane/ngx-datatable';
 import {VERSION} from '@angular/material/core';
 import { NgxImageGalleryComponent, GALLERY_IMAGE, GALLERY_CONF } from "ngx-image-gallery";
 import {Gallery} from 'ng-gallery';
+import {Image} from './image';
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
+import {ImagePipe} from './image.pipe';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -157,7 +172,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public selectionArrayRoads;
   public layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8: L.geoJson;
 
-  constructor(private  dataservice: DataService, public router: Router, public filterService: FilterService, private snackBar: MatSnackBar, public dialog: MatDialog, private scrollService: ScrollService, public excelPdfExporterService: ExcelPdfExporterService) {
+  constructor(private  dataservice: DataService, domSanitizer: DomSanitizer,public router: Router, public filterService: FilterService, private snackBar: MatSnackBar, public dialog: MatDialog, private scrollService: ScrollService, public excelPdfExporterService: ExcelPdfExporterService) {
   }
 
   // @ViewChild('mydatatable') mydatatable;
@@ -1130,18 +1145,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
   }
 
-  public calculateCriteria() {
-    this.dataservice.calculateCriteria({
-      'district_id': this.currentNum_district_code
-    }).subscribe(response => {
-      if (response.status == 'ok') {
-        this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
-        this.getRoadsPyParams();
-      } else {
-        this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
-      }
-    });
-  }
+
 
   deselectProvince(province) {
     this.districts = [];
@@ -2443,32 +2447,406 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   photoGalley(item){
     const dialogRef = this.dialog.open(PhotoGallery, {
-      data: item
+      data: item,
+      width: '800px'});
+  }
+
+  notes(item){
+    const dialogRef = this.dialog.open(NotesDialog, {
+      data: item,
+      width: '800px',
+
+
     });
+  }
+
+
+  public calculateCriteria() {
+
+    const dialogRef = this.dialog.open(CriteriaConfirmationDialog, {
+      width: '800px'
+    });
+
+
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if(result){
+        this.dataservice.calculateCriteria({
+          'district_id': this.currentNum_district_code
+        }).subscribe(response => {
+          if (response.status == 'ok') {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+            this.getRoadsPyParams();
+          } else {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+          }
+        });
+      }
+
+    });
+
+
+
+
+
   }
 
 }
 
 
+@Component({
+  selector: './confirmation criteria-dialog',
+  templateUrl: './confirmation criteria-dialog.html'
+})
+export class CriteriaConfirmationDialog implements OnInit {
+  @Output() dismiss = new EventEmitter();
+  @Output() focusout = new EventEmitter();
+  constructor(public dialogRef: MatDialogRef<CriteriaConfirmationDialog>, public dialog: MatDialog,private  dataservice: DataService, private snackBar: MatSnackBar,
+              @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
 
-const dataI = [
-  {
-    srcUrl: 'https://preview.ibb.co/jrsA6R/img12.jpg',
-    previewUrl: 'https://preview.ibb.co/jrsA6R/img12.jpg'
-  },
-  {
-    srcUrl: 'https://preview.ibb.co/kPE1D6/clouds.jpg',
-    previewUrl: 'https://preview.ibb.co/kPE1D6/clouds.jpg'
-  },
-  {
-    srcUrl: 'https://preview.ibb.co/mwsA6R/img7.jpg',
-    previewUrl: 'https://preview.ibb.co/mwsA6R/img7.jpg'
-  },
-  {
-    srcUrl: 'https://preview.ibb.co/kZGsLm/img8.jpg',
-    previewUrl: 'https://preview.ibb.co/kZGsLm/img8.jpg'
+
   }
-];
+
+
+
+
+
+  ngOnInit() {
+
+  }
+
+  onFocusOut(event){
+    this.focusout.emit(event)
+  }
+
+
+
+
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  public yes() {
+    this.dialogRef.close(true);
+
+  }
+
+
+
+
+
+
+  public save(){
+
+  }
+
+
+
+
+
+
+}
+
+
+
+
+
+@Component({
+  selector: './notes-dialog',
+  templateUrl: './notes-dialog.html'
+})
+export class NotesDialog implements OnInit {
+  @Output() dismiss = new EventEmitter();
+  @Output() focusout = new EventEmitter();
+  constructor(public dialogRef: MatDialogRef<NotesDialog>, public dialog: MatDialog,private  dataservice: DataService, private snackBar: MatSnackBar,
+              @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+
+
+  }
+
+
+
+
+
+  ngOnInit() {
+    console.log(this.data);
+    this.getNoteByRoadId();
+  }
+  notes = [];
+  onDismiss(event){
+    this.dismiss.emit(event);
+  }
+
+  onFocusOut(event){
+    this.focusout.emit(event)
+  }
+
+  editNote(note){
+    note.updateMode=1;
+    console.log(note);
+    const dialogRef = this.dialog.open(AddingNoteDialog, {
+      width: '800px',
+      data: note});
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dataservice.editNote( result).subscribe(response=>{
+          this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+          this.getNoteByRoadId();
+        });
+
+        console.log(result);
+      }
+    });
+
+  }
+
+
+
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  public yes() {
+    this.dialogRef.close(true);
+
+  }
+
+  getNoteByRoadId(){
+    this.dataservice.getNoteByRoadId({"roadId":this.data.id}).subscribe(response=>{
+      if(response.status=='ok'){
+        this.notes=response.data;
+      }
+    })
+  }
+
+  addNote(){
+    this.data.updateMode=0;
+
+    const dialogRef = this.dialog.open(AddingNoteDialog, {
+      width: '800px',
+      data: this.data
+
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dataservice.addNote( result).subscribe(response=>{
+          this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+          this.getNoteByRoadId();
+        });
+
+        console.log(result);
+      }
+    });
+
+
+  }
+
+
+
+
+  public save(){
+
+  }
+
+
+  deleteNote(note){
+    note.updateMode=1;
+    console.log(note);
+    const dialogRef = this.dialog.open(DeleteNoteDialog, {
+      width: '800px',
+      data: note});
+
+    console.log(note);
+
+
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dataservice.deleteNote( note).subscribe(response=>{
+          this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+          this.getNoteByRoadId();
+        });
+
+        console.log(result);
+      }
+    });
+
+  }
+
+
+
+}
+
+
+
+@Component({
+  selector: './delete-note-dialog',
+  templateUrl: './delete-note-dialog.html'
+})
+export class DeleteNoteDialog implements OnInit {
+  @Output() dismiss = new EventEmitter();
+  @Output() focusout = new EventEmitter();
+  constructor(public dialogRef: MatDialogRef<AddingNoteDialog>, public dialog: MatDialog, private formBuilder: FormBuilder,private snackBar: MatSnackBar,
+              @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+
+  }
+
+
+
+  ngOnInit() {
+  }
+
+
+  onNoClick(): void {
+  }
+
+  public yes() {
+    this.dialogRef.close(true);
+
+  }
+
+
+
+
+
+
+
+}
+
+
+
+
+
+@Component({
+  selector: './add-note-dialog',
+  templateUrl: './add-note-dialog.html'
+})
+export class AddingNoteDialog implements OnInit {
+  @Output() dismiss = new EventEmitter();
+  @Output() focusout = new EventEmitter();
+  constructor(public dialogRef: MatDialogRef<AddingNoteDialog>, public dialog: MatDialog, private formBuilder: FormBuilder,private snackBar: MatSnackBar,
+              @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+
+  }
+
+  editForm2: FormGroup;
+  title;
+  description;
+
+
+
+
+  ngOnInit() {
+
+    console.log(this.data);
+    if(this.data.updateMode==1){
+      this.title=this.data.title;
+      this.description=this.data.description;
+    }else{
+      this.title='';
+      this.description='';
+    }
+
+
+    this.editForm2 = this.formBuilder.group({
+
+      title: [this.title, Validators.required],
+      description: [this.description, Validators.required],
+
+
+
+    });
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  public yes() {
+    this.dialogRef.close(true);
+
+  }
+
+
+
+  get f() {
+    return this.editForm2.controls;
+  }
+
+
+  validateAllFormFields(formGroup: FormGroup) {         //{1}
+    Object.keys(formGroup.controls).forEach(field => {  //{2}
+      const control = formGroup.get(field);             //{3}
+      if (control instanceof FormControl) {             //{4}
+        control.markAsTouched({onlySelf: true});
+      } else if (control instanceof FormGroup) {        //{5}
+        this.validateAllFormFields(control);            //{6}
+      }
+    });
+  }
+
+
+  public saveNote(){
+
+    console.log("eee");
+    if (this.editForm2.invalid) {
+      this.validateAllFormFields(this.editForm2);
+      this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
+
+
+
+
+    }
+
+    if(this.data.updateMode==0){
+
+      let resultObject = {
+        title: this.f.title.value,
+        description: this.f.description.value,
+        roadId: this.data.id
+      };
+      this.dialogRef.close(resultObject);
+
+    }else{
+
+      let resultObject = {
+        title: this.f.title.value,
+        description: this.f.description.value,
+        roadId: this.data.roadId,
+        id: this.data.id
+      };
+      this.dialogRef.close(resultObject);
+
+    }
+
+
+
+
+
+  }
+
+
+}
+
+
+
+
+
+
 
 @Component({
   selector: './photo-gallery-road',
@@ -2476,83 +2854,91 @@ const dataI = [
   styleUrls: ['./photo-gallery-road.css']
 
 })
+
 export class PhotoGallery implements OnInit {
   base64File: string = null;
-  filename: string = null;
   version = VERSION;
   imgObjHttp;
   imageData ;
+  SERVER_URL = "http://localhost:9023/uploadFile";
+  uploadForm: FormGroup;
+  file='';
 
 
-  constructor(public dialogRef: MatDialogRef<EditRoadDialog>,public gallery: Gallery,
-              private formBuilder: FormBuilder,
+
+  constructor(public dialogRef: MatDialogRef<EditRoadDialog>,public gallery: Gallery,public domSanitizer: DomSanitizer, public dialog: MatDialog,private image: ImagePipe,
               @Inject(MAT_DIALOG_DATA) public data: any,
-              private dataService: DataService, private snackBar: MatSnackBar, public router: Router,
+              private dataService: DataService, private snackBar: MatSnackBar, public router: Router,private formBuilder: FormBuilder, private httpClient: HttpClient
   ) {
   }
 
-  ngOnInit() {
-
-    this.dataService.getPhotoByRoadId(this.data).subscribe(response=>{
-      this.imageData=response.data;
-    });
-
-
-
-
-  }
-
-
-
-
-  onFileSelect(e: any): void {
-    try {
-      const file = e.target.files[0];
-      const fReader = new FileReader()
-      fReader.readAsDataURL(file);
-      console.log( file);
-
-      fReader.onloadend = (_event: any) => {
-        this.filename = file.name;
-        this.base64File = _event.target.result;
-
-        console.log( this.base64File);
-        console.log( this.filename);
-
-        this. imgObjHttp={
-
-          "base64String":this.base64File,
-          "name":this.filename,
-          "district":this.data.district,
-          "roadId":this.data.id
-
-
-        };
-
-
-
-
-      }
-    } catch (error) {
-      this.filename = null;
-      this.base64File = null;
-      console.log('no file was selected...');
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.uploadForm.get('file').setValue(file);
     }
   }
 
+  ngOnInit() {
+    this.uploadForm = this.formBuilder.group({
+      file: ['']
+    });
+    this.getImages();
+
+  }
+
+  public getImages(){
+    this.dataService.getPhotoByRoadId(this.data).subscribe(response=>{
+      this.imageData=response.data;
+    });
+  }
 
 
 
-  public save() {
-    this.dataService.uploadPhotoTest(this.imgObjHttp).subscribe(response=>{
-      if(response.status=='ok'){
-        this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
-      }else{
-        this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+  onSubmit() {
+    const formData = new FormData();
+    formData.append('file', this.uploadForm.get('file').value);
+    formData.append("district",this.data.district);
+    formData.append("roadId",this.data.id);
+    this.httpClient.post<any>(this.SERVER_URL, formData).subscribe(
 
-      }
+
+      (res) => {
+        if(res.status=='ok'){
+          this.getImages();
+          this.snackBar.open(res.message, 'x', <MatSnackBarConfig>{duration: 4000});
+        }else{
+
+          this.snackBar.open(res.message, 'x', <MatSnackBarConfig>{duration: 4000});
+        }
+
+      },
+      (err) => console.log(err)
+    );
+  }
+
+
+  deletePhoto(img){
+
+    const dialogRef = this.dialog.open(DeleteImgDialog, {
+      width: '600px',
+      maxHeight:'750px',
+      data: img.id
     });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dataService.deleteImage(img).subscribe(response => {
+          if (response.status == 'ok') {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+            this.getImages();
+          } else {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+          }
+        });
+      }
+
+    });
   }
 
   onNoClick(): void {
@@ -2561,6 +2947,28 @@ export class PhotoGallery implements OnInit {
 }
 
 
+@Component({
+  selector: './delete-img-dialog',
+  templateUrl: './delete-img-dialog.html'
+})
+export class DeleteImgDialog implements OnInit {
+
+  constructor(public dialogRef: MatDialogRef<DeleteImgDialog>,
+              @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+  }
+  ngOnInit() {}
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  public yes() {
+    this.dialogRef.close(true);
+
+  }
+}
 
 
 
@@ -2590,7 +2998,7 @@ export class EditRoadDialog implements OnInit {
   linksToMajorActivityCentres;
   numberOfConnections;
   roadCondition;
-
+  connectivity;
   constructor(public dialogRef: MatDialogRef<EditRoadDialog>,
               private formBuilder: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -2603,11 +3011,14 @@ export class EditRoadDialog implements OnInit {
 
 
 
+
     this.name = this.data.name;
     this.ref = this.data.ref;
     this.oneway = this.data.oneway;
     this.lvrr_id = this.data.LVRR_ID;
+    this.connectivity = this.data.connectivity;
 
+    this.linksToMajorActivityCentres=0;
     this.fclass = this.data.fclass;
     this.ref = this.data.ref;
     this.oneway = this.data.oneway;
@@ -2640,7 +3051,8 @@ export class EditRoadDialog implements OnInit {
       elevationInMetres: [this.elevationInMetres, Validators.min(0)],
       populationServed: [this.populationServed, Validators.min(0)],
       facilitiesServed: [this.facilitiesServed, Validators.min(0)],
-      accessToGCsRMs: [this.accessToGCsRMs, [Validators.min(5), Validators.max(10)]],
+      accessToGCsRMs: [this.accessToGCsRMs, [Validators.min(5), Validators.max(9)]],
+      connectivity: [this.connectivity,Validators.min(0)],
       farmToTheMarket: [this.farmToTheMarket],
       agricultureFacilitaties: [this.agricultureFacilitaties],
       linksToMajorActivityCentres: [this.linksToMajorActivityCentres],
@@ -2648,6 +3060,8 @@ export class EditRoadDialog implements OnInit {
       roadCondition: [this.roadCondition]
     });
   }
+
+
 
   get f() {
     return this.editForm.controls;
@@ -2679,7 +3093,10 @@ export class EditRoadDialog implements OnInit {
       layer: this.f.layer.value,
       bridgeMat: this.f.bridgeMat.value,
       tunnelMat: this.f.tunnelMat.value,
+      connectivity: this.f.connectivity.value,
       source: this.source,
+
+
       lengthInMetres: this.f.lengthInMetres.value,
       elevationInMetres: this.f.elevationInMetres.value,
       populationServed: this.f.populationServed.value,

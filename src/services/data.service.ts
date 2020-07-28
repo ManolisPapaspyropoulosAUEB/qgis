@@ -293,6 +293,72 @@ export class DataService {
     );
   }
 
+  deleteImage(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'deleteImage', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
+
+
+
+
+  getNoteByRoadId(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'getNoteByRoadId', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
+
+  addNote(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'addNote', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
+
+
+  deleteNote(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'deleteNote', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
+
+  editNote(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'editNote', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
+
+  //
+
   updateVillage(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'updateVillage', data).map(
       (response) => {

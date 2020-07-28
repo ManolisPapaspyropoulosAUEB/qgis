@@ -74,7 +74,14 @@ import { UnitProductComponent } from './products/unit-product/unit-product.compo
 import { FileuploadComponent } from './fileupload/fileupload.component';
 import {FileUploadModule} from 'ng2-file-upload';
 import { SliderComponent } from './slider/slider.component';
-import {EditRoadDialog, PhotoGallery, QgisMapComponent} from './qgis-map/qgis-map.component';
+import {
+  AddingNoteDialog, CriteriaConfirmationDialog,
+  DeleteImgDialog, DeleteNoteDialog,
+  EditRoadDialog,
+  NotesDialog,
+  PhotoGallery,
+  QgisMapComponent
+} from './qgis-map/qgis-map.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {AngularMultiSelectModule} from 'angular2-multiselect-dropdown';
 import {FilterService} from '../services/filter.service';
@@ -90,6 +97,9 @@ import {NgImageSliderModule} from 'ng-image-slider';
 import {NgxImageGalleryModule} from 'ngx-image-gallery';
 import { GalleryModule } from 'ng-gallery';
 import {LightboxModule} from 'ng-gallery/lightbox';
+import {MaterialFileInputModule} from 'ngx-material-file-input';
+import { NoteComponent } from './note/note.component';
+import {ImagePipe} from './qgis-map/image.pipe';
 
 
 
@@ -157,7 +167,12 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    NotesDialog,
     EditRoadDialog,
+    CriteriaConfirmationDialog,
+    AddingNoteDialog,
+    DeleteNoteDialog,
+    DeleteImgDialog,
     DeleteDcDialog,
     MosqueDialog,
     RoadsComponent,
@@ -184,15 +199,21 @@ const routes: Routes = [
     QgisMapComponent,
     CoreDataComponent,
     LoaderComponent,
-    CarouselComponent
+    CarouselComponent,
+    NoteComponent
   ],
   exports: [
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule
   ],
 
+
+
   imports: [
+    MaterialFileInputModule,
     NgImageSliderModule,
+    MatInputModule,
     NgxImageGalleryModule,
     NgxCaptchaModule,
     NgxSelectModule,
@@ -264,6 +285,11 @@ const routes: Routes = [
   ],
   entryComponents: [
     EditRoadDialog,
+    DeleteNoteDialog,
+    CriteriaConfirmationDialog,
+    AddingNoteDialog,
+    NotesDialog,
+    DeleteImgDialog,
     PhotoGallery,
     DeleteDcDialog,
     VillageDialog,

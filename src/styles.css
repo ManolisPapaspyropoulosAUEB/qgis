@@ -590,7 +590,15 @@ datatable-body.datatable-body{
 
 .mycustomTabClass .mat-tab-label-active .mat-tab-label-content {
   color: #fff!important;
-}
+}.mycustomTabClassCiteria .mat-tab-label-active .mat-tab-label-content {
+   color: #fff!important;
+ }
+
+
+
+
+
+
 
 .ngx-datatable.scroll-horz .datatable-body {
   overflow-y: scroll;

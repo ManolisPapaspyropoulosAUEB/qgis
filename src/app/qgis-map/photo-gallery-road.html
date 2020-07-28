@@ -1,0 +1,139 @@
+<style>
+  img {
+    vertical-align: middle;
+    border-style: none;
+    width: 200px;
+    margin-left: 20px;
+    margin-top: 20px;
+    height: 125px;
+    cursor: pointer;
+    border: 1px solid #cecece;
+    border-radius: 5px;
+  }
+
+  mat-dialog-content{
+    display: block;
+    margin: 0 -24px;
+    min-height: 400px;
+    max-height: 400px;
+    padding: 0 24px;
+    overflow-y: scroll;
+
+  }
+  .  mat-dialog-content{
+    display: block;
+    margin: 0 -24px;
+    min-height: 400px;
+    padding: 0 24px;
+    max-height: 400px;
+
+    overflow-y: scroll;
+  }
+
+  .container{
+    overflow-y: scroll;
+    max-height: 439px;
+    width: 103%;
+  }
+
+
+
+  .delPhoto{
+    position: relative;
+    top: 66px;
+    left: -28px;
+    z-index: 3;
+    color: #474748;
+    background: #d6d6d6;
+    border-radius: 10px;
+  }
+  .delPhoto:hover{
+    color: #ff926d;
+    cursor: pointer;
+  }
+
+
+  .mat-dialog-actions{
+    margin-top: 56px;
+
+  }
+
+
+
+
+  .closeIcon {
+    color: white;
+    position: relative;
+    background: #2F4060;
+    border-radius: 5px;
+  }
+  .closeIcon:hover{
+    cursor: pointer!important;
+  }
+
+  .uplB {
+    background-color: #2f4060;
+    height: 22px;
+    position: relative;
+    top: 10px;
+    left: 10px;
+  }
+
+</style>
+
+<mat-dialog-content>
+  <div style="display: flex" style="display: flex;
+    background: whitesmoke;
+    border-radius: 5px;">
+    <div class="col-md-11">
+
+      <h2 >Uploads</h2>
+
+    </div>
+    <div class="col-md-1" style="padding-top: 7px">
+    <span  (click)="onNoClick()"   class="material-icons closeIcon">
+      close
+    </span>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row" gallerize>
+      <div *ngFor='let img of imageData'>
+
+        <img class="property-thumb" src="{{img.previewFile }}">
+        <span matTooltip="delete image" (click)="deletePhoto(img)"  class="material-icons delPhoto">
+            delete
+        </span>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+
+
+
+  <mat-dialog-actions>
+    <form style="display: flex;margin-top: 34px;" [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+      <div>
+
+
+        <mat-form-field>
+          <ngx-mat-file-input (change)="onFileSelect($event)" [formControlName]="file"
+                              placeholder="Select File"></ngx-mat-file-input>
+          <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field>
+
+
+      </div>
+      <div>
+        <button type="submit" class="uplB" mat-raised-button color="primary">
+          <span style="position: relative;top: -5px;">upload</span>
+        </button>
+      </div>
+    </form>
+  </mat-dialog-actions>
+
+
+
+
+

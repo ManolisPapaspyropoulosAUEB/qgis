@@ -1,0 +1,116 @@
+<style>
+  .closeIcon {
+    color: white;
+    position: relative;
+    top: -14px;
+    left: 18px;
+    background: #2F4060;
+    border-radius: 5px;
+
+
+  }
+
+  .mat-list-base{
+    overflow-y: scroll!important;
+    max-height: 700px!important;
+  }
+  mat-list-item:hover {
+    background-color: whitesmoke!important;
+    cursor: pointer;
+  }
+
+  .closeIcon:hover {
+
+    cursor: pointer;
+  }
+
+  .note{
+    display: flex!important;
+    cursor: pointer;
+    padding-top: 10px;
+    background-color: whitesmoke;
+    padding-bottom: 12px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+
+  }
+
+
+  .note:hover{
+    background-color: #c2c2c2;
+  }
+
+  mat-dialog-content{
+    height: 600px;
+
+  }
+
+  .mycontainer{
+    max-height: 546px;
+    height: 543px;
+    overflow-y: auto;
+  }
+
+
+</style>
+
+
+<mat-dialog-content>
+  <div style="display: flex">
+    <div class="col-md-11" style="display: flex">
+      <h2 >Notes</h2><span class="material-icons" style="margin-top: 5px;
+    color: #2f4060;
+    margin-left: 9px;
+    cursor: pointer;" (click)="addNote()">
+add_circle
+</span>
+
+    </div>
+    <div class="col-md-1" style="    padding-top: 18px;">
+    <span  (click)="onNoClick()"   class="material-icons closeIcon">
+      close
+    </span>
+    </div>
+  </div>
+  <div class="mycontainer">
+    <div class="note"  *ngFor="let n of notes" >
+      <div class="col-md-6">
+        Title : {{n.title}}
+      </div>
+      <div class="col-md-5">
+        Creation Date :{{n.creationDate}}
+      </div>
+      <div class="col-md-1" style="text-align: end">
+
+
+
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="editNote(n)">
+            <mat-icon class="editRoad"  style="color: #000000;cursor: pointer;position: relative;top: -4px">edit
+            </mat-icon>
+            <span style="position: relative;top: -1px;left: -13px;">Edit</span>
+          </button>
+
+
+          <button (click)="deleteNote(n)" mat-menu-item>
+            <span class="material-icons delete" style="color: #000000;cursor: pointer;" >delete</span>
+            <span style="position: relative;top: -3px">Delete</span>
+          </button>
+        </mat-menu>
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<div style="margin-bottom: -4px;" mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()" >Close</button>
+</div>

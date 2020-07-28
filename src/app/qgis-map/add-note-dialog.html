@@ -1,0 +1,58 @@
+<style>
+  .closeIcon {
+    color: white;
+    position: relative;
+    top: 1px;
+    left: 31px;
+    background: #2F4060;
+    border-radius: 5px;
+  }
+
+  .closeIcon:hover {
+
+    cursor: pointer;
+  }
+</style>
+
+
+<mat-dialog-content>
+
+  <div style="display: flex">
+    <div class="col-md-11">
+      <h2 *ngIf="this.data.updateMode==0">Add Note</h2>
+      <h2 *ngIf="this.data.updateMode==1">Edit Note</h2>
+
+    </div>
+    <div class="col-md-1">
+    <span (click)="onNoClick()" class="material-icons closeIcon">
+      close
+    </span>
+    </div>
+  </div>
+
+
+  <form [formGroup]="editForm2" class="example-form" style="display: grid;padding-left: 13px; padding-right: 24px;" (ngSubmit)="saveNote()">
+
+
+    <mat-form-field class="example-full-width" style=" margin-bottom: 20px;">
+      <mat-label>Title</mat-label>
+      <input formControlName="title" matInput placeholder="Title.." [(ngModel)]="title">
+    </mat-form-field>
+
+
+
+    <mat-form-field class="example-full-width" style=" margin-bottom: 20px;">
+      <mat-label>Description</mat-label>
+      <textarea style="    height: 190px;" formControlName="description" matInput placeholder="Description.." [(ngModel)]="description"></textarea>
+    </mat-form-field>
+
+
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button style="background-color: #2F4060" (click)="saveNote()" type="submit" mat-raised-button color="primary">Save
+  </button>
+
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+</mat-dialog-actions>

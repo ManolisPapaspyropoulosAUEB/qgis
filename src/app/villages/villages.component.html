@@ -145,25 +145,29 @@
     <ngx-datatable-column  [sortable]=false   name="Actions" [flexGrow]="1" [frozenRight]="true">
       <ng-template let-row="row" ngx-datatable-cell-template>
 
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button (click)="editVillage(row)" mat-menu-item>
-            <mat-icon class="editRoad"
-                      style="color: #000000;cursor: pointer;">edit
-            </mat-icon>
-            <span>Edit</span>
+
+        <div class="" style="display: flex;    padding-left: 27px;">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
           </button>
+          <mat-menu #menu="matMenu">
+            <button (click)="editVillage(row)" mat-menu-item>
+              <mat-icon class="editRoad"
+                        style="color: #000000;cursor: pointer;">edit
+              </mat-icon>
+              <span>Edit</span>
+            </button>
 
 
-          <button (click)="deleteVillage(row)" mat-menu-item>
-            <span class="material-icons delete" style="color: #000000;cursor: pointer;" >delete</span>
-            <span>Delete</span>
-          </button>
+            <button (click)="deleteVillage(row)" mat-menu-item>
+              <span class="material-icons delete" style="color: #000000;cursor: pointer;" >delete</span>
+              <span>Delete</span>
+            </button>
 
-        </mat-menu>
+          </mat-menu>
 
+
+        </div>
 
 
 

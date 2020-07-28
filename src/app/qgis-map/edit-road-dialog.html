@@ -136,54 +136,67 @@
         <div class="" style="display: flex;margin-top: 10px">
           <div class="col-md-6" style="    padding-top: 12px;">
             <mat-form-field class="example-full-width">
-              <mat-label>Population Served </mat-label>
+              <mat-label>Population Served (criterio 1) </mat-label>
               <input  type="number"  formControlName="populationServed"   matInput placeholder="population Served" [(ngModel)]="populationServed">
               <span *ngIf=" f.populationServed.errors" style="color: red">   please give a positive number
                  </span>
             </mat-form-field>
             <mat-form-field class="example-full-width">
-              <mat-label>Facilities Served</mat-label>
+              <mat-label>Facilities Served (criterio 2)</mat-label>
               <input  type="number"  formControlName="facilitiesServed"   matInput placeholder="facilities Served" [(ngModel)]="facilitiesServed">
               <span *ngIf=" f.facilitiesServed.errors" style="color: red">   please give a numbers > 1
                  </span>
             </mat-form-field>
 
+
             <mat-form-field class="example-full-width">
-              <mat-label>Access To GCsRMs</mat-label>
+              <mat-label>Access To GCsRMs (criterio 3)</mat-label>
               <input  type="number"  formControlName="accessToGCsRMs"   matInput placeholder="access To GCsRMs" [(ngModel)]="accessToGCsRMs">
               <span *ngIf=" f.accessToGCsRMs.errors" style="color: red">   please give a numbers > 5 and <10
                  </span>
             </mat-form-field>
+
             <mat-form-field  appearance="fill">
-              <mat-label>Farm to the Market </mat-label>
+              <mat-label>Farm to the Market (criterio 4) </mat-label>
               <mat-select  formControlName="farmToTheMarket" [(ngModel)]="farmToTheMarket">
-                <mat-option>None</mat-option>
-                <mat-option value="0.0">0</mat-option>
-                <mat-option value="5.0">5</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="col-md-6">
-            <mat-form-field  appearance="fill">
-              <mat-label>Agriculture Facilitaties </mat-label>
-              <mat-select  formControlName="agricultureFacilitaties" [(value)]="agricultureFacilitaties">
-                <mat-option>None</mat-option>
-                <mat-option value="0.0">0</mat-option>
-                <mat-option value="5.0">5</mat-option>
+                <mat-option value="0.0">True</mat-option>
+                <mat-option value="5.0">False</mat-option>
               </mat-select>
             </mat-form-field>
 
             <mat-form-field  appearance="fill">
-              <mat-label>links To Major Activity Centres</mat-label>
-              <mat-select  formControlName="linksToMajorActivityCentres" [(value)]="linksToMajorActivityCentres">
-                <mat-option>None</mat-option>
-                <mat-option value="0.0">0</mat-option>
-                <mat-option value="5.0">5</mat-option>
+              <mat-label>Agriculture Facilitaties (criterio 5) </mat-label>
+              <mat-select  formControlName="agricultureFacilitaties" [(value)]="agricultureFacilitaties">
+                <mat-option value="0.0">True</mat-option>
+                <mat-option value="5.0">False</mat-option>
               </mat-select>
             </mat-form-field>
+
+
+
+
+
+          </div>
+          <div class="col-md-6" >
 
             <mat-form-field class="example-full-width">
-              <mat-label>​Number of Connections to other roads</mat-label>
+              <mat-label>Connectivity (criterio 6)</mat-label>
+              <input  type="number"  formControlName="connectivity"   matInput placeholder="access To GCsRMs" [(ngModel)]="connectivity">
+              <span *ngIf=" f.connectivity.errors" style="color: red">   please give a numbers >= 0
+                 </span>
+            </mat-form-field>
+
+
+
+
+            <mat-form-field style="display: none" class="example-full-width">
+              <mat-label>links To Major Activity Centres</mat-label>
+              <input  type="number"  formControlName="linksToMajorActivityCentres"   matInput placeholder="population Served" [(ngModel)]="linksToMajorActivityCentres">
+            </mat-form-field>
+
+
+            <mat-form-field class="example-full-width">
+              <mat-label>​Number of Connections to other roads (criterio 8) </mat-label>
               <input  type="number"  formControlName="numberOfConnections"   matInput placeholder="number Of Connections" [(ngModel)]="numberOfConnections">
               <span *ngIf=" f.numberOfConnections.errors"  style="color: red">   please give a numbers > 5 and <10
                  </span>

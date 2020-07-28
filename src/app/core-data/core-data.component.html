@@ -10,9 +10,16 @@
     padding-bottom: 4%;
   }
 
+  datatable-body-cell{
+    padding-left: 26px!important;
+  }
 
   .datatable-row-detail{
     width: 800px!important;
+  }
+
+  .datatable-row-detail ng-star-inserted{
+    width: 90vh!important;
   }
 
 
@@ -46,13 +53,13 @@
         [limit]="120"
         [scrollbarH]="true"
 
-
+        (activate)="toggleExpandRowActivate($event)"
         [rows]="criteriaMaster"
         (page)="onPage($event)"
       >
 
         <!-- Row Detail Template -->
-        <ngx-datatable-row-detail   #myDetailRow (toggle)="onDetailToggle($event)">
+        <ngx-datatable-row-detail    #myDetailRow (toggle)="onDetailToggle($event)">
           <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
             <div style="padding-left:35px;display: grid">
               <div><strong>Criteria Master Detail</strong></div>
@@ -61,7 +68,7 @@
                   <th>label</th>
                   <th>score</th>
                 </tr>
-                <tr *ngFor="let r of row.cmdList">
+                <tr *ngFor="let r of row.cmdList" >
                   <td>{{r.label}}</td>
                   <td>{{r.score}}</td>
                 </tr>
@@ -74,6 +81,8 @@
         <!-- Column Templates -->
         <ngx-datatable-column
           [width]="50"
+
+
           [resizeable]="false"
           [sortable]="false"
           [draggable]="false"
@@ -87,7 +96,6 @@
               [class.datatable-icon-right]="!expanded"
               [class.datatable-icon-down]="expanded"
               title="Expand/Collapse Row"
-              (click)="toggleExpandRow(row)"
             >
             </a>
           </ng-template>
@@ -96,8 +104,8 @@
 
 
         <ngx-datatable-column name="label" prop="label" [flexGrow]="1" >
-          <ng-template let-row="row" ngx-datatable-cell-template>
-            <div>
+          <ng-template  let-row="row" ngx-datatable-cell-template>
+            <div  style="padding-left: 49px">
               {{ row?.label }}
             </div>
           </ng-template>
@@ -110,7 +118,7 @@
 
         <ngx-datatable-column name="Score Range" prop="scoreRange" [flexGrow]="1" >
           <ng-template let-row="row" ngx-datatable-cell-template>
-            <div>
+            <div  style="padding-left: 33px">
               {{ row?.scoreRange }}
             </div>
           </ng-template>
@@ -118,7 +126,7 @@
 
         <ngx-datatable-column name="Weight Factor (%)" prop="weightFactor" [flexGrow]="1" >
           <ng-template let-row="row" ngx-datatable-cell-template>
-            <div>
+            <div   style="padding-left: 15px">
               {{ row?.weightFactor }}
             </div>
           </ng-template>
