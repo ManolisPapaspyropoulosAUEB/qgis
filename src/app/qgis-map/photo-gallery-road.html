@@ -99,8 +99,7 @@
   <div class="container">
     <div class="row" gallerize>
       <div *ngFor='let img of imageData'>
-
-        <img class="property-thumb" src="{{img.previewFile }}">
+        <img  [src]="img.id | image">
         <span matTooltip="delete image" (click)="deletePhoto(img)"  class="material-icons delPhoto">
             delete
         </span>
@@ -117,8 +116,10 @@
       <div>
 
 
+
+
         <mat-form-field>
-          <ngx-mat-file-input (change)="onFileSelect($event)" [formControlName]="file"
+          <ngx-mat-file-input #fileInput (change)="onFileSelect($event)" [formControlName]="file"
                               placeholder="Select File"></ngx-mat-file-input>
           <mat-icon matSuffix>folder</mat-icon>
         </mat-form-field>

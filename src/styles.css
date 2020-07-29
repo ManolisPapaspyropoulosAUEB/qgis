@@ -1,59 +1,62 @@
-@import '~bootstrap/dist/css/bootstrap.min.css';
 /* You can add global styles to this file, and also import other style files */
-
-/*@import '~@angular/material/prebuilt-themes/indigo-pink.css';*/
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~leaflet/dist/leaflet.css";
 @import '~@swimlane/ngx-datatable/assets/icons.css';
-@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~bootstrap/dist/css/bootstrap.min.css';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
 
-.mat-tab-label-content{
+/*body {*/
+  /*margin: 0;*/
+  /*font-family: Roboto, "Helvetica Neue", sans-serif;*/
+/*}*/
+
+.mat-tab-label-content {
   color: white;
 }
 
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
-  /* background-color: #ffffff; */
   background-color: #8BAA48;
   height: 6px;
 }
 
-::ng-deep .mat-drawer-inner-container{
-  overflow: hidden!important;
+::ng-deep .mat-drawer-inner-container {
+  overflow: hidden !important;
 }
 
-::ng-deep .ngx-datatable .datatable-footer .datatable-footer-inner{
+::ng-deep .ngx-datatable .datatable-footer .datatable-footer-inner {
   background: #2F4060;
 }
 
 c-remove {
-  display: none!important;
+  display: none !important;
 }
-::ng-deep .pure-checkbox input[type=checkbox]+label {
-  display: none!important;
+
+::ng-deep .pure-checkbox input[type=checkbox] + label {
+  display: none !important;
 }
 
 .clear-all {
   width: 7px;
   position: absolute;
   top: 50%;
-  display: none!important;
+  display: none !important;
   right: 30px;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
 .select-all {
-  display: none!important;
+  display: none !important;
   padding: 10px;
   border-bottom: 1px solid #ccc;
   text-align: left;
   display: none;
 }
 
-.mat-tab-labels{
+.mat-tab-labels {
   background: #2F4060;
 }
 
@@ -67,58 +70,31 @@ c-remove {
   color: black;
 }
 
-.mycustomTabClass.mat-tab-label .mat-tab-label-content{
+.mycustomTabClass.mat-tab-label .mat-tab-label-content {
   color: black;
 }
 
-
-
 .mycustomTabClass .mat-tab-label:active {
-  background: #8BAA48!important;
-  color: white!important;
+  background: #8BAA48 !important;
+  color: white !important;
 }
 
-
-
-::ng-deep.div.mycustomTabClass.mat-tab-label:active{
-  color: white!important;
+::ng-deep.div.mycustomTabClass.mat-tab-label:active {
+  color: white !important;
 }
-
-
 
 .mycustomTabClass .mat-tab-label-active {
   background: #8BAA48;
-  color: white!important;
-}
-::ng-deep.mycustomTabClass.mat-tab-label .mat-tab-label-active{
-  color: white!important;
+  color: white !important;
 }
 
-/*::ng-deep.mycustomTabClass.mat-tab-label .mat-tab-label-content{*/
-  /*color: black;*/
-/*}*/
+::ng-deep.mycustomTabClass.mat-tab-label .mat-tab-label-active {
+  color: white !important;
+}
 
-.mycustomTabClass div.mat-tab-label-content{
+.mycustomTabClass div.mat-tab-label-content {
   color: black;
 }
-
-.mat-tab-labels{
- /*border-right: 1px solid gray!important;*/
-}
-
-
-/*.mat-tab-label:not(.mat-tab-disabled):focus,*/
-/*.mat-tab-link:not(.mat-tab-disabled):focus,*/
-/*.mat-tab-group.mat-primary .mat-tab-label{*/
-
-
-  /*border-left: 1px solid gray;*/
-/*}*/
-
-
-
-/*mycustomTabClassUpdateRoad*/
-
 
 .mycustomTabClassUpdateRoad .mat-tab-labels {
   background: whitesmoke;
@@ -130,40 +106,32 @@ c-remove {
   color: black;
 }
 
-.mycustomTabClassUpdateRoad.mat-tab-label .mat-tab-label-content{
+.mycustomTabClassUpdateRoad.mat-tab-label .mat-tab-label-content {
   color: black;
 }
 
 .mycustomTabClassUpdateRoad .mat-tab-label-active {
-  background: #8BAA48!important;
+  background: #8BAA48 !important;
   color: #ffffff;
 }
-
 
 .mycustomTabClassUpdateRoad .mat-tab-label-active {
   background: #8BAA48;
   color: #ffffff;
 }
 
-
-::ng-deep.mycustomTabClassUpdateRoad.mat-tab-label .mat-tab-label-content{
+::ng-deep.mycustomTabClassUpdateRoad.mat-tab-label .mat-tab-label-content {
   background: #8BAA48;
-
   color: #ffffff;
 }
 
-.mycustomTabClassUpdateRoad div.mat-tab-label-content{
+.mycustomTabClassUpdateRoad div.mat-tab-label-content {
   color: black;
 }
-
 
 .mycustomTabClassUpdateRoad .mat-tab-label-active .mat-tab-label-content {
-  color: #fff!important;
+  color: #fff !important;
 }
-
-
-
-
 
 .mycustomTabClassCiteria .mat-tab-labels {
   background: #8BAA48;
@@ -175,7 +143,7 @@ c-remove {
   color: black;
 }
 
-.mycustomTabClassCiteria.mat-tab-label .mat-tab-label-content{
+.mycustomTabClassCiteria.mat-tab-label .mat-tab-label-content {
   color: black;
 }
 
@@ -186,22 +154,20 @@ c-remove {
 
 .mycustomTabClassCiteria .mat-tab-label-active {
   background: #8BAA48;
-
   color: black;
 }
 
-
-::ng-deep.mycustomTabClassCiteria.mat-tab-label .mat-tab-label-content{
+::ng-deep.mycustomTabClassCiteria.mat-tab-label .mat-tab-label-content {
   color: black;
 }
 
-.mycustomTabClassCiteria div.mat-tab-label-content{
+.mycustomTabClassCiteria div.mat-tab-label-content {
   color: black;
 }
 
 /*mycustomTabClassUpdateRoad*/
 
-.mat-radio-button.mat-accent .mat-radio-inner-circle{
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
   background-color: #2f4060;
 }
 
@@ -209,200 +175,131 @@ c-remove {
   border-color: #2f4060;
 }
 
-/*::ng-deep.*/
-
 ::ng-deep.mat-checkbox-background {
-  background-color: rgb(0,178,0)!important;
+  background-color: rgb(0, 178, 0) !important;
 }
 
-
-
-
-.mat-checkbox-ripple .mat-ripple-element,.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+.mat-checkbox-ripple .mat-ripple-element, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background-color: #2f4060;
 }
 
 ::ng-deep .custom-dialog-container .mat-dialog-container {
-  overflow: visible!important;
+  overflow: visible !important;
 }
 
-.mat-dialog-content, .mat-dialog-container{overflow: visible !important;}
-.mat-dialog-actions{clear: both;}
-
-
-
-
-
-
-
-/*.datatable-body-row:hover{*/
-  /*background-color:  rgba(0, 239, 174, 0.33)!important;;*/
-  /*cursor: pointer;*/
-/*}*/
-
-/*.datatable-body-row.active:hover{*/
-  /*background-color:  rgba(0, 239, 174, 0.33)!important;;*/
-  /*cursor: pointer;*/
-/*}*/
-
-.ngx-datatable.bootstrap .datatable-body .datatable-body-row:hover{
-  background-color:  rgba(0, 239, 174, 0.33)!important;;
+.mat-dialog-content, .mat-dialog-container {
+  overflow: visible !important;
 }
 
+.mat-dialog-actions {
+  clear: both;
+}
 
-/*.datatable-body.datatable-body{*/
-/*max-height: 700px!important;*/
-/*width: 1581px!important;*/
-/*}*/
+.ngx-datatable.bootstrap .datatable-body .datatable-body-row:hover {
+  background-color: rgba(0, 239, 174, 0.33) !important;;
+}
 
-
-::ng-deep.table{
-  padding-top: 10px!important;
-  margin-bottom: 0rem!important;
+::ng-deep.table {
+  padding-top: 10px !important;
+  margin-bottom: 0rem !important;
 }
 
 .ngx-datatable.bootstrap {
   box-shadow: none;
-  font-size: 16px; }
+  /*font-size: 16px;*/
+}
+
 .ngx-datatable.bootstrap .datatable-header {
   height: unset !important;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
 
-
 }
 
-
 .ngx-datatable.material .datatable-header {
-  /*height: unset !important;*/
-  /*font-weight: bold;*/
-  /*font-family: 'Open Sans', sans-serif;*/
   color: rgba(7, 51, 111, 1);
-
 
 }
 
 .ngx-datatable.material .datatable-header .datatable-header-cell {
   vertical-align: bottom;
   padding: 0.75rem;
-  /*border-right: 1px solid #8080808f;*/
-
   border-bottom: 1px solid #d1d4d7;
-
 
 }
 
-
 .ngx-datatable.bootstrap .datatable-header .datatable-header-cell .datatable-header-cell-label {
-  line-height: 24px; }
+  line-height: 24px;
+}
 
 .ngx-datatable.bootstrap .datatable-body .datatable-body-row {
   padding: 0.67rem;
   vertical-align: top;
   border-top: 1px solid #d1d4d7;
-
   background: #ffffff !important;
-
 }
+
 .ngx-datatable.bootstrap .datatable-body .datatable-body-row.datatable-row-even {
-  background-color: rgba(0, 0, 0, 0.05); }
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
 .ngx-datatable.bootstrap .datatable-body .datatable-body-row.active {
   background-color: #1483ff;
-  color: #FFF; }
+  color: #FFF;
+}
+
 .ngx-datatable.bootstrap .datatable-body .datatable-body-row .datatable-body-cell {
   text-align: left;
-
   overflow-y: hidden;
-
 }
 
 .ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
   text-align: left;
-padding-left: 5px;
-
+  padding-left: 5px;
   overflow-y: hidden;
-
 }
 
-
-
-.ngx-datatable.material .datatable-body .datatable-body-row  {
+.ngx-datatable.material .datatable-body .datatable-body-row {
   box-shadow: 2px 0px 1px 0px #adadad;
+}
+
+.datatable-row-left {
+  background: #f9f9f9 !important;
 
 }
 
-
-
-
-.datatable-row-left{
+.datatable-row-group.datatable-row-left {
   background: #f9f9f9 !important;
-  /*box-shadow: 2px 0px 1px 0px #adadad;*/
-
-
-
-}
-.datatable-row-group.datatable-row-left{
-  background: #f9f9f9 !important;
-  /*box-shadow: 0px 0px 4px 0px #adadad;*/
   box-shadow: 0px 0px 4px 0px #adadad;
 
-
 }
 
-
-
-.datatable-row-group.datatable-row-left:hover{
-
+.datatable-row-group.datatable-row-left:hover {
   background-color: #8affd9 !important;
   backface-visibility: hidden;
   cursor: pointer;
 }
 
-
-
-
-.datatable-row-center.datatable-row-group:hover{
+.datatable-row-center.datatable-row-group:hover {
   background-color: #8affd9 !important;
   cursor: pointer;
-
 }
 
-.datatable-row-right{
+.datatable-row-right {
   background: #f9f9f9 !important;
-  /*box-shadow: -2px 0px 1px 0px #adadad;*/
-  /*box-shadow: 0px 0px 4px 0px #adadad;*/
-
-
 }
-.datatable-row-group.datatable-row-right{
+
+.datatable-row-group.datatable-row-right {
   background: #f9f9f9 !important;
   border-top: 1px solid #eeeeee;
   border-bottom: 1px solid #eeeeee;
-
-  /*position: relative;*/
-  /*left: 17px;*/
-
-
-  /*margin-left: 20px;*/
-  /*box-shadow: -2px 0px 1px 0px #adadad;*/
-  /*box-shadow: 0px 0px 4px 0px #adadad;*/
-
-
-
 }
 
-
-
-
-
-
-.datatable-row-group.datatable-row-right:hover{
+.datatable-row-group.datatable-row-right:hover {
   background-color: #8affd9 !important;
   backface-visibility: hidden;
   cursor: pointer;
 }
-
-
 
 .mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
   transform: none !important;
@@ -416,35 +313,34 @@ padding-left: 5px;
   height: 45px;
   color: white;
 
-
-
 }
-
-
-
-
 
 .ngx-datatable.material .datatable-footer .page-count {
   line-height: 50px;
   height: 50px;
-  padding: 0 1.2rem; }
+  padding: 0 1.2rem;
+}
+
 .ngx-datatable.material .datatable-footer .datatable-pager {
   margin: 0 10px;
-  vertical-align: top; }
+  vertical-align: top;
+}
+
 .ngx-datatable.material .datatable-footer .datatable-pager ul li {
   margin: 10px 0px;
   color: white;
 
-
   text-align: center;
 
-
 }
+
 .ngx-datatable.material .datatable-footer .datatable-pager ul li:not(.disabled).active a, .ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled):hover a {
   background-color: #545454;
   color: white;
   text-align: center;
-  font-weight: bold; }
+  font-weight: bold;
+}
+
 .ngx-datatable.material .datatable-footer .datatable-pager a {
   height: 22px;
   min-width: 24px;
@@ -456,17 +352,19 @@ padding-left: 5px;
   vertical-align: top;
   text-decoration: none;
   vertical-align: bottom;
-  color: #181818; }
-
+  color: #181818;
+}
 
 .sortable .sort-btn:before {
   font-family: data-table;
   content: "c";
 }
+
 .sortable .sort-btn.datatable-icon-down:before {
 
   content: "▼";
 }
+
 .sortable .sort-btn.datatable-icon-up:before {
   content: "▲";
 
@@ -481,19 +379,12 @@ padding-left: 5px;
   content: "▲";
 }
 
-/*lvrr_id*/
-
-.cuppa-dropdown{
+.cuppa-dropdown {
   background-color: white;
   width: 91%;
   border-radius: 7px;
 
 }
-
-/*.cuppa-dropdown:hover{*/
-/*background-color: rgba(0, 137, 196, 0.18);*/
-/*border: 1px solid #00a1ea;*/
-/*}*/
 
 .select-all {
   padding: 10px;
@@ -501,40 +392,27 @@ padding-left: 5px;
   text-align: left;
 }
 
-.ngx-datatable.material .datatable-footer{
+.ngx-datatable.material .datatable-footer {
   overflow-y: hidden;
-  background: #2F4060!important;
+  background: #2F4060 !important;
   color: white;
 
-
-
-
 }
 
-/*#0073aa*/
-
-
-
-::ng-deep.mat-pseudo-checkbox{
-  display: none!important;
+::ng-deep.mat-pseudo-checkbox {
+  display: none !important;
 }
-
-
-
 
 .ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-left,
 .ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-skip,
 .ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-right,
 .ngx-datatable.material .datatable-footer .datatable-pager .datatable-icon-prev {
-  font-size: 18px;
+  /*font-size: 18px;*/
   line-height: 27px;
   padding: 0 3px;
-  text-align: center!important;
+  text-align: center !important;
   color: white;
 }
-
-
-
 
 .ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
   text-align: left;
@@ -544,11 +422,6 @@ padding-left: 5px;
   align-items: center;
   overflow-y: hidden;
 }
-
-
-
-
-
 
 /*hlias*/
 .ngx-datatable.material .datatable-header .datatable-header-cell {
@@ -560,10 +433,9 @@ padding-left: 5px;
   color: #000;
   text-shadow: none;
   min-width: 100px;
-  max-width: 900px!important;
+  max-width: 900px !important;
 
 }
-
 
 span.datatable-header-cell-label.draggable {
   text-transform: uppercase;
@@ -571,78 +443,48 @@ span.datatable-header-cell-label.draggable {
 }
 
 ngx-datatable {
-  padding-left: 0px!important;
+  padding-left: 0px !important;
   padding-bottom: 4%;
 }
-datatable-body.datatable-body{
-  height: 80vh!important;
-  overflow-y: scroll!important;
+
+datatable-body.datatable-body {
+  height: 80vh !important;
+  overflow-y: scroll !important;
 
 }
 
 .mycustomTabClassUpdateRoad .mat-tab-label-active .mat-tab-label-content {
-  color: #fff!important;
+  color: #fff !important;
 }
 
 .mycustomTabClassUpdateRoad .mat-tab-label-active .mat-tab-label-content {
-  color: #fff!important;
+  color: #fff !important;
 }
 
 .mycustomTabClass .mat-tab-label-active .mat-tab-label-content {
-  color: #fff!important;
-}.mycustomTabClassCiteria .mat-tab-label-active .mat-tab-label-content {
-   color: #fff!important;
- }
+  color: #fff !important;
+}
 
-
-
-
-
-
+.mycustomTabClassCiteria .mat-tab-label-active .mat-tab-label-content {
+  color: #fff !important;
+}
 
 .ngx-datatable.scroll-horz .datatable-body {
   overflow-y: scroll;
 }
 
-/*.ngx-datatable.material .datatable-header .datatable-header-cell {*/
-  /*border-bottom: 1px solid #d1d4d7;*/
-  /*color: #000;*/
-  /*text-shadow: none;*/
-
-/*}*/
-
-
-
-/*span.datatable-header-cell-label.draggable {*/
-  /*text-transform: uppercase;*/
-  /*text-shadow: none;*/
-/*}*/
-
-
-
-
 .ngx-datatable.bootstrap .datatable-summary-row .datatable-body-row .datatable-body-cell {
   font-weight: bold;
 }
 
-/*::ng-deep datatable-body{*/
-/*height: 805px;*/
-/*}*/
+button:focus {
+  outline: none !important;
+}
 
-/*.ngx-datatable.bootstrap .datatable-body {*/
-/*height: 805px!important;*/
+.mycustomTabClassCiteria datatable-scroller.datatable-scroll {
+  width: 100% !important;
+}
 
-
-/*}*/
-
-/*.ngx-datatable.scroll-horz .datatable-body {
-  height: calc(100% - 50px)!important;
-}*/
-
-
-
-
-/*.mat-tab-body-content{
-  height: 100vh!important;
-  overflow-y: hidden!important;
-}*/
+.criteria-master-details {
+  padding: 20px 0;
+}

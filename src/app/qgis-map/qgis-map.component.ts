@@ -54,6 +54,8 @@ import {Image} from './image';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import {ImagePipe} from './image.pipe';
+import {SafeUrlPipe} from './safeurl.pipe';
+import {MaterialFileInputModule} from 'ngx-material-file-input';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -2424,18 +2426,22 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       if (result) {
         this.dataservice.updateRoad(result).subscribe(response => {
           if (response.status == 'ok') {
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 2000});
+
             this.dataservice.calculateCriteria({
               'district_id': this.currentNum_district_code,
               'lvrr_id': response.lvrr_id
             }).subscribe(response => {
               if (response.status == 'ok') {
-                this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+                setTimeout(() => {
+                  this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 2000});
+                }, 2000);
+
                 this.getRoadsPyParams();
               } else {
                 this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
               }
             });
-            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
           } else {
             this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
           }
@@ -2859,14 +2865,15 @@ export class PhotoGallery implements OnInit {
   base64File: string = null;
   version = VERSION;
   imgObjHttp;
-  imageData ;
+  imageData =[];
   SERVER_URL = "http://localhost:9023/uploadFile";
   uploadForm: FormGroup;
   file='';
+//fileInput
+  @ViewChild('fileInput') fileInput: MaterialFileInputModule;
 
 
-
-  constructor(public dialogRef: MatDialogRef<EditRoadDialog>,public gallery: Gallery,public domSanitizer: DomSanitizer, public dialog: MatDialog,private image: ImagePipe,
+  constructor(public dialogRef: MatDialogRef<EditRoadDialog>,public gallery: Gallery,public domSanitizer: DomSanitizer, public dialog: MatDialog,safeUrl : SafeUrlPipe,private sanitizer: DomSanitizer,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private dataService: DataService, private snackBar: MatSnackBar, public router: Router,private formBuilder: FormBuilder, private httpClient: HttpClient
   ) {
@@ -2876,6 +2883,7 @@ export class PhotoGallery implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.uploadForm.get('file').setValue(file);
+
     }
   }
 
@@ -2890,16 +2898,24 @@ export class PhotoGallery implements OnInit {
   public getImages(){
     this.dataService.getPhotoByRoadId(this.data).subscribe(response=>{
       this.imageData=response.data;
+      // response.data.forEach(e=>{
+      //   e.previewFile= this.sanitizer.bypassSecurityTrustResourceUrl( e.previewFile);
+      //   this.imageData.push(e);
+      // });
     });
   }
 
-
+  get f() {
+    return this.uploadForm.controls;
+  }
 
   onSubmit() {
     const formData = new FormData();
     formData.append('file', this.uploadForm.get('file').value);
     formData.append("district",this.data.district);
     formData.append("roadId",this.data.id);
+
+
     this.httpClient.post<any>(this.SERVER_URL, formData).subscribe(
 
 
@@ -2907,6 +2923,8 @@ export class PhotoGallery implements OnInit {
         if(res.status=='ok'){
           this.getImages();
           this.snackBar.open(res.message, 'x', <MatSnackBarConfig>{duration: 4000});
+          this.uploadForm.get('file').setValue(null);
+
         }else{
 
           this.snackBar.open(res.message, 'x', <MatSnackBarConfig>{duration: 4000});
@@ -2915,6 +2933,8 @@ export class PhotoGallery implements OnInit {
       },
       (err) => console.log(err)
     );
+
+
   }
 
 
@@ -2994,6 +3014,7 @@ export class EditRoadDialog implements OnInit {
   facilitiesServed;
   accessToGCsRMs;
   farmToTheMarket;
+  ftm;
   agricultureFacilitaties;
   linksToMajorActivityCentres;
   numberOfConnections;
@@ -3008,7 +3029,9 @@ export class EditRoadDialog implements OnInit {
 
   ngOnInit() {
 
+    console.log(this.data);
 
+    this.ftm=-1;
 
 
 
@@ -3051,7 +3074,7 @@ export class EditRoadDialog implements OnInit {
       elevationInMetres: [this.elevationInMetres, Validators.min(0)],
       populationServed: [this.populationServed, Validators.min(0)],
       facilitiesServed: [this.facilitiesServed, Validators.min(0)],
-      accessToGCsRMs: [this.accessToGCsRMs, [Validators.min(5), Validators.max(9)]],
+      accessToGCsRMs: [this.accessToGCsRMs, [Validators.min(5), Validators.max(10)]],
       connectivity: [this.connectivity,Validators.min(0)],
       farmToTheMarket: [this.farmToTheMarket],
       agricultureFacilitaties: [this.agricultureFacilitaties],
@@ -3078,12 +3101,19 @@ export class EditRoadDialog implements OnInit {
     });
   }
 
+  ftthemarket(value){
+
+
+  }
+
   public save() {
     if (this.editForm.invalid) {
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
       this.validateAllFormFields(this.editForm);
       return;
     }
+
+
     let resultObject = {
       name: this.f.name.value,
       fclass: this.f.fclass.value,
@@ -3095,6 +3125,7 @@ export class EditRoadDialog implements OnInit {
       tunnelMat: this.f.tunnelMat.value,
       connectivity: this.f.connectivity.value,
       source: this.source,
+      farmToTheMarket: this.farmToTheMarket,
 
 
       lengthInMetres: this.f.lengthInMetres.value,
@@ -3102,13 +3133,15 @@ export class EditRoadDialog implements OnInit {
       populationServed: this.f.populationServed.value,
       facilitiesServed: this.f.facilitiesServed.value,
       accessToGCsRMs: this.f.accessToGCsRMs.value,
-      farmToTheMarket: this.f.farmToTheMarket.value,
+
       agricultureFacilitaties: this.agricultureFacilitaties,
       linksToMajorActivityCentres: this.f.linksToMajorActivityCentres.value,
       numberOfConnections: this.f.numberOfConnections.value,
       roadCondition: this.f.roadCondition.value,
       id: this.data.id
     };
+
+
     console.log(resultObject);
     this.dialogRef.close(resultObject);
   }

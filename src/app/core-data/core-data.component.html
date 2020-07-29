@@ -62,11 +62,11 @@
         <ngx-datatable-row-detail    #myDetailRow (toggle)="onDetailToggle($event)">
           <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
             <div style="padding-left:35px;display: grid">
-              <div><strong>Criteria Master Detail</strong></div>
+              <div class="criteria-master-details"><strong>Criteria Master Detail</strong></div>
               <table>
                 <tr >
-                  <th>label</th>
-                  <th>score</th>
+                  <th>LABEL</th>
+                  <th>SCORE</th>
                 </tr>
                 <tr *ngFor="let r of row.cmdList" >
                   <td>{{r.label}}</td>

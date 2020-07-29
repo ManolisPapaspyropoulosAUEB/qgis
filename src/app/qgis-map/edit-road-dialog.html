@@ -150,7 +150,7 @@
 
 
             <mat-form-field class="example-full-width">
-              <mat-label>Access To GCsRMs (criterio 3)</mat-label>
+              <mat-label>Access to GCS & RMS (criterio 3)</mat-label>
               <input  type="number"  formControlName="accessToGCsRMs"   matInput placeholder="access To GCsRMs" [(ngModel)]="accessToGCsRMs">
               <span *ngIf=" f.accessToGCsRMs.errors" style="color: red">   please give a numbers > 5 and <10
                  </span>
@@ -158,15 +158,16 @@
 
             <mat-form-field  appearance="fill">
               <mat-label>Farm to the Market (criterio 4) </mat-label>
-              <mat-select  formControlName="farmToTheMarket" [(ngModel)]="farmToTheMarket">
+              <mat-select (valueChange)="ftthemarket(farmToTheMarket)"  formControlName="farmToTheMarket" [(ngModel)]="farmToTheMarket">
                 <mat-option value="0.0">True</mat-option>
                 <mat-option value="5.0">False</mat-option>
               </mat-select>
             </mat-form-field>
 
+
             <mat-form-field  appearance="fill">
               <mat-label>Agriculture Facilitaties (criterio 5) </mat-label>
-              <mat-select  formControlName="agricultureFacilitaties" [(value)]="agricultureFacilitaties">
+              <mat-select  formControlName="agricultureFacilitaties" [(ngModel)]="agricultureFacilitaties">
                 <mat-option value="0.0">True</mat-option>
                 <mat-option value="5.0">False</mat-option>
               </mat-select>
@@ -181,7 +182,7 @@
 
             <mat-form-field class="example-full-width">
               <mat-label>Connectivity (criterio 6)</mat-label>
-              <input  type="number"  formControlName="connectivity"   matInput placeholder="access To GCsRMs" [(ngModel)]="connectivity">
+              <input  type="number"  formControlName="connectivity"   matInput placeholder="connectivity" [(ngModel)]="connectivity">
               <span *ngIf=" f.connectivity.errors" style="color: red">   please give a numbers >= 0
                  </span>
             </mat-form-field>

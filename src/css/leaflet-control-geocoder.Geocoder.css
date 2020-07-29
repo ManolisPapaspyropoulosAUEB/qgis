@@ -34,7 +34,7 @@
 	display: inline-block;
 }
 .leaflet-control-geocoder-form input {
-	font-size: 120%;
+	/*font-size: 120%;*/
 	border: 0;
 	background-color: transparent;
 	width: 246px;
@@ -116,7 +116,7 @@
 	background-color: #f5f5f5;
 }
 .leaflet-control-geocoder-address-detail {
-	
+
 }
 .leaflet-control-geocoder-address-context {
 	color: #666;

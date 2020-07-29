@@ -9,12 +9,11 @@ export class ImagePipe implements PipeTransform {
   constructor(private service : RemoteDataService){}
 
   transform(value: any, args?: any): any {
-    if(value && value.indexOf('demo_property') < 0){
-      return this.service.imageURL + value;
-    } else return value;
+    //if(value && value.indexOf('demo_property') < 0){
+    console.log(value);
+    return this.service.imageURL+'?docId='+ value;
+   // } else return value;
 
   }
 
 }
-
-

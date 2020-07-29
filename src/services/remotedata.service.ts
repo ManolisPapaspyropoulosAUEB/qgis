@@ -2,27 +2,16 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class RemoteDataService {
 
+//ng build --prod --aot --output-hashing none --base-href /app/   -->build
+
+//topika
+public serviceURL = 'http://192.168.1.2:9023/';
+public imageURL = 'http://192.168.1.2:9023/downloadFile';
 
 
-
-
-  //public serviceURL = 'http://192.168.1.137:9015/'
-//ng build --prod --aot --output-hashing none --base-href /app/
-
-
-
-
-
-
-  //public serviceURL = 'http://192.168.1.64:9015/';
-public serviceURL = 'http://192.168.1.2:9023/'
-  imageURL: any;
-
-
-
-
-
-
+//server
+//public serviceURL = 'afggis.synergic.systems:9030/';
+//public imageURL = 'http://afggis.synergic.systems:9030/downloadFile';
 
 
 

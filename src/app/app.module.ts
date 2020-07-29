@@ -99,6 +99,7 @@ import { GalleryModule } from 'ng-gallery';
 import {LightboxModule} from 'ng-gallery/lightbox';
 import {MaterialFileInputModule} from 'ngx-material-file-input';
 import { NoteComponent } from './note/note.component';
+import {SafeUrlPipe} from './qgis-map/safeurl.pipe';
 import {ImagePipe} from './qgis-map/image.pipe';
 
 
@@ -167,6 +168,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    SafeUrlPipe,
+    ImagePipe,
     NotesDialog,
     EditRoadDialog,
     CriteriaConfirmationDialog,
@@ -203,6 +206,8 @@ const routes: Routes = [
     NoteComponent
   ],
   exports: [
+    SafeUrlPipe,
+    ImagePipe,
     FormsModule,
     ReactiveFormsModule,
     MatInputModule
@@ -300,7 +305,9 @@ const routes: Routes = [
   ],
 
 
-  providers: [AuthGuardService, AuthService, DataService, RemoteDataService,FilterService,ExcelPdfExporterService,
+
+
+  providers: [AuthGuardService, AuthService, DataService, RemoteDataService,FilterService,ExcelPdfExporterService,SafeUrlPipe,ImagePipe,
 
     {provide:MAT_DIALOG_DATA,useValue: {}}
 

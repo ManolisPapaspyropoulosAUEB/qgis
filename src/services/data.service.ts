@@ -136,6 +136,10 @@ export class DataService {
   }
 
 
+
+
+
+
   get_districts(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllDistricts', data).map(
         (response) => {
