@@ -65,7 +65,7 @@
     </button>
 
     <button (click)="addMosque()" mat-menu-item>
-      <img style="height: 24px" src="../assets/mosques.png"/>
+      <img style="height: 24px" src="assets/mosques.png"/>
 
       Mosque
     </button>
@@ -101,18 +101,17 @@
       </ng-template>
     </ngx-datatable-column>
 
+    <ngx-datatable-column name="id" prop="id"  [flexGrow]="1" [frozenLeft]="true">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div>
+          {{ row?.id }}
+        </div>
+      </ng-template>
+    </ngx-datatable-column>
     <ngx-datatable-column name="Name" prop="name" [flexGrow]="1" [frozenLeft]="true">
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div>
           {{ row?.name }}
-        </div>
-      </ng-template>
-    </ngx-datatable-column>
-
-    <ngx-datatable-column name="id" prop="id"  [flexGrow]="1">
-      <ng-template let-row="row" ngx-datatable-cell-template>
-        <div>
-          {{ row?.id }}
         </div>
       </ng-template>
     </ngx-datatable-column>
@@ -202,34 +201,22 @@
     <ngx-datatable-column name="Actions"  [sortable]=false [flexGrow]="1" [frozenRight]="true">
       <ng-template let-row="row" ngx-datatable-cell-template>
 
-        <div class="" style="display: flex;    padding-left: 27px;">
-          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <div class="button-container-list-table">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
           </button>
-
-
-          <mat-menu #menu="matMenu">
+          <mat-menu class="menu-actions" #menu="matMenu">
             <button (click)="editFacilitie(row)" mat-menu-item>
-              <mat-icon class="editRoad"
-                        style="color: #000000;cursor: pointer;">edit
+              <mat-icon class="editRoad" style="color: #000000;cursor: pointer;">edit
               </mat-icon>
               <span>Edit</span>
             </button>
-
-
             <button (click)="deleteDC(row)" mat-menu-item>
-              <span class="material-icons delete" style="color: #000000;cursor: pointer;" >delete</span>
+              <span class="material-icons delete" style="color: red;cursor: pointer;" >delete</span>
               <span>Delete</span>
             </button>
-
           </mat-menu>
-
         </div>
-
-
-
-
-
       </ng-template>
     </ngx-datatable-column>
 

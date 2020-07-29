@@ -2870,7 +2870,7 @@ export class PhotoGallery implements OnInit {
   uploadForm: FormGroup;
   file='';
 //fileInput
-  @ViewChild('fileInput') fileInput: MaterialFileInputModule;
+  @ViewChild(MaterialFileInputModule) fileInput: MaterialFileInputModule;
 
 
   constructor(public dialogRef: MatDialogRef<EditRoadDialog>,public gallery: Gallery,public domSanitizer: DomSanitizer, public dialog: MatDialog,safeUrl : SafeUrlPipe,private sanitizer: DomSanitizer,
@@ -2883,6 +2883,7 @@ export class PhotoGallery implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.uploadForm.get('file').setValue(file);
+
 
     }
   }
@@ -2920,10 +2921,16 @@ export class PhotoGallery implements OnInit {
 
 
       (res) => {
+        this.uploadForm.get('file').setValue(null, { emitEvent: false });
+
+
+
         if(res.status=='ok'){
           this.getImages();
           this.snackBar.open(res.message, 'x', <MatSnackBarConfig>{duration: 4000});
-          this.uploadForm.get('file').setValue(null);
+
+
+
 
         }else{
 

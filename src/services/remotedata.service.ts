@@ -10,9 +10,9 @@ public imageURL = 'http://192.168.1.2:9023/downloadFile';
 
 
 //server
-//public serviceURL = 'afggis.synergic.systems:9030/';
-//public imageURL = 'http://afggis.synergic.systems:9030/downloadFile';
-
+// public serviceURL = 'http://afggis.synergic.systems:9030/';
+// public imageURL = 'http://afggis.synergic.systems:9030/downloadFile';
+//
 
 
 

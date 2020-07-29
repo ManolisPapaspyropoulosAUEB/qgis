@@ -2,55 +2,42 @@
   .closeIcon {
     color: white;
     position: relative;
-    top: -14px;
-    left: 18px;
     background: #2F4060;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-
-
   .closeIcon:hover {
-
     cursor: pointer;
   }
 </style>
 
 
-<mat-dialog-content>
+<mat-dialog-content class="calculate-criteria-window">
 
-  <div style="display: flex">
+  <div style="display: flex;align-items: center;    margin-bottom: 20px;">
     <div class="col-md-11">
-
-      <h2 >Calculate Criteria</h2>
-
-
-
+      <h2 style="font-size: 22px;margin-bottom: 0">Calculate Criteria</h2>
     </div>
     <div class="col-md-1">
-    <span  (click)="onNoClick()"   class="material-icons closeIcon">
+    <span (click)="onNoClick()" class="material-icons closeIcon">
       close
     </span>
     </div>
   </div>
-  <div style="display: flex" style="display: flex;
-    margin-left: 8px;
+  <div class="col-md-12" style="display: flex" style="display: flex;
     font-size: 18px;
     margin-bottom: 20px;background: #ffffff">
     <div  style="padding: 0;margin: 0px">
-      This process will be calculate MCA,CBI rates.Are you sure?
-
+      This process will be calculate criteria score and MCA,CBI rates. Are you sure?
     </div>
-
   </div>
-
-
-
-
-
-
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button style="background-color: #2F4060" (click)="yes()"   type="submit" mat-raised-button color="primary">Yes</button>
+  <div class="col-md-12">
+    <button style="background-color: #2F4060;margin-right:30px;" (click)="yes()" type="submit" mat-raised-button color="primary">Yes</button>
+    <button mat-raised-button (click)="onNoClick()" >Cancel</button>
+  </div>
 
-  <button mat-raised-button (click)="onNoClick()" >Cancel</button>
 </mat-dialog-actions>

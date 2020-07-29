@@ -9,8 +9,8 @@ html, body {
 }
 
 /*body {*/
-  /*margin: 0;*/
-  /*font-family: Roboto, "Helvetica Neue", sans-serif;*/
+/*margin: 0;*/
+/*font-family: Roboto, "Helvetica Neue", sans-serif;*/
 /*}*/
 
 .mat-tab-label-content {
@@ -86,6 +86,7 @@ c-remove {
 .mycustomTabClass .mat-tab-label-active {
   background: #8BAA48;
   color: white !important;
+  opacity: 0.9;
 }
 
 ::ng-deep.mycustomTabClass.mat-tab-label .mat-tab-label-active {
@@ -93,7 +94,7 @@ c-remove {
 }
 
 .mycustomTabClass div.mat-tab-label-content {
-  color: black;
+  color: #000;
 }
 
 .mycustomTabClassUpdateRoad .mat-tab-labels {
@@ -301,6 +302,10 @@ c-remove {
   cursor: pointer;
 }
 
+.datatable-row-group.datatable-row-right:last-child:hover{
+  background-color: #fafafa !important;
+}
+
 .mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
   transform: none !important;
 }
@@ -448,7 +453,7 @@ ngx-datatable {
 }
 
 datatable-body.datatable-body {
-  height: 80vh !important;
+  height: 75vh !important;
   overflow-y: scroll !important;
 
 }
@@ -487,4 +492,201 @@ button:focus {
 
 .criteria-master-details {
   padding: 20px 0;
+}
+
+.button-label {
+  position: relative;
+  top: 1px;
+  left: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.quick-view-table-btns{
+  margin: 0;padding: 0;display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+.quick-view-table-btns span.mat-button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+
+.quick-view-table-btns span.mat-button-wrapper > span:not(.material-icons){
+  height:24px;
+  line-height: 24px;
+  position: relative;
+  top:1px;
+}
+
+
+.province-combo{
+  margin:0 15px;
+}
+.province-combo .cuppa-dropdown ,
+.district-combo .cuppa-dropdown {
+
+  width: 100%;
+}
+.province-combo .cuppa-dropdown .selected-list,
+.district-combo .cuppa-dropdown .selected-list{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.district-combo{
+  margin:0 15px;margin-top: 25px;
+}
+
+span.datatable-header-cell-label,
+.datatable-body-cell-label{
+  font-size: 14px!important;
+}
+
+
+.user-data {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+.button-container-list-table{
+  display: flex;
+  padding-left: 0;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 1px 1px 5px -1px #000!important;
+  border-radius: 50%;
+  /* margin-left: 21px; */
+  left: 20px;
+  position: relative;
+  height: 35px;
+  width: 35px;
+}
+
+
+.buttonNav {
+  cursor: pointer;
+  box-shadow: 2px 2px 3px 0px #888888;
+  border-bottom-left-radius: 90px;
+  border-top-left-radius: 90px;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  width: 40px;
+  text-align: center;
+  padding-top: 0;
+  z-index: 3;
+  background: white;
+  top: 0px;
+  left: -15px;
+  /* font-size: 29px; */
+  color: #6b6b6b;
+}
+
+
+
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #8baa48;
+}
+
+.roadFilters span.material-icons {
+  font-size: 24px;
+}
+.roadFilters span span {
+  font-size: 14px;
+}
+
+.roadFilters .mat-radio-label-content{
+  font-size: 14px;
+}
+
+
+.roadFilters .mat-form-field-infix {
+  font-size: 14px;
+}
+
+.roadFilters{
+  max-height: 600px;
+  overflow-y:auto;
+}
+
+
+.left-column-filter .mat-drawer-inner-container{
+  overflow: hidden;
+}
+
+
+.extra-help-points{
+  margin-top: 17px;
+  margin-right: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 1px 1px 2px 0px #888888;
+}
+
+.extra-help-points div {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px 0;
+}
+
+.extra-help-points div img{
+  margin-right:10px;
+}
+
+
+.roadFilters {
+  margin-top: 17px;
+  margin-right: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 1px 1px 2px 0px #888888;
+}
+
+
+.buttonNavLeft {
+  cursor: pointer;
+  box-shadow: 2px 2px 3px 0px #888888;
+  border-bottom-right-radius: 90px;
+  border-top-right-radius: 90px;
+  position: relative;
+  height: 50px;
+  width: 35px;
+  padding-top: 0;
+  line-height: 50px;
+  z-index: 3;
+  background: white;
+  top: 0px;
+  left: -15px;
+  /* font-size: 29px; */
+  color: #6b6b6b;
+}
+
+
+.menu-actions .mat-menu-item .mat-icon,
+.menu-actions .mat-menu-item .material-icons{
+  margin-right: 10px;
+  font-size: 22px;
+  width: 22px;
+  height: 22px;
+}
+
+.menu-actions button.mat-menu-item  {
+  display: flex;
+  align-items: center;
 }
