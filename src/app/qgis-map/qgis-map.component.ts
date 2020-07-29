@@ -154,11 +154,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public selectedValuesRoadCondition = [];
   public agriculturFacilitationFilter = '';
   public markers = [];
-  public layer_KhostProvincedistrictsKhost_Province_UTM42n_1;
-  public layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3;
-  public layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3;
+
+
   public diakopthsDromwn = true;
-  private layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14: L.geoJson;
+
   public currentNum_district_code: any;
   public currentProvinceCode: any;
   public currentProvinceName;
@@ -172,9 +171,40 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public selectAllCheckVillages;
   private roadsTab1Cpy = [];
   public selectionArrayRoads;
-  public layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8: L.geoJson;
 
-  constructor(private  dataservice: DataService, domSanitizer: DomSanitizer,public router: Router, public filterService: FilterService, private snackBar: MatSnackBar, public dialog: MatDialog, private scrollService: ScrollService, public excelPdfExporterService: ExcelPdfExporterService) {
+
+
+  public layer_KhostProvincedistrictsKhost_Province_UTM42n_1;
+  public layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3; //
+  public layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3;
+  private layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14: L.geoJson;
+  public layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8: L.geoJson;
+  public layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9: L.geoJson;
+  public layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6: L.geoJson;
+  public layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11: L.geoJson;
+  public json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10: L.geoJson;
+  public layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4: L.geoJson;
+  public layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13: L.geoJson;
+  public layer_Khost_Province_Baak_District_OSM_roads_UTM42n_2: L.geoJson;
+  public layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5: L.geoJson;
+  public layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7: L.geoJson;
+
+
+
+
+
+
+  // this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5 this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7
+
+
+  constructor(private  dataservice: DataService,
+              domSanitizer: DomSanitizer,
+              public router: Router,
+              public filterService: FilterService,
+              private snackBar: MatSnackBar,
+              public dialog: MatDialog,
+              private scrollService: ScrollService,
+              public excelPdfExporterService: ExcelPdfExporterService) {
   }
 
   // @ViewChild('mydatatable') mydatatable;
@@ -651,8 +681,75 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           // layer.openPopup();
         }
       });
+
     }
+    else if(road.districtId == 1410){
+      this.layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
+          // layer.openPopup();
+        }
+      });
+    }
+    else if(road.districtId == 1402){
+      this.layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
+          // layer.openPopup();
+        }
+      });
+    }
+    else if(road.districtId == 1407){
+      this.json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
+          // layer.openPopup();
+        }
+      });
+    }
+    else if (road.districtId == 1413){
+      this.layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
+          // layer.openPopup();
+        }
+      });
+    }
+
+    else if (road.districtId == 1404){
+      this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
+          // layer.openPopup();
+        }
+      });
+    }else if (road.districtId == 1408){
+      this.layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
+          // layer.openPopup();
+        }
+      });
+    }else if (road.districtId == 1401){
+      this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
+          // layer.openPopup();
+        }
+      });
+    }else if (road.districtId == 1405){
+      this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#ff100e', weight: 8});  //color:'#ffff00'
+          // layer.openPopup();
+        }
+      });
+    }
+
   }
+
+
+
 
   out(road) {
     var findRoad = this.roadsTab1.find(x => x.LVRR_ID == road.LVRR_ID);
@@ -670,7 +767,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           //   layer.closePopup();
         }
       });
-    } else if (road.districtId == 1403) {
+    }
+    else if (road.districtId == 1403) {
       this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
           layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
@@ -678,9 +776,110 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    else if (road.districtId == 1410) {
+      this.layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+          //   layer.closePopup();
+        }
+      });
+    }
+
+    else if (road.districtId == 1402) { //ok
+      this.layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+          //   layer.closePopup();
+        }
+      });
+    }
+
+    else if (road.districtId == 1412) { //ok
+      this.layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+          //   layer.closePopup();
+        }
+      });
+    }
+
+    else if (road.districtId == 1407) {
+      this.json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+          //   layer.closePopup();
+        }
+      });
+    }
+
+    else if (road.districtId == 1413) {
+      this.layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+          //   layer.closePopup();
+        }
+      });
+    }
+
+    else if (road.districtId == 1404) {
+      this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+          //   layer.closePopup();
+        }
+      });
+    }
+
+    else if (road.districtId == 1408) {
+      this.layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+          //   layer.closePopup();
+        }
+      });
+    }
+
+
+
+
+    else if (road.districtId == 1401) {
+      this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+          //   layer.closePopup();
+        }
+      });
+    }
+
+    else if (road.districtId == 1405) {
+      this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
+          layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+          //   layer.closePopup();
+        }
+      });
+    }
+
+
   }
 
   public hitRoad(road) {
+
+    console.log(road);
+
     var findRoad = this.roadsTab1.find(x => x.LVRR_ID == road.LVRR_ID);
     var findRoad2 = this.roadTab2.find(x => x.LVRR_ID == road.LVRR_ID);
     if (!findRoad.checkedFilter) {
@@ -726,7 +925,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         }
       });
-    } else if (road.districtId == 1403) {
+    }
+
+
+    else if (road.districtId == 1403) {
       this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
           if (layer.feature.geometry.type === 'editMapRoad') {
@@ -744,6 +946,195 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
+
+
+//----------------------------------------------------------------------------------------------------------
+
+    else if (road.districtId == 1410) {
+      this.layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
+          if (layer.feature.geometry.type === 'editMapRoad') {
+            layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+            layer.feature.geometry.type = 'editMapRoadSelection';
+            layer.feature.properties.name = findRoad.name;
+            layer.openPopup();
+          } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
+            layer.feature.geometry.type = 'editMapRoad';
+            layer.setStyle(
+              {color: '#009111', weight: 8}
+            );
+            layer.closePopup();
+          }
+        }
+      });
+    }
+
+
+    else if (road.districtId == 1402) {
+      this.layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
+          if (layer.feature.geometry.type === 'editMapRoad') {
+            layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+            layer.feature.geometry.type = 'editMapRoadSelection';
+            layer.feature.properties.name = findRoad.name;
+            layer.openPopup();
+          } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
+            layer.feature.geometry.type = 'editMapRoad';
+            layer.setStyle(
+              {color: '#009111', weight: 8}
+            );
+            layer.closePopup();
+          }
+        }
+      });
+    }
+
+    else if (road.districtId == 1412) {
+      this.layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
+          if (layer.feature.geometry.type === 'editMapRoad') {
+            layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+            layer.feature.geometry.type = 'editMapRoadSelection';
+            layer.feature.properties.name = findRoad.name;
+            layer.openPopup();
+          } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
+            layer.feature.geometry.type = 'editMapRoad';
+            layer.setStyle(
+              {color: '#009111', weight: 8}
+            );
+            layer.closePopup();
+          }
+        }
+      });
+    }
+
+    else if (road.districtId == 1407) {
+      this.json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
+          if (layer.feature.geometry.type === 'editMapRoad') {
+            layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+            layer.feature.geometry.type = 'editMapRoadSelection';
+            layer.feature.properties.name = findRoad.name;
+            layer.openPopup();
+          } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
+            layer.feature.geometry.type = 'editMapRoad';
+            layer.setStyle(
+              {color: '#009111', weight: 8}
+            );
+            layer.closePopup();
+          }
+        }
+      });
+    }
+
+    else if (road.districtId == 1413) {
+      this.layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
+          if (layer.feature.geometry.type === 'editMapRoad') {
+            layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+            layer.feature.geometry.type = 'editMapRoadSelection';
+            layer.feature.properties.name = findRoad.name;
+            layer.openPopup();
+          } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
+            layer.feature.geometry.type = 'editMapRoad';
+            layer.setStyle(
+              {color: '#009111', weight: 8}
+            );
+            layer.closePopup();
+          }
+        }
+      });
+    }
+
+    else if (road.districtId == 1404) {
+      this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
+          if (layer.feature.geometry.type === 'editMapRoad') {
+            layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+            layer.feature.geometry.type = 'editMapRoadSelection';
+            layer.feature.properties.name = findRoad.name;
+            layer.openPopup();
+          } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
+            layer.feature.geometry.type = 'editMapRoad';
+            layer.setStyle(
+              {color: '#009111', weight: 8}
+            );
+            layer.closePopup();
+          }
+        }
+      });
+    }
+
+    else if (road.districtId == 1408) {
+      this.layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
+          if (layer.feature.geometry.type === 'editMapRoad') {
+            layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+            layer.feature.geometry.type = 'editMapRoadSelection';
+            layer.feature.properties.name = findRoad.name;
+            layer.openPopup();
+          } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
+            layer.feature.geometry.type = 'editMapRoad';
+            layer.setStyle(
+              {color: '#009111', weight: 8}
+            );
+            layer.closePopup();
+          }
+        }
+      });
+    }
+
+    else if (road.districtId == 1401) {
+      this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
+          if (layer.feature.geometry.type === 'editMapRoad') {
+            layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+            layer.feature.geometry.type = 'editMapRoadSelection';
+            layer.feature.properties.name = findRoad.name;
+            layer.openPopup();
+          } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
+            layer.feature.geometry.type = 'editMapRoad';
+            layer.setStyle(
+              {color: '#009111', weight: 8}
+            );
+            layer.closePopup();
+          }
+        }
+      });
+    }
+
+    else if (road.districtId == 1405) {
+      this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7.eachLayer(function (layer) {
+        if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
+          if (layer.feature.geometry.type === 'editMapRoad') {
+            layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+            layer.feature.geometry.type = 'editMapRoadSelection';
+            layer.feature.properties.name = findRoad.name;
+            layer.openPopup();
+          } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
+            layer.feature.geometry.type = 'editMapRoad';
+            layer.setStyle(
+              {color: '#009111', weight: 8}
+            );
+            layer.closePopup();
+          }
+        }
+      });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
   ngOnChanges2() {
@@ -978,7 +1369,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         });
 
 
-      } else if (this.currentNum_district_code == 1403) { //gurbuz
+      }
+
+
+      else if (this.currentNum_district_code == 1403) { //gurbuz
         this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
           if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
             if (layer.feature.geometry.type == 'editMapRoadSelection') {
@@ -995,10 +1389,173 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         });
       }
+
+      //----------------
+
+      else if (this.currentNum_district_code == 1410) {
+        this.layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9.eachLayer(function (layer) {
+          if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
+            if (layer.feature.geometry.type == 'editMapRoadSelection') {
+              layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoadSelection';
+            } else {
+              layer.setStyle({color: '#009111', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoad';
+            }
+          } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
+            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.feature.geometry.type = 'MultiLineString';
+            layer.closePopup();
+          }
+        });
+      }
+
+      else if (this.currentNum_district_code == 1402) {
+        this.layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6.eachLayer(function (layer) {
+          if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
+            if (layer.feature.geometry.type == 'editMapRoadSelection') {
+              layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoadSelection';
+            } else {
+              layer.setStyle({color: '#009111', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoad';
+            }
+          } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
+            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.feature.geometry.type = 'MultiLineString';
+            layer.closePopup();
+          }
+        });
+      }
+
+      else if (this.currentNum_district_code == 1412) {
+        this.layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11.eachLayer(function (layer) {
+          if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
+            if (layer.feature.geometry.type == 'editMapRoadSelection') {
+              layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoadSelection';
+            } else {
+              layer.setStyle({color: '#009111', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoad';
+            }
+          } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
+            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.feature.geometry.type = 'MultiLineString';
+            layer.closePopup();
+          }
+        });
+      }
+
+      else if (this.currentNum_district_code == 1407) {
+        this.json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10.eachLayer(function (layer) {
+          if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
+            if (layer.feature.geometry.type == 'editMapRoadSelection') {
+              layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoadSelection';
+            } else {
+              layer.setStyle({color: '#009111', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoad';
+            }
+          } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
+            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.feature.geometry.type = 'MultiLineString';
+            layer.closePopup();
+          }
+        });
+      }
+
+      else if (this.currentNum_district_code == 1413) {
+        this.layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4.eachLayer(function (layer) {
+          if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
+            if (layer.feature.geometry.type == 'editMapRoadSelection') {
+              layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoadSelection';
+            } else {
+              layer.setStyle({color: '#009111', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoad';
+            }
+          } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
+            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.feature.geometry.type = 'MultiLineString';
+            layer.closePopup();
+          }
+        });
+      }
+
+      else if (this.currentNum_district_code == 1404) {
+        this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13.eachLayer(function (layer) {
+          if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
+            if (layer.feature.geometry.type == 'editMapRoadSelection') {
+              layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoadSelection';
+            } else {
+              layer.setStyle({color: '#009111', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoad';
+            }
+          } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
+            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.feature.geometry.type = 'MultiLineString';
+            layer.closePopup();
+          }
+        });
+      }
+
+      else if (this.currentNum_district_code == 1408) {
+        this.layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14.eachLayer(function (layer) {
+          if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
+            if (layer.feature.geometry.type == 'editMapRoadSelection') {
+              layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoadSelection';
+            } else {
+              layer.setStyle({color: '#009111', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoad';
+            }
+          } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
+            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.feature.geometry.type = 'MultiLineString';
+            layer.closePopup();
+          }
+        });
+      }
+
+      else if (this.currentNum_district_code == 1401) {
+        this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5.eachLayer(function (layer) {
+          if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
+            if (layer.feature.geometry.type == 'editMapRoadSelection') {
+              layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoadSelection';
+            } else {
+              layer.setStyle({color: '#009111', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoad';
+            }
+          } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
+            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.feature.geometry.type = 'MultiLineString';
+            layer.closePopup();
+          }
+        });
+      }
+
+      else if (this.currentNum_district_code == 1405) {
+        this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7.eachLayer(function (layer) {
+          if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
+            if (layer.feature.geometry.type == 'editMapRoadSelection') {
+              layer.setStyle({color: '#910002', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoadSelection';
+            } else {
+              layer.setStyle({color: '#009111', weight: 8});  //color:'#ffff00'
+              layer.feature.geometry.type = 'editMapRoad';
+            }
+          } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
+            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.feature.geometry.type = 'MultiLineString';
+            layer.closePopup();
+          }
+        });
+      }
     }
-
-
   }
+
 
   public switchTab($event: MatTabChangeEvent) {
     var tab = $event.index;
@@ -1296,6 +1853,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
     function highlightFeatureOnClick(e) {
+
+
+
       if (e.target.feature.geometry.type == 'MultiLineString') {
         var findRoadForGetMethod = filterService.mapRoadsArrayAll.find(x => x.LVRR_ID == e.target.feature.properties.LVRR_ID);
         findRoadForGetMethod.checkedFilter = false;
@@ -1413,12 +1973,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     function pop_Khost_Province_Baak_District_OSM_roads_UTM42n_2(feature, layer) {
       layer.on({
-        mouseout: function (e) {
-          for (let i in e.target._eventParents) {
-            e.target._eventParents[i].resetStyle(e.target);
-          }
-        },
+        mouseout: unhighlightFeature,
         mouseover: highlightFeature,
+        click: highlightFeatureOnClick
       });
       var popupContent = '<table>\
                     <tr>\
@@ -1475,7 +2032,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.myMap.createPane('pane_Khost_Province_Baak_District_OSM_roads_UTM42n_2');
     this.myMap.getPane('pane_Khost_Province_Baak_District_OSM_roads_UTM42n_2').style.zIndex = 402;
     this.myMap.getPane('pane_Khost_Province_Baak_District_OSM_roads_UTM42n_2').style['mix-blend-mode'] = 'normal';
-    var layer_Khost_Province_Baak_District_OSM_roads_UTM42n_2 = new L.geoJson(json_Khost_Province_Baak_District_OSM_roads_UTM42n_2, {
+    this.layer_Khost_Province_Baak_District_OSM_roads_UTM42n_2= new L.geoJson(json_Khost_Province_Baak_District_OSM_roads_UTM42n_2, {
       attribution: '',
       interactive: true,
       dataVar: 'json_Khost_Province_Baak_District_OSM_roads_UTM42n_2',
@@ -1484,15 +2041,19 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       onEachFeature: pop_Khost_Province_Baak_District_OSM_roads_UTM42n_2,
       style: style_Khost_Province_Baak_District_OSM_roads_UTM42n_2_0,
     });
-    bounds_group.addLayer(layer_Khost_Province_Baak_District_OSM_roads_UTM42n_2);
-    this.myMap.addLayer(layer_Khost_Province_Baak_District_OSM_roads_UTM42n_2);
+    bounds_group.addLayer(this.layer_Khost_Province_Baak_District_OSM_roads_UTM42n_2);
+    this.myMap.addLayer(this.layer_Khost_Province_Baak_District_OSM_roads_UTM42n_2);
 
     function pop_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3(feature, layer) {
+
+
       layer.on({
         mouseout: unhighlightFeature,
         mouseover: highlightFeature,
         click: highlightFeatureOnClick
       });
+
+
       var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>osm_id</strong><br />' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
@@ -1562,13 +2123,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     function pop_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4(feature, layer) {
       layer.on({
-        mouseout: function (e) {
-          for (let i in e.target._eventParents) {
-            e.target._eventParents[i].resetStyle(e.target);
-          }
-        },
+        mouseout: unhighlightFeature,
         mouseover: highlightFeature,
+        click: highlightFeatureOnClick
       });
+
       var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>osm_id</strong><br />' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
@@ -1624,7 +2183,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.myMap.createPane('pane_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4');
     this.myMap.getPane('pane_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4').style.zIndex = 404;
     this.myMap.getPane('pane_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4').style['mix-blend-mode'] = 'normal';
-    var layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4 = new L.geoJson(json_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4, {
+    this.layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4= new L.geoJson(json_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4, {
       attribution: '',
       interactive: true,
       dataVar: 'json_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4',
@@ -1633,18 +2192,16 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       onEachFeature: pop_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4,
       style: style_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4_0,
     });
-    bounds_group.addLayer(layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4);
-    this.myMap.addLayer(layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4);
+    bounds_group.addLayer( this.layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4);
+    this.myMap.addLayer( this.layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4);
 
     function pop_Khost_Province_Khost_District_OSM_roads_UTM42n_5(feature, layer) {
       layer.on({
-        mouseout: function (e) {
-          for (let i in e.target._eventParents) {
-            e.target._eventParents[i].resetStyle(e.target);
-          }
-        },
+        mouseout: unhighlightFeature,
         mouseover: highlightFeature,
+        click: highlightFeatureOnClick
       });
+
       var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>osm_id</strong><br />' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
@@ -1700,7 +2257,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.myMap.createPane('pane_Khost_Province_Khost_District_OSM_roads_UTM42n_5');
     this.myMap.getPane('pane_Khost_Province_Khost_District_OSM_roads_UTM42n_5').style.zIndex = 405;
     this.myMap.getPane('pane_Khost_Province_Khost_District_OSM_roads_UTM42n_5').style['mix-blend-mode'] = 'normal';
-    var layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5 = new L.geoJson(json_Khost_Province_Khost_District_OSM_roads_UTM42n_5, {
+    this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5= new L.geoJson(json_Khost_Province_Khost_District_OSM_roads_UTM42n_5, {
       attribution: '',
       interactive: true,
       dataVar: 'json_Khost_Province_Khost_District_OSM_roads_UTM42n_5',
@@ -1709,18 +2266,16 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       onEachFeature: pop_Khost_Province_Khost_District_OSM_roads_UTM42n_5,
       style: style_Khost_Province_Khost_District_OSM_roads_UTM42n_5_0,
     });
-    bounds_group.addLayer(layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5);
-    this.myMap.addLayer(layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5);
+    bounds_group.addLayer( this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5);
+    this.myMap.addLayer( this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5);
 
     function pop_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6(feature, layer) {
       layer.on({
-        mouseout: function (e) {
-          for (let i in e.target._eventParents) {
-            e.target._eventParents[i].resetStyle(e.target);
-          }
-        },
+        mouseout: unhighlightFeature,
         mouseover: highlightFeature,
+        click: highlightFeatureOnClick
       });
+
       var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>osm_id</strong><br />' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
@@ -1776,7 +2331,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.myMap.createPane('pane_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6');
     this.myMap.getPane('pane_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6').style.zIndex = 406;
     this.myMap.getPane('pane_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6').style['mix-blend-mode'] = 'normal';
-    var layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6 = new L.geoJson(json_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6, {
+
+    this.layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6= new L.geoJson(json_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6, {
       attribution: '',
       interactive: true,
       dataVar: 'json_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6',
@@ -1785,18 +2341,16 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       onEachFeature: pop_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6,
       style: style_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6_0,
     });
-    bounds_group.addLayer(layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6);
-    this.myMap.addLayer(layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6);
+    bounds_group.addLayer(this.layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6);
+    this.myMap.addLayer(this.layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6);
 
     function pop_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7(feature, layer) {
       layer.on({
-        mouseout: function (e) {
-          for (let i in e.target._eventParents) {
-            e.target._eventParents[i].resetStyle(e.target);
-          }
-        },
+        mouseout: unhighlightFeature,
         mouseover: highlightFeature,
+        click: highlightFeatureOnClick
       });
+
       var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>osm_id</strong><br />' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
@@ -1852,7 +2406,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.myMap.createPane('pane_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7');
     this.myMap.getPane('pane_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7').style.zIndex = 407;
     this.myMap.getPane('pane_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7').style['mix-blend-mode'] = 'normal';
-    var layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7 = new L.geoJson(json_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7, {
+    this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7 = new L.geoJson(json_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7, {
       attribution: '',
       interactive: true,
       dataVar: 'json_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7',
@@ -1861,8 +2415,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       onEachFeature: pop_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7,
       style: style_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7_0,
     });
-    bounds_group.addLayer(layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7);
-    this.myMap.addLayer(layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7);
+    bounds_group.addLayer(this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7);
+    this.myMap.addLayer(this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7);
 
     function pop_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8(feature, layer) {
 
@@ -1942,13 +2496,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     function pop_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9(feature, layer) {
       layer.on({
-        mouseout: function (e) {
-          for (let i in e.target._eventParents) {
-            e.target._eventParents[i].resetStyle(e.target);
-          }
-        },
+        mouseout: unhighlightFeature,
         mouseover: highlightFeature,
+        click: highlightFeatureOnClick
       });
+
       var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>osm_id</strong><br />' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
@@ -2004,7 +2556,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.myMap.createPane('pane_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9');
     this.myMap.getPane('pane_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9').style.zIndex = 409;
     this.myMap.getPane('pane_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9').style['mix-blend-mode'] = 'normal';
-    var layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9 = new L.geoJson(json_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9, {
+
+
+    this.layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9 = new L.geoJson(json_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9, {
       attribution: '',
       interactive: true,
       dataVar: 'json_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9',
@@ -2013,18 +2567,21 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       onEachFeature: pop_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9,
       style: style_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9_0,
     });
-    bounds_group.addLayer(layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9);
-    this.myMap.addLayer(layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9);
+    bounds_group.addLayer( this.layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9);
+    this.myMap.addLayer( this.layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9);
 
     function pop_Khost_Province_Sabari_District_OSM_roads_UTM42n_10(feature, layer) {
+
+
       layer.on({
-        mouseout: function (e) {
-          for (let i in e.target._eventParents) {
-            e.target._eventParents[i].resetStyle(e.target);
-          }
-        },
+        mouseout: unhighlightFeature,
         mouseover: highlightFeature,
+        click: highlightFeatureOnClick
       });
+
+
+
+
       var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>osm_id</strong><br />' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
@@ -2080,7 +2637,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.myMap.createPane('pane_Khost_Province_Sabari_District_OSM_roads_UTM42n_10');
     this.myMap.getPane('pane_Khost_Province_Sabari_District_OSM_roads_UTM42n_10').style.zIndex = 410;
     this.myMap.getPane('pane_Khost_Province_Sabari_District_OSM_roads_UTM42n_10').style['mix-blend-mode'] = 'normal';
-    var layer_Khost_Province_Sabari_District_OSM_roads_UTM42n_10 = new L.geoJson(json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10, {
+
+    this.json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10 = new L.geoJson(json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10, {
       attribution: '',
       interactive: true,
       dataVar: 'json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10',
@@ -2089,18 +2647,17 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       onEachFeature: pop_Khost_Province_Sabari_District_OSM_roads_UTM42n_10,
       style: style_Khost_Province_Sabari_District_OSM_roads_UTM42n_10_0,
     });
-    bounds_group.addLayer(layer_Khost_Province_Sabari_District_OSM_roads_UTM42n_10);
-    this.myMap.addLayer(layer_Khost_Province_Sabari_District_OSM_roads_UTM42n_10);
+    bounds_group.addLayer(this.json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10);
+    this.myMap.addLayer(this.json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10);
 
     function pop_Khost_Province_Shamul_District_OSM_roads_UTM42n_11(feature, layer) {
+
       layer.on({
-        mouseout: function (e) {
-          for (let i in e.target._eventParents) {
-            e.target._eventParents[i].resetStyle(e.target);
-          }
-        },
+        mouseout: unhighlightFeature,
         mouseover: highlightFeature,
+        click: highlightFeatureOnClick
       });
+
       var popupContent = '<table>\
                     <tr>\
                         <td colspan="2"><strong>osm_id</strong><br />' + (feature.properties['osm_id'] !== null ? autolinker.link(feature.properties['osm_id'].toLocaleString()) : '') + '</td>\
@@ -2156,7 +2713,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.myMap.createPane('pane_Khost_Province_Shamul_District_OSM_roads_UTM42n_11');
     this.myMap.getPane('pane_Khost_Province_Shamul_District_OSM_roads_UTM42n_11').style.zIndex = 411;
     this.myMap.getPane('pane_Khost_Province_Shamul_District_OSM_roads_UTM42n_11').style['mix-blend-mode'] = 'normal';
-    var layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11 = new L.geoJson(json_Khost_Province_Shamul_District_OSM_roads_UTM42n_11, {
+
+
+    this.layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11 = new L.geoJson(json_Khost_Province_Shamul_District_OSM_roads_UTM42n_11, {
       attribution: '',
       interactive: true,
       dataVar: 'json_Khost_Province_Shamul_District_OSM_roads_UTM42n_11',
@@ -2165,8 +2724,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       onEachFeature: pop_Khost_Province_Shamul_District_OSM_roads_UTM42n_11,
       style: style_Khost_Province_Shamul_District_OSM_roads_UTM42n_11_0,
     });
-    bounds_group.addLayer(layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11);
-    this.myMap.addLayer(layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11);
+    bounds_group.addLayer( this.layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11);
+    this.myMap.addLayer( this.layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11);
 
     function pop_Khost_Province_Spera_District_OSM_roads_UTM42n_12(feature, layer) {
       layer.on({
@@ -2243,12 +2802,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     function pop_Khost_Province_Tanay_District_OSM_roads_UTM42n_13(feature, layer) {
       layer.on({
-        mouseout: function (e) {
-          for (let i in e.target._eventParents) {
-            e.target._eventParents[i].resetStyle(e.target);
-          }
-        },
+        mouseout: unhighlightFeature,
         mouseover: highlightFeature,
+        click: highlightFeatureOnClick
       });
       var popupContent = (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '');
 
@@ -2272,7 +2828,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.myMap.createPane('pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13');
     this.myMap.getPane('pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13').style.zIndex = 413;
     this.myMap.getPane('pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13').style['mix-blend-mode'] = 'normal';
-    var layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13 = new L.geoJson(json_Khost_Province_Tanay_District_OSM_roads_UTM42n_13, {
+    this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13 = new L.geoJson(json_Khost_Province_Tanay_District_OSM_roads_UTM42n_13, {
       attribution: '',
       interactive: true,
       dataVar: 'json_Khost_Province_Tanay_District_OSM_roads_UTM42n_13',
@@ -2281,17 +2837,14 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       onEachFeature: pop_Khost_Province_Tanay_District_OSM_roads_UTM42n_13,
       style: style_Khost_Province_Tanay_District_OSM_roads_UTM42n_13_0,
     });
-    bounds_group.addLayer(layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13);
-    this.myMap.addLayer(layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13);
+    bounds_group.addLayer(this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13);
+    this.myMap.addLayer(this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13);
 
     function pop_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14(feature, layer) {
       layer.on({
-        mouseout: function (e) {
-          for (let i in e.target._eventParents) {
-            e.target._eventParents[i].resetStyle(e.target);
-          }
-        },
-        mouseover: highlightFeature
+        mouseout: unhighlightFeature,
+        mouseover: highlightFeature,
+        click: highlightFeatureOnClick
       });
       var popupContent = (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '');
       layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
