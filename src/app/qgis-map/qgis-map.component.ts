@@ -56,6 +56,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import {ImagePipe} from './image.pipe';
 import {SafeUrlPipe} from './safeurl.pipe';
 import {MaterialFileInputModule} from 'ngx-material-file-input';
+import {RemoteDataService} from '../../services/remotedata.service';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -171,6 +172,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public selectAllCheckVillages;
   private roadsTab1Cpy = [];
   public selectionArrayRoads;
+
+
 
 
 
@@ -3419,14 +3422,16 @@ export class PhotoGallery implements OnInit {
   version = VERSION;
   imgObjHttp;
   imageData =[];
-  SERVER_URL = "http://localhost:9023/uploadFile";
+
+  //  SERVER_URL = "http://localhost:9023/uploadFile";
+  SERVER_URL = this.remoteDataService.serviceURL +'uploadFile';
   uploadForm: FormGroup;
   file='';
 //fileInput
   @ViewChild(MaterialFileInputModule) fileInput: MaterialFileInputModule;
 
 
-  constructor(public dialogRef: MatDialogRef<EditRoadDialog>,public gallery: Gallery,public domSanitizer: DomSanitizer, public dialog: MatDialog,safeUrl : SafeUrlPipe,private sanitizer: DomSanitizer,
+  constructor(public dialogRef: MatDialogRef<EditRoadDialog>,public remoteDataService : RemoteDataService,public gallery: Gallery,public domSanitizer: DomSanitizer, public dialog: MatDialog,safeUrl : SafeUrlPipe,private sanitizer: DomSanitizer,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private dataService: DataService, private snackBar: MatSnackBar, public router: Router,private formBuilder: FormBuilder, private httpClient: HttpClient
   ) {
