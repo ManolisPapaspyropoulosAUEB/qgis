@@ -159,8 +159,8 @@
             <mat-form-field  appearance="fill">
               <mat-label>Farm to the Market (criterio 4) </mat-label>
               <mat-select (valueChange)="ftthemarket(farmToTheMarket)"  formControlName="farmToTheMarket" [(ngModel)]="farmToTheMarket">
-                <mat-option value="0.0">True</mat-option>
-                <mat-option value="5.0">False</mat-option>
+                <mat-option value="0.0">False</mat-option>
+                <mat-option value="5.0">True</mat-option>
               </mat-select>
             </mat-form-field>
 
@@ -168,8 +168,8 @@
             <mat-form-field  appearance="fill">
               <mat-label>Agriculture Facilitaties (criterio 5) </mat-label>
               <mat-select  formControlName="agricultureFacilitaties" [(ngModel)]="agricultureFacilitaties">
-                <mat-option value="0.0">True</mat-option>
-                <mat-option value="5.0">False</mat-option>
+                <mat-option value="0.0">False</mat-option>
+                <mat-option value="5.0">True</mat-option>
               </mat-select>
             </mat-form-field>
 
@@ -180,7 +180,7 @@
           </div>
           <div class="col-md-6" >
 
-            <mat-form-field class="example-full-width">
+            <mat-form-field style="display: none" class="example-full-width">
               <mat-label>Connectivity (criterio 6)</mat-label>
               <input  type="number"  formControlName="connectivity"   matInput placeholder="connectivity" [(ngModel)]="connectivity">
               <span *ngIf=" f.connectivity.errors" style="color: red">   please give a numbers >= 0
@@ -190,9 +190,10 @@
 
 
 
-            <mat-form-field style="display: none" class="example-full-width">
+
+            <mat-form-field  style="" class="example-full-width">
               <mat-label>links To Major Activity Centres</mat-label>
-              <input  type="number"  formControlName="linksToMajorActivityCentres"   matInput placeholder="population Served" [(ngModel)]="linksToMajorActivityCentres">
+              <input [disabled]="true"  type="number"  formControlName="linksToMajorActivityCentres"   matInput placeholder="population Served" [(ngModel)]="linksToMajorActivityCentres">
             </mat-form-field>
 
 

@@ -26,6 +26,7 @@ export class VillagesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.limit = 16;
   }
 
@@ -84,6 +85,7 @@ export class VillagesComponent implements OnInit {
   }
 
   public selectRow(row, event) {
+    console.log(row);
     if (event.checked == true) {
       this.userSelectionsForMapShow.push(row);
     } else {

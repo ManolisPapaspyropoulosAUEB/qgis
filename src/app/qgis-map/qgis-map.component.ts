@@ -258,6 +258,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
 
+
+
+
     this.orderCol='';
     this.descAsc='';
 
@@ -1298,6 +1301,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   public addVillagesToMap() {
     if (this.filterService.villagesArray) {
+      console.log(this.filterService.villagesArray);
       var marker;
       this.filterService.villagesArray.forEach(element => {
         marker = L.marker([element.mapLat, element.mapLong]);
@@ -1314,7 +1318,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                          <td colspan="2">' + 'Name: ' + element.villageName + '</td>\
                     </tr>\
                      <tr>\
-                         <td colspan="2">' + 'Population: ' + element.VillagePop + '</td>\
+                         <td colspan="2">' + 'Population: ' + element.villagePop + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + 'Map Lat: ' + element.mapLat + '</td>\
+                    </tr>\
+                     <tr>\
+                        <td colspan="2">' + 'Map Long: ' + element.mapLong + '</td>\
                     </tr>\
                 </table>';
         marker.bindPopup(popupContent, {autoClose: false});
@@ -1560,6 +1570,119 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
 
+
+
+  public removeAllRoadsFromMap() {
+    for (let i = 0; i < this.roadsTab1.length; i++) {
+      var LVRR_ID = this.roadsTab1[i].LVRR_ID;
+      var checked = this.roadsTab1[i].checked;
+      if (this.currentNum_district_code == 1411) { //-->spera
+        this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
+          layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+          layer.feature.geometry.type = 'MultiLineString';
+          layer.closePopup();
+        });
+      } else if (this.currentNum_district_code == 1406) {  //Nadir
+        this.layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.eachLayer(function (layer) {
+          layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+          layer.feature.geometry.type = 'MultiLineString';
+          layer.closePopup();
+        });
+
+
+      }
+
+
+      else if (this.currentNum_district_code == 1403) { //gurbuz
+        this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
+          layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+          layer.feature.geometry.type = 'MultiLineString';
+          layer.closePopup();
+        });
+      }
+
+      //----------------
+
+      else if (this.currentNum_district_code == 1410) {
+        this.layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9.eachLayer(function (layer) {
+
+          layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+          layer.feature.geometry.type = 'MultiLineString';
+          layer.closePopup();
+        });
+      }
+
+      else if (this.currentNum_district_code == 1402) {
+        this.layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6.eachLayer(function (layer) {
+          if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
+            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.feature.geometry.type = 'MultiLineString';
+            layer.closePopup();
+          }
+        });
+      }
+
+      else if (this.currentNum_district_code == 1412) {
+        this.layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11.eachLayer(function (layer) {
+          layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+          layer.feature.geometry.type = 'MultiLineString';
+          layer.closePopup();
+        });
+      }
+
+      else if (this.currentNum_district_code == 1407) {
+        this.json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10.eachLayer(function (layer) {
+          layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+          layer.feature.geometry.type = 'MultiLineString';
+          layer.closePopup();
+        });
+      }
+
+      else if (this.currentNum_district_code == 1413) {
+        this.layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4.eachLayer(function (layer) {
+          if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
+            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.feature.geometry.type = 'MultiLineString';
+            layer.closePopup();
+          }
+        });
+      }
+
+      else if (this.currentNum_district_code == 1404) {
+        this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13.eachLayer(function (layer) {
+          layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+          layer.feature.geometry.type = 'MultiLineString';
+          layer.closePopup();
+        });
+      }
+
+      else if (this.currentNum_district_code == 1408) {
+        this.layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14.eachLayer(function (layer) {
+          layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+          layer.feature.geometry.type = 'MultiLineString';
+          layer.closePopup();
+        });
+      }
+
+      else if (this.currentNum_district_code == 1401) {
+        this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5.eachLayer(function (layer) {
+          layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+          layer.feature.geometry.type = 'MultiLineString';
+          layer.closePopup();
+        });
+      }
+
+      else if (this.currentNum_district_code == 1405) {
+        this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7.eachLayer(function (layer) {
+          layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+          layer.feature.geometry.type = 'MultiLineString';
+          layer.closePopup();
+        });
+      }
+    }
+  }
+
+
   public switchTab($event: MatTabChangeEvent) {
     var tab = $event.index;
     this.tab = tab;
@@ -1568,7 +1691,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       this.ngOnChanges2();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName); //mhn kaleseis thn get sou gia ta fereis ta facilities
-      this.removeAllMarkersFromMap();
+      this.removeAllMarkersFromMap();//
       this.setRoadsToMap();
       this.addFacilitiesToMap();
       this.addVillagesToMap();
@@ -1581,12 +1704,38 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.ngOnChanges2();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
+
+
+
+
+      // window.addEventListener('resize', function(event){
+        setTimeout(function () {
+          if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
+            this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - 196+ 'px';
+          }
+        }, 0, false);
+     // });
+
+
+
+
+
     } else if (tab == 2) {
       this.coreDataComponent.emptyTable();
 
       this.initMapRoadsArray();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
+
+      // window.addEventListener('resize', function(event) {
+
+        setTimeout(function () {
+          if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
+            this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - 232 + 'px';
+          }
+        }, 0, false);
+      // });
+
     } else if (tab == 3) {
       window.dispatchEvent(new Event('resize'));
       this.initMapRoadsArray();
@@ -1594,11 +1743,35 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       this.villagesComponent.enableNgx();
       this.coreDataComponent.emptyTable();
+
+      // window.addEventListener('resize', function(event) {
+
+
+        setTimeout(function () {
+          if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
+            this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - 232+ 'px';
+          }
+        }, 0, false);
+
+      // });
+
+
+
+
     } else if (tab == 4) {
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
 
       this.coreDataComponent.getCriteriaMaster();
+      // window.addEventListener('resize', function(event) {
+
+      setTimeout(function () {
+        if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - 205+ 'px';
+        }
+      }, 0, false);
+
+      // });
 
 
     }
@@ -1636,11 +1809,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public getRoadsPyParams() {
     this.dataservice.getRoadsByParams(
       {
-
-
         'orderCol': this.orderCol,
         'descAsc':this.descAsc,
-
         'district_id': this.currentNum_district_code,
         'nameFilter': this.nameFilter,
         'limit': this.limitPage,
@@ -1668,17 +1838,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
       if(this.orderCol==''){
-        // this.scrollToId('init');
-        // this.scrollToId('top');
+
       }
-
-
-
-
-
-
-
-
     });
   }
 
@@ -1721,6 +1882,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   selectDistrict(district, param) {
+    this.removeAllMarkersFromMap();
+    this.removeAllRoadsFromMap();
+
+    this.filterService.facilitiesArray=[];
+    this.filterService.villagesArray=[];
     this.orderCol='';
     this.descAsc='';
     if (param == 'manual') {
@@ -1820,11 +1986,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   private initMap(filterService, roadTab2): void {
+
     $(window).resize(function () {
       setTimeout(() => {
         window.dispatchEvent(new Event('resize'));
       }, 900);
     });
+
     this.myMap.setView([33.857, 67.756], 6.5);
     var highlightLayer;
 
@@ -1861,6 +2029,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       if (e.target.feature.geometry.type == 'MultiLineString') {
         var findRoadForGetMethod = filterService.mapRoadsArrayAll.find(x => x.LVRR_ID == e.target.feature.properties.LVRR_ID);
+
+        console.log(filterService.mapRoadsArrayAll);
+        console.log(findRoadForGetMethod);
+
         findRoadForGetMethod.checkedFilter = false;
         roadTab2.push(findRoadForGetMethod);
         e.target.feature.geometry.type = 'editMapRoad';
@@ -3473,33 +3645,18 @@ export class PhotoGallery implements OnInit {
     formData.append('file', this.uploadForm.get('file').value);
     formData.append("district",this.data.district);
     formData.append("roadId",this.data.id);
-
-
     this.httpClient.post<any>(this.SERVER_URL, formData).subscribe(
-
-
       (res) => {
         this.uploadForm.get('file').setValue(null, { emitEvent: false });
-
-
-
         if(res.status=='ok'){
           this.getImages();
           this.snackBar.open(res.message, 'x', <MatSnackBarConfig>{duration: 4000});
-
-
-
-
         }else{
-
           this.snackBar.open(res.message, 'x', <MatSnackBarConfig>{duration: 4000});
         }
-
       },
       (err) => console.log(err)
     );
-
-
   }
 
 
@@ -3606,7 +3763,6 @@ export class EditRoadDialog implements OnInit {
     this.lvrr_id = this.data.LVRR_ID;
     this.connectivity = this.data.connectivity;
 
-    this.linksToMajorActivityCentres=0;
     this.fclass = this.data.fclass;
     this.ref = this.data.ref;
     this.oneway = this.data.oneway;
@@ -3622,7 +3778,11 @@ export class EditRoadDialog implements OnInit {
     this.accessToGCsRMs = this.data.accessToGCsRMs;
     this.farmToTheMarket = this.data.farmToTheMarket;
     this.agricultureFacilitaties = this.data.agricultureFacilitaties;
-    this.linksToMajorActivityCentres = this.data.linksToMajorActivityCentres;
+    this.linksToMajorActivityCentres=this.data.facilitiesServed+this.data.accessToGCsRMs;
+
+
+
+
     this.numberOfConnections = this.data.numberOfConnections;
     this.roadCondition = this.data.roadCondition;
     this.editForm = this.formBuilder.group({
@@ -3647,6 +3807,9 @@ export class EditRoadDialog implements OnInit {
       numberOfConnections: [this.numberOfConnections, [Validators.min(0), Validators.max(10)]],
       roadCondition: [this.roadCondition]
     });
+
+    this.f.linksToMajorActivityCentres.disable();
+
   }
 
 

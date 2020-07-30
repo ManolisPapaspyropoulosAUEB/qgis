@@ -453,8 +453,8 @@ ngx-datatable {
 }
 
 datatable-body.datatable-body {
-  height: 75vh !important;
-  overflow-y: scroll !important;
+  height: 741px;
+  overflow-y: auto !important;
 
 }
 
@@ -689,4 +689,42 @@ span.datatable-header-cell-label,
 .menu-actions button.mat-menu-item  {
   display: flex;
   align-items: center;
+}
+
+
+.addBtn {
+  position: relative;
+  left: 0;
+  top: 0;
+  height: 30px;
+  width: 30px;
+  background: #8baa48 !important;
+  border-radius: 50%;
+  line-height: 30px;
+  color:#fff;
+  margin-right:5px;
+}
+
+.addBtnOuter{
+  color: #212529!important;
+  background: transparent!important;
+  box-shadow: none!important;
+  display: flex!important;
+  align-items: center!important;
+  font-size: 14px!important;
+  width: auto!important;
+  height: auto!important;
+  margin: 0!important;
+  padding: 0!important;
+  text-transform: uppercase;
+}
+.top-extra-actions{
+  padding:10px 20px;
+}
+.searchFilter {
+  width: 45%;
+  margin-top: 20px;
+  margin-bottom: 14px !important;
+  border-radius: 5px !important;
+  margin-left: 12px !important;
 }

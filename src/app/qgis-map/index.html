@@ -98,14 +98,14 @@
     color: #3f51b5 !important;
   }
 
-  .searchFilter {
+ /* .searchFilter {
     width: 45%;
     margin-top: 20px;
     margin-bottom: 14px !important;
     border: 0px !important;
     border-radius: 0 !important;
     margin-left: 12px !important;
-  }
+  }*/
 
   .mat-list-item-content mat-list-item-content-reverse {
     background: red !important;
@@ -395,8 +395,7 @@
     <mat-tab-group animationDuration="0ms" style="    position: relative;  top: -48px;" (selectedTabChange)="switchTab($event)">
       <mat-tab label="Map"   style="    background-color: white;">
         <mat-drawer-container class="example-container">
-          <mat-drawer style="width: 36%;background: whitesmoke;    box-shadow: -2px 2px 2px 0px #888888!important;"
-                      #sideNav mode="side" opened="false" position="end" #drawerMapSelections>
+          <mat-drawer style="width: 36%;background: whitesmoke;    box-shadow: -2px 2px 2px 0px #888888!important;" #sideNav mode="side" opened="false" position="end" #drawerMapSelections>
             <div style="padding: 0;margin: 0">
               <mat-tab-group class="mycustomTabClass">
                 <mat-tab label="Roads selections">
@@ -418,20 +417,23 @@
                         <div class="row">
                           <div class="col-md-5">
                             <span style="font-weight: bold">
-                              LVRR_ID:  {{road.LVRR_ID}}
+                              LVRR_ID:
                             </span>
+                            {{road.LVRR_ID}}
                           </div>
                           <div class="col-md-7">
                             <span style="font-weight: bold">
-                              MCA:  {{road.mca}} (%)
+                              MCA:
                             </span>
+                            {{road.mca}} (%)
                           </div>
                         </div>
                         <div class="row">
                           <div class="col-md-5">
                             <span style="font-weight: bold">
-                              Osm_id:  {{road.osm_id}}
+                              Osm_id:
                             </span>
+                            {{road.osm_id}}
                           </div>
                           <div class="col-md-7">
                             <span style="font-weight: bold">
@@ -510,23 +512,61 @@
                             (click)="hitVillage(village)">
                     <div class="row" style="padding: 0;margin: 0">
                       <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
-                      <span>
-                          <span style="font-weight: bold">village_name :</span> {{village.villageName}}
-                      </span>
-                        <span>
-                           <span style="font-weight: bold">Population :</span>    {{village.VillagePop}}
-                          </span>
-                        <span>
-                       <span style="font-weight: bold"> Village_Co:</span>    {{village.villageCo}}
-                      </span>
-                        <span>
-                     <span style="font-weight: bold">  Map_Long:</span>      {{village.mapLong}}
-                    </span>
-                        <span>
-                     <span style="font-weight: bold">  Map_Lat:</span>      {{village.mapLat}}
-                    </span>
+
+
+
+                        <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
+                          <div class="row">
+                            <div class="col-md-6">
+                            <span style="font-weight: bold">
+                              Village Name:
+                            </span>
+                              {{village.villageName}}
+                            </div>
+
+                            <div class="col-md-6">
+
+                            <span style="font-weight: bold">
+                              Map Lat:
+                            </span>
+                              {{village.mapLat}}
+
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-6">
+                            <span style="font-weight: bold">
+                               Village Co
+                            </span>
+                               {{village.villageCo}}
+                            </div>
+                            <div class="col-md-6">
+                            <span style="font-weight: bold">
+                              Map Long:
+                            </span>
+                              {{village.mapLong}}
+                            </div>
+                          </div>
+
+
+                          <div class="row">
+                            <div class="col-md-6">
+
+                            <span style="font-weight: bold">
+                              Village Population:
+                            </span>
+                              {{village.villagePop}}
+                            </div>
+
+                          </div>
+
+
+
+                        </div>
+
                       </div>
-                      <div class="col-md-1" style="margin: 0;padding-top: 30px">
+                      <div class="col-md-1" style="margin: 0;padding-top: 26px">
                         <mat-checkbox [disabled]="true" (change)="village.checkedFilter=!village.checkedFilter"
                                       [(ngModel)]="village.checkedFilter" class="example-margin"></mat-checkbox>
                       </div>
@@ -536,6 +576,8 @@
               </mat-tab-group>
             </div>
           </mat-drawer>
+
+
           <mat-drawer-content>
             <div class="row" style="	    display: flex;flex-direction: row;justify-content: flex-end;">
 
@@ -634,6 +676,7 @@
               [sorts]="[{prop: 'LVRR_ID', dir: 'asc'}]"
               (sort)="onSort($event)"
             >
+
 
               <ngx-datatable-column  [width]="130" name="Show on map"  [flexGrow]="1" [frozenLeft]="true">
                 <ng-template let-row="row" ngx-datatable-cell-template>
@@ -790,16 +833,23 @@
               <ngx-datatable-column name="Farm to the Market" [width]="200" class="testinioclass" prop="farmToTheMarket"
                                     [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
-                    {{ row?.farmToTheMarket }}
+                  <div *ngIf="row.farmToTheMarket=='0.0' ">
+                    F
+                  </div>
+                  <div *ngIf="row.farmToTheMarket=='5.0' ">
+                    T
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Agricultural Facilities" [width]="200" class="testinioclass"
                                     prop="agriculturalFacilities" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
-                    {{ row?.agriculturalFacilities }}
+
+                  <div *ngIf="row.agriculturalFacilities=='0.0' ">
+                    F
+                  </div>
+                  <div *ngIf="row.agriculturalFacilities=='5.0' ">
+                    T
                   </div>
                 </ng-template>
               </ngx-datatable-column>
@@ -933,14 +983,14 @@
               </ngx-datatable-column>
               <ngx-datatable-column name="MCA (%)" prop="mca" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div (click)="selectRoad(row)" matTooltip={{row.mcaTypos}}  >
                     {{ row?.mca }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="CBI" prop="cbi" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div (click)="selectRoad(row)" matTooltip={{row.cbiTypos}}>
                     {{ row?.cbi }}
                   </div>
                 </ng-template>

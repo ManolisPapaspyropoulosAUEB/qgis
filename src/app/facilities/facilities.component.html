@@ -16,38 +16,21 @@
     color: red !important;
   }
 
-  .addBtn {
-    position: relative;
-    left: -10px;
-    top: 3px;
-    height: 30px;
-    width: 30px;
-    background: #2F4060 !important;
-
-  }
-
-  .addCrcle {
-    position: relative;
-    top: -5px;
-    font-size: 19px;
-
-  }
 
 
 </style>
 
 
-<div class="" style="text-align: end">
-  <button mat-button [matMenuTriggerFor]="menu" matTooltip="add facilitie" class="addBtn" mat-mini-fab color="primary"
+<div class="top-extra-actions">
+  <button mat-button [matMenuTriggerFor]="menu" matTooltip="add facilitie" class="addBtnOuter" mat-mini-fab color="primary"
           aria-label="Example icon button with a menu icon">
-        <span class="material-icons addCrcle">
+        <span class="material-icons addBtn addCrcle">
           add
         </span>
+    Add Facilitie
   </button>
 
-
-  <!--<button style="background: cornflowerblue;color: white;" mat-button [matMenuTriggerFor]="menu">Export</button>-->
-  <mat-menu #menu="matMenu">
+  <mat-menu class="menu-actions"  #menu="matMenu">
 
 
     <button (click)="addDistrictCenter()" mat-menu-item>
