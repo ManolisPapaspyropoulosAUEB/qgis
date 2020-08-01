@@ -1,0 +1,55 @@
+<style>
+  .closeIcon {
+    color: white;
+    position: relative;
+    background: #2F4060;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .closeIcon:hover {
+    cursor: pointer;
+  }
+</style>
+
+
+<mat-dialog-content class="calculate-criteria-window">
+
+  <div style="display: flex;align-items: center;    margin-bottom: 20px;">
+    <div class="col-md-11">
+      <h2 style="font-size: 22px;margin-bottom: 0">Choose export options</h2>
+    </div>
+    <div class="col-md-1">
+    <span (click)="onNoClick()" class="material-icons closeIcon">
+      close
+    </span>
+    </div>
+  </div>
+  <div class="col-md-12"  style="display: flex;
+    font-size: 18px;
+    margin-bottom: 20px;background: #ffffff">
+    <div  style="padding: 0;margin: 0px;">
+
+
+
+      <mat-radio-group aria-label="Select an option" style="display: grid" [(ngModel)]="optionExporter">
+        <mat-radio-button  [value]="'selected'">Print selected roads</mat-radio-button>
+        <mat-radio-button [value]="5">Top 5</mat-radio-button>
+        <mat-radio-button [value]="10">Top 10</mat-radio-button>
+        <mat-radio-button [value]="20">Top 20</mat-radio-button>
+        <mat-radio-button [value]="30">Top 30</mat-radio-button>
+        <mat-radio-button [value]="50">Top 50</mat-radio-button>
+        <mat-radio-button [value]="'all'">All</mat-radio-button>
+      </mat-radio-group>
+
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="col-md-12">
+    <button style="background-color: #2F4060;margin-right:30px;" (click)="yes()" type="submit" mat-raised-button color="primary">Print</button>
+    <button mat-raised-button (click)="onNoClick()" >Cancel</button>
+  </div>
+
+</mat-dialog-actions>

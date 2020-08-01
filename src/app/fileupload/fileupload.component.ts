@@ -47,7 +47,6 @@ export class FileuploadComponent implements OnInit {
   }
   onSuccessItem(item: FileItem, response: string, status: number, headers: ParsedResponseHeaders): any {
     let data = JSON.parse(response); //success server response
-    console.log(this.data);
     if(this.data.coreTaskTemplateId!=null){
       this.dataService.attachCoreTaskDocumentTemplate({
         docId: data.docId,
@@ -103,7 +102,6 @@ export class FileuploadComponent implements OnInit {
   }
 
   public uploadFiles() {
-    console.log(this.uploader.queue);
     this.uploader.uploadAll();
   }
 

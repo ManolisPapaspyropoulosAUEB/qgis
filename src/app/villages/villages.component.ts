@@ -85,7 +85,6 @@ export class VillagesComponent implements OnInit {
   }
 
   public selectRow(row, event) {
-    console.log(row);
     if (event.checked == true) {
       this.userSelectionsForMapShow.push(row);
     } else {
@@ -96,8 +95,6 @@ export class VillagesComponent implements OnInit {
       }
     }
     this.filterService.villagesArray = this.userSelectionsForMapShow;
-    console.log(this.filterService.villagesArray);
-    console.log(this.userSelectionsForMapShow);
   }
 
   public resetFilters(name) {
@@ -110,7 +107,6 @@ export class VillagesComponent implements OnInit {
   }
 
   updateFilters(villageNameFilter: string) {
-    console.log(villageNameFilter);
     this.villageNameFilter = villageNameFilter;
     this.getVillages();
   }
@@ -128,7 +124,6 @@ export class VillagesComponent implements OnInit {
       });
     } else {
       this.villages.forEach(element => {
-        console.log(element);
         element.checked = true;
         this.userSelectionsForMapShow.push(element);
       });
@@ -144,7 +139,6 @@ export class VillagesComponent implements OnInit {
   public editVillage(village) {
 
 
-    console.log(village);
 
 
     village.proCode = this.num_province_code;
@@ -159,7 +153,6 @@ export class VillagesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result);
         this.dataservice.updateVillage(result).subscribe(response => {
           if (response.status == 'ok') {
             this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
@@ -219,7 +212,6 @@ export class VillagesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result);
         this.dataservice.addVillage(result).subscribe(response => {
           if (response.status == 'ok') {
             this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
@@ -303,7 +295,6 @@ export class VillageDialog implements OnInit {
   ngOnInit() {
 
 
-    console.log(this.data);
     this.editForm2 = this.formBuilder.group({
 
       num_district_code: [0, Validators.required],
@@ -376,7 +367,6 @@ export class VillageDialog implements OnInit {
       });
     } else {
 
-      console.log(this.data);
 
       this.east = 0;
       this.north = 0;
@@ -404,7 +394,6 @@ export class VillageDialog implements OnInit {
         'district_name': this.data.district_name,
       });
 
-      console.log(this.districts);
 
       this.num_province_code = this.proCode;
       this.provinces.push({

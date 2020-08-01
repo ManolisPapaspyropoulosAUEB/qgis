@@ -21,9 +21,6 @@ export class AppComponent  {
 
   ngOnInit(){
     if(this.authService.isAuthenticated()){
-
-      console.log(this.authService.isAuthenticated());
-
       this.router.navigate(['/map'])
     }else{
       this.router.navigate([''])

@@ -27,7 +27,6 @@ export class RoadsComponent implements OnInit {
 
     this.limitPage=limitPage;
 
-    console.log(this.roadsTab1)
 
   }
 

@@ -1,146 +1,196 @@
 <style>
-  img {
+
+  .mYcONTheader{
+    height: 55px!important;
+
+  }
+  .mYcONT{
+    height: 500px!important;
+    overflow-y: auto;
+    margin-top: 27px;
+
+
+  }
+  .mYcONTfooter{
+    height: 42px!important;
+    margin-top: 12px;
+
+  }
+
+  .uplB{
+    cursor: pointer!important;
+    height: 42px!important;
+    margin-left: 16px!important;
+    margin-right: 10px!important;
+    background-color: #2f4060;
+
+  }
+
+  .closeIcon{
+    background-color: #2f4060;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+
+  .mat-card-img{
+
+    height: 98px;
+    width: 98%;
+    border: 1px solid #ededed;
+    margin-bottom: 4px;
+
+    padding: 5px;
+
+    display: flex;
+    box-shadow: 2px 2px 4px -2px #888888;
+    border-radius: 5px;
+  }
+  .mat-card-img:hover{
+    cursor: pointer!important;
+    background-color: whitesmoke!important;
+
+  }
+  img{
+
     vertical-align: middle;
     border-style: none;
-    width: 200px;
-    margin-left: 20px;
-    margin-top: 20px;
-    height: 125px;
-    cursor: pointer;
-    border: 1px solid #cecece;
-    border-radius: 5px;
+    height: 70px;
+    width: 112px;
+    margin-top: 9px;
   }
 
-  mat-dialog-content{
-    display: block;
-    margin: 0 -24px;
-    min-height: 400px;
-    max-height: 400px;
-    padding: 0 24px;
-    overflow-y: scroll;
-
-  }
-  .  mat-dialog-content{
-    display: block;
-    margin: 0 -24px;
-    min-height: 400px;
-    padding: 0 24px;
-    max-height: 400px;
-
-    overflow-y: scroll;
+  .mikrografia{
+    border-right: 1px solid #d9d9d9;
   }
 
-  .container{
-    overflow-y: scroll;
-    max-height: 439px;
-    width: 103%;
-  }
-
-
-
-  .delPhoto{
-    position: relative;
-    top: 66px;
-    left: -28px;
-    z-index: 3;
-    color: #474748;
-    background: #d6d6d6;
-    border-radius: 10px;
-  }
-  .delPhoto:hover{
-    color: #ff926d;
-    cursor: pointer;
-  }
-
-
-  .mat-dialog-actions{
-    margin-top: 56px;
-
-  }
-
-
-
-
-  .closeIcon {
-    color: white;
-    position: relative;
-    background: #2F4060;
-    border-radius: 5px;
-  }
-  .closeIcon:hover{
-    cursor: pointer!important;
-  }
-
-  .uplB {
-    background-color: #2f4060;
-    height: 22px;
-    position: relative;
-    top: 10px;
-    left: 10px;
-  }
 
 </style>
 
-<mat-dialog-content>
-  <div style="display: flex" style="display: flex;
-    background: whitesmoke;
-    border-radius: 5px;">
-    <div class="col-md-11">
 
-      <h2 >Uploads</h2>
+<div class="mYcONTheader" style="display: flex">
+  <div class="col-md-11" style="    padding-left: 0;">
 
-    </div>
-    <div class="col-md-1" style="padding-top: 7px">
+    <h2 style="font-size: 22px">Uploads</h2>
+
+  </div>
+  <div class="col-md-1" style="padding-top: 7px;	    padding-top: 7px;
+    padding-left: 37px;">
     <span  (click)="onNoClick()"   class="material-icons closeIcon">
       close
     </span>
-    </div>
   </div>
-  <div class="container">
-    <div class="row" gallerize>
-      <div *ngFor='let img of imageData'>
-        <img  [src]="img.id | image">
-        <span matTooltip="delete image" (click)="deletePhoto(img)"  class="material-icons delPhoto">
-            delete
-        </span>
+</div>
+
+
+
+
+  <div class="search-hero">
+    <input  style="    margin-bottom: 22px!important;"
+           class="form-control"
+           type="text"
+           name="search"
+           [(ngModel)]="searchTextImages"
+           autocomplete="on"
+           style="width: 45%;"
+           placeholder="Search.."
+    />
+  </div>
+
+
+<div class="mYcONT" style="" gallerize>
+  <div class="mat-card-img" style="display: flex" *ngFor='let img of imageData|filter: searchTextImages;'>
+
+    <div *ngIf="img.extension=='png' || img.extension=='jpg' || img.extension=='jpeg' " class="col-md-2 mikrografia" >
+      <img  style="    box-shadow: 3px 3px 3px 0px #888888;border-radius: 3px;" src={{img.imageFetchHttp}}>
+    </div>
+
+    <div *ngIf="img.extension=='pdf'" class="col-md-2 mikrografia" >
+        <img     id="pdf"   src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" >
+    </div>
+
+
+    <div style="padding-left: 35px;" *ngIf="img.extension=='doc'" class="col-md-2 mikrografia">
+      <img style="width: 74px!important;"  src="assets/doc-file.png">
+    </div>
+
+    <div style="padding-left: 35px;" *ngIf="img.extension=='docx'" class="col-md-2 mikrografia">
+      <img style="width: 74px!important;"  src="assets/docx-file.png">
+    </div>
+
+    <div style="padding-left: 35px;" *ngIf="img.extension=='dot'" class="col-md-2 mikrografia">
+      <img style="width: 74px!important;"  src="assets/dot-file.png">
+    </div>
+
+    <div style="padding-left: 35px;" *ngIf="img.extension=='txt'" class="col-md-2 mikrografia">
+      <img style="width: 74px!important;"  src="assets/txt-file.png">
+    </div>
+
+    <div style="padding-left: 35px;" *ngIf="img.extension=='xls' || img.extension=='xlsx'" class="col-md-2 mikrografia">
+      <img style="width: 74px!important;"  src="assets/Excel-icon.png">
+    </div>
+
+    <div class="col-md-9">
+
+      <div class="name">
+        <span style="color: #0684ff">{{img.originalName}}</span>
       </div>
+
+      <div class="name" style="color: #5d5d5d;padding-top: 7px" >
+        {{img.uploadDate}}
+      </div>
+
+
+
+
     </div>
-  </div>
-</mat-dialog-content>
 
-
-
-
-  <mat-dialog-actions>
-    <form style="display: flex;margin-top: 34px;" [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
-      <div>
-
-
-
-
-        <mat-form-field>
-          <ngx-mat-file-input #fileInput (change)="onFileSelect($event)" [formControlName]="file" [(ngModel)]="file"
-                              placeholder="Select File"></ngx-mat-file-input>
-          <mat-icon matSuffix>folder</mat-icon>
-
-
-          <button mat-icon-button matSuffix *ngIf="!fileInput.empty" (click)="fileInput.clear($event)">
-            <mat-icon>clear</mat-icon>
+    <div class="col-md-1">
+      <div class="button-container-list-table" style="    position: relative;top: 24px;">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu class="menu-actions" #menu="matMenu">
+          <button (click)="downloadDocument(img)"  mat-menu-item>
+             <span class="material-icons delete" style="color: #2d7fff;cursor: pointer;" >
+              cloud_download
+              </span>
+              download
           </button>
 
-        </mat-form-field>
 
-
+          <button (click)="deletePhoto(img)" mat-menu-item>
+            <span class="material-icons delete" style="color: red;cursor: pointer;" >delete</span>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
       </div>
-      <div>
-        <button type="submit" class="uplB" mat-raised-button color="primary">
-          <span style="position: relative;top: -5px;">upload</span>
-        </button>
-      </div>
-    </form>
-  </mat-dialog-actions>
+    </div>
+
+
+  </div>
 
 
 
 
+</div>
+<div class="mYcONTfooter" style="display: flex">
+  <!--https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/-->
+
+  <form style="display: flex;" [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+    <div style="    padding-top: 15px;">
+
+        <input   #fileInput id="uploadBtn2" formControlName="file"  type="file" (change)="onFileSelect($event)" />
+
+    </div>
+    <div>
+      <button  type="submit" class="uplB" mat-raised-button color="primary">
+        <span style="position: relative;top: 0px;">upload</span>
+      </button>
+    </div>
+  </form>
+
+  <button mat-raised-button (click)="onNoClick()" >Cancel</button>
+</div>
 

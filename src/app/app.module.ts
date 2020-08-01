@@ -75,10 +75,10 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
 import {FileUploadModule} from 'ng2-file-upload';
 import { SliderComponent } from './slider/slider.component';
 import {
-  AddingNoteDialog, CriteriaConfirmationDialog,
+  AddingNoteDialog, ConfirmUploadPhotoDialog, CriteriaConfirmationDialog,
   DeleteImgDialog, DeleteNoteDialog,
   EditRoadDialog,
-  NotesDialog,
+  NotesDialog, OpenPdfConfigurationDialog,
   PhotoGallery,
   QgisMapComponent
 } from './qgis-map/qgis-map.component';
@@ -115,6 +115,7 @@ const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'forgotPassword', component: RegisterComponent},
   {path: 'loader', component: LoaderComponent},
+
 
 
 
@@ -177,6 +178,7 @@ const routes: Routes = [
     DeleteNoteDialog,
     DeleteImgDialog,
     DeleteDcDialog,
+    ConfirmUploadPhotoDialog,
     MosqueDialog,
     RoadsComponent,
     AddSchoolDialog,
@@ -184,6 +186,7 @@ const routes: Routes = [
     PhotoGallery,
     VillageDialog,
     AddDCDialog,
+    OpenPdfConfigurationDialog,
     AppComponent,
     RegisterComponent,
     VillagesComponent,
@@ -287,9 +290,11 @@ const routes: Routes = [
     BrowserAnimationsModule
 
 
+
   ],
   entryComponents: [
     EditRoadDialog,
+    OpenPdfConfigurationDialog,
     DeleteNoteDialog,
     CriteriaConfirmationDialog,
     AddingNoteDialog,
@@ -297,6 +302,7 @@ const routes: Routes = [
     DeleteImgDialog,
     PhotoGallery,
     DeleteDcDialog,
+    ConfirmUploadPhotoDialog,
     VillageDialog,
     AddSchoolDialog,
     DeleteVillageDialog,

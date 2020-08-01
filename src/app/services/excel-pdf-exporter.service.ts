@@ -20,6 +20,14 @@ export class ExcelPdfExporterService {
 
 
   public convertAsPdf(roadsTab1) { //https://pdfmake.github.io/docs/document-definition-object/page/
+
+    console.log(roadsTab1);
+    this.tempBody2=[];
+
+
+
+
+
     let itemNew2: any[];
     this.temp = [
       'osm_id',
@@ -64,6 +72,9 @@ export class ExcelPdfExporterService {
     ];
     this.tempBody2.push(this.temp);
     itemNew2 = roadsTab1;
+
+    console.log(itemNew2);
+
     itemNew2.forEach(element => {
       this.temp = [
         element.osm_id,
@@ -108,9 +119,13 @@ export class ExcelPdfExporterService {
       ];
       this.tempBody2.push(this.temp);
     });
+
+    console.log( this.tempBody2);
+
     var docDefinition = {
       pageOrientation: 'landscape',
       pageSize: 'A3',
+
       pageMargins: [5, 50, 50, 0],
       content: [
         {

@@ -27,45 +27,25 @@ loading;
   }
   ngOnInit() {
 
-    // localStorage.removeItem('id');
-    // localStorage.removeItem('email');
-    // localStorage.setItem("provinceItemName", null);
-    // localStorage.setItem("num_province_code",null);
-    // localStorage.setItem("districtItemName",null);
-    // localStorage.setItem("num_district_code",null);
 
 
-    console.log();
     this.recaptcha = null;
 
     this.editForm = this.formBuilder.group({
-
       email: ['', [Validators.required,Validators.email]],
       recaptcha: [this.recaptcha, Validators.required],
       password: ['', Validators.required]
 
     });
-
-
-    console.log(this.authService.isAuthenticated());
-
     if(this.authService.isAuthenticated()){
-
-      console.log(this.authService.isAuthenticated());
-
       this.router.navigate(['/map'])
     }
-
     this.loading=false;
-
-
-
   }
 
 
   handleSuccess(e) {
     this.recaptcha=e;
-    console.log("ReCaptcha", e);
   }
 
   resolved(captchaResponse: string) {

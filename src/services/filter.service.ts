@@ -11,13 +11,14 @@ export class FilterService {
   public villagesArray=[];
   public mapRoadsArray=[];
   public mapRoadsArrayAll=[];
+  public roadTab2=[];
   public roadsTab1Cpy=[];
   public facilitiesLimitTab=16;
   public villageLimitTab=16;
   public facilitiesType="Both";
   public villageNameFilter="";
   public firstInit=0;
-
+  public countHits=0;
 
 
 

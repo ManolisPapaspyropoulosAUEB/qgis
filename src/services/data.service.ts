@@ -24,6 +24,24 @@ export class DataService {
     );
   }
 
+  //
+
+
+  getRoadsForExporter(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'getRoadsForExporter', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+
+      }
+    );
+  }
+
+
+
+
   updateRoad(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'updateRoad', data).map(
       (response) => {
@@ -101,6 +119,19 @@ export class DataService {
         }
       );
   }
+
+
+  downloadDocument(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'downloadDocument', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+      }
+    );
+  }
+
+
 
   getAllCriteriaMaster(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllCriteriaMaster', data).map(

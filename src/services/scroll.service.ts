@@ -52,36 +52,41 @@ export class ScrollService {
 
   scrollToElement(myTble:HTMLElement,param) {
 
+    console.log(myTble)
+    console.log(param)
+    if(myTble!=null){
+      if(param=='mciCbiRates'){
+        myTble.scrollTo({
+          left: 5500,
+          behavior: 'smooth'
+        });
 
-    if(param=='mciCbiRates'){
-      myTble.scrollTo({
-        left: 5500,
-        behavior: 'smooth'
-      });
-
-    }else if (param=='c1_location'){
-      myTble.scrollTo({
-        left: 3500,
-        behavior: 'smooth'
-      });
-    }else if (param=='init'){
-      myTble.scrollTo({
-        left: 0,
-        behavior: 'smooth'
-      });
-    }else if (param=='criteria'){
-      myTble.scrollTo({
-        left: 1820,
-        behavior: 'smooth'
-      });
-    }else if(param=='top'){
-      console.log("------------------")
-      myTble.scrollTo({
-        top: 2,
-        left: 0,
-        behavior: 'smooth'
-      });
+      }else if (param=='c1_location'){
+        myTble.scrollTo({
+          left: 3500,
+          behavior: 'smooth'
+        });
+      }else if (param=='init'){
+        myTble.scrollTo({
+          left: 0,
+          behavior: 'smooth'
+        });
+      }else if (param=='criteria'){
+        myTble.scrollTo({
+          left: 1820,
+          behavior: 'smooth'
+        });
+      }else if(param=='top'){
+        console.log("------------------")
+        myTble.scrollTo({
+          top: 2,
+          left: 0,
+          behavior: 'smooth'
+        });
+      }
     }
+
+
 
 
   }
