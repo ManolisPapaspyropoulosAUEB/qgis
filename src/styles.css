@@ -5,7 +5,6 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
 
-
 html, body {
   height: 100%;
 }
@@ -198,8 +197,41 @@ c-remove {
   clear: both;
 }
 
-.ngx-datatable.bootstrap .datatable-body .datatable-body-row:hover {
-  background-color: rgba(0, 239, 174, 0.33) !important;;
+
+/*datatable-body-row.bootstrap.datatable-body-row.datatable-row-even.ng-star-inserted{*/
+  /*background-color: rgba(0, 239, 174, 0.33) !important;;*/
+
+/*}*/
+
+
+/*.ngx-datatable.bootstrap .datatable-body .datatable-row-wrapper datatable-body-row.datatable-body-row.datatable-row-even.ng-star-inserted:hover{*/
+  /*background-color: rgba(0, 239, 174, 0.33) !important;*/
+
+/*}*/
+
+.ngx-datatable.bootstrap .datatable-body .datatable-row-wrapper datatable-body-row.datatable-body-row.ng-star-inserted:hover{
+  background-color: #8affd9 !important;
+
+}
+
+.ngx-datatable.material .datatable-body .datatable-row-wrapper datatable-body-row.datatable-body-row.ng-star-inserted:hover{
+  background-color: #8affd9 !important;
+
+}
+
+datatable-body-row.datatable-body-row.datatable-row-odd.ng-star-inserted:hover{
+  background-color: #8affd9 !important;
+
+}
+
+
+
+
+.ngx-datatable.bootstrap .datatable-body {
+
+  height: 420px !important;
+  overflow-x: hidden;
+
 }
 
 ::ng-deep.table {
@@ -232,7 +264,7 @@ c-remove {
 }
 
 .ngx-datatable.bootstrap .datatable-header .datatable-header-cell .datatable-header-cell-label {
-  line-height: 24px;
+
 }
 
 .ngx-datatable.bootstrap .datatable-body .datatable-body-row {
@@ -304,7 +336,7 @@ c-remove {
   cursor: pointer;
 }
 
-.datatable-row-group.datatable-row-right:last-child:hover{
+.datatable-row-group.datatable-row-right:last-child:hover {
   background-color: #fafafa !important;
 }
 
@@ -313,12 +345,11 @@ c-remove {
 }
 
 .ngx-datatable.bootstrap .datatable-footer {
-  background: rgb(37, 220, 0);
+  background: #bbbcbd;
   color: #181818;
   margin-top: -1px;
-
-  height: 45px;
   color: white;
+  border-radius: 5px;
 
 }
 
@@ -505,12 +536,13 @@ button:focus {
   font-size: 14px;
 }
 
-.quick-view-table-btns{
-  margin: 0;padding: 0;display: flex;
+.quick-view-table-btns {
+  margin: 0;
+  padding: 0;
+  display: flex;
   align-items: center;
   justify-content: flex-end;
 }
-
 
 .quick-view-table-btns span.mat-button-wrapper {
   display: flex;
@@ -519,39 +551,39 @@ button:focus {
   line-height: 0;
 }
 
-
-.quick-view-table-btns span.mat-button-wrapper > span:not(.material-icons){
-  height:24px;
+.quick-view-table-btns span.mat-button-wrapper > span:not(.material-icons) {
+  height: 24px;
   line-height: 24px;
   position: relative;
-  top:1px;
+  top: 1px;
 }
 
-
-.province-combo{
-  margin:0 15px;
+.province-combo {
+  margin: 0 15px;
 }
-.province-combo .cuppa-dropdown ,
+
+.province-combo .cuppa-dropdown,
 .district-combo .cuppa-dropdown {
 
   width: 100%;
 }
+
 .province-combo .cuppa-dropdown .selected-list,
-.district-combo .cuppa-dropdown .selected-list{
+.district-combo .cuppa-dropdown .selected-list {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.district-combo{
-  margin:0 15px;margin-top: 25px;
+.district-combo {
+  margin: 0 15px;
+  margin-top: 25px;
 }
 
 span.datatable-header-cell-label,
-.datatable-body-cell-label{
-  font-size: 14px!important;
+.datatable-body-cell-label {
+  font-size: 14px !important;
 }
-
 
 .user-data {
   display: flex;
@@ -559,14 +591,13 @@ span.datatable-header-cell-label,
   justify-content: flex-end;
 }
 
-
-.button-container-list-table{
+.button-container-list-table {
   display: flex;
   padding-left: 0;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  box-shadow: 1px 1px 5px -1px #000!important;
+  box-shadow: 1px 1px 5px -1px #000 !important;
   border-radius: 50%;
   /* margin-left: 21px; */
   left: 20px;
@@ -574,7 +605,6 @@ span.datatable-header-cell-label,
   height: 35px;
   width: 35px;
 }
-
 
 .buttonNav {
   cursor: pointer;
@@ -595,9 +625,6 @@ span.datatable-header-cell-label,
   color: #6b6b6b;
 }
 
-
-
-
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
   background-color: #8baa48;
 }
@@ -605,31 +632,29 @@ span.datatable-header-cell-label,
 .roadFilters span.material-icons {
   font-size: 24px;
 }
+
 .roadFilters span span {
   font-size: 14px;
 }
 
-.roadFilters .mat-radio-label-content{
+.roadFilters .mat-radio-label-content {
   font-size: 14px;
 }
-
 
 .roadFilters .mat-form-field-infix {
   font-size: 14px;
 }
 
-.roadFilters{
+.roadFilters {
   max-height: 600px;
-  overflow-y:auto;
+  overflow-y: auto;
 }
 
-
-.left-column-filter .mat-drawer-inner-container{
+.left-column-filter .mat-drawer-inner-container {
   overflow: hidden;
 }
 
-
-.extra-help-points{
+.extra-help-points {
   margin-top: 17px;
   margin-right: 5px;
   margin-left: 5px;
@@ -645,10 +670,9 @@ span.datatable-header-cell-label,
   padding: 5px 0;
 }
 
-.extra-help-points div img{
-  margin-right:10px;
+.extra-help-points div img {
+  margin-right: 10px;
 }
-
 
 .roadFilters {
   margin-top: 17px;
@@ -659,7 +683,6 @@ span.datatable-header-cell-label,
   padding: 10px;
   box-shadow: 1px 1px 2px 0px #888888;
 }
-
 
 .buttonNavLeft {
   cursor: pointer;
@@ -679,20 +702,18 @@ span.datatable-header-cell-label,
   color: #6b6b6b;
 }
 
-
 .menu-actions .mat-menu-item .mat-icon,
-.menu-actions .mat-menu-item .material-icons{
+.menu-actions .mat-menu-item .material-icons {
   margin-right: 10px;
   font-size: 22px;
   width: 22px;
   height: 22px;
 }
 
-.menu-actions button.mat-menu-item  {
+.menu-actions button.mat-menu-item {
   display: flex;
   align-items: center;
 }
-
 
 .addBtn {
   position: relative;
@@ -703,30 +724,38 @@ span.datatable-header-cell-label,
   background: #8baa48 !important;
   border-radius: 50%;
   line-height: 30px;
-  color:#fff;
-  margin-right:5px;
+  color: #fff;
+  margin-right: 5px;
 }
 
-.addBtnOuter{
-  color: #212529!important;
-  background: transparent!important;
-  box-shadow: none!important;
-  display: flex!important;
-  align-items: center!important;
-  font-size: 14px!important;
-  width: auto!important;
-  height: auto!important;
-  margin: 0!important;
-  padding: 0!important;
+.addBtnOuter {
+  color: #212529 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  font-size: 14px !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
   text-transform: uppercase;
 }
-.top-extra-actions{
-  padding:10px 20px;
+
+.top-extra-actions {
+  padding: 10px 20px;
 }
+
 .searchFilter {
   width: 45%;
   margin-top: 20px;
   margin-bottom: 14px !important;
   border-radius: 5px !important;
   margin-left: 12px !important;
+}
+
+::ng-deep.notes-table {
+  height: 395px !important;
+  overflow-y: scroll !important;
+
 }

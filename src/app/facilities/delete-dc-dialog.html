@@ -2,7 +2,8 @@
   .closeIcon {
     color: white;
     position: relative;
-    top: -14px;
+    top: 0px;
+
     left: 18px;
     background: #2F4060;
     border-radius: 5px;
@@ -20,10 +21,10 @@
 <mat-dialog-content>
 
   <div style="display: flex">
-    <div class="col-md-11">
-      <h2 *ngIf="this.data.main_type=='distcenters'">Delete District Center</h2>
-      <h2 *ngIf="this.data.main_type=='schools'">Delete School</h2>
-      <h2 *ngIf="this.data.main_type=='mosques'">Delete Mosque</h2>
+    <div class="col-md-11" style="padding-left: 2px">
+      <h2 style="font-size: 24px" *ngIf="this.data.main_type=='distcenters'">Delete District Center</h2>
+      <h2  style="font-size: 24px" *ngIf="this.data.main_type=='schools'">Delete School</h2>
+      <h2 style="font-size: 24px" *ngIf="this.data.main_type=='mosques'">Delete Mosque</h2>
 
 
 

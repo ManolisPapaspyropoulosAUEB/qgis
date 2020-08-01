@@ -34,16 +34,27 @@
 
 
       <mat-radio-group aria-label="Select an option" style="display: grid" [(ngModel)]="optionExporter">
-        <mat-radio-button  [value]="'selected'">Print selected roads</mat-radio-button>
-        <mat-radio-button [value]="5">Top 5</mat-radio-button>
-        <mat-radio-button [value]="10">Top 10</mat-radio-button>
-        <mat-radio-button [value]="20">Top 20</mat-radio-button>
-        <mat-radio-button [value]="30">Top 30</mat-radio-button>
-        <mat-radio-button [value]="50">Top 50</mat-radio-button>
+        <mat-radio-button  [value]="'selected'">Export selected roads</mat-radio-button>
         <mat-radio-button [value]="'all'">All</mat-radio-button>
+        <mat-radio-button [value]="5">5 </mat-radio-button>
+        <mat-radio-button [value]="10">10</mat-radio-button>
+        <mat-radio-button [value]="20">20</mat-radio-button>
+        <mat-radio-button [value]="30">30</mat-radio-button>
+        <mat-radio-button [value]="50">50</mat-radio-button>
       </mat-radio-group>
 
+      <mat-radio-group aria-label="Select an option" style="    margin-right: 20px;margin-top: 10px;" [(ngModel)]="exporter">
+        <mat-radio-button [value]="'PDF'">PDF </mat-radio-button>
+        <mat-radio-button [value]="'XLS'" style="    margin-left: 20px;">XLS</mat-radio-button>
+
+      </mat-radio-group>
+
+
     </div>
+
+
+
+
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>

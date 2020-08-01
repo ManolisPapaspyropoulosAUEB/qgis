@@ -24,6 +24,12 @@
     cursor: pointer;
   }
 
+  ::ng-deep.notes-table.datatable-body {
+    height: 395px!important;
+    overflow-y: scroll!important;
+
+  }
+
   .note{
     display: flex!important;
     cursor: pointer;
@@ -49,16 +55,17 @@
     max-height: 546px;
     height: 543px;
     overflow-y: auto;
+    margin-top: 17px;
   }
 
 
 </style>
 
 
-<mat-dialog-content>
+<mat-dialog-content style="min-height: 620px;max-height: 620px">
   <div style="display: flex">
     <div class="col-md-11" style="display: flex">
-      <h2 >Notes</h2><span class="material-icons" style="margin-top: 5px;
+      <h2  style="font-size: 25px;padding-left: 0px">Notes</h2><span class="material-icons" style="margin-top: 5px;
     color: #2f4060;
     margin-left: 9px;
     cursor: pointer;" (click)="addNote()">
@@ -73,42 +80,160 @@ add_circle
     </div>
   </div>
   <div class="mycontainer">
-    <div class="note"  *ngFor="let n of notes" >
-      <div class="col-md-6">
-        Title : {{n.title}}
-      </div>
-      <div class="col-md-5">
-        Creation Date :{{n.creationDate}}
-      </div>
-      <div class="col-md-1" style="text-align: end">
+    <!--<div class="note"  *ngFor="let n of notes" >-->
+      <!--<div class="col-md-6">-->
+        <!--Title : {{n.title}}-->
+      <!--</div>-->
+      <!--<div class="col-md-5">-->
+        <!--Creation Date :{{n.creationDate}}-->
+      <!--</div>-->
+      <!--<div class="col-md-1" style="text-align: end">-->
 
 
 
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="editNote(n)">
-            <mat-icon class="editRoad"  style="color: #000000;cursor: pointer;position: relative;top: -4px">edit
-            </mat-icon>
-            <span style="position: relative;top: -1px;left: -13px;">Edit</span>
-          </button>
+        <!--<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">-->
+          <!--<mat-icon>more_vert</mat-icon>-->
+        <!--</button>-->
+        <!--<mat-menu #menu="matMenu">-->
+          <!--<button mat-menu-item (click)="editNote(n)">-->
+            <!--<mat-icon class="editRoad"  style="color: #000000;cursor: pointer;position: relative;top: -4px">edit-->
+            <!--</mat-icon>-->
+            <!--<span style="position: relative;top: -1px;left: -13px;">Edit</span>-->
+          <!--</button>-->
 
 
-          <button (click)="deleteNote(n)" mat-menu-item>
-            <span class="material-icons delete" style="color: #000000;cursor: pointer;" >delete</span>
-            <span style="position: relative;top: -3px">Delete</span>
-          </button>
-        </mat-menu>
-
-
-
+          <!--<button (click)="deleteNote(n)" mat-menu-item>-->
+            <!--<span class="material-icons delete" style="color: #000000;cursor: pointer;" >delete</span>-->
+            <!--<span style="position: relative;top: -3px">Delete</span>-->
+          <!--</button>-->
+        <!--</mat-menu>-->
 
 
 
 
-      </div>
-    </div>
+
+
+
+      <!--</div>-->
+    <!--</div>-->
+
+
+
+
+
+
+
+
+
+
+      <ngx-datatable style="margin-top: 15px"
+                     class="bootstrap"
+
+                     [reorderable]=true
+                     [rowHeight]="'50'"
+                     [rows]="notes"
+
+                     [columnMode]="'force'"
+
+
+                     [headerHeight]="50"
+                     [footerHeight]="50"
+                     [rowHeight]="50"
+
+
+
+      >
+
+
+        <ngx-datatable-column name="Title" prop="title" [flexGrow]="1">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <div >
+              {{ row?.title }}
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+
+
+        <ngx-datatable-column  name="Description" prop="description" [flexGrow]="1">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <div >
+              {{ row?.description }}
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+
+
+        <ngx-datatable-column [width]="400"  name="Creation Date" prop="creationDate" [flexGrow]="1">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <div >
+              {{ row?.creationDate }}
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column style="text-align: center"  [sortable]=false   name="Actions" [flexGrow]="1">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+
+
+            <div class="button-container-list-table" style="position: relative;    left: -41px;" >
+              <button mat-icon-button [matMenuTriggerFor]="menu" >
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu  class="menu-actions" #menu="matMenu">
+                <button (click)="editNote(row)" mat-menu-item>
+                  <mat-icon class="editRoad"
+                            style="color: #000000;cursor: pointer;">edit
+                  </mat-icon>
+                  <span>Edit</span>
+                </button>
+                <button (click)="deleteNote(row)" mat-menu-item>
+                  <span class="material-icons delete" style="color: red;cursor: pointer;" >delete</span>
+                  <span>Delete</span>
+                </button>
+              </mat-menu>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+
+
+
+
+      </ngx-datatable>
+
+
+    <!---->
+    <!--<ngx-datatable-->
+      <!--class="bootstrap"-->
+      <!--[rows]="notes"-->
+      <!--[loadingIndicator]="loadingIndicator"-->
+      <!--[columns]="columns"-->
+      <!--[columnMode]="ColumnMode.force"-->
+      <!--[headerHeight]="50"-->
+      <!--[footerHeight]="50"-->
+      <!--rowHeight="auto"-->
+      <!--[reorderable]="reorderable"-->
+    <!--&gt;-->
+    <!--</ngx-datatable>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </div>
 </mat-dialog-content>
 <div style="margin-bottom: -4px;" mat-dialog-actions>

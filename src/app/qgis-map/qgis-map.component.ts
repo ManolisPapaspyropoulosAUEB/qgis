@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import * as $ from 'jquery';
 import * as L from 'leaflet';
+
 import {json_Khost_Province_Baak_District_OSM_roads_UTM42n_2} from './data/Khost_Province_Baak_District_OSM_roads_UTM42n_2';
 import {json_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3} from './data/Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3';
 import {json_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4} from './data/Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4';
@@ -110,6 +111,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public villageNameFilter = this.filterService.villageNameFilter;
   public limitPage;
   public limitScroll;
+  public shmaSort;
   public FacilitislimitPage = this.filterService.facilitiesLimitTab;
   public villageLimitPage = this.filterService.villageLimitTab;
   province: any = '';
@@ -252,6 +254,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public ngOnInit() {
     this.orderCol = 'LVRR_ID';
     this.descAsc = 'asc';
+    this.shmaSort=0;
 
     this.currentBtnNav = 'init';
     this.fullName = localStorage.getItem('fullName');
@@ -871,6 +874,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.feature.geometry.type = 'editMapRoadSelection';
             layer.feature.properties.name = findRoad.name;
             layer.openPopup();
+            setTimeout(function () {
+              layer.closePopup();
+            }, 1100, true);
+
+
           } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
             layer.feature.geometry.type = 'editMapRoad';
             layer.setStyle(
@@ -888,6 +896,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.feature.geometry.type = 'editMapRoadSelection';
             layer.feature.properties.name = findRoad.name;
             layer.openPopup();
+            setTimeout(function () {
+              layer.closePopup();
+            }, 1100, true);
+
           } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
             layer.feature.geometry.type = 'editMapRoad';
             layer.setStyle(
@@ -908,6 +920,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.feature.geometry.type = 'editMapRoadSelection';
             layer.feature.properties.name = findRoad.name;
             layer.openPopup();
+            setTimeout(function () {
+              layer.closePopup();
+            }, 1100, true);
           } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
             layer.feature.geometry.type = 'editMapRoad';
             layer.setStyle(
@@ -930,6 +945,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.feature.geometry.type = 'editMapRoadSelection';
             layer.feature.properties.name = findRoad.name;
             layer.openPopup();
+            setTimeout(function () {
+              layer.closePopup();
+            }, 1100, true);
           } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
             layer.feature.geometry.type = 'editMapRoad';
             layer.setStyle(
@@ -950,6 +968,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.feature.geometry.type = 'editMapRoadSelection';
             layer.feature.properties.name = findRoad.name;
             layer.openPopup();
+            setTimeout(function () {
+              layer.closePopup();
+            }, 1100, true);
           } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
             layer.feature.geometry.type = 'editMapRoad';
             layer.setStyle(
@@ -969,6 +990,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.feature.geometry.type = 'editMapRoadSelection';
             layer.feature.properties.name = findRoad.name;
             layer.openPopup();
+            setTimeout(function () {
+              layer.closePopup();
+            }, 1100, true);
           } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
             layer.feature.geometry.type = 'editMapRoad';
             layer.setStyle(
@@ -988,6 +1012,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.feature.geometry.type = 'editMapRoadSelection';
             layer.feature.properties.name = findRoad.name;
             layer.openPopup();
+            setTimeout(function () {
+              layer.closePopup();
+            }, 1100, true);
           } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
             layer.feature.geometry.type = 'editMapRoad';
             layer.setStyle(
@@ -1007,6 +1034,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.feature.geometry.type = 'editMapRoadSelection';
             layer.feature.properties.name = findRoad.name;
             layer.openPopup();
+            setTimeout(function () {
+              layer.closePopup();
+            }, 1100, true);
           } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
             layer.feature.geometry.type = 'editMapRoad';
             layer.setStyle(
@@ -1026,6 +1056,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.feature.geometry.type = 'editMapRoadSelection';
             layer.feature.properties.name = findRoad.name;
             layer.openPopup();
+            setTimeout(function () {
+              layer.closePopup();
+            }, 1100, true);
           } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
             layer.feature.geometry.type = 'editMapRoad';
             layer.setStyle(
@@ -1045,6 +1078,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.feature.geometry.type = 'editMapRoadSelection';
             layer.feature.properties.name = findRoad.name;
             layer.openPopup();
+            setTimeout(function () {
+              layer.closePopup();
+            }, 1100, true);
           } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
             layer.feature.geometry.type = 'editMapRoad';
             layer.setStyle(
@@ -1064,6 +1100,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.feature.geometry.type = 'editMapRoadSelection';
             layer.feature.properties.name = findRoad.name;
             layer.openPopup();
+            setTimeout(function () {
+              layer.closePopup();
+            }, 1100, true);
           } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
             layer.feature.geometry.type = 'editMapRoad';
             layer.setStyle(
@@ -1083,6 +1122,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.feature.geometry.type = 'editMapRoadSelection';
             layer.feature.properties.name = findRoad.name;
             layer.openPopup();
+            setTimeout(function () {
+              layer.closePopup();
+            }, 1100, true);
           } else if (layer.feature.geometry.type === 'editMapRoadSelection') {
             layer.feature.geometry.type = 'editMapRoad';
             layer.setStyle(
@@ -1181,7 +1223,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                     </tr>\
                 </table>';
 
-          marker.bindPopup(popupContent, {autoClose: false});
+
+          marker.bindPopup(popupContent, {autoClose: true});
           marker.setIcon(icon);
           marker.customId = (element.id).toString() + element.type;
         } else if (element.main_type == 'schools') {
@@ -1201,7 +1244,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                          <td colspan="2">' + 'Type: ' + element.type + '</td>\
                     </tr>\
                 </table>';
-          marker.bindPopup(popupContent, {autoClose: false});
+          marker.bindPopup(popupContent, {autoClose: true});
           marker.setIcon(icon);
           marker.customId = (element.id).toString() + element.type;
         } else if (element.main_type == 'mosques') {
@@ -1222,7 +1265,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                          <td colspan="2">' + 'Type: ' + element.type + '</td>\
                     </tr>\
                 </table>';
-          marker.bindPopup(popupContent, {autoClose: false});
+          marker.bindPopup(popupContent, {autoClose: true});
           marker.setIcon(icon);
           marker.customId = (element.id).toString() + element.type;
         }
@@ -1267,7 +1310,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                         <td colspan="2">' + 'Map Long: ' + element.mapLong + '</td>\
                     </tr>\
                 </table>';
-        marker.bindPopup(popupContent, {autoClose: false});
+        marker.bindPopup(popupContent, {autoClose: true});
         marker.setIcon(icon);
         marker.villageId = element.id;
         marker.addTo(this.myMap);
@@ -1776,34 +1819,44 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
 
+      if(this.shmaSort==1){
+        setTimeout(() => {
+
+          const className = this.__getElementByClass('datatable-body');
+          className.scrollTo({
+            top: 0,
+            left: 5500});
 
 
 
-      setTimeout(() => {
-
-
-        this.scrollToId(this.currentLastParam);
-      }, 900);
-
-      if (this.orderCol == '') {
+          this.shmaSort=0;
+        }, 100);
 
       }
+
 
 
     });
   }
 
-  onSort(event) {//newValue
 
-    console.log(event);
 
-    console.log(this.roadsTab1);
 
+
+  onSort(event) {
+    window.dispatchEvent(new Event('resize'));
     this.orderCol = event.column.prop;
     this.descAsc = event.newValue;
+    this.shmaSort=1;
 
 
-    this.getRoadsPyParams();
+    console.log(this.orderCol);
+    if(this.orderCol=='mca'){
+
+      this.getRoadsPyParams();
+
+
+    }
   }
 
   public calculateCriteriaRoad() {
@@ -2086,7 +2139,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                          <td colspan="2">' + (feature.properties['dist_name_'] !== null ? autolinker.link(feature.properties['dist_name_'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
+      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
 
@@ -2163,7 +2216,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                         <td colspan="2"><strong>District</strong><br />' + (feature.properties['District'] !== null ? autolinker.link(feature.properties['District'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
+      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
     function style_Khost_Province_Baak_District_OSM_roads_UTM42n_2_0() {
@@ -2240,7 +2293,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                         <td colspan="2"><strong>tunnel</strong><br />' + (feature.properties['tunnel'] !== null ? autolinker.link(feature.properties['tunnel'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
+      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
     function style_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3_0() {
@@ -2314,7 +2367,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                         <td colspan="2"><strong>District</strong><br />' + (feature.properties['District'] !== null ? autolinker.link(feature.properties['District'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
+      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
     function style_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4_0() {
@@ -2388,7 +2441,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                         <td colspan="2"><strong>District</strong><br />' + (feature.properties['District'] !== null ? autolinker.link(feature.properties['District'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
+      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
     function style_Khost_Province_Khost_District_OSM_roads_UTM42n_5_0() {
@@ -2463,7 +2516,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                         <td colspan="2"><strong>District</strong><br />' + (feature.properties['District'] !== null ? autolinker.link(feature.properties['District'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
+      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
     function style_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6_0() {
@@ -2538,7 +2591,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                         <td colspan="2"><strong>District</strong><br />' + (feature.properties['District'] !== null ? autolinker.link(feature.properties['District'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
+      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
     function style_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7_0() {
@@ -2614,7 +2667,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                         <td colspan="2"><strong>District</strong><br />' + (feature.properties['District'] !== null ? autolinker.link(feature.properties['District'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
+      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
     function style_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8_0() {
@@ -2688,7 +2741,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                         <td colspan="2"><strong>District</strong><br />' + (feature.properties['District'] !== null ? autolinker.link(feature.properties['District'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
+      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
     function style_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9_0() {
@@ -2767,7 +2820,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                         <td colspan="2"><strong>District</strong><br />' + (feature.properties['District'] !== null ? autolinker.link(feature.properties['District'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
+      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
     function style_Khost_Province_Sabari_District_OSM_roads_UTM42n_10_0() {
@@ -2843,7 +2896,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                         <td colspan="2"><strong>District</strong><br />' + (feature.properties['District'] !== null ? autolinker.link(feature.properties['District'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
+      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
     function style_Khost_Province_Shamul_District_OSM_roads_UTM42n_11_0() {
@@ -2918,7 +2971,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                         <td colspan="2"><strong>District</strong><br />' + (feature.properties['District'] !== null ? autolinker.link(feature.properties['District'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
-      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
+      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
     function style_Khost_Province_Spera_District_OSM_roads_UTM42n_12_0() {
@@ -2958,7 +3011,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       });
       var popupContent = (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '');
 
-      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
+      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
     function style_Khost_Province_Tanay_District_OSM_roads_UTM42n_13_0() {
@@ -2997,7 +3050,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         click: highlightFeatureOnClick
       });
       var popupContent = (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '');
-      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: false});
+      layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
     function style_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14_0() {
@@ -3197,40 +3250,73 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
 
-  public convertAsPdf() {
+  public convertAs() {
 
     const dialogRef = this.dialog.open(OpenPdfConfigurationDialog, {
       width: '800px',
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        if(result=='selected'){
-          this.excelPdfExporterService.convertAsPdf(this.filterService.roadTab2);
-        }else if (result=='all' || result=='5' || result=='10'|| result=='20'|| result=='30'|| result=='50'){
-          let expObject = {
-            "orderCol":this.orderCol,
-            "descAsc":this.descAsc
-          };
-          this.dataservice.getRoadsForExporter(
-            {
-              'orderCol': this.orderCol,
-              'result':result,
-              'descAsc': this.descAsc,
-              'district_id': this.currentNum_district_code,
-              'nameFilter': this.nameFilter,
-              'limit': this.limitPage,
-              'sqlInFclass': this.sqlInFclass,
-              'sqlInRoadConditions': this.sqlInRoadConditions,
-              'oneway': this.roadWayRadio,
-              'maxSpeedFilter': this.maxSpeedFilter,
-              'bridgeFilter': this.bridgeFilter,
-              'agriculturFacilitationFilter': this.agriculturFacilitationFilter
+        if(result.exporter=='XLS'){
+
+
+          if(result.optionExporter=='selected'){
+            this.excelPdfExporterService.convertAsPdf(this.filterService.roadTab2);
+          }else if (result.optionExporter=='all' || result.optionExporter=='5' || result.optionExporter=='10'|| result.optionExporter=='20'|| result.optionExporter=='30'|| result.optionExporter=='50'){
+            this.dataservice.getRoadsForExporter(
+              {
+
+                'orderCol': this.orderCol,
+                'result':result.optionExporter,
+                'descAsc': this.descAsc,
+                'district_id': this.currentNum_district_code,
+                'nameFilter': this.nameFilter,
+                'limit': this.limitPage,
+                'sqlInFclass': this.sqlInFclass,
+                'sqlInRoadConditions': this.sqlInRoadConditions,
+                'oneway': this.roadWayRadio,
+                'maxSpeedFilter': this.maxSpeedFilter,
+                'bridgeFilter': this.bridgeFilter,
+                'agriculturFacilitationFilter': this.agriculturFacilitationFilter
+              }
+            ).subscribe(response =>{
+              this.excelPdfExporterService.convertAsXls(response.data);
+            });
+          }
+
+
+        }else if (result.exporter=='PDF'){
+
+            if(result.optionExporter=='selected'){
+              this.excelPdfExporterService.convertAsPdf(this.filterService.roadTab2);
+            }else if (result.optionExporter=='all' || result.optionExporter=='5' || result.optionExporter=='10'|| result.optionExporter=='20'|| result.optionExporter=='30'|| result.optionExporter=='50'){
+              this.dataservice.getRoadsForExporter(
+                {
+                  'orderCol': this.orderCol,
+                  'result':result.optionExporter,
+                  'descAsc': this.descAsc,
+                  'district_id': this.currentNum_district_code,
+                  'nameFilter': this.nameFilter,
+                  'limit': this.limitPage,
+                  'sqlInFclass': this.sqlInFclass,
+                  'sqlInRoadConditions': this.sqlInRoadConditions,
+                  'oneway': this.roadWayRadio,
+                  'maxSpeedFilter': this.maxSpeedFilter,
+                  'bridgeFilter': this.bridgeFilter,
+                  'agriculturFacilitationFilter': this.agriculturFacilitationFilter
+                }
+              ).subscribe(response =>{
+                this.excelPdfExporterService.convertAsPdf(response.data);
+              });
             }
-          ).subscribe(response =>{
-            this.excelPdfExporterService.convertAsPdf(response.data);
-          });
         }
+
       }
+
+
+
+
+
     });
 
 
@@ -3245,7 +3331,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+
         if(result=='selected'){
+
+
+
+
           this.excelPdfExporterService.convertAsXls(this.filterService.roadTab2);
         }else if (result=='all' || result=='5' || result=='10'|| result=='20'|| result=='30'|| result=='50'){
           let expObject = {
@@ -3289,6 +3380,7 @@ export class OpenPdfConfigurationDialog implements OnInit {
   @Output() focusout = new EventEmitter();
 
   optionExporter;
+  exporter;
 
   constructor(public dialogRef: MatDialogRef<OpenPdfConfigurationDialog>, public dialog: MatDialog, private  dataservice: DataService, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
@@ -3298,8 +3390,11 @@ export class OpenPdfConfigurationDialog implements OnInit {
   }
 
 
+
+
   ngOnInit() {
     this.optionExporter = 'all';
+    this.exporter='PDF'
   }
 
   onFocusOut(event) {
@@ -3312,7 +3407,15 @@ export class OpenPdfConfigurationDialog implements OnInit {
   }
 
   public yes() {
-    this.dialogRef.close(this.optionExporter);
+
+    let obres = {
+      "optionExporter":this.optionExporter,
+      "exporter":this.exporter,
+
+
+    };
+
+    this.dialogRef.close(obres);
 
   }
 
@@ -3375,6 +3478,7 @@ export class CriteriaConfirmationDialog implements OnInit {
 export class NotesDialog implements OnInit {
   @Output() dismiss = new EventEmitter();
   @Output() focusout = new EventEmitter();
+  notes = [];
 
   constructor(public dialogRef: MatDialogRef<NotesDialog>, public dialog: MatDialog, private  dataservice: DataService, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
@@ -3385,10 +3489,10 @@ export class NotesDialog implements OnInit {
 
 
   ngOnInit() {
+    // this.notes=this.data.notes;
     this.getNoteByRoadId();
   }
 
-  notes = [];
 
   onDismiss(event) {
     this.dismiss.emit(event);
@@ -3509,7 +3613,9 @@ export class DeleteNoteDialog implements OnInit {
 
 
   onNoClick(): void {
+    this.dialogRef.close();
   }
+
 
   public yes() {
     this.dialogRef.close(true);
@@ -3741,6 +3847,7 @@ export class PhotoGallery implements OnInit {
     const formData = new FormData();
     formData.append('file', this.uploadForm.get('file').value);
     formData.append('district', this.data.district);
+    formData.append('districtId', this.data.districtId);
     formData.append('roadId', this.data.id);
     formData.append('replace', '');
     this.httpClient.post<any>(this.SERVER_URL, formData).subscribe(
