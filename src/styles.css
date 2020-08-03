@@ -302,8 +302,9 @@ datatable-body-row.datatable-body-row.datatable-row-odd.ng-star-inserted:hover{
   overflow-y: hidden;
 }
 
+
 .ngx-datatable.material .datatable-body .datatable-body-row {
-  box-shadow: 2px 0px 1px 0px #adadad;
+  box-shadow: 0px 0px 1px 0px #adadad;
 }
 
 .datatable-row-left {

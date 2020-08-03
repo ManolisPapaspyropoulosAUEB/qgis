@@ -24,7 +24,47 @@ export class DataService {
     );
   }
 
-  //
+  //getAllSnapshotsRecords deleteSnapshot
+
+  getAllFromRoadsHistory(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllFromRoadsHistory', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+
+      }
+    );
+  }
+
+  deleteSnapshot(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'deleteSnapshot', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+
+      }
+    );
+  }
+
+
+
+
+  getAllSnapshotsRecords(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllSnapshotsRecords', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+
+      }
+    );
+  }
+
 
 
   getRoadsForExporter(data) {
@@ -233,6 +273,20 @@ export class DataService {
     );
   }
 
+
+
+
+  addFacilitie(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'addFacilitie', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
   addMosque(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'addMosque', data).map(
       (response) => {
@@ -254,6 +308,31 @@ export class DataService {
       }
     );
   }
+
+
+  deleteFacilitie(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'deleteFacilitie', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
+
+  updateFacilitie(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'updateFacilitie', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+      }
+    );
+  }
+
 
   deleteMosque(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'deleteMosque', data).map(

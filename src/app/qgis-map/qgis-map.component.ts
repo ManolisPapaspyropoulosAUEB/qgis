@@ -1205,10 +1205,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       var marker;
 
 
+
+
+
       this.filterService.facilitiesArray.forEach(element => {
 
         marker = L.marker([element.north, element.east]);
-        if (element.main_type == 'distcenters') {
+        if (element.type == 'District Centre') {
           var icon = new L.Icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -1227,7 +1230,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           marker.bindPopup(popupContent, {autoClose: true});
           marker.setIcon(icon);
           marker.customId = (element.id).toString() + element.type;
-        } else if (element.main_type == 'schools') {
+        } else if (element.type == 'Education Centre') {
           var icon = new L.Icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -1238,7 +1241,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           });
           var popupContent = '<table>\
                      <tr>\
-                         <td colspan="2">' + 'Name: ' + element.NAME + '</td>\
+                         <td colspan="2">' + 'Name: ' + element.label + '</td>\
                     </tr>\
                      <tr>\
                          <td colspan="2">' + 'Type: ' + element.type + '</td>\
@@ -1247,7 +1250,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           marker.bindPopup(popupContent, {autoClose: true});
           marker.setIcon(icon);
           marker.customId = (element.id).toString() + element.type;
-        } else if (element.main_type == 'mosques') {
+        } else if (element.type == 'Mosque') {
           var icon = new L.Icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png',
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -1259,7 +1262,70 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
           var popupContent = '<table>\
                      <tr>\
-                         <td colspan="2">' + 'Name: ' + element.name + '</td>\
+                         <td colspan="2">' + 'Name: ' + element.label + '</td>\
+                    </tr>\
+                     <tr>\
+                         <td colspan="2">' + 'Type: ' + element.type + '</td>\
+                    </tr>\
+                </table>';
+          marker.bindPopup(popupContent, {autoClose: true});
+          marker.setIcon(icon);
+          marker.customId = (element.id).toString() + element.type;
+        }else if (element.type == 'Polling Centre') {
+          var icon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+          });
+
+          var popupContent = '<table>\
+                     <tr>\
+                         <td colspan="2">' + 'Name: ' + element.label + '</td>\
+                    </tr>\
+                     <tr>\
+                         <td colspan="2">' + 'Type: ' + element.type + '</td>\
+                    </tr>\
+                </table>';
+          marker.bindPopup(popupContent, {autoClose: true});
+          marker.setIcon(icon);
+          marker.customId = (element.id).toString() + element.type;
+        }else if (element.type == 'Government Office') {
+          var icon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+          });
+
+          var popupContent = '<table>\
+                     <tr>\
+                         <td colspan="2">' + 'Name: ' + element.label + '</td>\
+                    </tr>\
+                     <tr>\
+                         <td colspan="2">' + 'Type: ' + element.type + '</td>\
+                    </tr>\
+                </table>';
+          marker.bindPopup(popupContent, {autoClose: true});
+          marker.setIcon(icon);
+          marker.customId = (element.id).toString() + element.type;
+        }else if (element.type == 'Health Centre') {
+          var icon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+          });
+
+          var popupContent = '<table>\
+                     <tr>\
+                         <td colspan="2">' + 'Name: ' + element.label + '</td>\
                     </tr>\
                      <tr>\
                          <td colspan="2">' + 'Type: ' + element.type + '</td>\
@@ -1269,6 +1335,16 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           marker.setIcon(icon);
           marker.customId = (element.id).toString() + element.type;
         }
+
+
+
+
+
+
+
+
+
+
         marker.addTo(this.myMap);
         if (this.currentNum_district_code) {
           this.myMap.setView([this.district[0].x_distance, this.district[0].y_distance], Number(this.district[0].zoom_info_district) + 1);
@@ -1288,6 +1364,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       var marker;
       this.filterService.villagesArray.forEach(element => {
         marker = L.marker([element.mapLat, element.mapLong]);
+
+
         var icon = new L.Icon({
           iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png',
           shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -1296,6 +1374,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           popupAnchor: [1, -34],
           shadowSize: [41, 41]
         });
+
+
+
+
         var popupContent = '<table>\
                      <tr>\
                          <td colspan="2">' + 'Name: ' + element.villageName + '</td>\
@@ -1761,7 +1843,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   updateFiterFclass(e) {
-    var sqlIn = '(' + e.toString()() + ')';
+
+    console.log(e);
+
+    var sqlIn = '(' + e.toString() + ')';
     this.sqlInFclass = sqlIn; ///
     this.getRoadsPyParams();
   }
@@ -1818,6 +1903,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           findRoad.checkedFilter = false;
         }
       });
+      setTimeout(() => {
+        this.scrollService.scrollToElementById('top')
+      }, 600);
 
       if(this.shmaSort==1){
         setTimeout(() => {
@@ -3221,6 +3309,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
 
+
+
+
+
+
+
   public calculateCriteria() {
 
     const dialogRef = this.dialog.open(CriteriaConfirmationDialog, {
@@ -3231,8 +3325,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result) {
+
+
+
         this.dataservice.calculateCriteria({
-          'district_id': this.currentNum_district_code
+          'district_id': this.currentNum_district_code,
+          'snapshot': result.snapshot
         }).subscribe(response => {
           if (response.status == 'ok') {
             this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
@@ -3253,6 +3351,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     const dialogRef = this.dialog.open(OpenPdfConfigurationDialog, {
       width: '800px',
+      data:{
+        "from":"exportButton"
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -3286,28 +3387,28 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
         }else if (result.exporter=='PDF'){
 
-            if(result.optionExporter=='selected'){
-              this.excelPdfExporterService.convertAsPdf(this.filterService.roadTab2);
-            }else if (result.optionExporter=='all' || result.optionExporter=='5' || result.optionExporter=='10'|| result.optionExporter=='20'|| result.optionExporter=='30'|| result.optionExporter=='50'){
-              this.dataservice.getRoadsForExporter(
-                {
-                  'orderCol': this.orderCol,
-                  'result':result.optionExporter,
-                  'descAsc': this.descAsc,
-                  'district_id': this.currentNum_district_code,
-                  'nameFilter': this.nameFilter,
-                  'limit': this.limitPage,
-                  'sqlInFclass': this.sqlInFclass,
-                  'sqlInRoadConditions': this.sqlInRoadConditions,
-                  'oneway': this.roadWayRadio,
-                  'maxSpeedFilter': this.maxSpeedFilter,
-                  'bridgeFilter': this.bridgeFilter,
-                  'agriculturFacilitationFilter': this.agriculturFacilitationFilter
-                }
-              ).subscribe(response =>{
-                this.excelPdfExporterService.convertAsPdf(response.data);
-              });
-            }
+          if(result.optionExporter=='selected'){
+            this.excelPdfExporterService.convertAsPdf(this.filterService.roadTab2);
+          }else if (result.optionExporter=='all' || result.optionExporter=='5' || result.optionExporter=='10'|| result.optionExporter=='20'|| result.optionExporter=='30'|| result.optionExporter=='50'){
+            this.dataservice.getRoadsForExporter(
+              {
+                'orderCol': this.orderCol,
+                'result':result.optionExporter,
+                'descAsc': this.descAsc,
+                'district_id': this.currentNum_district_code,
+                'nameFilter': this.nameFilter,
+                'limit': this.limitPage,
+                'sqlInFclass': this.sqlInFclass,
+                'sqlInRoadConditions': this.sqlInRoadConditions,
+                'oneway': this.roadWayRadio,
+                'maxSpeedFilter': this.maxSpeedFilter,
+                'bridgeFilter': this.bridgeFilter,
+                'agriculturFacilitationFilter': this.agriculturFacilitationFilter
+              }
+            ).subscribe(response =>{
+              this.excelPdfExporterService.convertAsPdf(response.data);
+            });
+          }
         }
 
       }
@@ -3366,8 +3467,158 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     // this.excelPdfExporterService.convertAsXls(this.roadsTab1);
   }
 
+  snapshotDialog(){
+    const dialogRef = this.dialog.open(HistoryDialog, {
+      width: '800px',
+
+    });
+  }
+
 
 }
+
+
+
+@Component({
+  selector: './history-dialog',
+  templateUrl: './history-dialog.html'
+})
+export class HistoryDialog implements OnInit {
+  @Output() dismiss = new EventEmitter();
+  @Output() focusout = new EventEmitter();
+  snapshots = [];
+
+  constructor(public dialogRef: MatDialogRef<HistoryDialog>,public excelPdfExporterService: ExcelPdfExporterService, public dialog: MatDialog, private  dataservice: DataService, private snackBar: MatSnackBar,
+              @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+
+
+  }
+
+
+  ngOnInit() {
+    // this.notes=this.data.notes;
+    this.getAllSnapshotsRecords();
+  }
+
+
+  onDismiss(event) {
+    this.dismiss.emit(event);
+  }
+
+  onFocusOut(event) {
+    this.focusout.emit(event);
+  }
+
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  public yes() {
+    this.dialogRef.close(true);
+
+  }
+
+  getAllSnapshotsRecords() {
+    this.dataservice.getAllSnapshotsRecords({}).subscribe(response => {
+      if (response.status == 'ok') {
+        this.snapshots = response.data;
+      }
+    });
+  }
+
+
+  exportAs(row){
+    row.from='history';
+    const dialogRef = this.dialog.open(OpenPdfConfigurationDialog, {
+      width: '800px',
+      data:row
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        let finalRes={
+          "exporter":result.exporter,
+          "id":row.id
+        }
+        if(finalRes.exporter=='PDF'){
+          //getAllFromRoadsHistory
+          this.dataservice.getAllFromRoadsHistory(finalRes).subscribe(response=>{
+            this.excelPdfExporterService.convertAsPdf(response.data);
+          })
+        }else if(finalRes.exporter=='XLS'){
+          this.dataservice.getAllFromRoadsHistory(finalRes).subscribe(response=>{
+            this.excelPdfExporterService.convertAsXls(response.data);
+          })
+        }
+      }
+    });
+  }
+
+
+
+  deleteSnapshot(snapshot) {//
+    const dialogRef = this.dialog.open(DeleteSnapshotDialog, {
+      width: '800px',
+    });
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dataservice.deleteSnapshot(snapshot).subscribe(response => {
+          this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+          this.getAllSnapshotsRecords();
+        });
+
+      }
+    });
+
+  }
+
+
+
+
+
+}
+
+
+
+@Component({
+  selector: './delete-snapshot-dialog',
+  templateUrl: './delete-snapshot-dialog.html'
+})
+export class DeleteSnapshotDialog implements OnInit {
+  @Output() dismiss = new EventEmitter();
+  @Output() focusout = new EventEmitter();
+
+  constructor(public dialogRef: MatDialogRef<AddingNoteDialog>, public dialog: MatDialog, private formBuilder: FormBuilder, private snackBar: MatSnackBar,
+              @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+
+  }
+
+
+  ngOnInit() {
+  }
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+
+  public yes() {
+    this.dialogRef.close(true);
+
+  }
+
+
+}
+
+
+
+
 
 
 @Component({
@@ -3435,6 +3686,7 @@ export class CriteriaConfirmationDialog implements OnInit {
   @Output() dismiss = new EventEmitter();
   @Output() focusout = new EventEmitter();
 
+  public  snapshotCheck;
   constructor(public dialogRef: MatDialogRef<CriteriaConfirmationDialog>, public dialog: MatDialog, private  dataservice: DataService, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -3445,6 +3697,7 @@ export class CriteriaConfirmationDialog implements OnInit {
 
   ngOnInit() {
 
+    this.snapshotCheck=true;
   }
 
   onFocusOut(event) {
@@ -3457,7 +3710,10 @@ export class CriteriaConfirmationDialog implements OnInit {
   }
 
   public yes() {
-    this.dialogRef.close(true);
+    let resutlt ={
+      "snapshot":this.snapshotCheck
+    }
+    this.dialogRef.close(resutlt);
 
   }
 

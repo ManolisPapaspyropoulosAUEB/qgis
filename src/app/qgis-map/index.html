@@ -295,28 +295,68 @@
         <mat-radio-group style="    margin-top: 14px;" (change)="updateFilterTabFacilities()"
                          [(ngModel)]="typeFacilities" aria-label="Select an option"
                          style="    display: grid; margin-top: 15px;    margin-bottom: 15px;   ">
-          <mat-radio-button value="Distcenters">Distcenters</mat-radio-button>
-          <mat-radio-button value="Schools">Schools</mat-radio-button>
-          <mat-radio-button value="Mosques">Mosques</mat-radio-button>
+          <mat-radio-button value="District Centre">District Centre</mat-radio-button>
+          <mat-radio-button value="Mosque">Mosque</mat-radio-button>
+          <mat-radio-button value="Education Centre">Education Centre</mat-radio-button>
+
+          <mat-radio-button value="Polling Centre">Polling Centre</mat-radio-button>
+          <mat-radio-button value="Government Office">Government Office</mat-radio-button>
+          <mat-radio-button value="Health Centre">Health Centre</mat-radio-button>
+
+
+
+
           <mat-radio-button value="Both">All</mat-radio-button>
         </mat-radio-group>
       </div>
       <div *ngIf="tab==2 && currentProvinceCode>0" class="extra-help-points">
+
         <div>
           <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
                alt="Girl in a jacket" width="17" height="25">
-          <span>Distcenters</span>
+          <span>District Centre</span>
         </div>
+
         <div>
           <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png"
                alt="Girl in a jacket" width="17" height="25">
-          <span>Mosques</span>
+          <span>Mosque</span>
         </div>
+
+
+
         <div>
           <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png"
                alt="Girl in a jacket" width="17" height="25">
-          <span>Schools</span>
+          <span>Education Centre</span>
         </div>
+
+
+        <div>
+          <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png"
+               alt="Girl in a jacket" width="17" height="25">
+          <span>Polling Centre</span>
+        </div>
+
+        <div>
+          <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png"
+               alt="Girl in a jacket" width="17" height="25">
+          <span>Government Office</span>
+        </div>
+
+        <div>
+          <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png"
+               alt="Girl in a jacket" width="17" height="25">
+          <span>Health Centre</span>
+        </div>
+
+
+
+
+
+
+
+
       </div>
       <div *ngIf="tab==3 && currentProvinceCode>0" class="roadFilters">
         <div style="display: grid">
@@ -475,30 +515,33 @@
                             <span style="font-weight: bold">
                               Name:
                             </span>
-                            {{facilitie.name}}
+                            {{facilitie.label}}
                           </div>
                           <div class="col-md-7">
                             <span style="font-weight: bold">
-                              Pro Center:
+                              Source:
                             </span>
-                            {{facilitie.proCenter}}
+                            {{facilitie.fromSource}}
                           </div>
                         </div>
                         <div class="row">
+
                           <div class="col-md-5">
                             <span style="font-weight: bold">
-                              Center Type:
-                            </span>
-                            {{facilitie.centerType}}
-                          </div>
-                          <div class="col-md-7">
-                            <span style="font-weight: bold">
-                              Main type:
+                              Type:
                             </span>
                             {{facilitie.type}}
                           </div>
+                          <div class="col-md-7">
+                            <span style="font-weight: bold">
+                              District Name:
+                            </span>
+                            {{facilitie.districtName}}
+                          </div>
                         </div>
                       </div>
+
+
 
 
                       <div class="col-md-1" style="margin: 0;padding-top: 10px">
@@ -625,7 +668,7 @@
                   <span class="button-label" (click)="calculateCriteria()">CALCULATE MCA</span>
                 </div>
                 <div class="col-md-2 button-header-outer pl-0">
-                  <button [disabled]="true"  matTooltip="Show history criteria and scores" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                  <button (click)="snapshotDialog()"  matTooltip="Show history criteria and scores" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
                     <img style="height: 32px;padding-left: 6px;position: relative;top: -4px;" src="assets/fileHistory.png"/>
                     <span class="button-label">HISTORY</span>
                   </button>
@@ -835,7 +878,7 @@
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Access to GCsRMs" [width]="200" class="testinioclass" prop="accessToGCsRMs"
+              <ngx-datatable-column name="Access to GCS & RMS" [width]="200" class="testinioclass" prop="accessToGCsRMs"
                                     [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">

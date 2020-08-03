@@ -26,8 +26,9 @@
 
   <div style="display: flex">
     <div class="col-md-11" style="padding-left: 12px">
-      <h2 style="font-size: 24px" *ngIf="this.data.updateMode==0">Add Mosque</h2>
-      <h2  style="font-size: 24px"  *ngIf="this.data.updateMode==1">Update Mosque </h2>
+      <h2 style="font-size: 24px" *ngIf="this.data.updateMode==0">Add Facilitie</h2>
+      <h2  style="font-size: 24px"  *ngIf="this.data.updateMode==1">Edit Facilitie</h2>
+
 
     </div>
     <div class="col-md-1">
@@ -44,15 +45,10 @@
 
 
     <mat-form-field class="example-full-width">
-      <mat-label>Name</mat-label>
-      <input  formControlName="name"   matInput placeholder="Name" [(ngModel)]="name">
+      <mat-label>Label</mat-label>
+      <input  formControlName="label"   matInput placeholder="label" [(ngModel)]="label">
     </mat-form-field>
 
-
-    <mat-form-field class="example-full-width">
-      <mat-label>Alternative Dist Name</mat-label>
-      <input  formControlName="altDistName"   matInput placeholder="Alternative Dist Name" [(ngModel)]="altDistName">
-    </mat-form-field>
 
 
 
@@ -114,18 +110,23 @@
     <mat-form-field  appearance="fill">
       <mat-label>Type</mat-label>
       <mat-select  formControlName="type" [(ngModel)]="type">
-        <mat-option value="muslim_sunni">muslim_sunni</mat-option>
-        <mat-option value="muslim">muslim</mat-option>
+        <mat-option value="District Centre">District Centre</mat-option>
+        <mat-option value="Polling Centre">Polling Centre</mat-option>
+        <mat-option value="Government Office">Government Office</mat-option>
+        <mat-option value="Health Centre">Health Centre</mat-option>
+        <mat-option value="Education Centre">Education Centre</mat-option>
+        <mat-option value="Mosque">Mosque</mat-option>
       </mat-select>
     </mat-form-field>
 
 
 
     <mat-form-field  appearance="fill">
-      <mat-label>From</mat-label>
-      <mat-select  formControlName="from" [(ngModel)]="from">
-        <mat-option value="Polling Stations">Polling Stations</mat-option>
+      <mat-label>Source</mat-label>
+      <mat-select  formControlName="fromSource" [(ngModel)]="fromSource">
+        <mat-option value="Esri ArcGIS Online">Esri ArcGIS Online</mat-option>
         <mat-option value="Google Maps">Google Maps</mat-option>
+        <mat-option value="Polling Stations">Polling Stations</mat-option>
         <mat-option value="Open Street Map">Open Street Map</mat-option>
       </mat-select>
     </mat-form-field>
@@ -148,28 +149,7 @@
         <span *ngIf=" f.north.errors" style="color: red">  please fill with positive number</span>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width" style="width: 25%;margin-right: 4px">
-        <mat-label>East utm42</mat-label>
-        <input type="number"  formControlName="eastUtm42"   matInput placeholder="east Utm42" [(ngModel)]="eastUtm42">
-        <span *ngIf=" f.eastUtm42.errors" style="color: red">  please fill with positive numbe</span>
-      </mat-form-field>
-
-
-
-      <mat-form-field class="example-full-width" style="width: 25%">
-        <mat-label>North utm42</mat-label>
-        <input type="number"  formControlName="northUtm42"   matInput placeholder="north Utm42" [(ngModel)]="northUtm42">
-        <span *ngIf=" f.northUtm42.errors" style="color: red">  please fill with positive number</span>
-      </mat-form-field>
-
-
     </div>
-
-    <mat-form-field class="example-full-width" style="width: 25%">
-      <mat-label>Target Fid</mat-label>
-      <input type="number"  formControlName="targetFid"   matInput placeholder="target Fid" [(ngModel)]="targetFid">
-      <span *ngIf=" f.targetFid.errors" style="color: red">  please fill with positive number</span>
-    </mat-form-field>
 
 
 

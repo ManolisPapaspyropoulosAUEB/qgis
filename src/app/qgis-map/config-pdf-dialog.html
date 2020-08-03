@@ -33,7 +33,7 @@
 
 
 
-      <mat-radio-group aria-label="Select an option" style="display: grid" [(ngModel)]="optionExporter">
+      <mat-radio-group *ngIf="this.data.from=='exportButton'" aria-label="Select an option" style="display: grid" [(ngModel)]="optionExporter">
         <mat-radio-button  [value]="'selected'">Export selected roads</mat-radio-button>
         <mat-radio-button [value]="'all'">All</mat-radio-button>
         <mat-radio-button [value]="5">5 </mat-radio-button>
@@ -42,6 +42,8 @@
         <mat-radio-button [value]="30">30</mat-radio-button>
         <mat-radio-button [value]="50">50</mat-radio-button>
       </mat-radio-group>
+
+
 
       <mat-radio-group aria-label="Select an option" style="    margin-right: 20px;margin-top: 10px;" [(ngModel)]="exporter">
         <mat-radio-button [value]="'PDF'">PDF </mat-radio-button>
@@ -55,11 +57,12 @@
 
 
 
+
   </div>
 </mat-dialog-content>
 <mat-dialog-actions>
   <div class="col-md-12">
-    <button style="background-color: #2F4060;margin-right:30px;" (click)="yes()" type="submit" mat-raised-button color="primary">Print</button>
+    <button style="background-color: #2F4060;margin-right:30px;" (click)="yes()" type="submit" mat-raised-button color="primary">Export</button>
     <button mat-raised-button (click)="onNoClick()" >Cancel</button>
   </div>
 

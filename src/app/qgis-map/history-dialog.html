@@ -1,0 +1,162 @@
+<style>
+  .closeIcon {
+    color: white;
+    position: relative;
+    top: -14px;
+    background: #2F4060;
+    border-radius: 5px;
+  }
+
+  .mat-list-base{
+    overflow-y: scroll!important;
+    max-height: 700px!important;
+  }
+
+  .button-container-list-table.ng-star-inserted{
+    position: relative;
+    left: 35%;
+  }
+
+
+  mat-list-item:hover {
+    background-color: whitesmoke!important;
+    cursor: pointer;
+  }
+
+  .closeIcon:hover {
+    cursor: pointer;
+  }
+
+  ::ng-deep.notes-table.datatable-body {
+    height: 395px!important;
+    overflow-y: scroll!important;
+  }
+
+  .note{
+    display: flex!important;
+    cursor: pointer;
+    padding-top: 10px;
+    background-color: whitesmoke;
+    padding-bottom: 12px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+  }
+
+
+  .note:hover{
+    background-color: #c2c2c2;
+  }
+
+  mat-dialog-content{
+    /*height: 600px;*/
+
+  }
+
+  .mycontainer{
+    /*max-height: 546px;*/
+    /*height: 543px;*/
+    overflow-y: auto;
+  }
+
+</style>
+
+
+
+<mat-dialog-content style="">
+  <div style="display: flex">
+    <div class="col-md-11" style="display: flex;padding-left: 0px">
+      <h2  style="font-size: 25px;padding-left: 0px">Snapshot History</h2>
+    </div>
+    <div class="col-md-1" style="    padding-top: 18px;text-align: end;padding-right: 0px">
+    <span  (click)="onNoClick()"   class="material-icons closeIcon">
+      close
+    </span>
+    </div>
+  </div>
+  <div class="mycontainer">
+
+
+
+
+
+
+    <ngx-datatable style="margin-top: 15px"
+                   class="bootstrap"
+                   [reorderable]=true
+                   [rowHeight]="'50'"
+                   [rows]="snapshots"
+                   [columnMode]="'force'"
+                   [headerHeight]="50"
+                   [footerHeight]="50"
+                   [rowHeight]="50"
+
+
+
+    >
+
+
+
+      <ngx-datatable-column  name="Description" prop="description" [flexGrow]="1">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          <div >
+            {{ row?.creationDate }}
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+
+
+
+
+      <ngx-datatable-column class="actionClass"    style="text-align: center"   [sortable]=false    [flexGrow]="1">
+        <ng-template ngx-datatable-header-template style="">
+          <span style="    margin-left: 77%;">ACTIONS</span>
+        </ng-template>
+
+
+        <ng-template let-row="row" ngx-datatable-cell-template>
+
+
+
+
+          <div class="button-container-list-table" >
+            <button mat-icon-button [matMenuTriggerFor]="menu" >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu  class="menu-actions" #menu="matMenu">
+              <button (click)="exportAs(row)"  mat-menu-item>
+                <mat-icon class="editRoad"
+                          style="color: #000000;cursor: pointer;">print
+                </mat-icon>
+
+                <span>Export</span>
+
+
+              </button>
+              <button  (click)="deleteSnapshot(row)"  mat-menu-item>
+                <span class="material-icons delete" style="color: red;cursor: pointer;" >delete</span>
+                <span>Delete</span>
+              </button>
+            </mat-menu>
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+
+
+    </ngx-datatable>
+  </div>
+</mat-dialog-content>
+
+
+<mat-dialog-actions>
+  <div style="margin-bottom: -4px;" mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick()" >Close</button>
+  </div>
+
+</mat-dialog-actions>
+
+
+
+
+
+
+

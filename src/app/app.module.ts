@@ -75,9 +75,10 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
 import {FileUploadModule} from 'ng2-file-upload';
 import { SliderComponent } from './slider/slider.component';
 import {
+
   AddingNoteDialog, ConfirmUploadPhotoDialog, CriteriaConfirmationDialog,
-  DeleteImgDialog, DeleteNoteDialog,
-  EditRoadDialog,
+  DeleteImgDialog, DeleteNoteDialog, DeleteSnapshotDialog,
+  EditRoadDialog, HistoryDialog,
   NotesDialog, OpenPdfConfigurationDialog,
   PhotoGallery,
   QgisMapComponent
@@ -172,6 +173,8 @@ const routes: Routes = [
     SafeUrlPipe,
     ImagePipe,
     NotesDialog,
+    DeleteSnapshotDialog,
+    HistoryDialog,
     EditRoadDialog,
     CriteriaConfirmationDialog,
     AddingNoteDialog,
@@ -299,6 +302,8 @@ const routes: Routes = [
     CriteriaConfirmationDialog,
     AddingNoteDialog,
     NotesDialog,
+    DeleteSnapshotDialog,
+    HistoryDialog,
     DeleteImgDialog,
     PhotoGallery,
     DeleteDcDialog,

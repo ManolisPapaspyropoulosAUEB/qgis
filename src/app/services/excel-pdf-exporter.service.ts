@@ -147,8 +147,10 @@ export class ExcelPdfExporterService {
 
   public convertAsXls(roadsTab1): void {//
     const workbook = new Excel.Workbook();
+    var sheet = Math.floor(Math.random() * Math.floor(900));
 
-    let worksheet = this.workbook.addWorksheet('My Sheet', {
+
+    let worksheet = this.workbook.addWorksheet('My Sheet'+sheet, {
       properties: {
         defaultRowHeight: 150,
       }
@@ -201,6 +203,7 @@ export class ExcelPdfExporterService {
     itemNew2.forEach(element => {
       worksheet.addRow({
         osm_id:element.osm_id,
+        code:element.code,
         fclass:element.fclass,
         LVRR_ID:element.LVRR_ID,
         name:element.name,
