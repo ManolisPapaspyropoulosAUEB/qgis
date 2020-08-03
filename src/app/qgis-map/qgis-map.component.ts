@@ -3208,14 +3208,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   photoGalley(item) {
     const dialogRef = this.dialog.open(PhotoGallery, {
       data: item,
-      width: '1080px'
-    });
+      width: '1080px'});
   }
 
   notes(item) {
     const dialogRef = this.dialog.open(NotesDialog, {
       data: item,
-      width: '800px',
+      width: '1110px',
 
 
     });
@@ -3698,6 +3697,7 @@ export class AddingNoteDialog implements OnInit {
       this.validateAllFormFields(this.editForm2);
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
 
+      return;
 
     }
 
@@ -3727,6 +3727,7 @@ export class AddingNoteDialog implements OnInit {
 
 
 }
+
 
 
 @Component({

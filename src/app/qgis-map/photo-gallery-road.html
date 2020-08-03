@@ -5,7 +5,7 @@
 
   }
   .mYcONT{
-    height: 500px!important;
+    height: 58vh!important;
     overflow-y: auto;
     margin-top: 27px;
 
@@ -67,8 +67,6 @@
 
 
 </style>
-
-
 <div class="mYcONTheader" style="display: flex">
   <div class="col-md-11" style="    padding-left: 0;">
 
@@ -76,127 +74,130 @@
 
   </div>
   <div class="col-md-1" style="padding-top: 7px;	    padding-top: 7px;
-    padding-left: 37px;">
+    padding-left: 37px; text-align: end;
+    padding-right: 0px;">
     <span  (click)="onNoClick()"   class="material-icons closeIcon">
       close
     </span>
   </div>
 </div>
 
-
-
-
+<mat-dialog-content>
   <div class="search-hero">
     <input  style="    margin-bottom: 22px!important;"
-           class="form-control"
-           type="text"
-           name="search"
-           [(ngModel)]="searchTextImages"
-           autocomplete="on"
-           style="width: 45%;"
-           placeholder="Search.."
+            class="form-control"
+            type="text"
+            name="search"
+            [(ngModel)]="searchTextImages"
+            autocomplete="on"
+            style="width: 45%;"
+            placeholder="Search.."
     />
   </div>
+  <div class="mYcONT" style="" gallerize>
+    <div class="mat-card-img" style="display: flex" *ngFor='let img of imageData|filter: searchTextImages;'>
 
+      <div *ngIf="img.extension=='png' || img.extension=='jpg' || img.extension=='jpeg' " class="col-md-2 mikrografia" >
+        <img  style="    box-shadow: 3px 3px 3px 0px #888888;border-radius: 3px;" src={{img.imageFetchHttp}}>
+      </div>
 
-<div class="mYcONT" style="" gallerize>
-  <div class="mat-card-img" style="display: flex" *ngFor='let img of imageData|filter: searchTextImages;'>
-
-    <div *ngIf="img.extension=='png' || img.extension=='jpg' || img.extension=='jpeg' " class="col-md-2 mikrografia" >
-      <img  style="    box-shadow: 3px 3px 3px 0px #888888;border-radius: 3px;" src={{img.imageFetchHttp}}>
-    </div>
-
-    <div *ngIf="img.extension=='pdf'" class="col-md-2 mikrografia" >
+      <div *ngIf="img.extension=='pdf'" class="col-md-2 mikrografia" >
         <img     id="pdf"   src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" >
-    </div>
-
-
-    <div style="padding-left: 35px;" *ngIf="img.extension=='doc'" class="col-md-2 mikrografia">
-      <img style="width: 74px!important;"  src="assets/doc-file.png">
-    </div>
-
-    <div style="padding-left: 35px;" *ngIf="img.extension=='docx'" class="col-md-2 mikrografia">
-      <img style="width: 74px!important;"  src="assets/docx-file.png">
-    </div>
-
-    <div style="padding-left: 35px;" *ngIf="img.extension=='dot'" class="col-md-2 mikrografia">
-      <img style="width: 74px!important;"  src="assets/dot-file.png">
-    </div>
-
-    <div style="padding-left: 35px;" *ngIf="img.extension=='txt'" class="col-md-2 mikrografia">
-      <img style="width: 74px!important;"  src="assets/txt-file.png">
-    </div>
-
-    <div style="padding-left: 35px;" *ngIf="img.extension=='xls' || img.extension=='xlsx'" class="col-md-2 mikrografia">
-      <img style="width: 74px!important;"  src="assets/Excel-icon.png">
-    </div>
-
-    <div style="padding-left: 35px;" *ngIf="img.extension!='xls' && img.extension!='xlsx' && img.extension!='txt' && img.extension!='dot' && img.extension!='docx'  && img.extension!='doc' && img.extension!='pdf' && img.extension!='png' && img.extension!='jpg' && img.extension!='jpeg'   " class="col-md-2 mikrografia">
-      <img style="width: 74px!important;"  src="assets/File_Unknown-512.png">
-
-    </div>
-
-
-    <div class="col-md-9">
-
-      <div class="name">
-        <span style="color: #0684ff">{{img.originalName}}</span>
-      </div>
-
-      <div class="name" style="color: #5d5d5d;padding-top: 7px" >
-        {{img.uploadDate}}
       </div>
 
 
+      <div style="padding-left: 35px;" *ngIf="img.extension=='doc'" class="col-md-2 mikrografia">
+        <img style="width: 74px!important;"  src="assets/doc-file.png">
+      </div>
+
+      <div style="padding-left: 35px;" *ngIf="img.extension=='docx'" class="col-md-2 mikrografia">
+        <img style="width: 74px!important;"  src="assets/docx-file.png">
+      </div>
+
+      <div style="padding-left: 35px;" *ngIf="img.extension=='dot'" class="col-md-2 mikrografia">
+        <img style="width: 74px!important;"  src="assets/dot-file.png">
+      </div>
+
+      <div style="padding-left: 35px;" *ngIf="img.extension=='txt'" class="col-md-2 mikrografia">
+        <img style="width: 74px!important;"  src="assets/txt-file.png">
+      </div>
+
+      <div style="padding-left: 35px;" *ngIf="img.extension=='xls' || img.extension=='xlsx'" class="col-md-2 mikrografia">
+        <img style="width: 74px!important;"  src="assets/Excel-icon.png">
+      </div>
+
+      <div style="padding-left: 35px;" *ngIf="img.extension!='xls' && img.extension!='xlsx' && img.extension!='txt' && img.extension!='dot' && img.extension!='docx'  && img.extension!='doc' && img.extension!='pdf' && img.extension!='png' && img.extension!='jpg' && img.extension!='jpeg'   " class="col-md-2 mikrografia">
+        <img style="width: 74px!important;"  src="assets/File_Unknown-512.png">
+
+      </div>
 
 
-    </div>
+      <div class="col-md-9">
 
-    <div class="col-md-1">
-      <div class="button-container-list-table" style="    position: relative;top: 24px;">
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu class="menu-actions" #menu="matMenu">
-          <button (click)="downloadDocument(img)"  mat-menu-item>
+        <div class="name">
+          <span style="color: #0684ff">{{img.originalName}}</span>
+        </div>
+
+        <div class="name" style="color: #5d5d5d;padding-top: 7px" >
+          {{img.uploadDate}}
+        </div>
+
+
+
+
+      </div>
+
+      <div class="col-md-1">
+        <div class="button-container-list-table" style="    position: relative;top: 24px;">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu class="menu-actions" #menu="matMenu">
+            <button (click)="downloadDocument(img)"  mat-menu-item>
              <span class="material-icons delete" style="color: #2d7fff;cursor: pointer;" >
               cloud_download
               </span>
               download
-          </button>
+            </button>
 
 
-          <button (click)="deletePhoto(img)" mat-menu-item>
-            <span class="material-icons delete" style="color: red;cursor: pointer;" >delete</span>
-            <span>Delete</span>
-          </button>
-        </mat-menu>
+            <button (click)="deletePhoto(img)" mat-menu-item>
+              <span class="material-icons delete" style="color: red;cursor: pointer;" >delete</span>
+              <span>Delete</span>
+            </button>
+          </mat-menu>
+        </div>
       </div>
+
+
     </div>
+
+
 
 
   </div>
+</mat-dialog-content>
 
 
+<mat-dialog-actions>
+  <div class="mYcONTfooter" style="display: flex">
+    <!--https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/-->
 
-
-</div>
-<div class="mYcONTfooter" style="display: flex">
-  <!--https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/-->
-
-  <form style="display: flex;" [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
-    <div style="    padding-top: 15px;">
+    <form style="display: flex;" [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+      <div style="    padding-top: 15px;">
 
         <input   #fileInput id="uploadBtn2" formControlName="file"  type="file" (change)="onFileSelect($event)" />
 
-    </div>
-    <div>
-      <button  type="submit" class="uplB" mat-raised-button color="primary">
-        <span style="position: relative;top: 0px;">upload</span>
-      </button>
-    </div>
-  </form>
+      </div>
+      <div>
+        <button  type="submit" class="uplB" mat-raised-button color="primary">
+          <span style="position: relative;top: 0px;">upload</span>
+        </button>
+      </div>
+    </form>
 
-  <button mat-raised-button (click)="onNoClick()" >Cancel</button>
-</div>
+    <button mat-raised-button (click)="onNoClick()" >Cancel</button>
+  </div>
+</mat-dialog-actions>
+
 

@@ -3,11 +3,8 @@
     color: white;
     position: relative;
     top: -14px;
-    left: 18px;
     background: #2F4060;
     border-radius: 5px;
-
-
   }
 
   .mat-list-base{
@@ -20,14 +17,12 @@
   }
 
   .closeIcon:hover {
-
     cursor: pointer;
   }
 
   ::ng-deep.notes-table.datatable-body {
     height: 395px!important;
     overflow-y: scroll!important;
-
   }
 
   .note{
@@ -38,7 +33,6 @@
     padding-bottom: 12px;
     border-radius: 6px;
     margin-bottom: 4px;
-
   }
 
 
@@ -47,79 +41,37 @@
   }
 
   mat-dialog-content{
-    height: 600px;
+    /*height: 600px;*/
 
   }
 
   .mycontainer{
-    max-height: 546px;
-    height: 543px;
+    /*max-height: 546px;*/
+    /*height: 543px;*/
     overflow-y: auto;
-    margin-top: 17px;
   }
-
 
 </style>
 
 
-<mat-dialog-content style="min-height: 620px;max-height: 620px">
+
+<mat-dialog-content style="">
   <div style="display: flex">
-    <div class="col-md-11" style="display: flex">
+    <div class="col-md-11" style="display: flex;padding-left: 0px">
       <h2  style="font-size: 25px;padding-left: 0px">Notes</h2><span class="material-icons" style="margin-top: 5px;
     color: #2f4060;
     margin-left: 9px;
     cursor: pointer;" (click)="addNote()">
 add_circle
 </span>
-
     </div>
-    <div class="col-md-1" style="    padding-top: 18px;">
+    <div class="col-md-1" style="    padding-top: 18px;text-align: end;padding-right: 0px">
     <span  (click)="onNoClick()"   class="material-icons closeIcon">
       close
     </span>
     </div>
   </div>
   <div class="mycontainer">
-    <!--<div class="note"  *ngFor="let n of notes" >-->
-      <!--<div class="col-md-6">-->
-        <!--Title : {{n.title}}-->
-      <!--</div>-->
-      <!--<div class="col-md-5">-->
-        <!--Creation Date :{{n.creationDate}}-->
-      <!--</div>-->
-      <!--<div class="col-md-1" style="text-align: end">-->
-
-
-
-        <!--<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">-->
-          <!--<mat-icon>more_vert</mat-icon>-->
-        <!--</button>-->
-        <!--<mat-menu #menu="matMenu">-->
-          <!--<button mat-menu-item (click)="editNote(n)">-->
-            <!--<mat-icon class="editRoad"  style="color: #000000;cursor: pointer;position: relative;top: -4px">edit-->
-            <!--</mat-icon>-->
-            <!--<span style="position: relative;top: -1px;left: -13px;">Edit</span>-->
-          <!--</button>-->
-
-
-          <!--<button (click)="deleteNote(n)" mat-menu-item>-->
-            <!--<span class="material-icons delete" style="color: #000000;cursor: pointer;" >delete</span>-->
-            <!--<span style="position: relative;top: -3px">Delete</span>-->
-          <!--</button>-->
-        <!--</mat-menu>-->
-
-
-
-
-
-
-
-      <!--</div>-->
-    <!--</div>-->
-
-
-
-
 
 
 
@@ -128,14 +80,10 @@ add_circle
 
       <ngx-datatable style="margin-top: 15px"
                      class="bootstrap"
-
                      [reorderable]=true
                      [rowHeight]="'50'"
                      [rows]="notes"
-
                      [columnMode]="'force'"
-
-
                      [headerHeight]="50"
                      [footerHeight]="50"
                      [rowHeight]="50"
@@ -163,7 +111,7 @@ add_circle
         </ngx-datatable-column>
 
 
-        <ngx-datatable-column [width]="400"  name="Creation Date" prop="creationDate" [flexGrow]="1">
+        <ngx-datatable-column   name="Creation Date" prop="creationDate" [flexGrow]="1">
           <ng-template let-row="row" ngx-datatable-cell-template>
             <div >
               {{ row?.creationDate }}
@@ -171,8 +119,16 @@ add_circle
           </ng-template>
         </ngx-datatable-column>
 
-        <ngx-datatable-column style="text-align: center"  [sortable]=false   name="Actions" [flexGrow]="1">
+
+        <ngx-datatable-column class="actionClass"    style="text-align: center"   [sortable]=false    [flexGrow]="1">
+          <ng-template ngx-datatable-header-template style="">
+            <span style="    margin-left: 24%;">ACTIONS</span>
+          </ng-template>
+
+
           <ng-template let-row="row" ngx-datatable-cell-template>
+
+
 
 
             <div class="button-container-list-table" style="position: relative;    left: -41px;" >
@@ -196,46 +152,57 @@ add_circle
         </ngx-datatable-column>
 
 
-
-
       </ngx-datatable>
-
-
-    <!---->
-    <!--<ngx-datatable-->
-      <!--class="bootstrap"-->
-      <!--[rows]="notes"-->
-      <!--[loadingIndicator]="loadingIndicator"-->
-      <!--[columns]="columns"-->
-      <!--[columnMode]="ColumnMode.force"-->
-      <!--[headerHeight]="50"-->
-      <!--[footerHeight]="50"-->
-      <!--rowHeight="auto"-->
-      <!--[reorderable]="reorderable"-->
-    <!--&gt;-->
-    <!--</ngx-datatable>-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   </div>
 </mat-dialog-content>
-<div style="margin-bottom: -4px;" mat-dialog-actions>
-  <button mat-raised-button (click)="onNoClick()" >Close</button>
-</div>
+
+
+<mat-dialog-actions>
+  <div style="margin-bottom: -4px;" mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick()" >Close</button>
+  </div>
+
+</mat-dialog-actions>
+
+
+
+<!--<div class="note"  *ngFor="let n of notes" >-->
+<!--<div class="col-md-6">-->
+<!--Title : {{n.title}}-->
+<!--</div>-->
+<!--<div class="col-md-5">-->
+<!--Creation Date :{{n.creationDate}}-->
+<!--</div>-->
+<!--<div class="col-md-1" style="text-align: end">-->
+
+
+
+<!--<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">-->
+<!--<mat-icon>more_vert</mat-icon>-->
+<!--</button>-->
+<!--<mat-menu #menu="matMenu">-->
+<!--<button mat-menu-item (click)="editNote(n)">-->
+<!--<mat-icon class="editRoad"  style="color: #000000;cursor: pointer;position: relative;top: -4px">edit-->
+<!--</mat-icon>-->
+<!--<span style="position: relative;top: -1px;left: -13px;">Edit</span>-->
+<!--</button>-->
+
+
+<!--<button (click)="deleteNote(n)" mat-menu-item>-->
+<!--<span class="material-icons delete" style="color: #000000;cursor: pointer;" >delete</span>-->
+<!--<span style="position: relative;top: -3px">Delete</span>-->
+<!--</button>-->
+<!--</mat-menu>-->
+
+
+
+
+
+
+
+<!--</div>-->
+<!--</div>-->
+
+
+
+

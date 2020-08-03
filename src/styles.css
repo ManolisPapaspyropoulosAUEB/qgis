@@ -263,12 +263,20 @@ datatable-body-row.datatable-body-row.datatable-row-odd.ng-star-inserted:hover{
 
 }
 
+.ngx-datatable.bootstrap .datatable-body.datatable-body{
+  height: 47vh!important;
+}
+
+
+
 .ngx-datatable.bootstrap .datatable-header .datatable-header-cell .datatable-header-cell-label {
 
 }
 
 .ngx-datatable.bootstrap .datatable-body .datatable-body-row {
   padding: 0.67rem;
+  padding-left: 0px!important;
+
   vertical-align: top;
   border-top: 1px solid #d1d4d7;
   background: #ffffff !important;
@@ -339,6 +347,47 @@ datatable-body-row.datatable-body-row.datatable-row-odd.ng-star-inserted:hover{
 .datatable-row-group.datatable-row-right:last-child:hover {
   background-color: #fafafa !important;
 }
+
+
+
+
+.ngx-datatable.bootstrap .datatable-row-right {
+  background: #ffffff !important;
+}
+
+.ngx-datatable.bootstrap .datatable-row-group.datatable-row-right {
+  background: #ffffff !important;
+  border-top: 1px solid #ffffff!important;
+  border-bottom: 1px solid #ffffff!important;
+}
+
+.ngx-datatable.bootstrap .datatable-row-group.datatable-row-right:hover {
+  background-color: #8affd9 !important;
+  backface-visibility: hidden;
+  cursor: pointer;
+  border-top: 1px solid #8affd9!important;
+  border-bottom: 1px solid #8affd9!important;
+}
+
+.ngx-datatable.bootstrap .datatable-row-group.datatable-row-right:last-child:hover {
+  background-color: #8affd9 !important;
+  border-top: 1px solid #8affd9!important;
+  border-bottom: 1px solid #8affd9!important;
+}
+
+
+.ngx-datatable.bootstrap .datatable-header-cell.actionClass{
+  padding-left: 46px!important;
+}
+.ngx-datatable.bootstrap{
+  padding-bottom: 4px!important;
+
+}
+
+
+
+
+
 
 .mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
   transform: none !important;
