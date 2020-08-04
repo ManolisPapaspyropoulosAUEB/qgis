@@ -14,6 +14,10 @@ html, body {
 /*font-family: Roboto, "Helvetica Neue", sans-serif;*/
 /*}*/
 
+mat-dialog-content.mat-dialog-content {
+  overflow-y: hidden;
+}
+
 .mat-tab-label-content {
   color: white;
 }
@@ -57,13 +61,71 @@ c-remove {
   display: none;
 }
 
-.mat-tab-labels {
-  background: #2F4060;
+
+
+
+
+.myCustomTabParentClass{
+  position: relative;  top: -48px;
 }
+
+
+.myCustomTabParentClass .mat-tab-labels {
+  background: #2F4060;
+  color: whitesmoke;
+  margin-left: 50px;
+
+}
+
+
+
+
+
+
+.myCustomTabParentClass .mat-tab-label:active {
+  background: #212c42 ;
+  color: white ;
+}
+
+::ng-deep.div.myCustomTabParentClass.mat-tab-label:active {
+  color: white ;
+}
+
+.myCustomTabParentClass .mat-tab-label-active {
+  background: #212c42 ;
+  color: white ;
+  opacity: 0.9;
+}
+
+
+
+
+
+
+
+
+::ng-deep.myCustomTabParentClass.mat-tab-label .mat-tab-label-active {
+  color: white ;
+}
+
+
+
+
+
+
+
+
+
+
+/*.mat-tab-labels {*/
+  /*background: #2F4060;*/
+/*}*/
 
 .mycustomTabClass .mat-tab-labels {
   background: whitesmoke;
   color: black;
+  margin-left: 0px!important;
+
 }
 
 .mycustomTabClass .mat-tab-labels {
@@ -90,6 +152,13 @@ c-remove {
   opacity: 0.9;
 }
 
+
+
+
+
+
+
+
 ::ng-deep.mycustomTabClass.mat-tab-label .mat-tab-label-active {
   color: white !important;
 }
@@ -105,6 +174,8 @@ c-remove {
 
 .mycustomTabClassUpdateRoad .mat-tab-labels {
   background: whitesmoke;
+  margin-left: 0px!important;
+
   color: black;
 }
 
@@ -138,7 +209,11 @@ c-remove {
 .mycustomTabClassCiteria .mat-tab-labels {
   background: #8BAA48;
   color: black;
+  margin-left: 0px!important;
+
 }
+
+
 
 .mycustomTabClassCiteria .mat-tab-labels {
   background: whitesmoke;
@@ -198,34 +273,45 @@ c-remove {
 }
 
 
-/*datatable-body-row.bootstrap.datatable-body-row.datatable-row-even.ng-star-inserted{*/
-  /*background-color: rgba(0, 239, 174, 0.33) !important;;*/
+.ngx-datatable.bootstrap:not(.cell-selection) .datatable-body-row:hover,datatable-body-row-left:hover,datatable-body-row-right:hover,datatable-body-row-center:hover,
+.ngx-datatable.material:not(.cell-selection) .datatable-body-row:hover .datatable-row-group
+{
+  background: rgb(152, 255, 204) !important;
+  cursor: pointer;
 
+
+
+}
+
+
+/*.ngx-datatable.bootstrap.datatable-row-center:hover {*/
+  /*background-color: #3f51b5 !important;*/
 /*}*/
 
+/*datatable-body-row.bootstrap.datatable-body-row.datatable-row-even.ng-star-inserted{*/
+/*background-color: rgba(0, 239, 174, 0.33) !important;;*/
+
+/*}*/
 
 /*.ngx-datatable.bootstrap .datatable-body .datatable-row-wrapper datatable-body-row.datatable-body-row.datatable-row-even.ng-star-inserted:hover{*/
-  /*background-color: rgba(0, 239, 174, 0.33) !important;*/
+/*background-color: rgba(0, 239, 174, 0.33) !important;*/
 
 /*}*/
 
-.ngx-datatable.bootstrap .datatable-body .datatable-row-wrapper datatable-body-row.datatable-body-row.ng-star-inserted:hover{
-  background-color: #8affd9 !important;
+.ngx-datatable.bootstrap .datatable-body .datatable-row-wrapper datatable-body-row.datatable-body-row.ng-star-inserted:hover {
+  /*background-color: #8affd9 !important;*/
 
 }
 
-.ngx-datatable.material .datatable-body .datatable-row-wrapper datatable-body-row.datatable-body-row.ng-star-inserted:hover{
-  background-color: #8affd9 !important;
+/*.ngx-datatable.material .datatable-body .datatable-row-wrapper datatable-body-row.datatable-body-row.ng-star-inserted:hover {*/
+  /*!*background-color: #8affd9 !important;*!*/
 
-}
+/*}*/
 
-datatable-body-row.datatable-body-row.datatable-row-odd.ng-star-inserted:hover{
-  background-color: #8affd9 !important;
+/*datatable-body-row.datatable-body-row.datatable-row-odd.ng-star-inserted:hover {*/
+  /*!*background-color: #8affd9 !important;*!*/
 
-}
-
-
-
+/*}*/
 
 .ngx-datatable.bootstrap .datatable-body {
 
@@ -259,15 +345,13 @@ datatable-body-row.datatable-body-row.datatable-row-odd.ng-star-inserted:hover{
 .ngx-datatable.material .datatable-header .datatable-header-cell {
   vertical-align: bottom;
   padding: 0.75rem;
-  border-bottom: 1px solid #d1d4d7;
+  /*border-bottom: 1px solid #d1d4d7;*/
 
 }
 
-.ngx-datatable.bootstrap .datatable-body.datatable-body{
-  height: 47vh!important;
+.ngx-datatable.bootstrap .datatable-body.datatable-body {
+  height: 47vh !important;
 }
-
-
 
 .ngx-datatable.bootstrap .datatable-header .datatable-header-cell .datatable-header-cell-label {
 
@@ -275,12 +359,24 @@ datatable-body-row.datatable-body-row.datatable-row-odd.ng-star-inserted:hover{
 
 .ngx-datatable.bootstrap .datatable-body .datatable-body-row {
   padding: 0.67rem;
-  padding-left: 0px!important;
+  padding-left: 0px !important;
 
   vertical-align: top;
-  border-top: 1px solid #d1d4d7;
-  background: #ffffff !important;
+  border-bottom: 1px solid #d1d4d7;
+  background: #feffff !important;
 }
+
+.ngx-datatable.bootstrap .datatable-body {
+
+  width: 97% !important;
+
+}
+
+/*.ngx-datatable.bootstrap .datatable-body .datatable-body-row:hover {*/
+
+  /*background: #8affd9 !important;*/
+
+/*}*/
 
 .ngx-datatable.bootstrap .datatable-body .datatable-body-row.datatable-row-even {
   background-color: rgba(0, 0, 0, 0.05);
@@ -302,55 +398,98 @@ datatable-body-row.datatable-body-row.datatable-row-odd.ng-star-inserted:hover{
   overflow-y: hidden;
 }
 
-
 .ngx-datatable.material .datatable-body .datatable-body-row {
-  box-shadow: 0px 0px 1px 0px #adadad;
+  /*box-shadow: 0px 0px 1px 0px #adadad;*/
+  border-bottom: 1px solid gainsboro;
+
 }
+
+/*.ngx-datatable.material .datatable-body .datatable-body-row:hover{*/
+
+
+/*}*/
 
 .datatable-row-left {
   background: #f9f9f9 !important;
 
+
 }
 
-.datatable-row-group.datatable-row-left {
+
+
+
+.ngx-datatable.material.datatable-row-left{
+  border-left: 1px solid green!important;
+
+}
+
+
+
+.ngx-datatable.material .datatable-row-group.datatable-row-left.ng-star-inserted{
+  border-right: 1px solid #dcdcdc!important;
+}
+
+
+.material.datatable-row-group.datatable-row-left {
   background: #f9f9f9 !important;
-  box-shadow: 0px 0px 4px 0px #adadad;
 
 }
 
-.datatable-row-group.datatable-row-left:hover {
-  background-color: #8affd9 !important;
-  backface-visibility: hidden;
-  cursor: pointer;
-}
 
-.datatable-row-center.datatable-row-group:hover {
-  background-color: #8affd9 !important;
-  cursor: pointer;
-}
+
+
+
+/*.datatable-row-group.datatable-row-left:hover { 1st*/
+  /*!*background-color: #8affd9 !important;*!*/
+  /*backface-visibility: hidden;*/
+  /*cursor: pointer;*/
+/*}*/
+
+/*.datatable-row-center.datatable-row-group:hover {*/
+  /*!*background-color: #8affd9 !important;*!*/
+  /*cursor: pointer;*/
+/*}*/
 
 .datatable-row-right {
   background: #f9f9f9 !important;
+  padding-left: 45px;
 }
+
+.mat-badge-medium.mat-badge-above .mat-badge-content {
+  top: -15px;
+  position: relative;
+}
+mat-badge-medium.mat-badge-above .mat-badge-content {
+  top: unset;
+  right: unset;
+}
+
+ .ngx-datatable.bootstrap .datatable-header-inner {
+  border-bottom: 1px solid #d1d4d7 !important;
+  max-width: 97% !important;
+}
+
+
+
+.ngx-datatable.material .datatable-header-inner {
+  border-bottom: 1px solid #d1d4d7 !important;
+  max-width: 100% !important;
+}
+
 
 .datatable-row-group.datatable-row-right {
   background: #f9f9f9 !important;
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #eeeeee;
 }
 
-.datatable-row-group.datatable-row-right:hover {
-  background-color: #8affd9 !important;
-  backface-visibility: hidden;
-  cursor: pointer;
-}
+/*.datatable-row-group.datatable-row-right:hover {*/
+  /*!*background-color: #8affd9 !important;*!*/
+  /*backface-visibility: hidden;*/
+  /*cursor: pointer;*/
+/*}*/
 
-.datatable-row-group.datatable-row-right:last-child:hover {
-  background-color: #fafafa !important;
-}
-
-
-
+/*.datatable-row-group.datatable-row-right:last-child:hover {*/
+  /*background-color: #fafafa !important;*/
+/*}*/
 
 .ngx-datatable.bootstrap .datatable-row-right {
   background: #ffffff !important;
@@ -358,37 +497,32 @@ datatable-body-row.datatable-body-row.datatable-row-odd.ng-star-inserted:hover{
 
 .ngx-datatable.bootstrap .datatable-row-group.datatable-row-right {
   background: #ffffff !important;
-  border-top: 1px solid #ffffff!important;
-  border-bottom: 1px solid #ffffff!important;
+  border-top: 1px solid #ffffff !important;
+  border-bottom: 1px solid #ffffff !important;
 }
 
-.ngx-datatable.bootstrap .datatable-row-group.datatable-row-right:hover {
-  background-color: #8affd9 !important;
-  backface-visibility: hidden;
-  cursor: pointer;
-  border-top: 1px solid #8affd9!important;
-  border-bottom: 1px solid #8affd9!important;
+/*.ngx-datatable.bootstrap .datatable-row-group.datatable-row-right:hover {*/
+/*background-color: #8affd9 !important;*/
+/*backface-visibility: hidden;*/
+/*cursor: pointer;*/
+/*border-top: 1px solid #8affd9!important;*/
+/*border-bottom: 1px solid #8affd9!important;*/
+/*}*/
+
+/*.ngx-datatable.bootstrap .datatable-row-group.datatable-row-right:last-child:hover {*/
+/*background-color: #8affd9 !important;*/
+/*border-top: 1px solid #8affd9!important;*/
+/*border-bottom: 1px solid #8affd9!important;*/
+/*}*/
+
+.ngx-datatable.bootstrap .datatable-header-cell.actionClass {
+  /*padding-left: 46px!important;*/
 }
 
-.ngx-datatable.bootstrap .datatable-row-group.datatable-row-right:last-child:hover {
-  background-color: #8affd9 !important;
-  border-top: 1px solid #8affd9!important;
-  border-bottom: 1px solid #8affd9!important;
-}
-
-
-.ngx-datatable.bootstrap .datatable-header-cell.actionClass{
-  padding-left: 46px!important;
-}
-.ngx-datatable.bootstrap{
-  padding-bottom: 4px!important;
+.ngx-datatable.bootstrap {
+  padding-bottom: 4px !important;
 
 }
-
-
-
-
-
 
 .mat-sidenav-container, .mat-sidenav-content, .mat-tab-body-content {
   transform: none !important;
@@ -400,6 +534,7 @@ datatable-body-row.datatable-body-row.datatable-row-odd.ng-star-inserted:hover{
   margin-top: -1px;
   color: white;
   border-radius: 5px;
+  width: 97% !important;
 
 }
 
@@ -511,11 +646,18 @@ datatable-body-row.datatable-body-row.datatable-row-odd.ng-star-inserted:hover{
   overflow-y: hidden;
 }
 
+
+.ngx-datatable.material .datatable-body{
+  margin-top: -7px!important;
+
+}
+
+/*d1d4d7*/
+/*.ngx-datatable.material .datatable-header .datatable-header-cell*/
 /*hlias*/
 .ngx-datatable.material .datatable-header .datatable-header-cell {
   vertical-align: bottom;
   padding: 0.75rem;
-  border-bottom: 1px solid #d1d4d7;
   padding: 10px;
   font-weight: bold;
   color: #000;
@@ -537,7 +679,7 @@ ngx-datatable {
 
 datatable-body.datatable-body {
   height: 741px;
-  overflow-y: auto !important;
+  /*overflow-y: auto !important;*/
 
 }
 
@@ -642,19 +784,39 @@ span.datatable-header-cell-label,
 }
 
 .button-container-list-table {
-  display: flex;
-  padding-left: 0;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  box-shadow: 1px 1px 5px -1px #000 !important;
-  border-radius: 50%;
-  /* margin-left: 21px; */
-  left: 20px;
-  position: relative;
-  height: 35px;
-  width: 35px;
+
 }
+
+.more-action-mat {
+  position: relative !important;
+  top: -2px !important;
+  left: 0px !important;
+}
+
+.button-actions {
+  height: 34px !important;
+  width: 34px !important;
+
+  border: 1px solid #eeeeee;
+  /* padding-bottom: 2px; */
+  background-color: white;
+  box-shadow: 0px 0px 2px 1px #d6d6d6;
+}
+
+/*.button-container-list-table {*/
+/*display: flex;*/
+/*padding-left: 0;*/
+/*align-items: center;*/
+/*justify-content: center;*/
+/*margin: 0 auto;*/
+/*box-shadow: 1px 1px 5px -1px #000 !important;*/
+/*border-radius: 50%;*/
+/*!* margin-left: 21px; *!*/
+/*left: 20px;*/
+/*position: relative;*/
+/*height: 35px;*/
+/*width: 35px;*/
+/*}*/
 
 .buttonNav {
   cursor: pointer;

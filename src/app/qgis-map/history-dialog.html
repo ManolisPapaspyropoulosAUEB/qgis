@@ -13,8 +13,14 @@
   }
 
   .button-container-list-table.ng-star-inserted{
-    position: relative;
-    left: 35%;
+    text-align: end;
+    padding-right: 26px;
+  }
+
+
+  ::ng-deep.mat-dialog-container{
+    padding-left: 50px!important;
+
   }
 
 
@@ -41,6 +47,10 @@
     border-radius: 6px;
     margin-bottom: 4px;
   }
+  .button-container-list-table {
+    padding-left: 197px!important;
+  }
+
 
 
   .note:hover{
@@ -74,12 +84,6 @@
     </div>
   </div>
   <div class="mycontainer">
-
-
-
-
-
-
     <ngx-datatable style="margin-top: 15px"
                    class="bootstrap"
                    [reorderable]=true
@@ -89,14 +93,10 @@
                    [headerHeight]="50"
                    [footerHeight]="50"
                    [rowHeight]="50"
-
-
-
     >
 
 
-
-      <ngx-datatable-column  name="Description" prop="description" [flexGrow]="1">
+      <ngx-datatable-column  name="Creation Date" prop="creationDate" [flexGrow]="1">
         <ng-template let-row="row" ngx-datatable-cell-template>
           <div >
             {{ row?.creationDate }}
@@ -104,12 +104,9 @@
         </ng-template>
       </ngx-datatable-column>
 
-
-
-
-      <ngx-datatable-column class="actionClass"    style="text-align: center"   [sortable]=false    [flexGrow]="1">
+      <ngx-datatable-column class=""    style="text-align: center"   [sortable]=false    [flexGrow]="1">
         <ng-template ngx-datatable-header-template style="">
-          <span style="    margin-left: 77%;">ACTIONS</span>
+          <!--<span style="    margin-left: 24%;">ACTIONS</span>-->
         </ng-template>
 
 
@@ -118,21 +115,20 @@
 
 
 
-          <div class="button-container-list-table" >
-            <button mat-icon-button [matMenuTriggerFor]="menu" >
-              <mat-icon>more_vert</mat-icon>
+
+
+          <div class="button-container-list-table"  >
+            <button class="button-actions" mat-icon-button [matMenuTriggerFor]="menu" >
+              <mat-icon class="more-action-mat">more_vert</mat-icon>
             </button>
             <mat-menu  class="menu-actions" #menu="matMenu">
-              <button (click)="exportAs(row)"  mat-menu-item>
+              <button (click)="exportAs(row)" mat-menu-item>
                 <mat-icon class="editRoad"
                           style="color: #000000;cursor: pointer;">print
                 </mat-icon>
-
                 <span>Export</span>
-
-
               </button>
-              <button  (click)="deleteSnapshot(row)"  mat-menu-item>
+              <button (click)="deleteSnapshot(row)" mat-menu-item>
                 <span class="material-icons delete" style="color: red;cursor: pointer;" >delete</span>
                 <span>Delete</span>
               </button>
@@ -145,13 +141,10 @@
     </ngx-datatable>
   </div>
 </mat-dialog-content>
-
-
 <mat-dialog-actions>
   <div style="margin-bottom: -4px;" mat-dialog-actions>
     <button mat-raised-button (click)="onNoClick()" >Close</button>
   </div>
-
 </mat-dialog-actions>
 
 

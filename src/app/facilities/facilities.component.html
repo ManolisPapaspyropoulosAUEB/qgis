@@ -136,12 +136,12 @@
     </ngx-datatable-column>
 
 
-    <ngx-datatable-column name="Actions"  [sortable]=false [flexGrow]="1" [frozenRight]="true">
+    <ngx-datatable-column name=""  [sortable]=false [flexGrow]="1" [frozenRight]="true">
       <ng-template let-row="row" ngx-datatable-cell-template>
 
         <div class="button-container-list-table">
-          <button mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon>more_vert</mat-icon>
+          <button class="button-actions" mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon class="more-action-mat">more_vert</mat-icon>
           </button>
           <mat-menu class="menu-actions" #menu="matMenu">
             <button (click)="editFacilitie(row)" mat-menu-item>

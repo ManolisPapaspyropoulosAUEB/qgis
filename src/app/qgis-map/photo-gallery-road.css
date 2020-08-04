@@ -1,0 +1,40 @@
+.wave {
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.wave .rect {
+  margin-right: 2px;
+  background-color: #9e9e9e;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  animation: waveStretchDelay 1.2s infinite ease-in-out;
+}
+
+.wave .rect1 { animation-delay: 0s; }
+
+.wave .rect2 { animation-delay: 0.1s; }
+
+.wave .rect3 { animation-delay: 0.2s; }
+
+.wave .rect4 { animation-delay: 0.3s; }
+
+.wave .rect5 { animation-delay: 0.4s; }
+
+@keyframes waveStretchDelay {
+  0%,40%,100% {
+    transform: scaleY(0.5);
+  }
+  20% {
+    transform: scaleY(1.2);
+  }
+}
+
+/* @keyframes op {
+  0%   { opacity: 0; }
+  50%  { opacity: 0.5; }
+  100% { opacity: 1; }
+} */

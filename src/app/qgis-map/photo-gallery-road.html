@@ -26,6 +26,12 @@
 
   }
 
+
+  .button-actions{
+    box-shadow: 1px 1px 3px 1px #888888!important;
+
+  }
+
   .closeIcon{
     background-color: #2f4060;
     color: white;
@@ -149,11 +155,11 @@
 
       <div class="col-md-1">
         <div class="button-container-list-table" style="    position: relative;top: 24px;">
-          <button mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon>more_vert</mat-icon>
+          <button class="button-actions" mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon class="more-action-mat">more_vert</mat-icon>
           </button>
           <mat-menu class="menu-actions" #menu="matMenu">
-            <button (click)="downloadDocument(img)"  mat-menu-item>
+            <button   (click)="downloadDocument(img)"  mat-menu-item>
              <span class="material-icons delete" style="color: #2d7fff;cursor: pointer;" >
               cloud_download
               </span>
@@ -188,11 +194,28 @@
 
         <input   #fileInput id="uploadBtn2" formControlName="file"  type="file" (change)="onFileSelect($event)" />
 
+
+
       </div>
-      <div>
-        <button  type="submit" class="uplB" mat-raised-button color="primary">
+      <div style="display: flex">
+
+
+        <span *ngIf="this.loading" style="padding-top: 11px;font-size: 14px;font-weight: 500;">Uploading...</span>
+        <div class="wave" *ngIf="this.loading">
+          <div class="rect rect1"></div>
+          <div class="rect rect2"></div>
+          <div class="rect rect3"></div>
+          <div class="rect rect4"></div>
+          <div class="rect rect5"></div>
+        </div>
+
+        <button *ngIf="this.uploadForm.get('file').value!=''"  type="submit" class="uplB" mat-raised-button color="primary">
           <span style="position: relative;top: 0px;">upload</span>
         </button>
+
+
+
+
       </div>
     </form>
 

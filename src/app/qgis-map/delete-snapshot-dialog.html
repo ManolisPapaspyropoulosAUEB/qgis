@@ -7,24 +7,15 @@
     background: #2F4060;
     border-radius: 5px;
   }
-
-
   .closeIcon:hover {
-
     cursor: pointer;
   }
 </style>
 
-
 <mat-dialog-content>
-
   <div style="display: flex">
     <div class="col-md-11" style="padding-left: 0px">
-
       <h2 style="font-size: 22px">Delete Snapshot</h2>
-
-
-
     </div>
     <div class="col-md-1">
     <span  (click)="onNoClick()"   class="material-icons closeIcon">
@@ -38,19 +29,10 @@
     margin-bottom: 20px;background: #ffffff">
     <div  style="padding: 0;margin: 0px">
       Are you sure want to delete this snapshot?
-
     </div>
-
   </div>
-
-
-
-
-
-
 </mat-dialog-content>
 <mat-dialog-actions>
   <button style="background-color: #2F4060" (click)="yes()"   type="submit" mat-raised-button color="primary">Yes</button>
-
   <button mat-raised-button (click)="onNoClick()" >Cancel</button>
 </mat-dialog-actions>

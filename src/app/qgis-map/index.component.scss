@@ -1,0 +1,14 @@
+.datatable-row-group.datatable-row:hover {
+
+
+
+  &:hover {
+    background-color: green!important;
+  }
+  &.active {
+    color: green;
+    background-color: green;
+  }
+}
+
+

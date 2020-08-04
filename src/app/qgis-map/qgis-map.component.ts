@@ -71,11 +71,13 @@ interface Options {
 }
 
 
+
+
 @Component({
   selector: 'app-qgis-map',
   templateUrl: './index.html',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./qgis-map.component.css']
+  styleUrls: ['./index.component.scss']
 })
 export class QgisMapComponent implements OnInit, AfterViewInit {
   title = 'Look jQuery Animation working in action!';
@@ -1771,7 +1773,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       // window.addEventListener('resize', function(event){
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - 196 + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (196-7) + 'px';
         }
       }, 0, false);
       // });
@@ -1788,7 +1790,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - 232 + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232-7) + 'px';
         }
       }, 0, false);
       // });
@@ -1806,7 +1808,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - 232 + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232-7) + 'px';
         }
       }, 0, false);
 
@@ -1822,11 +1824,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - 205 + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205-7) + 'px';
         }
       }, 0, false);
 
       // });
+
 
 
     }
@@ -1865,8 +1868,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   public getRoadsPyParams() {
-
-
     this.roadsTab1 = [];
     this.dataservice.getRoadsByParams(
       {
@@ -1883,8 +1884,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         'agriculturFacilitationFilter': this.agriculturFacilitationFilter
       }
     ).subscribe(response => {
-
-
       this.roadsTab1 = response.data;
       this.roadsTab1.forEach(e => {
         e.checked = false;
@@ -1892,8 +1891,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       });
       this.filterService.mapRoadsArrayAll = [];
       this.filterService.mapRoadsArrayAll = this.roadsTab1;
-
-
       this.filterService.roadTab2.forEach(e => {  //roadTab2
         var findRoad = this.roadsTab1.find(x => x.LVRR_ID == e.LVRR_ID);
         findRoad.checked = true;
@@ -1903,47 +1900,32 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           findRoad.checkedFilter = false;
         }
       });
-      setTimeout(() => {
-        this.scrollService.scrollToElementById('top')
-      }, 600);
+
 
       if(this.shmaSort==1){
         setTimeout(() => {
-
           const className = this.__getElementByClass('datatable-body');
           className.scrollTo({
-            top: 0,
+            top: 5,
             left: 5500});
-
-
-
           this.shmaSort=0;
         }, 100);
-
+      }else{
+        setTimeout(() => {
+          this.scrollService.scrollToElementById('top')
+        }, 600);
       }
-
-
-
     });
   }
-
-
-
-
 
   onSort(event) {
     window.dispatchEvent(new Event('resize'));
     this.orderCol = event.column.prop;
     this.descAsc = event.newValue;
     this.shmaSort=1;
-
-
     console.log(this.orderCol);
     if(this.orderCol=='mca'){
-
       this.getRoadsPyParams();
-
-
     }
   }
 
@@ -1979,20 +1961,15 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.villagesComponent.villages = [];
     this.facilitiesComponent.userSelectionsForMapShow = [];
     this.facilitiesComponent.facilitiesMerged = [];
-
     this.selectAllCheck = false;
     this.selectAllCheckFacilities = false;
     this.selectAllCheckVillages = false;
-
-
     this.filterService.facilitiesArray = [];
     this.filterService.villagesArray = [];
     this.orderCol = 'LVRR_ID';
     this.descAsc = 'asc';
     if (param == 'manual') {
-
       this.removeAllRoadsFromMap();
-      //this.scrollService.scrollToElementById('init');
       localStorage.setItem('districtItemName', district[0].district_name);
       localStorage.setItem('num_district_code', district[0].num_district_code);
       localStorage.setItem('distId', district[0].id);
@@ -2082,31 +2059,20 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.villagesComponent.selectAllCheckMethod(this.selectAllCheckVillages);
   }
 
-
-
-
   private __getElementByClass(className: string): HTMLElement {
     console.log("element class : ", className);
     const element = <HTMLElement>document.querySelector(`.${className}`);
     return element;
   }//datatable-body
-
-
   private initMap(filterService, roadTab2, drawerMapSelections, currentStatusMapSelection): void {
-
-
-
     // element.scrollLeft
-
     $(window).resize(function () {
       setTimeout(() => {
         window.dispatchEvent(new Event('resize'));
       }, 900);
     });
-
     this.myMap.setView([33.857, 67.756], 6.5);
     var highlightLayer;
-
     function highlightFeature(e) {
       highlightLayer = e.target;
       if (e.target.feature.geometry.type === 'MultiLineString') {
@@ -3293,19 +3259,50 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
 
+
+
   photoGalley(item) {
     const dialogRef = this.dialog.open(PhotoGallery, {
       data: item,
-      width: '1080px'});
+      width: '1080px'
+    });
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      item.docSize=0;
+      this.dataservice.getPhotoByRoadId({"id":item.id}).subscribe(res=>{
+        item.docSize=res.total;
+
+        const className = this.__getElementByClass('docspan');
+        // className.style.top='-6px';
+
+
+        window.dispatchEvent(new Event('resize'));
+
+      });
+
+
+    });
+
+
   }
 
   notes(item) {
     const dialogRef = this.dialog.open(NotesDialog, {
       data: item,
       width: '1110px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      item.notesSize=0;
+      this.dataservice.getNoteByRoadId({"roadId":item.id}).subscribe(res=>{
+        item.notesSize=res.total;
+      });
 
 
     });
+
+
   }
 
 
@@ -3998,6 +3995,7 @@ export class PhotoGallery implements OnInit {
   version = VERSION;
   imgObjHttp;
   imageData = [];
+  public loading :boolean;
   public searchTextImages: '';
 
   //  SERVER_URL = "http://localhost:9023/uploadFile";
@@ -4015,17 +4013,28 @@ export class PhotoGallery implements OnInit {
   }
 
   onFileSelect(event) {
+
+
+    console.log( $('#uploadBtn2'));
+
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.uploadForm.get('file').setValue(file);
+
     }
   }
 
   ngOnInit() {
+    this.loading=false;
+
+
+    console.log( $('#uploadBtn2'));
+
     this.uploadForm = this.formBuilder.group({
       file: ['']
     });
     this.getImages();
+
 
   }
 
@@ -4101,6 +4110,9 @@ export class PhotoGallery implements OnInit {
   }
 
   onSubmit() {
+
+    this.loading=true;
+
     const formData = new FormData();
     formData.append('file', this.uploadForm.get('file').value);
     formData.append('district', this.data.district);
@@ -4110,12 +4122,18 @@ export class PhotoGallery implements OnInit {
     this.httpClient.post<any>(this.SERVER_URL, formData).subscribe(
       (res) => {
         if (res.status == 'ok') {
-          $('#uploadBtn2').val('');
 
+          $('#uploadBtn2').val('');
+          this.uploadForm.get('file').setValue('');
 
           this.getImages();
           this.snackBar.open(res.message, 'x', <MatSnackBarConfig>{duration: 4000});
+          this.loading=false;
+
         } else if (res.status == 'warning') {
+          this.uploadForm.get('file').setValue('');
+          this.loading=false;
+
           const dialogRef = this.dialog.open(ConfirmUploadPhotoDialog, {
             width: '800px'
           });
@@ -4140,11 +4158,21 @@ export class PhotoGallery implements OnInit {
             }
           });
         } else {
+          this.loading=false;
+          this.uploadForm.get('file').setValue('');
           this.snackBar.open(res.message, 'x', <MatSnackBarConfig>{duration: 4000});
         }
+        this.loading=false;
+
       },
-      (err) => console.log(err)
-    );
+      (err) => {
+
+        this.loading=false;
+        this.snackBar.open('Max length limit attained', 'x', <MatSnackBarConfig>{duration: 4000});
+        $('#uploadBtn2').val('');
+        this.uploadForm.get('file').setValue('');
+      }
+  );
   }
 
   onNoClick(): void {
@@ -4242,17 +4270,12 @@ export class EditRoadDialog implements OnInit {
   }
 
   ngOnInit() {
-
-
     this.ftm = -1;
-
-
     this.name = this.data.name;
     this.ref = this.data.ref;
     this.oneway = this.data.oneway;
     this.lvrr_id = this.data.LVRR_ID;
     this.connectivity = this.data.connectivity;
-
     this.fclass = this.data.fclass;
     this.ref = this.data.ref;
     this.oneway = this.data.oneway;
@@ -4269,8 +4292,6 @@ export class EditRoadDialog implements OnInit {
     this.farmToTheMarket = this.data.farmToTheMarket;
     this.agricultureFacilitaties = this.data.agricultureFacilitaties;
     this.linksToMajorActivityCentres = this.data.facilitiesServed + this.data.accessToGCsRMs;
-
-
     this.numberOfConnections = this.data.numberOfConnections;
     this.roadCondition = this.data.roadCondition;
     this.editForm = this.formBuilder.group({
@@ -4295,9 +4316,7 @@ export class EditRoadDialog implements OnInit {
       numberOfConnections: [this.numberOfConnections, [Validators.min(0), Validators.max(10)]],
       roadCondition: [this.roadCondition]
     });
-
     this.f.linksToMajorActivityCentres.disable();
-
   }
 
 
@@ -4317,8 +4336,6 @@ export class EditRoadDialog implements OnInit {
   }
 
   ftthemarket(value) {
-
-
   }
 
   public save() {
@@ -4327,8 +4344,6 @@ export class EditRoadDialog implements OnInit {
       this.validateAllFormFields(this.editForm);
       return;
     }
-
-
     let resultObject = {
       name: this.f.name.value,
       fclass: this.f.fclass.value,
@@ -4341,22 +4356,17 @@ export class EditRoadDialog implements OnInit {
       connectivity: this.f.connectivity.value,
       source: this.source,
       farmToTheMarket: this.farmToTheMarket,
-
-
       lengthInMetres: this.f.lengthInMetres.value,
       elevationInMetres: this.f.elevationInMetres.value,
       populationServed: this.f.populationServed.value,
       facilitiesServed: this.f.facilitiesServed.value,
       accessToGCsRMs: this.f.accessToGCsRMs.value,
-
       agricultureFacilitaties: this.agricultureFacilitaties,
       linksToMajorActivityCentres: this.f.linksToMajorActivityCentres.value,
       numberOfConnections: this.f.numberOfConnections.value,
       roadCondition: this.f.roadCondition.value,
       id: this.data.id
     };
-
-
     this.dialogRef.close(resultObject);
   }
 

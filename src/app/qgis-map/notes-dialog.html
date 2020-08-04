@@ -7,47 +7,34 @@
     border-radius: 5px;
   }
 
-  .mat-list-base{
-    overflow-y: scroll!important;
-    max-height: 700px!important;
-  }
+
   mat-list-item:hover {
     background-color: whitesmoke!important;
     cursor: pointer;
   }
 
+  .button-container-list-table {
+    text-align: end;
+    padding-right: 36px;
+  }
+
+
+
+
+  ::ng-deep.mat-dialog-container{
+    padding-left: 50px!important;
+
+  }
+
+
+
+
   .closeIcon:hover {
     cursor: pointer;
   }
 
-  ::ng-deep.notes-table.datatable-body {
-    height: 395px!important;
-    overflow-y: scroll!important;
-  }
-
-  .note{
-    display: flex!important;
-    cursor: pointer;
-    padding-top: 10px;
-    background-color: whitesmoke;
-    padding-bottom: 12px;
-    border-radius: 6px;
-    margin-bottom: 4px;
-  }
-
-
-  .note:hover{
-    background-color: #c2c2c2;
-  }
-
-  mat-dialog-content{
-    /*height: 600px;*/
-
-  }
 
   .mycontainer{
-    /*max-height: 546px;*/
-    /*height: 543px;*/
     overflow-y: auto;
   }
 
@@ -120,9 +107,12 @@ add_circle
         </ngx-datatable-column>
 
 
-        <ngx-datatable-column class="actionClass"    style="text-align: center"   [sortable]=false    [flexGrow]="1">
+
+
+
+        <ngx-datatable-column class=""    style="text-align: center"   [sortable]=false    [flexGrow]="1">
           <ng-template ngx-datatable-header-template style="">
-            <span style="    margin-left: 24%;">ACTIONS</span>
+            <!--<span style="    margin-left: 24%;">ACTIONS</span>-->
           </ng-template>
 
 
@@ -131,9 +121,10 @@ add_circle
 
 
 
-            <div class="button-container-list-table" style="position: relative;    left: -41px;" >
-              <button mat-icon-button [matMenuTriggerFor]="menu" >
-                <mat-icon>more_vert</mat-icon>
+
+            <div class="button-container-list-table"  >
+              <button class="button-actions" mat-icon-button [matMenuTriggerFor]="menu" >
+                <mat-icon class="more-action-mat">more_vert</mat-icon>
               </button>
               <mat-menu  class="menu-actions" #menu="matMenu">
                 <button (click)="editNote(row)" mat-menu-item>

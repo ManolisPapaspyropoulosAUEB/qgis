@@ -4,30 +4,16 @@ import * as ExcelProper from 'exceljs';
 import * as Excel from 'exceljs/dist/exceljs.min.js';
 import * as FileSaver from 'file-saver';
 
-
-
-
 @Injectable()
 export class ExcelPdfExporterService {
-
   constructor() { }
-
   temp = [];
   tempBody2 = [];
   workbook: ExcelProper.Workbook = new Excel.Workbook();//
   blobType: string = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-
-
-
   public convertAsPdf(roadsTab1) { //https://pdfmake.github.io/docs/document-definition-object/page/
-
     console.log(roadsTab1);
     this.tempBody2=[];
-
-
-
-
-
     let itemNew2: any[];
     this.temp = [
       'osm_id',
