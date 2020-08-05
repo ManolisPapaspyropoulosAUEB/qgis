@@ -26,6 +26,6 @@ public imageURL = 'http://afggis.synergic.systems:9030/downloadFile';
 
 
 
-
+//gia ng serve : ng serve --live-reload false
 
 

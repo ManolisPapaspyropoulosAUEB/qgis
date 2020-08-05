@@ -171,6 +171,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public fullName;
   private sqlInFclass;
   private sqlInRoadConditions;
+  public loading;
   public tab;
   public currentStatus;
   public currentStatusMapSelection;
@@ -254,9 +255,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   public ngOnInit() {
+    this.loading=false;
     this.orderCol = 'LVRR_ID';
     this.descAsc = 'asc';
     this.shmaSort=0;
+    this.filterService.tab=0;
 
     this.currentBtnNav = 'init';
     this.fullName = localStorage.getItem('fullName');
@@ -491,6 +494,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.descAsc = 'asc';
     this.roadTab2 = [];
     this.roadsTab1 = [];
+
 
 
     if (this.filterService.firstInit == 0) {
@@ -1751,6 +1755,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public switchTab($event: MatTabChangeEvent) {
     var tab = $event.index;
     this.tab = tab;
+    this.filterService.tab = tab;
+
     if (tab == 0) {
       this.coreDataComponent.emptyTable();
       this.ngOnChanges2();
@@ -1775,7 +1781,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
           this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (196-7) + 'px';
         }
-      }, 0, false);
+      }, 200, false);
       // });
 
 
@@ -1812,7 +1818,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       }, 0, false);
 
-      // });
 
 
     } else if (tab == 4) {
@@ -1827,9 +1832,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205-7) + 'px';
         }
       }, 0, false);
-
-      // });
-
 
 
     }
@@ -1868,6 +1870,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   public getRoadsPyParams() {
+    this.loading=true;
+
     this.roadsTab1 = [];
     this.dataservice.getRoadsByParams(
       {
@@ -1885,6 +1889,17 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     ).subscribe(response => {
       this.roadsTab1 = response.data;
+      this.loading=false;
+
+      if(this.tab==1){
+        setTimeout(function () {
+          if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
+            this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (196-7) + 'px';
+          }
+        }, 200, false);
+      }
+
+
       this.roadsTab1.forEach(e => {
         e.checked = false;
         e.checkedFilter = false;
@@ -2066,7 +2081,27 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }//datatable-body
   private initMap(filterService, roadTab2, drawerMapSelections, currentStatusMapSelection): void {
     // element.scrollLeft
+
     $(window).resize(function () {
+
+
+      console.log(filterService.tab);
+      if(filterService.tab==1){
+         this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (196-7) + 'px';
+
+      }else if (filterService.tab==2){
+        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232-7) + 'px';
+
+      }else if (filterService.tab==3){
+        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232-7) + 'px';
+
+      }else if (filterService.tab==4){
+        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205-7) + 'px';
+      }
+
+
+
+
       setTimeout(() => {
         window.dispatchEvent(new Event('resize'));
       }, 900);
@@ -3788,6 +3823,9 @@ export class NotesDialog implements OnInit {
     this.dataservice.getNoteByRoadId({'roadId': this.data.id}).subscribe(response => {
       if (response.status == 'ok') {
         this.notes = response.data;
+        setTimeout(() => {
+          window.dispatchEvent(new Event('resize'));
+        }, 400);
       }
     });
   }
@@ -4295,7 +4333,7 @@ export class EditRoadDialog implements OnInit {
     this.numberOfConnections = this.data.numberOfConnections;
     this.roadCondition = this.data.roadCondition;
     this.editForm = this.formBuilder.group({
-      name: [this.name],
+      name: [this.name, Validators.required],
       fclass: [this.fclass, Validators.required],
       ref: [this.ref],
       oneway: [this.oneway],

@@ -13,6 +13,10 @@ export class FilterService {
   public mapRoadsArrayAll=[];
   public roadTab2=[];
   public roadsTab1Cpy=[];
+  public tab=0;
+
+
+
   public facilitiesLimitTab=16;
   public villageLimitTab=16;
   public facilitiesType="Both";
