@@ -3296,6 +3296,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
 
+
   photoGalley(item) {
     const dialogRef = this.dialog.open(PhotoGallery, {
       data: item,
@@ -3304,7 +3305,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
     dialogRef.afterClosed().subscribe(result => {
-      item.docSize=0;
+      if(this.tab==0){
+        item.docSize=-1;
+
+      }else{
+        item.docSize=0;
+      }
       this.dataservice.getPhotoByRoadId({"id":item.id}).subscribe(res=>{
         item.docSize=res.total;
 
@@ -3322,16 +3328,28 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   }
 
+
+
   notes(item) {
-    const dialogRef = this.dialog.open(NotesDialog, {
+    //drawer-map-selection contents
+    const drawer = this.__getElementByClass('drawer-map-selection');
+
+   const dialogRef = this.dialog.open(NotesDialog, {
       data: item,
       width: '1110px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      item.notesSize=0;
+      if(this.tab==0){
+        item.notesSize=-1;
+
+      }else{
+        item.notesSize=0;
+
+      }
       this.dataservice.getNoteByRoadId({"roadId":item.id}).subscribe(res=>{
         item.notesSize=res.total;
+
       });
 
 
@@ -3339,6 +3357,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   }
+
 
 
 

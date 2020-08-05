@@ -1,5 +1,7 @@
 <style>
 
+  /*------------------LOADING-----------------------*/
+
   .wave {
     width: 50px;
     height: 40px;
@@ -35,11 +37,6 @@
     }
   }
 
-
-
-
-
-
   .container4 {
     height: 10em;
     position: relative;
@@ -57,6 +54,21 @@
   }
 
 
+
+  /*------------------END LOADING-----------------------*/
+
+  .drawer-map-selection{
+    position: fixed!important;
+    top: 50px!important;
+
+  }
+
+  .selectAllRoads{
+    position: relative;
+    top: 13px;
+    left: 16px;
+
+  }
 
 
   .btnControl{
@@ -297,15 +309,18 @@
                               (onDeSelect)="deselectDistrict(district)">
         </angular2-multiselect>
       </div>
-      <div *ngIf="tab==1 && currentNum_district_code>0" class="roadFilters">
-        <mat-checkbox [(ngModel)]="selectAllCheck" (click)="selectAllCheckMethod()" class="example-margin">
+
+
+
+      <mat-checkbox *ngIf="tab==1 && currentNum_district_code>0" [(ngModel)]="selectAllCheck" (click)="selectAllCheckMethod()" class="example-margin selectAllRoads" >
             <span *ngIf="!selectAllCheck">
               Select All
             </span>
-          <span *ngIf="selectAllCheck">
+        <span *ngIf="selectAllCheck">
               Unselect All
             </span>
-        </mat-checkbox>
+      </mat-checkbox>
+      <div *ngIf="tab==1 && currentNum_district_code>0" class="roadFilters">
         <div style="display: grid">
                <span style="margin-bottom: 10px;    "><b>Filters</b>
                          <span class="material-icons resetFilters" matTooltip="Clear Filters"  (click)="resetFilters()">cached</span>
@@ -369,17 +384,20 @@
           <mat-radio-button value="TF">Both</mat-radio-button>
         </mat-radio-group>
       </div>
-      <div *ngIf="tab==2 && currentProvinceCode>0" class="roadFilters">
-        <div style="display: grid;">
-          <mat-checkbox [(ngModel)]="selectAllCheckFacilities" (click)="selectAllCheckMethodFacilities()"
-                        class="example-margin">
+
+
+
+      <mat-checkbox *ngIf="tab==2 && currentProvinceCode>0" [(ngModel)]="selectAllCheckFacilities" (click)="selectAllCheckMethodFacilities()"
+                    class="example-margin selectAllRoads ">
             <span *ngIf="!selectAllCheckFacilities">
               Select All
             </span>
-            <span *ngIf="selectAllCheckFacilities">
+        <span *ngIf="selectAllCheckFacilities">
               Unselect All
             </span>
-          </mat-checkbox>
+      </mat-checkbox>
+      <div *ngIf="tab==2 && currentProvinceCode>0" class="roadFilters">
+        <div style="display: grid;">
                <span style="margin-bottom: 10px;    "><b>Filters</b>
                          <span class="material-icons resetFilters" matTooltip="Clear Filters"
                                (click)="resetFiltersFacilities()">cached</span>
@@ -434,17 +452,25 @@
           <span>Health Centre</span>
         </div>
       </div>
-      <div *ngIf="tab==3 && currentProvinceCode>0" class="roadFilters">
-        <div style="display: grid">
-          <mat-checkbox [(ngModel)]="selectAllCheckVillages" (click)="selectAllCheckMethodVillages()"
-                        class="example-margin">
+
+
+
+
+
+
+
+      <mat-checkbox *ngIf="tab==3 && currentProvinceCode>0" [(ngModel)]="selectAllCheckVillages" (click)="selectAllCheckMethodVillages()"
+                    class="example-margin selectAllRoads">
             <span *ngIf="!selectAllCheckVillages">
               Select All
             </span>
-            <span *ngIf="selectAllCheckVillages">
+        <span *ngIf="selectAllCheckVillages">
               Unselect All
             </span>
-          </mat-checkbox>
+      </mat-checkbox>
+      <div *ngIf="tab==3 && currentProvinceCode>0" class="roadFilters">
+        <div style="display: grid">
+
                <span style="margin-bottom: 10px;    "><b>Filters</b>
                          <span class="material-icons resetFilters" matTooltip="Clear Filters"
                                (click)="resetFiltersVillages()">cached</span>
@@ -462,6 +488,10 @@
           <span>Villages</span>
         </div>
       </div>
+
+
+
+
       <div *ngIf="tab==4 " class="roadFilters">
         <div style="display: grid">
                <span style="margin-bottom: 10px;    "><b>Filters</b>
@@ -511,7 +541,7 @@
     <mat-tab-group class="myCustomTabParentClass" animationDuration="0ms" style="   " (selectedTabChange)="switchTab($event)">
       <mat-tab label="Map"   style="    background-color: white;">
         <mat-drawer-container class="example-container">
-          <mat-drawer style="width: 36%;background: whitesmoke;    box-shadow: -2px 2px 2px 0px #888888!important;" #sideNav mode="side" opened="false" position="end" #drawerMapSelections>
+          <mat-drawer  class="drawer-map-selection" style="width: 36%;background: whitesmoke;    box-shadow: -2px 2px 2px 0px #888888!important;" #sideNav mode="side" opened="false" position="end" #drawerMapSelections>
             <div style="padding: 0;margin: 0">
               <mat-tab-group class="mycustomTabClass">
                 <mat-tab label="Roads selections">
@@ -527,9 +557,9 @@
                     />
                   </div>
                   <mat-card class="matCardSelection" *ngFor="let road of this.filterService.roadTab2|filter: searchTextRoads;"
-                            on-mouseout="out(road)" on-mouseover='over(road)' (click)="hitRoad(road)">
+                            on-mouseout="out(road)" on-mouseover='over(road)' >
                     <div class="row" style="padding: 0;margin: 0">
-                      <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
+                      <div (click)="hitRoad(road)" class="col-md-8" style="margin: 0;padding: 0;display: grid">
                         <div class="row">
                           <div class="col-md-5">
                             <span style="font-weight: bold">
@@ -559,7 +589,32 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-1" style="margin: 0;padding-top: 12px">
+
+
+
+                      <div class="col-md-3">
+                        <div class="col-md-12" style="padding: 0;    padding-top: 5px;    margin-right: 23px;    width: 80px;display: flex">
+                          <div style="    min-width: 46px;">
+                      <span *ngIf="road.docSize>-1" class="docspan" matBadge="{{road.docSize}}" matBadgeOverlap="false" matBadgeSize="small" matBadgePosition="before" style="    position: relative;left: 21px;top: -8px;z-index: 3;">
+                      </span>
+
+                            <span  matTooltip="Uploads" (click)="photoGalley(road)"  class="material-icons" style="position: relative;left: -10px;">
+                          insert_photo
+                      </span>
+                          </div>
+                          <div>
+
+                      <span *ngIf="road.notesSize>-1"  matBadge="{{road.notesSize}}"  matBadgeOverlap="false" matBadgeSize="small" matBadgePosition="before" style="position: relative;left: 22px; top: -9px;z-index: 3;">
+                      </span>
+                            <span   matTooltip="Notes" (click)="notes(road)" class="material-icons" style="position: relative;top: 1px;left: -8px">
+                        speaker_notes
+                      </span>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div (click)="hitRoad(road)" class="col-md-1" style="margin: 0;padding-top: 12px">
                         <mat-checkbox [disabled]="true" (change)="road.checkedFilter=!road.checkedFilter"
                                       [(ngModel)]="road.checkedFilter" class="example-margin"></mat-checkbox>
                       </div>
