@@ -78,7 +78,7 @@ import {
 
   AddingNoteDialog, ConfirmUploadPhotoDialog, CriteriaConfirmationDialog,
   DeleteImgDialog, DeleteNoteDialog, DeleteSnapshotDialog,
-  EditRoadDialog, HistoryDialog,
+  EditRoadDialog, HistoryDialog, ImportDialog,
   NotesDialog, OpenPdfConfigurationDialog,
   PhotoGallery,
   QgisMapComponent
@@ -102,6 +102,7 @@ import {MaterialFileInputModule} from 'ngx-material-file-input';
 import { NoteComponent } from './note/note.component';
 import {SafeUrlPipe} from './qgis-map/safeurl.pipe';
 import {ImagePipe} from './qgis-map/image.pipe';
+import {UniquePipe} from './qgis-map/unique.pipe';
 
 
 
@@ -172,7 +173,9 @@ const routes: Routes = [
   declarations: [
     SafeUrlPipe,
     ImagePipe,
+    UniquePipe,
     NotesDialog,
+    ImportDialog,
     DeleteSnapshotDialog,
     HistoryDialog,
     EditRoadDialog,
@@ -214,6 +217,7 @@ const routes: Routes = [
   exports: [
     SafeUrlPipe,
     ImagePipe,
+    UniquePipe,
     FormsModule,
     ReactiveFormsModule,
     MatInputModule
@@ -297,6 +301,7 @@ const routes: Routes = [
   ],
   entryComponents: [
     EditRoadDialog,
+    ImportDialog,
     OpenPdfConfigurationDialog,
     DeleteNoteDialog,
     CriteriaConfirmationDialog,
@@ -318,7 +323,7 @@ const routes: Routes = [
 
 
 
-  providers: [AuthGuardService, AuthService, DataService, RemoteDataService,FilterService,ExcelPdfExporterService,SafeUrlPipe,ImagePipe,
+  providers: [AuthGuardService, AuthService, DataService, RemoteDataService,FilterService,ExcelPdfExporterService,SafeUrlPipe,ImagePipe,UniquePipe,
 
     {provide:MAT_DIALOG_DATA,useValue: {}}
 

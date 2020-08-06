@@ -57,9 +57,10 @@
 
   /*------------------END LOADING-----------------------*/
 
+
   .drawer-map-selection{
     position: fixed!important;
-    top: 50px!important;
+    top: 52px!important;
 
   }
 
@@ -67,6 +68,8 @@
     position: relative;
     top: 13px;
     left: 16px;
+    font-size: 14px!important;
+
 
   }
 
@@ -408,57 +411,16 @@
           <input matInput placeholder="name.." [(ngModel)]="nameFilterFacilitie"
                  (keyup)="updateNameFilterTabFacilities()">
         </mat-form-field>
-        <mat-radio-group style="    margin-top: 14px;" (change)="updateFilterTabFacilities()"
-                         [(ngModel)]="typeFacilities" aria-label="Select an option"
-                         style="    display: grid; margin-top: 15px;    margin-bottom: 15px;   ">
-          <mat-radio-button value="District Centre">District Centre</mat-radio-button>
-          <mat-radio-button value="Mosque">Mosque</mat-radio-button>
-          <mat-radio-button value="Education Centre">Education Centre</mat-radio-button>
-          <mat-radio-button value="Polling Centre">Polling Centre</mat-radio-button>
-          <mat-radio-button value="Government Office">Government Office</mat-radio-button>
-          <mat-radio-button value="Health Centre">Health Centre</mat-radio-button>
+        <mat-radio-group  (change)="updateFilterTabFacilities()"  [(ngModel)]="typeFacilities" aria-label="Select an option" style="margin-top: 14px;display: grid; margin-top: 15px;margin-bottom: 15px;">
+          <mat-radio-button value="District Centre">District Centre <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"  width="17" height="25"></mat-radio-button>
+          <mat-radio-button value="Mosque">Mosque <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png"  width="17" height="25"></mat-radio-button>
+          <mat-radio-button value="Education Centre">Education Centre <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png"  width="17" height="25"></mat-radio-button>
+          <mat-radio-button value="Polling Centre">Polling Centre <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png"  width="17" height="25"></mat-radio-button>
+          <mat-radio-button value="Government Office">Government Office <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png"  width="17" height="25"></mat-radio-button>
+          <mat-radio-button value="Health Centre">Health Centre <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png"  width="17" height="25"></mat-radio-button>
           <mat-radio-button value="Both">All</mat-radio-button>
         </mat-radio-group>
       </div>
-      <div *ngIf="tab==2 && currentProvinceCode>0" class="extra-help-points">
-        <div>
-          <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
-               alt="Girl in a jacket" width="17" height="25">
-          <span>District Centre</span>
-        </div>
-        <div>
-          <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png"
-               alt="Girl in a jacket" width="17" height="25">
-          <span>Mosque</span>
-        </div>
-        <div>
-          <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png"
-               alt="Girl in a jacket" width="17" height="25">
-          <span>Education Centre</span>
-        </div>
-        <div>
-          <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png"
-               alt="Girl in a jacket" width="17" height="25">
-          <span>Polling Centre</span>
-        </div>
-        <div>
-          <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png"
-               alt="Girl in a jacket" width="17" height="25">
-          <span>Government Office</span>
-        </div>
-        <div>
-          <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png"
-               alt="Girl in a jacket" width="17" height="25">
-          <span>Health Centre</span>
-        </div>
-      </div>
-
-
-
-
-
-
-
       <mat-checkbox *ngIf="tab==3 && currentProvinceCode>0" [(ngModel)]="selectAllCheckVillages" (click)="selectAllCheckMethodVillages()"
                     class="example-margin selectAllRoads">
             <span *ngIf="!selectAllCheckVillages">
@@ -788,7 +750,7 @@
 
 
                 <div class="col-md-2 button-header-outer pl-0" style="position: relative;left: -12px;">
-                  <button [disabled]="true"  style="    padding-left: 7px;"  matTooltip="IMPORT" matTooltipClass="tooltip" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                  <button  (click)="importRoadsXLS()"  style="    padding-left: 7px;"   matTooltip="import" matTooltipClass="tooltip" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="27.16" height="27.16" viewBox="0 0 27.16 27.16"><defs><style>.a{fill:#8baa48;}.b{fill:#b5b5b5;}</style></defs><path class="a" d="M18.356,11a7.356,7.356,0,1,0,7.356,7.356A7.364,7.364,0,0,0,18.356,11Zm3.178,9.339-2.546,2.829a.851.851,0,0,1-1.263,0l-2.546-2.829a.85.85,0,0,1,.631-1.417h1.415V14.395a1.132,1.132,0,1,1,2.263,0v4.527H20.9A.85.85,0,0,1,21.534,20.339Z" transform="translate(1.448 1.448)"/><path class="b" d="M11.317,0,22.633,4.527,11.317,9.053,0,4.527Z"/><path class="b" d="M10.185,10.228,0,6.154V17.3a.565.565,0,0,0,.37.531l9.815,3.616Z" transform="translate(0 0.81)"/><path class="b" d="M18.356,9.375a9.618,9.618,0,0,1,2.829.426V6.154L11,10.228v2.58A9.6,9.6,0,0,1,18.356,9.375Z" transform="translate(1.448 0.81)"/></svg>
                     <span class="button-label">IMPORT</span>
                   </button>
@@ -826,20 +788,19 @@
                 <div class="rect rect4"></div>
                 <div class="rect rect5"></div>
               </div>
-
             </div>
 
 
 
-
-            <ngx-datatable  *ngIf="!loading"
+            <ngx-datatable
+              *ngIf="!this.loading"
               style="margin-top: 5px"
               #mydatatable
               id="myTble"
               class="material"
               [reorderable]=true
               [headerHeight]="50"
-              [footerHeight]="40"
+              [footerHeight]="53"
               [rowHeight]="rowHeight"
               [rows]="roadsTab1"
               [columnMode]="'force'"

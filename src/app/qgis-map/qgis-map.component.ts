@@ -71,8 +71,6 @@ interface Options {
 }
 
 
-
-
 @Component({
   selector: 'app-qgis-map',
   templateUrl: './index.html',
@@ -162,7 +160,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   public diakopthsDromwn = true;
-  public currentLastParam='';
+  public currentLastParam = '';
 
   public currentNum_district_code: any;
   public currentProvinceCode: any;
@@ -255,11 +253,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   public ngOnInit() {
-    this.loading=false;
+    this.loading = false;
     this.orderCol = 'LVRR_ID';
     this.descAsc = 'asc';
-    this.shmaSort=0;
-    this.filterService.tab=0;
+    this.shmaSort = 0;
+    this.filterService.tab = 0;
 
     this.currentBtnNav = 'init';
     this.fullName = localStorage.getItem('fullName');
@@ -306,7 +304,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.villageLimitPage = 16;
     this.getDistrictsTab2();
 
-    this.currentLastParam='';
+    this.currentLastParam = '';
     this.currentBtnNavInit = true;
     this.currentBtnNavCriteria = false;
     this.currentBtnNavScores = false;
@@ -314,7 +312,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   }
-
 
 
   public showCriteriaOrMca() {
@@ -363,8 +360,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     this.scrollService.scrollToElementById(param); //
   }
-
-
 
 
   btnControlNav(from) {
@@ -494,7 +489,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.descAsc = 'asc';
     this.roadTab2 = [];
     this.roadsTab1 = [];
-
 
 
     if (this.filterService.firstInit == 0) {
@@ -1211,9 +1205,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       var marker;
 
 
-
-
-
       this.filterService.facilitiesArray.forEach(element => {
 
         marker = L.marker([element.north, element.east]);
@@ -1277,7 +1268,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           marker.bindPopup(popupContent, {autoClose: true});
           marker.setIcon(icon);
           marker.customId = (element.id).toString() + element.type;
-        }else if (element.type == 'Polling Centre') {
+        } else if (element.type == 'Polling Centre') {
           var icon = new L.Icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png',
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -1298,7 +1289,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           marker.bindPopup(popupContent, {autoClose: true});
           marker.setIcon(icon);
           marker.customId = (element.id).toString() + element.type;
-        }else if (element.type == 'Government Office') {
+        } else if (element.type == 'Government Office') {
           var icon = new L.Icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png',
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -1319,7 +1310,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           marker.bindPopup(popupContent, {autoClose: true});
           marker.setIcon(icon);
           marker.customId = (element.id).toString() + element.type;
-        }else if (element.type == 'Health Centre') {
+        } else if (element.type == 'Health Centre') {
           var icon = new L.Icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png',
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -1341,14 +1332,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           marker.setIcon(icon);
           marker.customId = (element.id).toString() + element.type;
         }
-
-
-
-
-
-
-
-
 
 
         marker.addTo(this.myMap);
@@ -1380,8 +1363,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           popupAnchor: [1, -34],
           shadowSize: [41, 41]
         });
-
-
 
 
         var popupContent = '<table>\
@@ -1776,10 +1757,15 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
 
 
+
+
+
+
+
       // window.addEventListener('resize', function(event){
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (196-7) + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205) + 'px';
         }
       }, 200, false);
       // });
@@ -1796,7 +1782,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232-7) + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232 - 7) + 'px';
         }
       }, 0, false);
       // });
@@ -1814,10 +1800,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232-7) + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232 - 7) + 'px';
         }
       }, 0, false);
-
 
 
     } else if (tab == 4) {
@@ -1829,7 +1814,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205-7) + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205 - 7) + 'px';
         }
       }, 0, false);
 
@@ -1870,7 +1855,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   public getRoadsPyParams() {
-    this.loading=true;
+    this.loading = true;
 
     this.roadsTab1 = [];
     this.dataservice.getRoadsByParams(
@@ -1889,12 +1874,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     ).subscribe(response => {
       this.roadsTab1 = response.data;
-      this.loading=false;
+      this.loading = false;
 
-      if(this.tab==1){
+      if (this.tab == 1) {
         setTimeout(function () {
           if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-            this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (196-7) + 'px';
+            this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205) + 'px';
           }
         }, 200, false);
       }
@@ -1917,17 +1902,18 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       });
 
 
-      if(this.shmaSort==1){
+      if (this.shmaSort == 1) {
         setTimeout(() => {
           const className = this.__getElementByClass('datatable-body');
           className.scrollTo({
             top: 5,
-            left: 5500});
-          this.shmaSort=0;
+            left: 5500
+          });
+          this.shmaSort = 0;
         }, 100);
-      }else{
+      } else {
         setTimeout(() => {
-          this.scrollService.scrollToElementById('top')
+          this.scrollService.scrollToElementById('top');
         }, 600);
       }
     });
@@ -1937,9 +1923,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     window.dispatchEvent(new Event('resize'));
     this.orderCol = event.column.prop;
     this.descAsc = event.newValue;
-    this.shmaSort=1;
+    this.shmaSort = 1;
     console.log(this.orderCol);
-    if(this.orderCol=='mca'){
+    if (this.orderCol == 'mca') {
       this.getRoadsPyParams();
     }
   }
@@ -2075,7 +2061,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   private __getElementByClass(className: string): HTMLElement {
-    console.log("element class : ", className);
+    console.log('element class : ', className);
     const element = <HTMLElement>document.querySelector(`.${className}`);
     return element;
   }//datatable-body
@@ -2086,20 +2072,18 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
       console.log(filterService.tab);
-      if(filterService.tab==1){
-         this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (196-7) + 'px';
+      if (filterService.tab == 1) {
+        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205) + 'px';
 
-      }else if (filterService.tab==2){
-        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232-7) + 'px';
+      } else if (filterService.tab == 2) {
+        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232 - 7) + 'px';
 
-      }else if (filterService.tab==3){
-        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232-7) + 'px';
+      } else if (filterService.tab == 3) {
+        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232 - 7) + 'px';
 
-      }else if (filterService.tab==4){
-        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205-7) + 'px';
+      } else if (filterService.tab == 4) {
+        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205 - 7) + 'px';
       }
-
-
 
 
       setTimeout(() => {
@@ -2108,6 +2092,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
     this.myMap.setView([33.857, 67.756], 6.5);
     var highlightLayer;
+
     function highlightFeature(e) {
       highlightLayer = e.target;
       if (e.target.feature.geometry.type === 'MultiLineString') {
@@ -3294,9 +3279,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
 
-
-
-
   photoGalley(item) {
     const dialogRef = this.dialog.open(PhotoGallery, {
       data: item,
@@ -3305,14 +3287,14 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
     dialogRef.afterClosed().subscribe(result => {
-      if(this.tab==0){
-        item.docSize=-1;
+      if (this.tab == 0) {
+        item.docSize = -1;
 
-      }else{
-        item.docSize=0;
+      } else {
+        item.docSize = 0;
       }
-      this.dataservice.getPhotoByRoadId({"id":item.id}).subscribe(res=>{
-        item.docSize=res.total;
+      this.dataservice.getPhotoByRoadId({'id': item.id}).subscribe(res => {
+        item.docSize = res.total;
 
         const className = this.__getElementByClass('docspan');
         // className.style.top='-6px';
@@ -3329,26 +3311,25 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
 
-
   notes(item) {
     //drawer-map-selection contents
     const drawer = this.__getElementByClass('drawer-map-selection');
 
-   const dialogRef = this.dialog.open(NotesDialog, {
+    const dialogRef = this.dialog.open(NotesDialog, {
       data: item,
       width: '1110px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(this.tab==0){
-        item.notesSize=-1;
+      if (this.tab == 0) {
+        item.notesSize = -1;
 
-      }else{
-        item.notesSize=0;
+      } else {
+        item.notesSize = 0;
 
       }
-      this.dataservice.getNoteByRoadId({"roadId":item.id}).subscribe(res=>{
-        item.notesSize=res.total;
+      this.dataservice.getNoteByRoadId({'roadId': item.id}).subscribe(res => {
+        item.notesSize = res.total;
 
       });
 
@@ -3357,13 +3338,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   }
-
-
-
-
-
-
-
 
 
   public calculateCriteria() {
@@ -3376,7 +3350,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result) {
-
 
 
         this.dataservice.calculateCriteria({
@@ -3402,23 +3375,25 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     const dialogRef = this.dialog.open(OpenPdfConfigurationDialog, {
       width: '800px',
-      data:{
-        "from":"exportButton"
+      data: {
+        'from': 'exportButton'
       }
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        if(result.exporter=='XLS'){
+        if (result.exporter == 'XLSX') {
+
+          console.log(result);
 
 
-          if(result.optionExporter=='selected'){
+          if (result.optionExporter == 'selected') {
             this.excelPdfExporterService.convertAsPdf(this.filterService.roadTab2);
-          }else if (result.optionExporter=='all' || result.optionExporter=='5' || result.optionExporter=='10'|| result.optionExporter=='20'|| result.optionExporter=='30'|| result.optionExporter=='50'){
+          } else if (result.optionExporter == 'all' || result.optionExporter == '5' || result.optionExporter == '10' || result.optionExporter == '20' || result.optionExporter == '30' || result.optionExporter == '50') {
             this.dataservice.getRoadsForExporter(
               {
 
                 'orderCol': this.orderCol,
-                'result':result.optionExporter,
+                'result': result.optionExporter,
                 'descAsc': this.descAsc,
                 'district_id': this.currentNum_district_code,
                 'nameFilter': this.nameFilter,
@@ -3430,21 +3405,21 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                 'bridgeFilter': this.bridgeFilter,
                 'agriculturFacilitationFilter': this.agriculturFacilitationFilter
               }
-            ).subscribe(response =>{
+            ).subscribe(response => {
               this.excelPdfExporterService.convertAsXls(response.data);
             });
           }
 
 
-        }else if (result.exporter=='PDF'){
+        } else if (result.exporter == 'PDF') {
 
-          if(result.optionExporter=='selected'){
+          if (result.optionExporter == 'selected') {
             this.excelPdfExporterService.convertAsPdf(this.filterService.roadTab2);
-          }else if (result.optionExporter=='all' || result.optionExporter=='5' || result.optionExporter=='10'|| result.optionExporter=='20'|| result.optionExporter=='30'|| result.optionExporter=='50'){
+          } else if (result.optionExporter == 'all' || result.optionExporter == '5' || result.optionExporter == '10' || result.optionExporter == '20' || result.optionExporter == '30' || result.optionExporter == '50') {
             this.dataservice.getRoadsForExporter(
               {
                 'orderCol': this.orderCol,
-                'result':result.optionExporter,
+                'result': result.optionExporter,
                 'descAsc': this.descAsc,
                 'district_id': this.currentNum_district_code,
                 'nameFilter': this.nameFilter,
@@ -3456,7 +3431,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                 'bridgeFilter': this.bridgeFilter,
                 'agriculturFacilitationFilter': this.agriculturFacilitationFilter
               }
-            ).subscribe(response =>{
+            ).subscribe(response => {
               this.excelPdfExporterService.convertAsPdf(response.data);
             });
           }
@@ -3465,15 +3440,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
 
 
-
-
-
     });
 
 
-
   }
-
 
 
   public convertAsXls() {
@@ -3483,21 +3453,19 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
 
-        if(result=='selected'){
-
-
+        if (result == 'selected') {
 
 
           this.excelPdfExporterService.convertAsXls(this.filterService.roadTab2);
-        }else if (result=='all' || result=='5' || result=='10'|| result=='20'|| result=='30'|| result=='50'){
+        } else if (result == 'all' || result == '5' || result == '10' || result == '20' || result == '30' || result == '50') {
           let expObject = {
-            "orderCol":this.orderCol,
-            "descAsc":this.descAsc
+            'orderCol': this.orderCol,
+            'descAsc': this.descAsc
           };
           this.dataservice.getRoadsForExporter(
             {
               'orderCol': this.orderCol,
-              'result':result,
+              'result': result,
               'descAsc': this.descAsc,
               'district_id': this.currentNum_district_code,
               'nameFilter': this.nameFilter,
@@ -3509,7 +3477,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
               'bridgeFilter': this.bridgeFilter,
               'agriculturFacilitationFilter': this.agriculturFacilitationFilter
             }
-          ).subscribe(response =>{
+          ).subscribe(response => {
             this.excelPdfExporterService.convertAsXls(response.data);
           });
         }
@@ -3518,15 +3486,256 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     // this.excelPdfExporterService.convertAsXls(this.roadsTab1);
   }
 
-  snapshotDialog(){
+  snapshotDialog() {
     const dialogRef = this.dialog.open(HistoryDialog, {
       width: '800px',
 
     });
   }
 
+  public importRoadsXLS() {
+    const dialogRef = this.dialog.open(ImportDialog, {
+      width: '1300px',
+
+    });
+
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.loading=true;
+        this.dataservice.importRoadsData(result).subscribe(response=>{
+          if(response.status=='ok'){
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+            this.getRoadsPyParams();
+          }else{
+            this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+          }
+        })
+      }
+    });
+
+
+  }
+
 
 }
+
+
+type AOA = any[][];
+import * as XLSX from 'xlsx';
+import {Error} from 'tslint/lib/error';
+
+
+@Component({
+  selector: './import-dialog',
+  templateUrl: './import-dialog.html'
+})
+export class ImportDialog implements OnInit {
+  @Output() dismiss = new EventEmitter();
+  @Output() focusout = new EventEmitter();
+  name = 'Angular';
+  fileName: string = 'SheetJS.xlsx';
+  data: any;
+  totalErrorDublicate = 0;
+  flagMissingMatchHeaders;
+  public criteriaCheckBox;
+  public loading;
+  public headData = []; // excel row header
+  public headData2 = []; // excel row header
+  constructor(public dialogRef: MatDialogRef<ImportDialog>, public dialog: MatDialog, private formBuilder: FormBuilder, private snackBar: MatSnackBar,
+              @Inject(MAT_DIALOG_DATA) public item: any
+  ) {
+  }
+
+  public dublicateHeaders = [];
+  public headersDB = [];
+  ngOnInit() {
+    this.criteriaCheckBox=false;
+    this.loading=false;
+    this.headersDB=[
+      {'title': 'osmId','titleJava':'osmId'},
+      {'title': 'code','titleJava':'code'},
+      {'title': 'fclass','titleJava':'fclass'},
+      {'title': 'name','titleJava':'name'},
+      {'title': 'ref','titleJava':'ref'},
+      {'title': 'oneway','titleJava':'oneway'},
+      {'title': 'maxspeed','titleJava':'maxspeed'},
+      {'title': 'bridge','titleJava':'bridge'},
+      {'title': 'tunnel','titleJava':'tunnel'},
+      {'title': 'layer','titleJava':'layer'},
+      {'title': 'farmToTheMarket','titleJava':'farmToTheMarket'},
+      {'title': 'accessToGCsRMs','titleJava':'accessToGCsRMs'},
+      {'title': 'agriculturalFacilities','titleJava':'agriculturalFacilities'},
+      {'title': 'district','titleJava':'district'},
+      {'title': 'source','titleJava':'source'},
+      {'title': 'lvrrId','titleJava':'lvrrId'},
+      {'title': 'lengthInMetres','titleJava':'lengthInMetres'},
+      {'title': 'widthInMetres','titleJava':'widthInMetres'},
+      {'title': 'elevationInMetres','titleJava':'elevationInMetres'},
+      {'title': 'populationServed','titleJava':'populationServed'},
+      {'title': 'facilitiesServed','titleJava':'facilitiesServed'},
+      {'title': 'linksToMajorActivityCentres','titleJava':'linksToMajorActivityCentres'},
+      {'title': 'numberOfConnections','titleJava':'numberOfConnections'},
+      {'title': 'roadCondition','titleJava':'roadCondition'}
+    ];
+    this.totalErrorDublicate = 0;
+    this.flagMissingMatchHeaders=false;
+  }
+  public importRoads() {
+    this.flagMissingMatchHeaders=false;
+    this.headData2.forEach(e => {
+        e.flag = false;
+      }
+    );
+    this.headData2.forEach(e => {
+      this.headersDB.forEach(edb => {
+        if (edb.title == e.title) {
+            e.flag=true;
+        }
+      });
+    });
+    this.headData2.forEach(e => {
+      if(e.flag==false){
+        this.flagMissingMatchHeaders=true;
+        return;
+      }
+    });
+    let resObject = {
+      "headers":this.headData2,
+      "data":this.data,
+      "length":this.headData2.length,
+      "criteriaCheckBox":this.criteriaCheckBox
+
+    }
+
+    this.dialogRef.close(resObject);
+
+
+  }
+  public dublicateErrorMessage() {
+    var c = 0;
+    for (var i = 0; i < this.headData2.length; i++) {
+      if (this.headData2[i].dublicateErrorFlag) {
+        c++;
+      }
+    }
+    this.totalErrorDublicate = c;
+    if (c > 1) {
+      return {};
+    } else {
+      return {
+        display: 'none',
+      };
+    }
+  }
+  public dublicateError(headCol, index): Object {
+    var headCount = 0;
+    this.headData2.forEach(e => {
+      if (e.title == headCol.title) {
+        headCount++;
+      }
+    });
+    if (headCount > 1) {
+      this.headData2[index].dublicateErrorFlag = true;
+      return {
+        border: '1px solid red',
+      };
+    } else {
+      this.headData2[index].dublicateErrorFlag = false;
+    }
+    return {};
+  }
+  testH(e) {
+    console.log(e);
+  }
+  onFileChangeUpload(evt: any) {
+    this.loading=true;
+    this.totalErrorDublicate = 0;
+    this.flagMissingMatchHeaders=false;
+    this.data=[];
+    this.headData2=[];
+    const target: DataTransfer = <DataTransfer>(evt.target);
+    if (target.files.length !== 1) throw new Error('Cannot use multiple files');
+    const reader: FileReader = new FileReader();
+    reader.onload = (e: any) => {
+      const bstr: string = e.target.result;
+      const wb: XLSX.WorkBook = XLSX.read(bstr, {type: 'binary'});
+      const wsname: string = wb.SheetNames[0];
+      const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+      this.data = <AOA>(XLSX.utils.sheet_to_json(ws, {header: 1, raw: false, range: 0}));
+      this.loading=false;
+      this.headData = this.data[0];
+      this.data[0].forEach(e => {
+        this.headData2.push({
+          'title': e,
+          'dublicateErrorFlag': false
+        });
+      });
+      this.data = this.data.slice(1); // remove first header record
+      const ws2: XLSX.WorkSheet = wb.Sheets[wb.SheetNames[1]];
+      this.readDataSheet(ws2, 0);
+      this.headData2.forEach(e => {
+          e.flag = false;
+        }
+      );
+      this.headData2.forEach(e => {
+        this.headersDB.forEach(edb => {
+          if (edb.title == e.title) {
+            e.flag=true;
+          }
+        });
+      });
+      this.headData2.forEach(e => {
+        if(e.flag==false){
+          this.flagMissingMatchHeaders=true;
+        }
+      })
+    };
+    reader.readAsBinaryString(target.files[0]);
+  }
+  public selectHeader (header){
+    var k=0;
+    header.flag=true;
+    this.headData2.forEach(e => {
+      if(header.title==e.title){
+        header.flag=true;
+      }
+    });
+    this.headData2.forEach(e => {
+      if(e.flag==false){
+        k++;
+      }
+    });
+    if(k==0){
+      this.flagMissingMatchHeaders=false;
+    }
+  }
+  private readDataSheet(ws: XLSX.WorkSheet, startRow: number) {
+    let datas = <AOA>(XLSX.utils.sheet_to_json(ws, {header: 1, raw: false, range: startRow}));
+    console.log(datas[1]);
+    let headDatas = datas[0];
+    for (let i = 0; i < this.data.length; i++) {
+      this.data[i][this.headData.length] = datas.filter(x => x[0] == this.data[i][0]);
+    }
+  }
+
+  export(): void {
+    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(this.data);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    XLSX.writeFile(wb, this.fileName);
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  public yes() {
+    this.dialogRef.close(true);
+  }
+}
+
 
 
 
@@ -3539,7 +3748,7 @@ export class HistoryDialog implements OnInit {
   @Output() focusout = new EventEmitter();
   snapshots = [];
 
-  constructor(public dialogRef: MatDialogRef<HistoryDialog>,public excelPdfExporterService: ExcelPdfExporterService, public dialog: MatDialog, private  dataservice: DataService, private snackBar: MatSnackBar,
+  constructor(public dialogRef: MatDialogRef<HistoryDialog>, public excelPdfExporterService: ExcelPdfExporterService, public dialog: MatDialog, private  dataservice: DataService, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
 
@@ -3562,7 +3771,6 @@ export class HistoryDialog implements OnInit {
   }
 
 
-
   onNoClick(): void {
     this.dialogRef.close();
   }
@@ -3576,37 +3784,39 @@ export class HistoryDialog implements OnInit {
     this.dataservice.getAllSnapshotsRecords({}).subscribe(response => {
       if (response.status == 'ok') {
         this.snapshots = response.data;
+        setTimeout(() => {
+          window.dispatchEvent(new Event('resize'));
+        }, 400);
       }
     });
   }
 
 
-  exportAs(row){
-    row.from='history';
+  public exportAs(row) {
+    row.from = 'history';
     const dialogRef = this.dialog.open(OpenPdfConfigurationDialog, {
       width: '800px',
-      data:row
+      data: row
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        let finalRes={
-          "exporter":result.exporter,
-          "id":row.id
-        }
-        if(finalRes.exporter=='PDF'){
+        let finalRes = {
+          'exporter': result.exporter,
+          'id': row.id
+        };
+        if (finalRes.exporter == 'PDF') {
           //getAllFromRoadsHistory
-          this.dataservice.getAllFromRoadsHistory(finalRes).subscribe(response=>{
+          this.dataservice.getAllFromRoadsHistory(finalRes).subscribe(response => {
             this.excelPdfExporterService.convertAsPdf(response.data);
-          })
-        }else if(finalRes.exporter=='XLS'){
-          this.dataservice.getAllFromRoadsHistory(finalRes).subscribe(response=>{
+          });
+        } else if (finalRes.exporter == 'XLS') {
+          this.dataservice.getAllFromRoadsHistory(finalRes).subscribe(response => {
             this.excelPdfExporterService.convertAsXls(response.data);
-          })
+          });
         }
       }
     });
   }
-
 
 
   deleteSnapshot(snapshot) {//
@@ -3628,11 +3838,7 @@ export class HistoryDialog implements OnInit {
   }
 
 
-
-
-
 }
-
 
 
 @Component({
@@ -3643,7 +3849,7 @@ export class DeleteSnapshotDialog implements OnInit {
   @Output() dismiss = new EventEmitter();
   @Output() focusout = new EventEmitter();
 
-  constructor(public dialogRef: MatDialogRef<AddingNoteDialog>, public dialog: MatDialog, private formBuilder: FormBuilder, private snackBar: MatSnackBar,
+  constructor(public dialogRef: MatDialogRef<DeleteSnapshotDialog>, public dialog: MatDialog, private formBuilder: FormBuilder, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
 
@@ -3668,10 +3874,6 @@ export class DeleteSnapshotDialog implements OnInit {
 }
 
 
-
-
-
-
 @Component({
   selector: './config-pdf-dialog',
   templateUrl: './config-pdf-dialog.html'
@@ -3691,11 +3893,9 @@ export class OpenPdfConfigurationDialog implements OnInit {
   }
 
 
-
-
   ngOnInit() {
     this.optionExporter = 'all';
-    this.exporter='PDF'
+    this.exporter = 'PDF';
   }
 
   onFocusOut(event) {
@@ -3710,8 +3910,8 @@ export class OpenPdfConfigurationDialog implements OnInit {
   public yes() {
 
     let obres = {
-      "optionExporter":this.optionExporter,
-      "exporter":this.exporter,
+      'optionExporter': this.optionExporter,
+      'exporter': this.exporter,
 
 
     };
@@ -3737,7 +3937,8 @@ export class CriteriaConfirmationDialog implements OnInit {
   @Output() dismiss = new EventEmitter();
   @Output() focusout = new EventEmitter();
 
-  public  snapshotCheck;
+  public snapshotCheck;
+
   constructor(public dialogRef: MatDialogRef<CriteriaConfirmationDialog>, public dialog: MatDialog, private  dataservice: DataService, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -3748,7 +3949,7 @@ export class CriteriaConfirmationDialog implements OnInit {
 
   ngOnInit() {
 
-    this.snapshotCheck=true;
+    this.snapshotCheck = true;
   }
 
   onFocusOut(event) {
@@ -3761,9 +3962,9 @@ export class CriteriaConfirmationDialog implements OnInit {
   }
 
   public yes() {
-    let resutlt ={
-      "snapshot":this.snapshotCheck
-    }
+    let resutlt = {
+      'snapshot': this.snapshotCheck
+    };
     this.dialogRef.close(resutlt);
 
   }
@@ -4039,7 +4240,6 @@ export class AddingNoteDialog implements OnInit {
 }
 
 
-
 @Component({
   selector: './photo-gallery-road',
   templateUrl: './photo-gallery-road.html',
@@ -4052,7 +4252,7 @@ export class PhotoGallery implements OnInit {
   version = VERSION;
   imgObjHttp;
   imageData = [];
-  public loading :boolean;
+  public loading: boolean;
   public searchTextImages: '';
 
   //  SERVER_URL = "http://localhost:9023/uploadFile";
@@ -4072,7 +4272,7 @@ export class PhotoGallery implements OnInit {
   onFileSelect(event) {
 
 
-    console.log( $('#uploadBtn2'));
+    console.log($('#uploadBtn2'));
 
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -4082,10 +4282,10 @@ export class PhotoGallery implements OnInit {
   }
 
   ngOnInit() {
-    this.loading=false;
+    this.loading = false;
 
 
-    console.log( $('#uploadBtn2'));
+    console.log($('#uploadBtn2'));
 
     this.uploadForm = this.formBuilder.group({
       file: ['']
@@ -4168,7 +4368,7 @@ export class PhotoGallery implements OnInit {
 
   onSubmit() {
 
-    this.loading=true;
+    this.loading = true;
 
     const formData = new FormData();
     formData.append('file', this.uploadForm.get('file').value);
@@ -4185,11 +4385,11 @@ export class PhotoGallery implements OnInit {
 
           this.getImages();
           this.snackBar.open(res.message, 'x', <MatSnackBarConfig>{duration: 4000});
-          this.loading=false;
+          this.loading = false;
 
         } else if (res.status == 'warning') {
           this.uploadForm.get('file').setValue('');
-          this.loading=false;
+          this.loading = false;
 
           const dialogRef = this.dialog.open(ConfirmUploadPhotoDialog, {
             width: '800px'
@@ -4215,21 +4415,21 @@ export class PhotoGallery implements OnInit {
             }
           });
         } else {
-          this.loading=false;
+          this.loading = false;
           this.uploadForm.get('file').setValue('');
           this.snackBar.open(res.message, 'x', <MatSnackBarConfig>{duration: 4000});
         }
-        this.loading=false;
+        this.loading = false;
 
       },
       (err) => {
 
-        this.loading=false;
+        this.loading = false;
         this.snackBar.open('Max length limit attained', 'x', <MatSnackBarConfig>{duration: 4000});
         $('#uploadBtn2').val('');
         this.uploadForm.get('file').setValue('');
       }
-  );
+    );
   }
 
   onNoClick(): void {

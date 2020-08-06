@@ -5,6 +5,9 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
 
+/*https://stackblitz.com/edit/angular-preview-excel?file=src%2Fapp%2Fapp.component.html*/
+
+
 html, body {
   height: 100%;
 }
@@ -820,6 +823,11 @@ span.datatable-header-cell-label,
 
 .top-extra-actions {
   padding: 10px 20px;
+}
+
+
+.ngx-select.dropdown.select{
+  max-width: 163px!important;
 }
 
 

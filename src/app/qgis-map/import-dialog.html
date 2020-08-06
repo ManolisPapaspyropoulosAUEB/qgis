@@ -1,0 +1,218 @@
+<style>
+
+  /*------------------LOADING-----------------------*/
+
+  .wave {
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px;
+  }
+
+  .wave .rect {
+    margin-right: 2px;
+    background-color: #9e9e9e;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+    animation: waveStretchDelay 1.2s infinite ease-in-out;
+  }
+
+  .wave .rect1 { animation-delay: 0s; }
+
+  .wave .rect2 { animation-delay: 0.1s; }
+
+  .wave .rect3 { animation-delay: 0.2s; }
+
+  .wave .rect4 { animation-delay: 0.3s; }
+
+  .wave .rect5 { animation-delay: 0.4s; }
+
+  @keyframes waveStretchDelay {
+    0%,40%,100% {
+      transform: scaleY(0.5);
+    }
+    20% {
+      transform: scaleY(1.2);
+    }
+  }
+
+  .container4 {
+    height: 10em;
+    position: relative;
+    height: 50vh;
+
+  }
+
+  .container4 .wave {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+  }
+
+  .inputButton{
+    cursor: pointer!important;
+    height: 28px!important;
+    font-size: 14px;
+
+  }
+
+
+  /*------------------END LOADING-----------------------*/
+
+
+
+
+
+
+
+  .mYcONTheader{
+    height: 55px!important;
+
+  }
+
+  .mYcONT{
+    height: 51vh!important;
+    overflow-y: auto;
+    margin-top: 5px;
+
+
+  }
+
+
+
+  th {
+    background: white;
+    position: sticky;
+    top: 0; /* Don't forget this, required for the stickiness */
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+  }
+
+  .mYcONTfooter{
+    height: 42px!important;
+    margin-top: 12px;
+
+  }
+  .select-container-ngx{
+    width: 163px;
+
+  }
+  .uplB{
+    cursor: pointer!important;
+    height: 42px!important;
+    margin-left: 16px!important;
+    margin-right: 10px!important;
+    background-color: #2f4060;
+
+  }
+  .button-actions{
+    box-shadow: 1px 1px 3px 1px #888888!important;
+
+  }
+  .closeIcon{
+    background-color: #2f4060;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+</style>
+<div class="mYcONTheader" style="display: flex">
+  <div class="col-md-11" style="    padding-left: 0;">
+    <h2 style="font-size: 22px">Import roads data</h2>
+  </div>
+  <div class="col-md-1" style="padding-top: 7px;	    padding-top: 7px;
+    padding-left: 37px; text-align: end;
+    padding-right: 0px;">
+    <span  (click)="onNoClick()"   class="material-icons closeIcon">
+      close
+    </span>
+  </div>
+</div>
+<mat-dialog-content>
+  <div style="display: flex">
+    <div class="col-md-3 pl-0" style="display: grid!important;">
+      <input class="inputButton"  type="file" style="" (change)="onFileChangeUpload($event)" />
+    </div>
+    <div class="col-md-9" style="    padding-top: 3px;display: grid">
+    <span [ngStyle]="dublicateErrorMessage()">Dublicates columns found :</span>
+      <span *ngFor="let h of this.headData2| unique" style="color: red;font-weight: bold" [hidden]="h.dublicateErrorFlag==false">
+        <span *ngIf="this.totalErrorDublicate==2">{{h.title}}</span>
+        <span *ngIf="this.totalErrorDublicate>2">{{h.title}}, </span>
+      </span>
+      <span *ngIf="flagMissingMatchHeaders">Please fill all unmatching columns :</span>
+      <div *ngIf="flagMissingMatchHeaders">
+        <span  *ngFor="let h2 of this.headData2;let k=index" style="color: red;font-weight: bold" [hidden]="h2.flag==true">
+          {{h2.title}},
+        </span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container4" *ngIf="loading">
+    <div class="wave">
+      <div class="rect rect1"></div>
+      <div class="rect rect2"></div>
+      <div class="rect rect3"></div>
+      <div class="rect rect4"></div>
+      <div class="rect rect5"></div>
+    </div>
+
+  </div>
+
+
+  <div class="mYcONT" style="" >
+    <table id="TheTable" class="ExcelTable2007">
+      <thead #header>
+      <tr>
+        <th *ngFor="let he of this.headData2 ;let j =index">
+
+
+          <div class="select-container-ngx">
+            <ngx-select
+              class="select"
+              (select)="selectHeader(he)"
+              #fields
+              [(ngModel)]="he.title"
+              [allowClear]="true"
+              [items]="headersDB"
+              optionValueField="title"
+              optionTextField="title"
+              placeholder="Select...">
+            </ngx-select>
+          </div>
+          <input disabled="true" class="headers-colmns" [ngStyle]="dublicateError(he,j)" [(ngModel)]="he.title" >
+        </th>
+      </tr>
+      </thead>
+      <tbody #container>
+      <tr *ngFor="let row of data">
+        <td *ngFor="let val of headData; let i =index">
+          <input [(ngModel)]="row[i]" >
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="mYcONTfooter" style="display: flex">
+    <button [disabled]="totalErrorDublicate>=2 || flagMissingMatchHeaders || this.headData2.length==0"  style="background-color: #2F4060" (click)="importRoads()"   mat-raised-button color="primary">Import</button>
+    <!--<button   style="background-color: #2F4060" (click)="importRoads()"   mat-raised-button color="primary">Import</button>-->
+
+    <button mat-raised-button (click)="onNoClick()" >Cancel</button>
+
+    <mat-checkbox [(ngModel)]="criteriaCheckBox" style="margin-top: 19px;
+    margin-left: 20px;" class="example-margin">
+      <span style="font-weight: 400;font-size: 16px;">Calculate criteria scores,MCA,CBI after import</span>
+    </mat-checkbox>
+
+  </div>
+</mat-dialog-actions>
+
+
+
+

@@ -52,6 +52,20 @@ export class DataService {
 
 
 
+  importRoadsData(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'importRoadsData', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+
+
+      }
+    );
+  }
+
+
+
 
   getAllSnapshotsRecords(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllSnapshotsRecords', data).map(
