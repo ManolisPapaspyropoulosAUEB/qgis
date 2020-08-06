@@ -815,14 +815,14 @@
                   <mat-checkbox [(ngModel)]="row.checked" (change)="addRoadToMap(row,$event)"></mat-checkbox>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column class="lvrr_id"   #lvrrid name="LVRR_ID" prop="LVRR_ID" [flexGrow]="1" [frozenLeft]="true">
+              <ngx-datatable-column class="lvrr_id"  [width]="100"   #lvrrid name="LVRR_ID" prop="LVRR_ID" [flexGrow]="1" [frozenLeft]="true">
                 <ng-template    let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.LVRR_ID }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="OSM_ID" class="osmId" prop="osmId" [flexGrow]="1" [frozenLeft]="true">
+              <ngx-datatable-column name="OSM_ID" [width]="100"  class="osmId" prop="osmId" [flexGrow]="1" [frozenLeft]="true">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div (click)="selectRoad(row)">
                     {{ row?.osmId }}
@@ -836,7 +836,7 @@
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="Fclass" class="code" prop="fclass" [flexGrow]="1" [frozenLeft]="true">
+              <ngx-datatable-column name="Fclass" [width]="100"  class="code" prop="fclass" [flexGrow]="1" [frozenLeft]="true">
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip={{row.fclass}} (click)="selectRoad(row)">
                     <div>{{ row?.fclass }}
@@ -845,7 +845,9 @@
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column   name="NAME" class="testinioclass" prop="name" [flexGrow]="1" [frozenLeft]="true" style="border-right: 1px solid green!important;">
+
+
+              <ngx-datatable-column [width]="100"    name="NAME" class="testinioclass" prop="name" [flexGrow]="1" [frozenLeft]="true" style="border-right: 1px solid green!important;">
 
                 <ng-template let-row="row" ngx-datatable-cell-template>
                   <div matTooltip={{row.name}} (click)="selectRoad(row)">
@@ -1120,7 +1122,7 @@
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column name="" [sortable]=false [flexGrow]="1" [frozenRight]="true" [width]="200">
+              <ngx-datatable-column  name="" [sortable]=false [flexGrow]="1" [frozenRight]="true" [width]="100">
                 <ng-template let-row="row" ngx-datatable-cell-template >
                   <div class="" style="display: flex">
                     <div class="col-md-5" style="padding: 0;    padding-top: 5px;    margin-right: 23px;    width: 80px;display: flex">
@@ -1140,7 +1142,7 @@
                       </span>
                       </div>
                     </div>
-                    <div class="col-md-6" style="padding: 0">
+                    <div class="col-md-6"  style="padding: 0">
                       <div class="button-container-list-table">
                         <button mat-button class="button-actions" mat-icon-button [matMenuTriggerFor]="menu">
                           <mat-icon class="more-action-mat">more_vert</mat-icon>

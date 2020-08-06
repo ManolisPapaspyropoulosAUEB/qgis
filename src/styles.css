@@ -725,7 +725,7 @@ span.datatable-header-cell-label,
 }
 
 .roadFilters {
-  max-height: 600px;
+  max-height: 55vh;
   overflow-y: auto;
 }
 
