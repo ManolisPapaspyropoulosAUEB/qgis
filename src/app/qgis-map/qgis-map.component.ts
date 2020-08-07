@@ -1759,16 +1759,14 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
 
-
-
-
       // window.addEventListener('resize', function(event){
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205) + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (195) + 'px';
         }
       }, 200, false);
       // });
+
 
 
     } else if (tab == 2) {
@@ -1782,7 +1780,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232 - 7) + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
         }
       }, 0, false);
       // });
@@ -1798,9 +1796,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       // window.addEventListener('resize', function(event) {
 
 
+
+
+
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232 - 7) + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
         }
       }, 0, false);
 
@@ -1814,9 +1815,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205 - 7) + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (199) + 'px';
         }
       }, 0, false);
+
+
 
 
     }
@@ -1879,7 +1882,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       if (this.tab == 1) {
         setTimeout(function () {
           if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-            this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205) + 'px';
+            this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (195) + 'px';
           }
         }, 200, false);
       }
@@ -2065,24 +2068,40 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     const element = <HTMLElement>document.querySelector(`.${className}`);
     return element;
   }//datatable-body
+
+
   private initMap(filterService, roadTab2, drawerMapSelections, currentStatusMapSelection): void {
     // element.scrollLeft
 
+  function __getElementByClassF(className: string): HTMLElement {
+      console.log('element class : ', className);
+      const element = <HTMLElement>document.querySelector(`.${className}`);
+      return element;
+    }
+
+
     $(window).resize(function () {
+
+      const ukaid = this.__getElementByClassF('ukaid');
+
+      console.log(window.innerWidth);
+      if( window.innerWidth<4000){
+        ukaid.style.display='none';
+      }
 
 
       console.log(filterService.tab);
       if (filterService.tab == 1) {
-        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205) + 'px';
+        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (195) + 'px';
 
       } else if (filterService.tab == 2) {
-        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232 - 7) + 'px';
+        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
 
       } else if (filterService.tab == 3) {
-        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (232 - 7) + 'px';
+        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
 
       } else if (filterService.tab == 4) {
-        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (205 - 7) + 'px';
+        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (199) + 'px';
       }
 
 
