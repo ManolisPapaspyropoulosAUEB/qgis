@@ -2081,16 +2081,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
     $(window).resize(function () {
-
-      const ukaid = this.__getElementByClassF('ukaid');
-
-      console.log(window.innerWidth);
-      if( window.innerWidth<4000){
-        ukaid.style.display='none';
-      }
-
-
-      console.log(filterService.tab);
       if (filterService.tab == 1) {
         this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (195) + 'px';
 
@@ -2141,18 +2131,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     function highlightFeatureOnClick(e) {
       if (e.target.feature.geometry.type == 'MultiLineString') {
-
         filterService.countHits = filterService.countHits + 1;
         if (filterService.countHits == 1) {
           drawerMapSelections.toggle().finally(() => {
             window.dispatchEvent(new Event('resize'));
           });
           currentStatusMapSelection = !currentStatusMapSelection;
-
-
         }
-
-
         var findRoadForGetMethod = filterService.mapRoadsArrayAll.find(x => x.LVRR_ID == e.target.feature.properties.LVRR_ID);
         findRoadForGetMethod.checkedFilter = false;
         filterService.roadTab2.push(findRoadForGetMethod);
@@ -2204,10 +2189,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
     //  L.control.locate({locateOptions: {maxZoom: 19}}).addTo(this.myMap);
     var bounds_group = new L.featureGroup([]);
-
     function setBounds() {
     }
-
     this.myMap.createPane('pane_OpenStreetMap_0');
     this.myMap.getPane('pane_OpenStreetMap_0').style.zIndex = 400;
     var layer_OpenStreetMap_0 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -2221,7 +2204,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
     layer_OpenStreetMap_0;
     this.myMap.addLayer(layer_OpenStreetMap_0);
-
     function pop_KhostProvincedistrictsKhost_Province_UTM42n_1(feature, layer) {
       layer.on({
         mouseout: unhighlightFeaturePolygon,
@@ -2234,8 +2216,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                 </table>';
       layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
-
-
     function style_KhostProvincedistrictsKhost_Province_UTM42n_1_0() {
       return {
         pane: 'pane_KhostProvincedistrictsKhost_Province_UTM42n_1',
@@ -2251,7 +2231,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         interactive: true,
       };
     }
-
     this.myMap.createPane('pane_KhostProvincedistrictsKhost_Province_UTM42n_1');
     this.myMap.getPane('pane_KhostProvincedistrictsKhost_Province_UTM42n_1').style.zIndex = 401;
     this.myMap.getPane('pane_KhostProvincedistrictsKhost_Province_UTM42n_1').style['mix-blend-mode'] = 'normal';
@@ -2267,7 +2246,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1 = layer_KhostProvincedistrictsKhost_Province_UTM42n_1;
     bounds_group.addLayer(layer_KhostProvincedistrictsKhost_Province_UTM42n_1);
     this.myMap.addLayer(layer_KhostProvincedistrictsKhost_Province_UTM42n_1);
-
     function pop_Khost_Province_Baak_District_OSM_roads_UTM42n_2(feature, layer) {
       layer.on({
         mouseout: unhighlightFeature,
@@ -2311,7 +2289,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                 </table>';
       layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
-
     function style_Khost_Province_Baak_District_OSM_roads_UTM42n_2_0() {
       return {
         pane: 'pane_Khost_Province_Baak_District_OSM_roads_UTM42n_2',
@@ -2325,7 +2302,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         interactive: true,
       };
     }
-
     this.myMap.createPane('pane_Khost_Province_Baak_District_OSM_roads_UTM42n_2');
     this.myMap.getPane('pane_Khost_Province_Baak_District_OSM_roads_UTM42n_2').style.zIndex = 402;
     this.myMap.getPane('pane_Khost_Province_Baak_District_OSM_roads_UTM42n_2').style['mix-blend-mode'] = 'normal';
@@ -3095,7 +3071,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
     bounds_group.addLayer(this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3);
     this.myMap.addLayer(this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3);
-
     function pop_Khost_Province_Tanay_District_OSM_roads_UTM42n_13(feature, layer) {
       layer.on({
         mouseout: unhighlightFeature,
@@ -3103,10 +3078,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         click: highlightFeatureOnClick
       });
       var popupContent = (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '');
-
       layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
-
     function style_Khost_Province_Tanay_District_OSM_roads_UTM42n_13_0() {
       return {
         pane: 'pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13',
@@ -3120,7 +3093,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         interactive: true,
       };
     }
-
     this.myMap.createPane('pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13');
     this.myMap.getPane('pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13').style.zIndex = 413;
     this.myMap.getPane('pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13').style['mix-blend-mode'] = 'normal';
@@ -3135,7 +3107,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
     bounds_group.addLayer(this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13);
     this.myMap.addLayer(this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13);
-
     function pop_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14(feature, layer) {
       layer.on({
         mouseout: unhighlightFeature,
@@ -3145,7 +3116,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       var popupContent = (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '');
       layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
-
     function style_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14_0() {
       return {
         pane: 'pane_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14',
@@ -3159,7 +3129,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         interactive: true,
       };
     }
-
     this.myMap.createPane('pane_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14');
     this.myMap.getPane('pane_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14').style.zIndex = 414;
     this.myMap.getPane('pane_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14').style['mix-blend-mode'] = 'normal';
@@ -3176,8 +3145,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.myMap.addLayer(this.layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14);
     setBounds();
   }
-
-
   public openClosedSideNav() {
     this.drawer.toggle().finally(() => {
       window.dispatchEvent(new Event('resize'));
@@ -3214,7 +3181,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   private getDistrictsTab2() {
     this.dataservice.get_districts({}).subscribe(response => {
       this.districtsTabRoads = response.data;
-
       this.districtsTabRoads.sort((a, b) => {
         if (a.district_name < b.district_name) {
           return -1;
@@ -3237,7 +3203,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       zoomControl: true, maxZoom: 28, minZoom: 1
     }).fitBounds([[29.75680629128297, 57.077598100580225], [38.867198097612054, 77.19307423730505]]);
     this.myMap.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
-
     function setBounds() {
     }
 
@@ -3259,8 +3224,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     );
     this.myMap.addLayer(layer_OpenStreetMap_0);
     setBounds();
-
-
   }
 
 
@@ -3274,7 +3237,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         this.dataservice.updateRoad(result).subscribe(response => {
           if (response.status == 'ok') {
             this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 2000});
-
             this.dataservice.calculateCriteria({
               'district_id': this.currentNum_district_code,
               'lvrr_id': response.lvrr_id
@@ -3303,74 +3265,45 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       data: item,
       width: '1080px'
     });
-
-
     dialogRef.afterClosed().subscribe(result => {
       if (this.tab == 0) {
         item.docSize = -1;
-
       } else {
         item.docSize = 0;
       }
       this.dataservice.getPhotoByRoadId({'id': item.id}).subscribe(res => {
         item.docSize = res.total;
-
-        const className = this.__getElementByClass('docspan');
-        // className.style.top='-6px';
-
-
         window.dispatchEvent(new Event('resize'));
-
       });
-
-
     });
-
-
   }
 
 
   notes(item) {
-    //drawer-map-selection contents
     const drawer = this.__getElementByClass('drawer-map-selection');
-
     const dialogRef = this.dialog.open(NotesDialog, {
       data: item,
       width: '1110px',
     });
-
     dialogRef.afterClosed().subscribe(result => {
       if (this.tab == 0) {
         item.notesSize = -1;
-
       } else {
         item.notesSize = 0;
-
       }
       this.dataservice.getNoteByRoadId({'roadId': item.id}).subscribe(res => {
         item.notesSize = res.total;
-
       });
-
-
     });
-
-
   }
 
 
   public calculateCriteria() {
-
     const dialogRef = this.dialog.open(CriteriaConfirmationDialog, {
       width: '800px'
     });
-
-
     dialogRef.afterClosed().subscribe(result => {
-
       if (result) {
-
-
         this.dataservice.calculateCriteria({
           'district_id': this.currentNum_district_code,
           'snapshot': result.snapshot
@@ -3383,15 +3316,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         });
       }
-
     });
-
-
   }
 
 
   public convertAs() {
-
     const dialogRef = this.dialog.open(OpenPdfConfigurationDialog, {
       width: '800px',
       data: {
@@ -3401,16 +3330,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (result.exporter == 'XLSX') {
-
-          console.log(result);
-
-
           if (result.optionExporter == 'selected') {
             this.excelPdfExporterService.convertAsPdf(this.filterService.roadTab2);
           } else if (result.optionExporter == 'all' || result.optionExporter == '5' || result.optionExporter == '10' || result.optionExporter == '20' || result.optionExporter == '30' || result.optionExporter == '50') {
             this.dataservice.getRoadsForExporter(
               {
-
                 'orderCol': this.orderCol,
                 'result': result.optionExporter,
                 'descAsc': this.descAsc,
@@ -3428,10 +3352,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
               this.excelPdfExporterService.convertAsXls(response.data);
             });
           }
-
-
         } else if (result.exporter == 'PDF') {
-
           if (result.optionExporter == 'selected') {
             this.excelPdfExporterService.convertAsPdf(this.filterService.roadTab2);
           } else if (result.optionExporter == 'all' || result.optionExporter == '5' || result.optionExporter == '10' || result.optionExporter == '20' || result.optionExporter == '30' || result.optionExporter == '50') {
@@ -3455,15 +3376,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             });
           }
         }
-
       }
-
-
     });
-
-
   }
-
 
   public convertAsXls() {
     const dialogRef = this.dialog.open(OpenPdfConfigurationDialog, {
@@ -3471,10 +3386,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-
         if (result == 'selected') {
-
-
           this.excelPdfExporterService.convertAsXls(this.filterService.roadTab2);
         } else if (result == 'all' || result == '5' || result == '10' || result == '20' || result == '30' || result == '50') {
           let expObject = {
@@ -3502,24 +3414,18 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       }
     });
-    // this.excelPdfExporterService.convertAsXls(this.roadsTab1);
   }
 
   snapshotDialog() {
     const dialogRef = this.dialog.open(HistoryDialog, {
       width: '800px',
-
     });
   }
 
   public importRoadsXLS() {
     const dialogRef = this.dialog.open(ImportDialog, {
       width: '1300px',
-
     });
-
-
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.loading=true;
@@ -3533,19 +3439,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         })
       }
     });
-
-
   }
-
-
 }
 
 
 type AOA = any[][];
 import * as XLSX from 'xlsx';
 import {Error} from 'tslint/lib/error';
-
-
 @Component({
   selector: './import-dialog',
   templateUrl: './import-dialog.html'
@@ -3625,12 +3525,8 @@ export class ImportDialog implements OnInit {
       "data":this.data,
       "length":this.headData2.length,
       "criteriaCheckBox":this.criteriaCheckBox
-
-    }
-
+    };
     this.dialogRef.close(resObject);
-
-
   }
   public dublicateErrorMessage() {
     var c = 0;
@@ -3755,9 +3651,6 @@ export class ImportDialog implements OnInit {
   }
 }
 
-
-
-
 @Component({
   selector: './history-dialog',
   templateUrl: './history-dialog.html'
@@ -3770,17 +3663,11 @@ export class HistoryDialog implements OnInit {
   constructor(public dialogRef: MatDialogRef<HistoryDialog>, public excelPdfExporterService: ExcelPdfExporterService, public dialog: MatDialog, private  dataservice: DataService, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-
-
   }
-
-
   ngOnInit() {
     // this.notes=this.data.notes;
     this.getAllSnapshotsRecords();
   }
-
-
   onDismiss(event) {
     this.dismiss.emit(event);
   }
@@ -3796,7 +3683,6 @@ export class HistoryDialog implements OnInit {
 
   public yes() {
     this.dialogRef.close(true);
-
   }
 
   getAllSnapshotsRecords() {
@@ -3842,21 +3728,15 @@ export class HistoryDialog implements OnInit {
     const dialogRef = this.dialog.open(DeleteSnapshotDialog, {
       width: '800px',
     });
-
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.dataservice.deleteSnapshot(snapshot).subscribe(response => {
           this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
           this.getAllSnapshotsRecords();
         });
-
       }
     });
-
   }
-
-
 }
 
 
@@ -3871,13 +3751,11 @@ export class DeleteSnapshotDialog implements OnInit {
   constructor(public dialogRef: MatDialogRef<DeleteSnapshotDialog>, public dialog: MatDialog, private formBuilder: FormBuilder, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-
   }
 
 
   ngOnInit() {
   }
-
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -3886,10 +3764,7 @@ export class DeleteSnapshotDialog implements OnInit {
 
   public yes() {
     this.dialogRef.close(true);
-
   }
-
-
 }
 
 
@@ -3903,12 +3778,9 @@ export class OpenPdfConfigurationDialog implements OnInit {
 
   optionExporter;
   exporter;
-
   constructor(public dialogRef: MatDialogRef<OpenPdfConfigurationDialog>, public dialog: MatDialog, private  dataservice: DataService, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-
-
   }
 
 
@@ -3931,17 +3803,13 @@ export class OpenPdfConfigurationDialog implements OnInit {
     let obres = {
       'optionExporter': this.optionExporter,
       'exporter': this.exporter,
-
-
     };
 
     this.dialogRef.close(obres);
-
   }
 
 
   public save() {
-
   }
 
 
@@ -3955,19 +3823,14 @@ export class OpenPdfConfigurationDialog implements OnInit {
 export class CriteriaConfirmationDialog implements OnInit {
   @Output() dismiss = new EventEmitter();
   @Output() focusout = new EventEmitter();
-
   public snapshotCheck;
-
   constructor(public dialogRef: MatDialogRef<CriteriaConfirmationDialog>, public dialog: MatDialog, private  dataservice: DataService, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-
-
   }
 
 
   ngOnInit() {
-
     this.snapshotCheck = true;
   }
 
@@ -3985,15 +3848,9 @@ export class CriteriaConfirmationDialog implements OnInit {
       'snapshot': this.snapshotCheck
     };
     this.dialogRef.close(resutlt);
-
   }
-
-
   public save() {
-
   }
-
-
 }
 
 
@@ -4009,13 +3866,9 @@ export class NotesDialog implements OnInit {
   constructor(public dialogRef: MatDialogRef<NotesDialog>, public dialog: MatDialog, private  dataservice: DataService, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-
-
   }
 
-
   ngOnInit() {
-    // this.notes=this.data.notes;
     this.getNoteByRoadId();
   }
 
@@ -4034,8 +3887,6 @@ export class NotesDialog implements OnInit {
       width: '800px',
       data: note
     });
-
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.dataservice.editNote(result).subscribe(response => {
@@ -4055,7 +3906,6 @@ export class NotesDialog implements OnInit {
 
   public yes() {
     this.dialogRef.close(true);
-
   }
 
   getNoteByRoadId() {
@@ -4071,7 +3921,6 @@ export class NotesDialog implements OnInit {
 
   addNote() {
     this.data.updateMode = 0;
-
     const dialogRef = this.dialog.open(AddingNoteDialog, {
       width: '800px',
       data: this.data
@@ -4085,7 +3934,6 @@ export class NotesDialog implements OnInit {
           this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
           this.getNoteByRoadId();
         });
-
       }
     });
 
@@ -4104,8 +3952,6 @@ export class NotesDialog implements OnInit {
       width: '800px',
       data: note
     });
-
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.dataservice.deleteNote(note).subscribe(response => {
@@ -4172,8 +4018,6 @@ export class AddingNoteDialog implements OnInit {
   editForm2: FormGroup;
   title;
   description;
-
-
   ngOnInit() {
 
     if (this.data.updateMode == 1) {
@@ -4183,10 +4027,7 @@ export class AddingNoteDialog implements OnInit {
       this.title = '';
       this.description = '';
     }
-
-
     this.editForm2 = this.formBuilder.group({
-
       title: [this.title, Validators.required],
       description: [this.description, Validators.required],
 
@@ -4249,13 +4090,8 @@ export class AddingNoteDialog implements OnInit {
         id: this.data.id
       };
       this.dialogRef.close(resultObject);
-
     }
-
-
   }
-
-
 }
 
 
@@ -4278,10 +4114,7 @@ export class PhotoGallery implements OnInit {
   SERVER_URL = this.remoteDataService.serviceURL + 'uploadFile';
   uploadForm: FormGroup;
   file = '';
-//fileInput
   @ViewChild(MaterialFileInputModule) fileInput: MaterialFileInputModule;
-
-
   constructor(public dialogRef: MatDialogRef<EditRoadDialog>, public remoteDataService: RemoteDataService, public gallery: Gallery, public domSanitizer: DomSanitizer, public dialog: MatDialog, safeUrl: SafeUrlPipe, private sanitizer: DomSanitizer,
               @Inject(MAT_DIALOG_DATA) public data: any, private http: HttpClient,
               private dataService: DataService, private snackBar: MatSnackBar, public router: Router, private formBuilder: FormBuilder, private httpClient: HttpClient
@@ -4289,10 +4122,6 @@ export class PhotoGallery implements OnInit {
   }
 
   onFileSelect(event) {
-
-
-    console.log($('#uploadBtn2'));
-
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.uploadForm.get('file').setValue(file);
@@ -4302,16 +4131,10 @@ export class PhotoGallery implements OnInit {
 
   ngOnInit() {
     this.loading = false;
-
-
-    console.log($('#uploadBtn2'));
-
     this.uploadForm = this.formBuilder.group({
       file: ['']
     });
     this.getImages();
-
-
   }
 
   public getImages() {
@@ -4322,13 +4145,7 @@ export class PhotoGallery implements OnInit {
         this.imageData.push(e);
       });
     });
-
-    console.log(this.imageData);
-
   }
-
-//this.remoteDataService.imageURL+"?docId="+e.id;
-
   downloadDocument(img) {  //https://www.npmjs.com/package/file-saver
     let headers = new Headers();
     let params1: HttpParams;
@@ -4342,16 +4159,12 @@ export class PhotoGallery implements OnInit {
       FileSaver.saveAs(blob, img.originalName);
     });
   }
-
-
   deletePhoto(img) {
-
     const dialogRef = this.dialog.open(DeleteImgDialog, {
       width: '600px',
       maxHeight: '750px',
       data: img.id
     });
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.dataService.deleteImage(img).subscribe(response => {
@@ -4371,24 +4184,13 @@ export class PhotoGallery implements OnInit {
     return this.uploadForm.controls;
   }
 
-
-  clearInput(event) {
-    //"fileInput.clear($event)"
-  }
-
   private __getElementByClass(className: string): HTMLElement {
     const element = <HTMLElement>document.querySelector(`.${className}`);
     return element;
-  }//datatable-body
-
-  clickImg() {
-
   }
 
   onSubmit() {
-
     this.loading = true;
-
     const formData = new FormData();
     formData.append('file', this.uploadForm.get('file').value);
     formData.append('district', this.data.district);
@@ -4398,18 +4200,14 @@ export class PhotoGallery implements OnInit {
     this.httpClient.post<any>(this.SERVER_URL, formData).subscribe(
       (res) => {
         if (res.status == 'ok') {
-
           $('#uploadBtn2').val('');
           this.uploadForm.get('file').setValue('');
-
           this.getImages();
           this.snackBar.open(res.message, 'x', <MatSnackBarConfig>{duration: 4000});
           this.loading = false;
-
         } else if (res.status == 'warning') {
           this.uploadForm.get('file').setValue('');
           this.loading = false;
-
           const dialogRef = this.dialog.open(ConfirmUploadPhotoDialog, {
             width: '800px'
           });
@@ -4650,3 +4448,4 @@ export class EditRoadDialog implements OnInit {
     this.dialogRef.close();
   }
 }
+
