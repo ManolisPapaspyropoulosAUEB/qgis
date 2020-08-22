@@ -32,18 +32,46 @@ export class VillagesComponent implements OnInit {
       this.scrollService.scrollToElementById('top')
     }, 600);
   }
-  setDistrict(currentNum_district_code: any, currentTab, current_province_code: any, proName, district_name) {
+
+
+
+  setDistrict(currentNum_district_code: any, currentTab, current_province_code: any, provinceName, districtName) {
+
+    setTimeout(() => {
+      this.scrollService.scrollToElementById('top')
+    }, 100);
+
     if (currentTab == true && current_province_code) {
       if (current_province_code == this.num_province_code && currentNum_district_code == this.num_district_code) {
+
+        console.log("hhh");
+        this.getVillages();
+
+
       } else {
         this.num_district_code = currentNum_district_code;
         this.num_province_code = current_province_code;
-        this.provinceName = proName;
-        this.district_name = district_name;
+        this.provinceName = provinceName;
+        this.district_name = districtName;
         this.getVillages();
       }
     }
   }
+
+
+  // setDistrict(currentNum_district_code: any, currentTab, current_province_code: any, proName, district_name) {
+  //   if (currentTab == true && current_province_code) {
+  //     if (current_province_code == this.num_province_code && currentNum_district_code == this.num_district_code) {
+  //
+  //     } else {
+  //       this.num_district_code = currentNum_district_code;
+  //       this.num_province_code = current_province_code;
+  //       this.provinceName = proName;
+  //       this.district_name = district_name;
+  //       this.getVillages();
+  //     }
+  //   }
+  // }
 
 
   getVillages() {
@@ -58,6 +86,17 @@ export class VillagesComponent implements OnInit {
         element.checked = false;
         element.checkedFilter = false;
       });
+
+     if (this.filterService.tab == 3) {
+
+        setTimeout(function () {
+          if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
+            this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
+          }
+        }, 600, false);
+
+      }
+
       this.userSelectionsForMapShow.forEach(e => {
         for (var i = 0; i < this.villages.length; i++) {
           if (this.villages[i].id == e.id) {

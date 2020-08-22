@@ -65,6 +65,18 @@ export class FacilitiesComponent implements OnInit  {
       this.finalfacilitiesMerged = response.data;
       this.facilitiesMerged =  response.data;
       this.finalfacilitiesMerged = this.facilitiesMerged;
+
+
+      if (this.filterService.tab == 2) {
+        setTimeout(function () {
+          if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
+            this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
+          }
+        }, 600, false);
+
+      }
+
+
       this.userSelectionsForMapShow.forEach(e => {
         for (var i = 0; i < this.finalfacilitiesMerged.length; i++) {
           if (this.finalfacilitiesMerged[i].main_type == e.main_type && this.finalfacilitiesMerged[i].id == e.id) {
@@ -104,6 +116,7 @@ export class FacilitiesComponent implements OnInit  {
 
     if (currentTab == true && current_province_code) {
       if (current_province_code == this.num_province_code && currentNum_district_code == this.num_district_code) {
+        this.getFacilities();
       } else {
         this.num_district_code = currentNum_district_code;
         this.num_province_code = current_province_code;

@@ -379,9 +379,6 @@
         <mat-form-field style="width: 91%">
           <mat-label>fclass search</mat-label>
           <mat-select #sl [(ngModel)]="selectedValuesFclass" #fclassSelect="ngModel" multiple (valueChange)="updateFiterFclass($event)">
-
-
-
             <div class="flex">
               <div class="col-md-12 closeCol" >
                 <span (click)="sl.close()" class="material-icons closeFclass">close</span>
@@ -412,10 +409,15 @@
         </mat-radio-group>
         <mat-form-field style="width: 91%">
           <mat-label>Road Condition Search</mat-label>
-          <mat-select
-            [(ngModel)]="selectedValuesRoadCondition"
-            #roadConditionSelect="ngModel"
-            multiple (valueChange)="updateRoadConditionFilter($event)">
+          <mat-select #slrc [(ngModel)]="selectedValuesRoadCondition" #roadConditionSelect="ngModel" multiple (valueChange)="updateRoadConditionFilter($event)">
+
+            <div class="flex">
+              <div class="col-md-12 closeCol" >
+                <span (click)="slrc.close()" class="material-icons closeFclass">close</span>
+              </div>
+            </div>
+
+
             <mat-option [value]="concreteFilter">concrete</mat-option>
             <mat-option [value]="sand_or_gravelFilter">sand or gravel</mat-option>
             <mat-option [value]="asphaltFilter">asphalt</mat-option>
@@ -828,12 +830,6 @@
                 </button>
               </div>
             </div>
-
-
-
-
-
-
             <div class="container4" *ngIf="loading">
               <div class="wave">
                 <div class="rect rect1"></div>
@@ -843,10 +839,6 @@
                 <div class="rect rect5"></div>
               </div>
             </div>
-
-
-
-
             <ngx-datatable
               *ngIf="!this.loading"
               style="margin-top: 5px"

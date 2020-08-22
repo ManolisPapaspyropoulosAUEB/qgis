@@ -463,6 +463,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   }
 
+
+
   logOut() {
     localStorage.removeItem('id');
     localStorage.removeItem('fullName');
@@ -483,6 +485,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       localStorage.setItem('num_province_code', province[0].num_province_code);
       localStorage.setItem('districtItemName', null);
       localStorage.setItem('num_district_code', null);
+
     }
 
     this.currentProvinceCode = '';
@@ -540,6 +543,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     }
   }
+
 
 
   get_districts(data) {
@@ -619,7 +623,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       findRoad.checked = false;
       findRoad.checkedFilter = false;
     }
-    this.myMap.setView([this.district[0].x_distance, this.district[0].y_distance], Number(this.district[0].zoom_info_district) + 1);
   }
 
   public hitFacilitie(facilitie) {
@@ -1331,20 +1334,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           marker.setIcon(icon);
           marker.customId = (element.id).toString() + element.type;
         }
-
-
         marker.addTo(this.myMap);
-        if (this.currentNum_district_code) {
-          this.myMap.setView([this.district[0].x_distance, this.district[0].y_distance], Number(this.district[0].zoom_info_district) + 1);
-        }
         this.markers.push(marker);
-
-
         if (element.checkedFilter) {
           marker.openPopup();
         }
       });
-      console.log(this.markers);
     }
   }
 
@@ -1386,9 +1381,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         this.markers.push(marker);
         if (element.checkedFilter) {
           marker.openPopup();
-        }
-        if (this.currentNum_district_code) {
-          this.myMap.setView([this.district[0].x_distance, this.district[0].y_distance], Number(this.district[0].zoom_info_district) + 1);
         }
       });
       window.dispatchEvent(new Event('resize'));
@@ -1746,7 +1738,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         this.setRoadsToMap();
         this.addFacilitiesToMap();
         this.addVillagesToMap();
-        window.dispatchEvent(new Event('resize'));
+       // window.dispatchEvent(new Event('resize'));
         setTimeout(() => {
           this.loadingMap=false;
           },500
@@ -1788,19 +1780,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       // });
 
     } else if (tab == 3) {
-      window.dispatchEvent(new Event('resize'));
       this.initMapRoadsArray();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       this.villagesComponent.enableNgx();
       this.coreDataComponent.emptyTable();
-
-      // window.addEventListener('resize', function(event) {
-
-
-
-
-
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
           this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
@@ -1847,9 +1831,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   updateRoadConditionFilter(e) {
+
+    console.log(e);
+
     var checks = [];
     checks = e;
-    var sqlIn = '(' + e.toString()() + ')';
+    var sqlIn = '(' + e.toString() + ')';
     this.sqlInRoadConditions = sqlIn; ///
     this.getRoadsPyParams();
   }
@@ -1962,6 +1949,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   selectDistrict(district, param) {
+
+
+
     this.removeAllMarkersFromMap();
     this.villagesComponent.userSelectionsForMapShow = [];
     this.villagesComponent.villages = [];
@@ -3161,6 +3151,33 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.currentStatusMapSelection = !this.currentStatusMapSelection;
   }
 
+  initFooter(){
+    if (this.filterService.tab == 2) {
+      setTimeout(function () {
+        if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
+        }
+      }, 600, false);
+
+    } else if (this.filterService.tab == 3) {
+
+      setTimeout(function () {
+        if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
+        }
+      }, 600, false);
+
+    } else if (this.filterService.tab == 4) {
+      setTimeout(function () {
+        if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (199) + 'px';
+        }
+      }, 600, false);
+
+    }
+
+  }
+
   getProvinces() {
     this.dataservice.get_province().subscribe(response => {
       this.provinces = response.data;
@@ -3178,6 +3195,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         this.provinces[i].num_province_code = this.provinces[i].num_province_code;
       }
     });
+
   }
 
   private getDistrictsTab2() {
