@@ -48,6 +48,7 @@ export class VillagesComponent implements OnInit {
         this.getVillages();
 
 
+
       } else {
         this.num_district_code = currentNum_district_code;
         this.num_province_code = current_province_code;

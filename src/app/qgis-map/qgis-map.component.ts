@@ -1772,6 +1772,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       // window.addEventListener('resize', function(event) {
 
+
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
           this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';

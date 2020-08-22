@@ -21,6 +21,7 @@ export class CoreDataComponent implements OnInit {
   }
 //opId
 
+
  public  getCriteriaMaster(){
     this.dataService.getAllCriteriaMaster({
       "label":this.label

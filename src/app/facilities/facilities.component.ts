@@ -108,6 +108,7 @@ export class FacilitiesComponent implements OnInit  {
   }
 
 
+
   setDistrict(currentNum_district_code: any, currentTab, current_province_code: any, provinceName, districtName) {
 
     setTimeout(() => {
