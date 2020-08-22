@@ -103,6 +103,7 @@ import { NoteComponent } from './note/note.component';
 import {SafeUrlPipe} from './qgis-map/safeurl.pipe';
 import {ImagePipe} from './qgis-map/image.pipe';
 import {UniquePipe} from './qgis-map/unique.pipe';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -212,7 +213,8 @@ const routes: Routes = [
     CoreDataComponent,
     LoaderComponent,
     CarouselComponent,
-    NoteComponent
+    NoteComponent,
+    UsersComponent
   ],
   exports: [
     SafeUrlPipe,

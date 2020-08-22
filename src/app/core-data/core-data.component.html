@@ -34,16 +34,9 @@
 
 
 </style>
-
-
 <mat-tab-group class="mycustomTabClassCiteria" (selectedTabChange)="switchTabChange($event)" >
-
-
   <mat-tab label="Criteria">
-
     <div class="table">
-
-
       <ngx-datatable
         #myTable
         class="material expandable"
@@ -53,13 +46,11 @@
         [rowHeight]="50"
         [limit]="120"
         [scrollbarH]="true"
-
         (activate)="toggleExpandRowActivate($event)"
         [rows]="criteriaMaster"
         (page)="onPage($event)"
       >
-
-        <!-- Row Detail Template -->
+       <!-- Row Detail Template -->
         <ngx-datatable-row-detail    #myDetailRow (toggle)="onDetailToggle($event)">
           <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
             <div style="padding-left:35px;display: grid">
@@ -77,20 +68,14 @@
             </div>
           </ng-template>
         </ngx-datatable-row-detail>
-
-
         <!-- Column Templates -->
         <ngx-datatable-column
           [width]="50"
-
-
           [resizeable]="false"
           [sortable]="false"
           [draggable]="false"
           [canAutoResize]="false"
         >
-
-
           <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
             <a
               href="javascript:void(0)"
@@ -101,9 +86,6 @@
             </a>
           </ng-template>
         </ngx-datatable-column>
-
-
-
         <ngx-datatable-column name="label" prop="label" [flexGrow]="1" >
           <ng-template  let-row="row" ngx-datatable-cell-template>
             <div  style="padding-left: 49px">
@@ -111,12 +93,6 @@
             </div>
           </ng-template>
         </ngx-datatable-column>
-
-
-
-
-
-
         <ngx-datatable-column name="Score Range" prop="scoreRange" [flexGrow]="1" >
           <ng-template let-row="row" ngx-datatable-cell-template>
             <div  style="padding-left: 33px">
@@ -124,7 +100,6 @@
             </div>
           </ng-template>
         </ngx-datatable-column>
-
         <ngx-datatable-column name="Weight Factor (%)" prop="weightFactor" [flexGrow]="1" >
           <ng-template let-row="row" ngx-datatable-cell-template>
             <div   style="padding-left: 15px">
@@ -132,49 +107,18 @@
             </div>
           </ng-template>
         </ngx-datatable-column>
-
-
-
-
-
-
       </ngx-datatable>
-
-
-
-
     </div>
-
   </mat-tab>
-
-
   <mat-tab label="Operating Systems">
     <div     class="" >
-
-
-
-
-
       <mat-form-field class="example-full-width" style="margin-left: 27px;margin-right: 16px;">
         <mat-label>Estimated Maintenance Cost</mat-label>
         <input type="number" [(ngModel)]="this.opParam" matInput placeholder="Estimated Maintenance Cost" value="Sushi">
       </mat-form-field>
-
       <span class="material-icons update" style="    position: relative;
     top: 13px;
-    margin-top: 10px" (click)="updateMainCost()">
-    save
-    </span>
-
-
+    margin-top: 10px" (click)="updateMainCost()">save</span>
     </div>
   </mat-tab>
-
-
 </mat-tab-group>
-
-
-
-
-
-

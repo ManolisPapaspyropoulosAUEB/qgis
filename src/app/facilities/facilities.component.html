@@ -1,26 +1,8 @@
 <style>
-
-  /*::ng-deep.table{*/
-  /*padding-top: 10px!important;*/
-  /*margin-bottom: 0rem!important;*/
-
-  /*}*/
-
-  /*ngx-datatable{*/
-  /*padding-left: 14px;*/
-  /*padding-bottom: 4%;*/
-
-  /*}*/
-
   .delete:hover {
     color: red !important;
   }
-
-
-
 </style>
-
-
 <div class="top-extra-actions">
   <button (click)="addFacilitie()" matTooltip="add facilitie" class="addBtnOuter" mat-mini-fab color="primary"
           aria-label="Example icon button with a menu icon">
@@ -29,37 +11,39 @@
         </span>
     Add Facilitie
   </button>
-
-
-
-
 </div>
-
-
 <ng-container class="" style="display: flex">
 
-  <ngx-datatable style="margin-top: 15px"
-                 class="material"
 
+
+  <div class="container4" *ngIf="loading">
+    <div class="wave">
+      <div class="rect rect1"></div>
+      <div class="rect rect2"></div>
+      <div class="rect rect3"></div>
+      <div class="rect rect4"></div>
+      <div class="rect rect5"></div>
+    </div>
+  </div>
+
+  <ngx-datatable
+    *ngIf="!this.loading"
+    style="margin-top: 15px"
+                 class="material"
                  [rowHeight]="'50'"
                  [rows]="finalfacilitiesMerged"
                  [headerHeight]="50"
                  [footerHeight]="43"
                  [reorderable]=true
-
                  [rowHeight]="50" [limit]="limit"
                  [scrollbarH]="true"
                  [scrollbarV]="true"
-
-
   >
-
     <ngx-datatable-column name="Show on map" [flexGrow]="1" [frozenLeft]="true">
       <ng-template let-row="row" ngx-datatable-cell-template>
         <mat-checkbox [(ngModel)]="row.checked" (change)="selectRow(row,$event)"></mat-checkbox>
       </ng-template>
     </ngx-datatable-column>
-
     <ngx-datatable-column name="id" prop="id"  [flexGrow]="1" [frozenLeft]="true">
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div>
@@ -67,8 +51,6 @@
         </div>
       </ng-template>
     </ngx-datatable-column>
-
-
     <ngx-datatable-column name="Label" prop="label" [flexGrow]="1" [frozenLeft]="true">
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div>
@@ -76,7 +58,6 @@
         </div>
       </ng-template>
     </ngx-datatable-column>
-
     <ngx-datatable-column name="Poi Type" prop="type" [flexGrow]="1" >
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div>
@@ -84,7 +65,6 @@
         </div>
       </ng-template>
     </ngx-datatable-column>
-
     <ngx-datatable-column name="East" prop="east" [flexGrow]="1" >
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div>
@@ -92,8 +72,6 @@
         </div>
       </ng-template>
     </ngx-datatable-column>
-
-
     <ngx-datatable-column name="North" prop="north" [flexGrow]="1" >
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div>
@@ -101,8 +79,6 @@
         </div>
       </ng-template>
     </ngx-datatable-column>
-
-
     <ngx-datatable-column name="Province Code" prop="provinceCode" [flexGrow]="1" >
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div>
@@ -110,7 +86,6 @@
         </div>
       </ng-template>
     </ngx-datatable-column>
-
     <ngx-datatable-column name="Province Name" prop="provinceName" [flexGrow]="1" >
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div>
@@ -118,7 +93,6 @@
         </div>
       </ng-template>
     </ngx-datatable-column>
-
     <ngx-datatable-column name="Province Code" prop="provinceCode" [flexGrow]="1" >
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div>
@@ -126,7 +100,6 @@
         </div>
       </ng-template>
     </ngx-datatable-column>
-
     <ngx-datatable-column name="Province Name" prop="provinceName" [flexGrow]="1" >
       <ng-template let-row="row" ngx-datatable-cell-template>
         <div>
@@ -134,11 +107,8 @@
         </div>
       </ng-template>
     </ngx-datatable-column>
-
-
     <ngx-datatable-column name=""  [sortable]=false [flexGrow]="1" [frozenRight]="true">
       <ng-template let-row="row" ngx-datatable-cell-template>
-
         <div class="button-container-list-table">
           <button class="button-actions" mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon class="more-action-mat">more_vert</mat-icon>
@@ -157,9 +127,5 @@
         </div>
       </ng-template>
     </ngx-datatable-column>
-
-
   </ngx-datatable>
 </ng-container>
-
-

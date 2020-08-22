@@ -1,12 +1,9 @@
 <style>
-
   /*------------------SCROLLING-----------------------*/
-
   /* width */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
-
   }
 
   /* Track */
@@ -25,16 +22,9 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #a1a4a7;
   }
-
-
-
   /*------------------SCROLLING-----------------------*/
 
-
-
-
   /*------------------LOADING-----------------------*/
-
   .wave {
     width: 50px;
     height: 40px;
@@ -77,6 +67,9 @@
 
   }
 
+
+
+
   .container4 .wave {
     margin: 0;
     position: absolute;
@@ -87,14 +80,39 @@
   }
 
 
+  .container5 {
+    height: 10em;
+    position: relative;
+    height: 100vh;
+    top: -50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+
+
+
+  .container5 .wave {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
+  }
+
+
+
+
 
   /*------------------END LOADING-----------------------*/
-
 
   .drawer-map-selection{
     position: fixed!important;
     top: 52px!important;
-
   }
 
   .selectAllRoads{
@@ -102,10 +120,7 @@
     top: 13px;
     left: 16px;
     font-size: 14px!important;
-
-
   }
-
 
   .btnControl{
     margin-right: 14px!important;
@@ -113,20 +128,12 @@
     height: 25px!important;
     background: #2F4060!important;
     color: #feffff !important;
-
-
   }
-
-
-
-
   ::ng-deep.myTest-tooltip {
     min-width: 300px!important;
     background-color: #FC5558!important;
     font-size: 16px!important;
   }
-
-
   /*.mat-tooltip.tooltip {*/
     /*!*font-size: 10px;*!*/
   /*}*/
@@ -749,7 +756,19 @@
             </div>
             <div class="" style="display: flex">
               <div class="col-12" style="    padding:0px; z-index: 0;top: 0px;">
-                <div class="map-container" (click)="onClick($event)" id="map"></div>
+                <div class="map-container" (click)="onClick($event)" id="map" ></div>
+                <div style="background-color: white" class="container5" *ngIf="this.loadingMap">
+                  <div class="wave">
+                    <div class="rect rect1"></div>
+                    <div class="rect rect2"></div>
+                    <div class="rect rect3"></div>
+                    <div class="rect rect4"></div>
+                    <div class="rect rect5"></div>
+                    <div class="mymessage">
+                      <span style="font-size: 16px"> please wait until all features added to map...</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </mat-drawer-content>

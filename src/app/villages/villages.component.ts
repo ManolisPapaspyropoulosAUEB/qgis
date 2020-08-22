@@ -19,10 +19,12 @@ export class VillagesComponent implements OnInit {
   public limit: any;
   private provinceName: any;
   private district_name: any;
+  public loading;
 
   constructor(public dataservice: DataService, public filterService: FilterService, public dialog: MatDialog, private snackBar: MatSnackBar, private scrollService: ScrollService) {
   }
   ngOnInit(): void {
+    this.loading=false;
     this.limit = 16;
   }
   enableNgx(){
@@ -45,6 +47,7 @@ export class VillagesComponent implements OnInit {
 
 
   getVillages() {
+    this.loading=true;
     this.dataservice.getVillages({
       'num_district_code': this.num_district_code,
       'num_province_code': this.num_province_code,
@@ -63,6 +66,8 @@ export class VillagesComponent implements OnInit {
           }
         }
       });
+      this.loading=false;
+
 
       this.enableNgx();
     });

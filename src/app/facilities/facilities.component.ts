@@ -20,6 +20,7 @@ export class FacilitiesComponent implements OnInit  {
   public provinceName;
   public district_name;
   public currentTab;
+  public loading;
   public facilitiesMerged = [];
   public finalfacilitiesMerged = [];
   limit;
@@ -34,6 +35,7 @@ export class FacilitiesComponent implements OnInit  {
 
   ngOnInit(): void {
 
+    this.loading=false;
 
     this.nameFilter='';
     this.proCode = 0;
@@ -47,36 +49,21 @@ export class FacilitiesComponent implements OnInit  {
   private __getElementByClass(className: string): HTMLElement {
     const element = <HTMLElement>document.querySelector(`.${className}`);
     return element;
-  }//datatable-body
+  }
 
   public test() {
   }
 
-
-
-
-
-
-
-
   public getFacilities() {
+    this.loading=true;
     this.dataservice.get_facilities({
       'num_district_code': this.num_district_code,
       'num_province_code': this.num_province_code,
       'nameFilter': this.nameFilter,
       'type': this.type
-
-
-
     }).subscribe(response => {
       this.finalfacilitiesMerged = response.data;
       this.facilitiesMerged =  response.data;
-
-
-
-
-
-
       this.finalfacilitiesMerged = this.facilitiesMerged;
       this.userSelectionsForMapShow.forEach(e => {
         for (var i = 0; i < this.finalfacilitiesMerged.length; i++) {
@@ -86,6 +73,7 @@ export class FacilitiesComponent implements OnInit  {
           }
         }
       });
+      this.loading=false;
 
       window.dispatchEvent(new Event('resize'));
       this.scrollService.scrollToElementById('top');

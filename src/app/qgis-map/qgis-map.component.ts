@@ -161,6 +161,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
   public diakopthsDromwn = true;
   public currentLastParam = '';
+  public loadingMap;
 
   public currentNum_district_code: any;
   public currentProvinceCode: any;
@@ -253,6 +254,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   public ngOnInit() {
+    this.loadingMap=false;
     this.loading = false;
     this.orderCol = 'LVRR_ID';
     this.descAsc = 'asc';
@@ -1203,10 +1205,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public addFacilitiesToMap() {
     if (this.filterService.facilitiesArray) {
       var marker;
-
-
       this.filterService.facilitiesArray.forEach(element => {
-
         marker = L.marker([element.north, element.east]);
         if (element.type == 'District Centre') {
           var icon = new L.Icon({
@@ -1345,6 +1344,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           marker.openPopup();
         }
       });
+      console.log(this.markers);
     }
   }
 
@@ -1729,9 +1729,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         layer.closePopup();
       });
     }
-
   }
-
 
   public switchTab($event: MatTabChangeEvent) {
     var tab = $event.index;
@@ -1739,15 +1737,21 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.filterService.tab = tab;
 
     if (tab == 0) {
-      this.coreDataComponent.emptyTable();
-      this.ngOnChanges2();
-      this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName); //mhn kaleseis thn get sou gia ta fereis ta facilities
-      this.removeAllMarkersFromMap();//
-      this.setRoadsToMap();
-      this.addFacilitiesToMap();
-      this.addVillagesToMap();
-      window.dispatchEvent(new Event('resize'));
-
+      this.loadingMap=true;
+      setTimeout(() => {
+        this.coreDataComponent.emptyTable();
+        this.ngOnChanges2();
+        this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName); //mhn kaleseis thn get sou gia ta fereis ta facilities
+        this.removeAllMarkersFromMap();//
+        this.setRoadsToMap();
+        this.addFacilitiesToMap();
+        this.addVillagesToMap();
+        window.dispatchEvent(new Event('resize'));
+        setTimeout(() => {
+          this.loadingMap=false;
+          },500
+        );
+      }, 500)
     } else if (tab == 1) {
       this.coreDataComponent.emptyTable();
 
@@ -1759,13 +1763,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
 
-      // window.addEventListener('resize', function(event){
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
           this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (195) + 'px';
         }
       }, 200, false);
-      // });
 
 
 
@@ -3446,6 +3448,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 type AOA = any[][];
 import * as XLSX from 'xlsx';
 import {Error} from 'tslint/lib/error';
+import {promise} from 'selenium-webdriver';
+import Promise = promise.Promise;
 @Component({
   selector: './import-dialog',
   templateUrl: './import-dialog.html'
@@ -3460,6 +3464,8 @@ export class ImportDialog implements OnInit {
   flagMissingMatchHeaders;
   public criteriaCheckBox;
   public loading;
+
+
   public headData = []; // excel row header
   public headData2 = []; // excel row header
   constructor(public dialogRef: MatDialogRef<ImportDialog>, public dialog: MatDialog, private formBuilder: FormBuilder, private snackBar: MatSnackBar,
