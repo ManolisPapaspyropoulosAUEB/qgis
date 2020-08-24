@@ -335,13 +335,28 @@
         <img class="ukaid" style="    height: 35px;" src="assets/ukaid.png"/>
       </div>
     </div>
-    <div class=" " style="display: flex;display: flex;margin-top: 25px;margin-bottom: 10px;">
-      <button mat-button class="butnRfs">
-        <span class="material-icons" style="margin-right: 5px;">cached</span>
-        <span (click)="reloadAndCleanLs()">Reset All</span>
-      </button>
+    <div class=" " style="display: grid;margin-top: 5px;margin-bottom: 10px;">
+
+      <div class="col-md-6" style="margin-bottom: 10px">
+        <button (click)="reloadAndCleanLs()" mat-button class="butnRfs">
+          <span class="material-icons" style="margin-right: 5px;">cached</span>
+          <span >Reset All</span>
+
+        </button>
+      </div>
+      <div class="col-md-12" style="padding-left: 28px">
+        <mat-slide-toggle (toggleChange)="changeMode()" >Apply shaded relief</mat-slide-toggle>
+      </div>
+
+
+
+
+
+
+
+
     </div>
-    <div class="">
+    <div class="" style="    margin-top: 13px;">
       <div class="province-combo">
         <angular2-multiselect [data]="provinces" [settings]="dropdownSettings2"
                               [(ngModel)]="province" (onSelect)="selectProvince(province,'manual')"

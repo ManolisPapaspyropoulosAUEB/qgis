@@ -103,7 +103,7 @@ import { NoteComponent } from './note/note.component';
 import {SafeUrlPipe} from './qgis-map/safeurl.pipe';
 import {ImagePipe} from './qgis-map/image.pipe';
 import {UniquePipe} from './qgis-map/unique.pipe';
-import { UsersComponent } from './users/users.component';
+import {UserDialogUpdate, UsersComponent} from './users/users.component';
 
 
 
@@ -189,6 +189,7 @@ const routes: Routes = [
     MosqueDialog,
     RoadsComponent,
     AddSchoolDialog,
+    UserDialogUpdate,
     DeleteVillageDialog,
     PhotoGallery,
     VillageDialog,
@@ -317,6 +318,7 @@ const routes: Routes = [
     ConfirmUploadPhotoDialog,
     VillageDialog,
     AddSchoolDialog,
+    UserDialogUpdate,
     DeleteVillageDialog,
     MosqueDialog,
     AddDCDialog

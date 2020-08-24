@@ -14,6 +14,18 @@ export class DataService {
   }
 
 
+
+
+  getUsers(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'getUsers', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+      }
+    );
+  }
+
   register(data) {
     return this.http.post<any>(this.remoteDataService.serviceURL + 'register', data).map(
       (response) => {

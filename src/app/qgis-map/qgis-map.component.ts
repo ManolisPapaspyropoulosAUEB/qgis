@@ -27,6 +27,11 @@ import {json_Khost_Province_Spera_District_OSM_roads_UTM42n_12} from './data/Kho
 import {json_Khost_Province_Tanay_District_OSM_roads_UTM42n_13} from './data/Khost_Province_Tanay_District_OSM_roads_UTM42n_13';
 import {json_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14} from './data/Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14';
 import {json_KhostProvincedistrictsKhost_Province_UTM42n_1} from './data/KhostProvincedistrictsKhost_Province_UTM42n_1';
+
+import {img_ShadedreliefKhostUTM42n_0} from './data/shade';
+
+
+
 import Autolinker from 'autolinker';
 import {DataService} from '../../services/data.service';
 import {MatTabChangeEvent} from '@angular/material/tabs';
@@ -193,6 +198,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public layer_Khost_Province_Baak_District_OSM_roads_UTM42n_2: L.geoJson;
   public layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5: L.geoJson;
   public layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7: L.geoJson;
+  private changeModeArray=[];
 
 
   // this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5 this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7
@@ -1975,10 +1981,19 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       localStorage.setItem('zoom_info_district', district[0].zoom_info_district);
     }
 
-    this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
-      layer.setStyle({fillColor: 'rgba(183,72,75,1.0)'});
-      layer.feature.geometry.type = 'MultiPolygon';
-    });
+    if(this.changeModeArray.length>0){
+      this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
+        layer.setStyle({fillColor: 'rgba(183,72,75,0.4470588235294118)'});
+        layer.feature.geometry.type = 'MultiPolygonMode';
+      });
+    }else{
+      this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
+        layer.setStyle({fillColor: 'rgba(183,72,75,1.0)'});
+        layer.feature.geometry.type = 'MultiPolygon';
+      });
+    }
+
+
     this.highlightOnDistrictByName(district[0]);
     this.currentNum_district_code = district[0].num_district_code;
     this.currentDistrictName = district[0].district_name;
@@ -1995,16 +2010,33 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   public highlightOnDistrictByName(district) {
-    this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
-      if (layer.feature.properties.dist_name_ == district.district_name) {
-        layer.setStyle({fillColor: '#ffff00'});
-        layer.openPopup();
-        layer.feature.geometry.type = 'editRow';
+
+    if(this.changeModeArray.length>0){
+      this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
+        if (layer.feature.properties.dist_name_ == district.district_name) {
+          layer.setStyle({fillColor: '#fff0488f'});
+          layer.openPopup();
+          layer.feature.geometry.type = 'editRow';
+        }
+      });
+      if (district.x_distance != null && district.y_distance != null) {
+        this.myMap.setView([district.x_distance, district.y_distance], district.zoom_info_district);
       }
-    });
-    if (district.x_distance != null && district.y_distance != null) {
-      this.myMap.setView([district.x_distance, district.y_distance], district.zoom_info_district);
+    }else{
+      this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
+        if (layer.feature.properties.dist_name_ == district.district_name) {
+          layer.setStyle({fillColor: '#ffff00'});
+          layer.openPopup();
+          layer.feature.geometry.type = 'editRow';
+        }
+      });
+      if (district.x_distance != null && district.y_distance != null) {
+        this.myMap.setView([district.x_distance, district.y_distance], district.zoom_info_district);
+      }
     }
+
+
+
   }
 
   ngAfterViewInit(): void {
@@ -2063,8 +2095,64 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }//datatable-body
 
 
+  public changeMode(){
+      if(this.changeModeArray.length>0){
+      this.changeModeArray.forEach(element => {
+        this.myMap.removeLayer(element);
+      });
+      this.changeModeArray=[];
+      this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
+        layer.setStyle({fillColor: 'rgba(183,72,75,1.0)'});
+        layer.feature.geometry.type = 'MultiPolygon';
+      });
+
+      if(localStorage.getItem('district') != null){//ara uparxei epilegmeno district
+        var currentDistrict = this.currentDistrictName;
+        this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
+          if (layer.feature.properties.dist_name_ == currentDistrict) {
+            layer.setStyle({fillColor: '#ffff00'});
+            layer.feature.geometry.type = 'editRow';
+          }
+        });
+      }
+
+
+    }else{
+      var bounds_group = new L.featureGroup([]);
+      this.myMap.createPane('pane_ShadedreliefKhostUTM42n_0');//
+      this.myMap.getPane('pane_ShadedreliefKhostUTM42n_0').style.zIndex = 400;
+      var img_ShadedreliefKhostUTM42n_0 = 'http://192.168.1.5:9023/downloadFile?docId=133';
+      var img_bounds_ShadedreliefKhostUTM42n_0 = [[32.84103911135089,69.0882851687274],[33.9123098127972,70.5131406575886]];
+      var layer_ShadedreliefKhostUTM42n_0 = new L.imageOverlay(img_ShadedreliefKhostUTM42n_0,
+        img_bounds_ShadedreliefKhostUTM42n_0,
+        {pane: 'pane_ShadedreliefKhostUTM42n_0'});
+      bounds_group.addLayer(layer_ShadedreliefKhostUTM42n_0);
+      this.myMap.addLayer(layer_ShadedreliefKhostUTM42n_0);
+      this.changeModeArray.push(layer_ShadedreliefKhostUTM42n_0);
+      this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
+        layer.setStyle({fillColor: 'rgba(183,72,75,0.4470588235294118)'});
+        layer.feature.geometry.type = 'MultiPolygonMode';
+      });
+
+      if(localStorage.getItem('district') != null){//ara uparxei epilegmeno district
+        var currentDistrict = this.currentDistrictName;
+        this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
+          if (layer.feature.properties.dist_name_ == currentDistrict) {
+            layer.setStyle({fillColor: '#fff0488f'});
+            layer.feature.geometry.type = 'editRow';
+          }
+        });
+      }
+
+
+    }
+
+
+
+  }
+
+
   private initMap(filterService, roadTab2, drawerMapSelections, currentStatusMapSelection): void {
-    // element.scrollLeft
 
   function __getElementByClassF(className: string): HTMLElement {
       console.log('element class : ', className);
@@ -2101,10 +2189,15 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         highlightLayer.setStyle(
           {color: '#00ff17', weight: 8}
         );
-      } else if (e.target.feature.geometry.type === 'MultiPolygon') { //
+      } else if (e.target.feature.geometry.type === 'MultiPolygon') {
         highlightLayer.setStyle({
           fillColor: '#ffff00',
           fillOpacity: 1
+        });
+      } else if (e.target.feature.geometry.type === 'MultiPolygonMode') {
+        highlightLayer.setStyle({
+          fillColor: '#fff0488f',
+          fillOpacity: 3
         });
       } else if (e.target.feature.geometry.type === 'editMapRoad') {
         highlightLayer.openPopup();
@@ -2175,6 +2268,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         for (var i in e.target._eventParents) {
           e.target._eventParents[i].resetStyle(e.target);
         }
+      }else if(e.target.feature.geometry.type === 'MultiPolygonMode'){
+        e.target.setStyle({fillColor: 'rgba(183,72,75,0.4470588235294118)'});
       }
     }
 
@@ -2224,6 +2319,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         interactive: true,
       };
     }
+
+
+
+
+
     this.myMap.createPane('pane_KhostProvincedistrictsKhost_Province_UTM42n_1');
     this.myMap.getPane('pane_KhostProvincedistrictsKhost_Province_UTM42n_1').style.zIndex = 401;
     this.myMap.getPane('pane_KhostProvincedistrictsKhost_Province_UTM42n_1').style['mix-blend-mode'] = 'normal';
@@ -3138,6 +3238,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.myMap.addLayer(this.layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14);
     setBounds();
   }
+
+
+
+
   public openClosedSideNav() {
     this.drawer.toggle().finally(() => {
       window.dispatchEvent(new Event('resize'));

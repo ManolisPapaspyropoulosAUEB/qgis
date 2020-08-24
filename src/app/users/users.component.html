@@ -1,0 +1,77 @@
+<style>
+  .user{
+    margin-top: 30px;
+    max-width: 70%!important;
+
+  }
+
+  .editcol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .userdiv{
+    display: flex;
+    background-color: white;
+    /* border: 1px solid; */
+    border-radius: 66px;
+    box-shadow: 2px 1px 3px 0px #888888;
+    margin-bottom: 7px;
+
+
+  }
+
+  .accountcircle{
+    font-size: 83px;
+    color: #2f4060;
+  }
+
+</style>
+
+
+
+<div  style="display: flex">
+
+  <div class="col-md-2">
+    <button  (click)="addUser()"  mat-button  matTooltip="Add Village" class="addBtnOuter" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+        <span class="material-icons addBtn addCrcle">
+          add
+        </span>
+      Add User
+    </button>
+  </div>
+  <div class="col-md-8" style="margin-top: 12px">
+
+    <div class="userdiv" *ngFor="let user of users" >
+      <div class="col-md-2" style="text-align: center">
+        <span class="material-icons accountcircle">
+        account_circle
+        </span>
+      </div>
+      <div class="col-md-9">
+
+
+        <div style="display: flex">
+          <div class="col-md-12">
+            <h1 style="color: #0684ff;margin-bottom: 0px">{{user.fullName}}</h1>
+            <h3 style="margin-bottom: 0px">{{user.email}}</h3>
+            <h3 style="margin-bottom: 0px">{{user.role}}</h3>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-1 editcol" >
+        <mat-icon  style="cursor: pointer">edit
+        </mat-icon>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-2">
+
+  </div>
+</div>
+
+

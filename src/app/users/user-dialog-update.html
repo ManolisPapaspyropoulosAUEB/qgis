@@ -1,0 +1,115 @@
+<style>
+  .closeIcon {
+    color: white;
+    position: relative;
+    top: 1px;
+    left: 31px;
+    background: #3f51b5;
+    border-radius: 5px;
+  }
+
+  .closeFclass{
+    position: relative;
+    top: 3px;
+    right: 3px;
+    cursor: pointer;
+  }
+
+  .closeCol{
+    text-align: end!important;
+    padding-right: 0;
+    background-color: #2f4060;
+    color: white;
+  }
+
+
+
+  .closeIcon:hover {
+
+    cursor: pointer;
+  }
+
+  .addCrcle{
+    position: relative;
+    top: -5px;
+    font-size: 19px;
+  }
+</style>
+
+
+<mat-dialog-content>
+
+  <div style="display: flex">
+    <div class="col-md-11" style="padding-left: 12px">
+      <h2 style="font-size: 24px" *ngIf="this.data.updateMode==0">Add Facilitie</h2>
+      <h2  style="font-size: 24px" >Add User</h2>
+
+
+    </div>
+    <div class="col-md-1">
+    <span  (click)="onNoClick()"   class="material-icons closeIcon">
+      close
+    </span>
+    </div>
+  </div>
+
+
+
+  <form   [formGroup]="editForm2" class="example-form" style="display: grid;padding-left: 13px;
+    padding-right: 24px;"  (ngSubmit)="saveDC()">
+
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input  formControlName="name"   matInput placeholder="name" [(ngModel)]="name">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Last name</mat-label>
+      <input  formControlName="lastname"   matInput placeholder="lastname" [(ngModel)]="lastname">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>username</mat-label>
+      <input  formControlName="username"   matInput placeholder="username" [(ngModel)]="username">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>email</mat-label>
+      <input  formControlName="email"   matInput placeholder="email" [(ngModel)]="email">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>password</mat-label>
+      <input  formControlName="password"   matInput placeholder="password" [(ngModel)]="password">
+    </mat-form-field>
+
+    <mat-form-field style="width: 91%">
+      <mat-label>Available Districts</mat-label>
+      <mat-select #slrc [(ngModel)]="selectedDistricts" #roadConditionSelect="ngModel" multiple >
+        <div style="display: flex">
+
+          <div class="col-md-10">
+            <input     matInput placeholder="search.." [(ngModel)]="districtName" (keyup)="searchByDistrictName()">
+
+          </div>
+
+          <div class="col-md-2 closeCol" >
+
+            <span (click)="slrc.close()" class="material-icons closeFclass">close</span>
+          </div>
+        </div>
+        <mat-option  *ngFor="let d of districts"  [value]="d.district_name">
+          {{d.district_name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="saveDC()" style="background-color: #2F4060"  type="submit" mat-raised-button color="primary">Save</button>
+
+  <button mat-raised-button (click)="onNoClick()" >Cancel</button>
+</mat-dialog-actions>

@@ -34,7 +34,7 @@
 
 
 </style>
-<mat-tab-group class="mycustomTabClassCiteria" (selectedTabChange)="switchTabChange($event)" >
+<mat-tab-group class="mycustomTabClassCiteria" animationDuration="10ms" (selectedTabChange)="switchTabChange($event)" >
   <mat-tab label="Criteria">
     <div class="table">
       <ngx-datatable
@@ -121,4 +121,13 @@
     margin-top: 10px" (click)="updateMainCost()">save</span>
     </div>
   </mat-tab>
+
+  <mat-tab label="Users">
+
+    <app-users></app-users>
+
+  </mat-tab>
+
+
+
 </mat-tab-group>
