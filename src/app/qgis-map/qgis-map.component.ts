@@ -1956,9 +1956,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   selectDistrict(district, param) {
-
-
-
     this.removeAllMarkersFromMap();
     this.villagesComponent.userSelectionsForMapShow = [];
     this.villagesComponent.villages = [];

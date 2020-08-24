@@ -345,14 +345,8 @@
         </button>
       </div>
       <div class="col-md-12" style="padding-left: 28px">
-        <mat-slide-toggle (toggleChange)="changeMode()" >Apply shaded relief</mat-slide-toggle>
+        <mat-slide-toggle [disabled]="this.province.length==0" (toggleChange)="changeMode()" >Apply shaded relief</mat-slide-toggle>
       </div>
-
-
-
-
-
-
 
 
     </div>
