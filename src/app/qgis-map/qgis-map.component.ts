@@ -12,10 +12,6 @@ import {
 } from '@angular/core';
 import * as $ from 'jquery';
 import * as L from 'leaflet';
-
-
-
-
 import {json_Khost_Province_Baak_District_OSM_roads_UTM42n_2} from './data/Khost_Province_Baak_District_OSM_roads_UTM42n_2';
 import {json_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3} from './data/Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3';
 import {json_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4} from './data/Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4';
@@ -30,10 +26,6 @@ import {json_Khost_Province_Spera_District_OSM_roads_UTM42n_12} from './data/Kho
 import {json_Khost_Province_Tanay_District_OSM_roads_UTM42n_13} from './data/Khost_Province_Tanay_District_OSM_roads_UTM42n_13';
 import {json_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14} from './data/Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14';
 import {json_KhostProvincedistrictsKhost_Province_UTM42n_1} from './data/KhostProvincedistrictsKhost_Province_UTM42n_1';
-
-
-
-
 import Autolinker from 'autolinker';
 import {DataService} from '../../services/data.service';
 import {MatTabChangeEvent} from '@angular/material/tabs';
@@ -45,10 +37,6 @@ import {MatDrawer} from '@angular/material/sidenav';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {ScrollService} from '../../services/scroll.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-
-
-
-
 //json_Districts_422_AGCHO2018_UTM42n_1
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
@@ -192,10 +180,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5: L.geoJson;
   public layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7: L.geoJson;
   public json_Districts_422_AGCHO2018_UTM42n_1;
-
-
-
-
   private changeModeArray=[];
   constructor(private  dataservice: DataService,
               domSanitizer: DomSanitizer,
@@ -300,12 +284,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.currentBtnNavScores = false;
     this.currentBtnNavMcaCbi = false;
   }
-
-
   public showCriteriaOrMca() {
     this.mcaActive = !this.mcaActive;
   }
-
   reloadAndCleanLs() {
     localStorage.setItem('provinceItemName', null);
     localStorage.setItem('num_province_code', null);
@@ -336,11 +317,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.currentBtnNavCriteria = false;
       this.currentBtnNavMcaCbi = true;
     }
-
     this.scrollService.scrollToElementById(param); //
   }
-
-
   btnControlNav(from) {
     var style;
     if (from == 1) {
@@ -427,8 +405,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     window.location.reload();
     this.router.navigate(['/loader']);
   }
-
-
   selectProvince(province, param) {
     if (param == 'manual') {
       localStorage.setItem('provinceItemName', province[0].itemName);
@@ -436,7 +412,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       localStorage.setItem('districtItemName', null);
       localStorage.setItem('num_district_code', null);
     }
-
     this.currentProvinceCode = '';
     this.currentNum_district_code = '';
     this.orderCol = 'LVRR_ID';
@@ -516,9 +491,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     }
   }
-
-
-
   get_districts(data) {
     this.dataservice.get_districts(data).subscribe(response => {
       this.districts = response.data;
@@ -545,21 +517,17 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
     this.myMap.setView([33.3747, 69.8243], 10);
   }
-
   setPageNgx($event: any) {
     this.limitPage = $event;
   }
-
   setPageNgxFacilities($event: any) {
     this.FacilitislimitPage = $event;
     this.facilitiesComponent.setLimit(this.FacilitislimitPage);
   }
-
   setPageNgxvillageLimitPage($event: any) {
     this.villageLimitPage = $event;
     this.villagesComponent.setLimit(this.villageLimitPage);
   }
-
   public resetFiltersFacilities() {
     this.typeFacilities = 'Both';
     this.FacilitislimitPage = 16;
@@ -573,11 +541,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.villageNameFilter = '';
     this.villagesComponent.resetFilters(this.villageNameFilter);
   }
-
   onClick(event) {//
-
   }
-
   public addRoadToMap(object, event) {
     if (event.checked == true) {
       var findRoad = this.roadsTab1.find(x => x.LVRR_ID == object.LVRR_ID);
@@ -596,7 +561,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       findRoad.checkedFilter = false;
     }
   }
-
   public hitFacilitie(facilitie) {
     facilitie.checkedFilter = !facilitie.checkedFilter;
     this.markers.forEach(e => {
@@ -609,7 +573,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
   public hitVillage(village) {
     village.checkedFilter = !village.checkedFilter;
     this.markers.forEach(e => {
@@ -620,11 +583,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           e.closePopup();
         }
       }
-
     });
   }
-
-
   over(road) {
     var findRoad = this.roadsTab1.find(x => x.LVRR_ID == road.LVRR_ID);
     if (road.districtId == 1411) { //-->spera
@@ -683,7 +643,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
     else if (road.districtId == 1404) {
       this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
@@ -713,10 +672,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
   }
-
-
   out(road) {
     var findRoad = this.roadsTab1.find(x => x.LVRR_ID == road.LVRR_ID);
     if (road.districtId == 1411) { //-->spera
@@ -742,8 +698,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
-
     else if (road.districtId == 1410) {
       this.layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
@@ -751,8 +705,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           //   layer.closePopup();
         }
       });
-    }
-
+   }
     else if (road.districtId == 1402) { //ok
       this.layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
@@ -761,7 +714,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
     else if (road.districtId == 1412) { //ok
       this.layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
@@ -770,7 +722,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
     else if (road.districtId == 1407) {
       this.json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
@@ -778,8 +729,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           //   layer.closePopup();
         }
       });
-    }
-
+   }
     else if (road.districtId == 1413) {
       this.layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
@@ -788,7 +738,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
     else if (road.districtId == 1404) {
       this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
@@ -797,7 +746,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
     else if (road.districtId == 1408) {
       this.layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
@@ -806,8 +754,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
-
     else if (road.districtId == 1401) {
       this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
@@ -816,7 +762,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
     else if (road.districtId == 1405) {
       this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID && road.checkedFilter == true) {
@@ -825,10 +770,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
-
   }
-
   public hitRoad(road) {
     var findRoad = this.roadsTab1.find(x => x.LVRR_ID == road.LVRR_ID);
     var findRoad2 = this.filterService.roadTab2.find(x => x.LVRR_ID == road.LVRR_ID);
@@ -903,10 +845,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
-
 //----------------------------------------------------------------------------------------------------------
-
     else if (road.districtId == 1410) {
       this.layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
@@ -928,8 +867,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
-
     else if (road.districtId == 1402) {
       this.layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
@@ -951,7 +888,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
     else if (road.districtId == 1412) {
       this.layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
@@ -973,7 +909,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
     else if (road.districtId == 1407) {
       this.json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
@@ -995,7 +930,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
     else if (road.districtId == 1413) {
       this.layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
@@ -1017,7 +951,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
     else if (road.districtId == 1404) {
       this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
@@ -1039,7 +972,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
     else if (road.districtId == 1408) {
       this.layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
@@ -1061,7 +993,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
     else if (road.districtId == 1401) {
       this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
@@ -1083,7 +1014,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
     else if (road.districtId == 1405) {
       this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
@@ -1105,10 +1035,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-
-
   }
-
   ngOnChanges2() {
     this.roadsTab1.forEach(e => {
       e.checked = false;
@@ -1122,29 +1049,21 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       });
     }
   }
-
   public updateFilter() {
     this.getRoadsPyParams();
   }
-
   public updateNameVillageFilter() {
     this.villagesComponent.updateFilters(this.villageNameFilter);
   }
-
   public updateNameFilterTabFacilities() {
     this.facilitiesComponent.updateFilters(this.nameFilterFacilitie);
   }
-
-
   public updateCoreDataFilter() {
     this.coreDataComponent.updateFilters(this.coreDataLabelFilter);
   }
-
-
   public updateFilterTabFacilities() {
     this.facilitiesComponent.getFiltersType(this.typeFacilities);
   }
-
   public selectAllCheckMethod() {
     if (this.selectAllCheck) {
       this.roadsTab1.forEach(element => {
@@ -1159,17 +1078,14 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         element.checkedFilter = false;
         this.filterService.roadTab2.push(element);
         this.selectionArrayRoads.push(element);
-
       });
     }
   }
-
   public removeAllMarkersFromMap() {
     this.markers.forEach(element => {
       this.myMap.removeLayer(element);
     });
   }
-
   public addFacilitiesToMap() {
     if (this.filterService.facilitiesArray) {
       var marker;
@@ -1189,8 +1105,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
                          <td colspan="2">' + 'Center Type: ' + element.centerType + '</td>\
                     </tr>\
                 </table>';
-
-
           marker.bindPopup(popupContent, {autoClose: true});
           marker.setIcon(icon);
           marker.customId = (element.id).toString() + element.type;
@@ -1223,7 +1137,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             popupAnchor: [1, -34],
             shadowSize: [41, 41]
           });
-
           var popupContent = '<table>\
                      <tr>\
                          <td colspan="2">' + 'Name: ' + element.label + '</td>\
@@ -1244,7 +1157,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             popupAnchor: [1, -34],
             shadowSize: [41, 41]
           });
-
           var popupContent = '<table>\
                      <tr>\
                          <td colspan="2">' + 'Name: ' + element.label + '</td>\
@@ -1265,7 +1177,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             popupAnchor: [1, -34],
             shadowSize: [41, 41]
           });
-
           var popupContent = '<table>\
                      <tr>\
                          <td colspan="2">' + 'Name: ' + element.label + '</td>\
@@ -1286,7 +1197,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             popupAnchor: [1, -34],
             shadowSize: [41, 41]
           });
-
           var popupContent = '<table>\
                      <tr>\
                          <td colspan="2">' + 'Name: ' + element.label + '</td>\
@@ -1313,8 +1223,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       var marker;
       this.filterService.villagesArray.forEach(element => {
         marker = L.marker([element.mapLat, element.mapLong]);
-
-
         var icon = new L.Icon({
           iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png',
           shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -1323,8 +1231,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           popupAnchor: [1, -34],
           shadowSize: [41, 41]
         });
-
-
         var popupContent = '<table>\
                      <tr>\
                          <td colspan="2">' + 'Name: ' + element.villageName + '</td>\
@@ -1349,10 +1255,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
       window.dispatchEvent(new Event('resize'));
-
     }
   }
-
   public setRoadsToMap() {
     for (let i = 0; i < this.roadsTab1.length; i++) {
       var LVRR_ID = this.roadsTab1[i].LVRR_ID;
@@ -1389,11 +1293,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.closePopup();
           }
         });
-
-
       }
-
-
       else if (this.currentNum_district_code == 1403) { //gurbuz
         this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
           if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
@@ -1411,9 +1311,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         });
       }
-
       //----------------
-
       else if (this.currentNum_district_code == 1410) {
         this.layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9.eachLayer(function (layer) {
           if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
@@ -1431,7 +1329,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         });
       }
-
       else if (this.currentNum_district_code == 1402) {
         this.layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6.eachLayer(function (layer) {
           if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
@@ -1449,7 +1346,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         });
       }
-
       else if (this.currentNum_district_code == 1412) {
         this.layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11.eachLayer(function (layer) {
           if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
@@ -1467,7 +1363,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         });
       }
-
       else if (this.currentNum_district_code == 1407) {
         this.json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10.eachLayer(function (layer) {
           if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
@@ -1485,7 +1380,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         });
       }
-
       else if (this.currentNum_district_code == 1413) {
         this.layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4.eachLayer(function (layer) {
           if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
@@ -1503,7 +1397,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         });
       }
-
       else if (this.currentNum_district_code == 1404) {
         this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13.eachLayer(function (layer) {
           if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
@@ -1521,7 +1414,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         });
       }
-
       else if (this.currentNum_district_code == 1408) {
         this.layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14.eachLayer(function (layer) {
           if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
@@ -1539,7 +1431,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         });
       }
-
       else if (this.currentNum_district_code == 1401) {
         this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5.eachLayer(function (layer) {
           if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
@@ -1557,8 +1448,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         });
       }
-
-
       else if (this.currentNum_district_code == 1405) {
         this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7.eachLayer(function (layer) {
           if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
@@ -1578,15 +1467,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     }
   }
-
-
-
   public removeAllRoadsFromMap() {
-
     this.filterService.roadTab2 = [];
     this.roadsTab1 = [];
-
-
     if (this.currentNum_district_code == 1411) { //-->spera
       this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
@@ -1599,11 +1482,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
       });
-
-
     }
-
-
     else if (this.currentNum_district_code == 1403) { //gurbuz
       this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
@@ -1611,9 +1490,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         layer.closePopup();
       });
     }
-
     //----------------
-
     else if (this.currentNum_district_code == 1410) {
       this.layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9.eachLayer(function (layer) {
 
@@ -1622,16 +1499,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         layer.closePopup();
       });
     }
-
     else if (this.currentNum_district_code == 1402) {
       this.layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6.eachLayer(function (layer) {
         layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
-
       });
     }
-
     else if (this.currentNum_district_code == 1412) {
       this.layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11.eachLayer(function (layer) {
         layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
@@ -1639,7 +1513,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         layer.closePopup();
       });
     }
-
     else if (this.currentNum_district_code == 1407) {
       this.json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10.eachLayer(function (layer) {
         layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
@@ -1647,16 +1520,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         layer.closePopup();
       });
     }
-
     else if (this.currentNum_district_code == 1413) {
       this.layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4.eachLayer(function (layer) {
         layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
-
       });
     }
-
     else if (this.currentNum_district_code == 1404) {
       this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13.eachLayer(function (layer) {
         layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
@@ -1664,7 +1534,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         layer.closePopup();
       });
     }
-
     else if (this.currentNum_district_code == 1408) {
       this.layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14.eachLayer(function (layer) {
         layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
@@ -1672,7 +1541,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         layer.closePopup();
       });
     }
-
     else if (this.currentNum_district_code == 1401) {
       this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5.eachLayer(function (layer) {
         layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
@@ -1680,7 +1548,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         layer.closePopup();
       });
     }
-
     else if (this.currentNum_district_code == 1405) {
       this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7.eachLayer(function (layer) {
         layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
@@ -1689,12 +1556,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       });
     }
   }
-
   public switchTab($event: MatTabChangeEvent) {
     var tab = $event.index;
     this.tab = tab;
     this.filterService.tab = tab;
-
     if (tab == 0) {
       this.loadingMap=true;
       setTimeout(() => {
@@ -1713,40 +1578,27 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }, 500)
     } else if (tab == 1) {
       this.coreDataComponent.emptyTable();
-
       window.dispatchEvent(new Event('resize'));
       this.ngOnChanges2();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
-
-
-
-
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
           this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (195) + 'px';
         }
       }, 200, false);
-
-
-
     } else if (tab == 2) {
       this.coreDataComponent.emptyTable();
-
       this.initMapRoadsArray();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
-
       // window.addEventListener('resize', function(event) {
-
-
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
           this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
         }
       }, 0, false);
       // });
-
     } else if (tab == 3) {
       this.initMapRoadsArray();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
@@ -1758,28 +1610,19 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
         }
       }, 0, false);
-
-
     } else if (tab == 4) {
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
-
       this.coreDataComponent.getCriteriaMaster();
       // window.addEventListener('resize', function(event) {
-
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
           this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (199) + 'px';
         }
       }, 0, false);
-
-
-
-
     }
     window.dispatchEvent(new Event('resize'));
   }
-
   public initMapRoadsArray() { //
     this.filterService.mapRoadsArray.splice(0, this.selectionArrayRoads.length);
     var tempRoads = [];
@@ -1788,33 +1631,22 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.filterService.mapRoadsArray.push(tempRoads[i]);
     }
   }
-
-
   updateFiterFclass(e) {
-
     console.log(e);
-
     var sqlIn = '(' + e.toString() + ')';
     this.sqlInFclass = sqlIn; ///
     this.getRoadsPyParams();
   }
-
   updateRoadConditionFilter(e) {
-
     console.log(e);
-
     var checks = [];
     checks = e;
     var sqlIn = '(' + e.toString() + ')';
     this.sqlInRoadConditions = sqlIn; ///
     this.getRoadsPyParams();
   }
-
-
   public selectRoad(road) {
   }
-
-
   public getRoadsPyParams() {
     this.loading = true;
 
@@ -1836,7 +1668,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     ).subscribe(response => {
       this.roadsTab1 = response.data;
       this.loading = false;
-
       if (this.tab == 1) {
         setTimeout(function () {
           if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
@@ -1844,8 +1675,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         }, 200, false);
       }
-
-
       this.roadsTab1.forEach(e => {
         e.checked = false;
         e.checkedFilter = false;
@@ -1861,8 +1690,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           findRoad.checkedFilter = false;
         }
       });
-
-
       if (this.shmaSort == 1) {
         setTimeout(() => {
           const className = this.__getElementByClass('datatable-body');
@@ -1879,7 +1706,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
   onSort(event) {
     window.dispatchEvent(new Event('resize'));
     this.orderCol = event.column.prop;
@@ -1890,8 +1716,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.getRoadsPyParams();
     }
   }
-
-  public calculateCriteriaRoad() {
+ public calculateCriteriaRoad() {
     this.dataservice.calculateCriteria({
       'district_id': this.currentNum_district_code,
       'lvrr_id': this.currentNum_district_code
@@ -1904,8 +1729,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
-
   deselectProvince(province) {
     this.districts = [];
     this.district = '';
@@ -1967,7 +1790,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }else if (layer.feature.properties.dist_name_ == 'Spera'){
           layer.setStyle({fillColor: 'rgba(220,150,158,0.4470588235294118)'});
         }
-
         layer.feature.geometry.type = 'MultiPolygonMode';
       });
     }else{
@@ -2002,13 +1824,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         layer.feature.geometry.type = 'MultiPolygon';
       });
     }
-
-
     this.highlightOnDistrictByName(district[0]);
     this.hilightSelectedroadsDistrict(district[0]);
-
-
-
     this.currentNum_district_code = district[0].num_district_code;
     this.currentDistrictName = district[0].district_name;
     this.getRoadsPyParams();
@@ -2022,8 +1839,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
     }
   }
-
-
   public hilightSelectedroadsDistrict(district) {
     if (district.district_name == 'Jaji Maidan') {
       this.layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4.eachLayer(function (layer) {
@@ -2132,13 +1947,14 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     }
   }
 
-  ngAfterViewInit(): void {
+  public getJSON(): Observable<any> {
+    return this.http.get(this.remoteDataService.imageURL + '?docId=' +135);
+  }
 
+  ngAfterViewInit(): void {
     this.loadingMap=true;
     this.getJSON().subscribe(data => {
       this.loadingMap=false;
-
-      var message;
       this.selectionArrayRoads = [];
       this.diakopthsDromwn = true;
       this.roadsTab1 = [];
@@ -3491,11 +3307,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
-  public getJSON(): Observable<any> {
-    return this.http.get(this.remoteDataService.imageURL + '?docId=' +135);
-  }
-
   private getDistrictsTab2() {
     this.dataservice.get_districts({}).subscribe(response => {
       this.districtsTabRoads = response.data;
@@ -3595,15 +3406,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         interactive: true,
       }
     }
-
-
-
-
     this.myMap.createPane('pane_Districts_422_AGCHO2018_UTM42n_1');
     this.myMap.getPane('pane_Districts_422_AGCHO2018_UTM42n_1').style.zIndex = 401;
     this.myMap.getPane('pane_Districts_422_AGCHO2018_UTM42n_1').style['mix-blend-mode'] = 'normal';
-
-
     var layer_Districts_422_AGCHO2018_UTM42n_1 = new L.geoJson(this.json_Districts_422_AGCHO2018_UTM42n_1, {//
       attribution: '',
       interactive: true,
@@ -3613,9 +3418,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       onEachFeature: pop_Districts_422_AGCHO2018_UTM42n_1,
       style: style_Districts_422_AGCHO2018_UTM42n_1_0,
     });
-
-
-
     bounds_group.addLayer(layer_Districts_422_AGCHO2018_UTM42n_1);
     this.myMap.addLayer(layer_Districts_422_AGCHO2018_UTM42n_1);
     setBounds();
@@ -3651,9 +3453,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
-
-
   photoGalley(item) {
     const dialogRef = this.dialog.open(PhotoGallery, {
       data: {
