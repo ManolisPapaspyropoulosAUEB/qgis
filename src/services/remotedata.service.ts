@@ -3,9 +3,13 @@ import { Injectable } from '@angular/core';
 export class RemoteDataService {
 
 // ------- npm run build-prod ----------
+// ------- npm run build-serve ----------
+
+
+
 //topika
-// public serviceURL = 'http://192.168.1.2:9023/';
-// public imageURL = 'http://192.168.1.2:9023/downloadFile';
+public serviceURL = 'http://192.168.1.2:9023/';
+public imageURL = 'http://192.168.1.2:9023/downloadFile';
 //
 
 
@@ -14,8 +18,8 @@ export class RemoteDataService {
 
 
 // //server
-public serviceURL = 'http://afggis.synergic.systems:9030/';
-public imageURL = 'http://afggis.synergic.systems:9030/downloadFile';
+//   public serviceURL = 'http://afggis.synergic.systems:9030/';
+//   public imageURL = 'http://afggis.synergic.systems:9030/downloadFile';
 // //
 
 
