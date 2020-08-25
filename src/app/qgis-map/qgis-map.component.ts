@@ -1341,7 +1341,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
               layer.feature.geometry.type = 'editMapRoad';
             }
           } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
-            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
             layer.feature.geometry.type = 'MultiLineString';
             layer.closePopup();
           }
@@ -1357,7 +1357,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
               layer.feature.geometry.type = 'editMapRoad';
             }
           } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
-            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
             layer.feature.geometry.type = 'MultiLineString';
             layer.closePopup();
           }
@@ -1378,7 +1378,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
               layer.feature.geometry.type = 'editMapRoad';
             }
           } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
-            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
             layer.feature.geometry.type = 'MultiLineString';
             layer.closePopup();
           }
@@ -1398,7 +1398,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
               layer.feature.geometry.type = 'editMapRoad';
             }
           } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
-            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
             layer.feature.geometry.type = 'MultiLineString';
             layer.closePopup();
           }
@@ -1416,7 +1416,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
               layer.feature.geometry.type = 'editMapRoad';
             }
           } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
-            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
             layer.feature.geometry.type = 'MultiLineString';
             layer.closePopup();
           }
@@ -1434,7 +1434,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
               layer.feature.geometry.type = 'editMapRoad';
             }
           } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
-            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
             layer.feature.geometry.type = 'MultiLineString';
             layer.closePopup();
           }
@@ -1452,7 +1452,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
               layer.feature.geometry.type = 'editMapRoad';
             }
           } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
-            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
             layer.feature.geometry.type = 'MultiLineString';
             layer.closePopup();
           }
@@ -1470,7 +1470,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
               layer.feature.geometry.type = 'editMapRoad';
             }
           } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
-            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
             layer.feature.geometry.type = 'MultiLineString';
             layer.closePopup();
           }
@@ -1488,7 +1488,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
               layer.feature.geometry.type = 'editMapRoad';
             }
           } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
-            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
             layer.feature.geometry.type = 'MultiLineString';
             layer.closePopup();
           }
@@ -1506,7 +1506,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
               layer.feature.geometry.type = 'editMapRoad';
             }
           } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
-            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
             layer.feature.geometry.type = 'MultiLineString';
             layer.closePopup();
           }
@@ -1524,7 +1524,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
               layer.feature.geometry.type = 'editMapRoad';
             }
           } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
-            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
             layer.feature.geometry.type = 'MultiLineString';
             layer.closePopup();
           }
@@ -1542,7 +1542,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
               layer.feature.geometry.type = 'editMapRoad';
             }
           } else if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == false) {
-            layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+            layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
             layer.feature.geometry.type = 'MultiLineString';
             layer.closePopup();
           }
@@ -1560,13 +1560,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     if (this.currentNum_district_code == 1411) { //-->spera
       this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
-        layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+        layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
       });
     } else if (this.currentNum_district_code == 1406) {  //Nadir
       this.layer_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8.eachLayer(function (layer) {
-        layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+        layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
       });
@@ -1577,7 +1577,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     else if (this.currentNum_district_code == 1403) { //gurbuz
       this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
-        layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+        layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
       });
@@ -1588,7 +1588,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     else if (this.currentNum_district_code == 1410) {
       this.layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9.eachLayer(function (layer) {
 
-        layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+        layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
       });
@@ -1596,7 +1596,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     else if (this.currentNum_district_code == 1402) {
       this.layer_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6.eachLayer(function (layer) {
-        layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+        layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
 
@@ -1605,7 +1605,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     else if (this.currentNum_district_code == 1412) {
       this.layer_Khost_Province_Shamul_District_OSM_roads_UTM42n_11.eachLayer(function (layer) {
-        layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+        layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
       });
@@ -1613,7 +1613,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     else if (this.currentNum_district_code == 1407) {
       this.json_Khost_Province_Sabari_District_OSM_roads_UTM42n_10.eachLayer(function (layer) {
-        layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+        layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
       });
@@ -1621,7 +1621,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     else if (this.currentNum_district_code == 1413) {
       this.layer_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4.eachLayer(function (layer) {
-        layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+        layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
 
@@ -1630,7 +1630,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     else if (this.currentNum_district_code == 1404) {
       this.layer_Khost_Province_Tanay_District_OSM_roads_UTM42n_13.eachLayer(function (layer) {
-        layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+        layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
       });
@@ -1638,7 +1638,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     else if (this.currentNum_district_code == 1408) {
       this.layer_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14.eachLayer(function (layer) {
-        layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+        layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
       });
@@ -1646,7 +1646,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     else if (this.currentNum_district_code == 1401) {
       this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5.eachLayer(function (layer) {
-        layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+        layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
       });
@@ -1654,7 +1654,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
     else if (this.currentNum_district_code == 1405) {
       this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7.eachLayer(function (layer) {
-        layer.setStyle({color: '#D8953C', weight: 1});  //color:'#ffff00'
+        layer.setStyle({color: '#d7e3ff', weight: 1});  //color:'#ffff00'
         layer.feature.geometry.type = 'MultiLineString';
         layer.closePopup();
       });
@@ -1917,7 +1917,29 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       });
     }else{
       this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
-        layer.setStyle({fillColor: 'rgba(183,72,75,1.0)'});
+
+
+        if (layer.feature.properties.dist_name_ == 'Jaji Maidan') {
+          layer.setStyle({fillColor: 'rgba(190,213,122,1.0)'});
+        }else if (layer.feature.properties.dist_name_ == 'Baak'){
+          layer.setStyle({fillColor: 'rgba(188,200,128,1.0)'});
+        }else if (layer.feature.properties.dist_name_ == 'Baak'){
+          layer.setStyle({fillColor: 'rgba(178,208,182,1.0)'});
+        }else if (layer.feature.properties.dist_name_ == 'Musa Khel'){
+          layer.setStyle({fillColor: 'rgba(224,181,128,1.0)'});
+        }else if (layer.feature.properties.dist_name_ == 'Qalandar'){
+          layer.setStyle({fillColor: 'rgba(168,213,148,1.0)'});
+        }else if (layer.feature.properties.dist_name_ == 'Nadir Shah Kot'){
+          layer.setStyle({fillColor: 'rgba(185,162,188,1.0)'});
+        }else if (layer.feature.properties.dist_name_ == 'Shamul'){
+          layer.setStyle({fillColor: 'rgba(218,153,183,1.0)'});
+        }else if (layer.feature.properties.dist_name_ == 'Tanay'){
+          layer.setStyle({fillColor: 'rgba(222,211,121,1.0)'});
+        }else if (layer.feature.properties.dist_name_ == 'Gurbuz'){
+          layer.setStyle({fillColor: 'rgba(166,199,154,1.0)'});
+        }else if (layer.feature.properties.dist_name_ == 'Khost'){
+          layer.setStyle({fillColor: 'rgba(218,160,146,1.0)'});
+        }
         layer.feature.geometry.type = 'MultiPolygon';
       });
     }
@@ -2311,7 +2333,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       return {
         pane: 'pane_Khost_Province_Baak_District_OSM_roads_UTM42n_2',
         opacity: 1,
-        color: 'rgba(255,158,23,1.0)',
+        color: '#d7e3ff',
         dashArray: '',
         lineCap: 'square',
         lineJoin: 'bevel',
@@ -2387,7 +2409,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       return {
         pane: 'pane_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3',
         opacity: 1,
-        color: 'rgba(232,113,141,1.0)',
+        color: '#d7e3ff',
         dashArray: '',
         lineCap: 'square',
         lineJoin: 'bevel',
@@ -2396,6 +2418,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         interactive: true,
       };
     }
+
+
 
     this.myMap.createPane('pane_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3');
     this.myMap.getPane('pane_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3').style.zIndex = 403;
@@ -2457,11 +2481,12 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       layer.bindPopup(popupContent, {maxHeight: 400, minHeight: 400, maxWidth: 300, minWidth: 196, closeOnClick: false, autoClose: true});
     }
 
+
     function style_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4_0() {
       return {
         pane: 'pane_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4',
         opacity: 1,
-        color: 'rgba(141,90,153,1.0)',
+        color: '#d7e3ff',
         dashArray: '',
         lineCap: 'square',
         lineJoin: 'bevel',
@@ -2535,7 +2560,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       return {
         pane: 'pane_Khost_Province_Khost_District_OSM_roads_UTM42n_5',
         opacity: 1,
-        color: 'rgba(243,166,178,1.0)',
+        color: '#d7e3ff',
         dashArray: '',
         lineCap: 'square',
         lineJoin: 'bevel',
@@ -2610,7 +2635,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       return {
         pane: 'pane_Khost_Province_Manduzay_District_OSM_roads_UTM42n_6',
         opacity: 1,
-        color: 'rgba(114,155,111,1.0)',
+        color: '#d7e3ff',
         dashArray: '',
         lineCap: 'square',
         lineJoin: 'bevel',
@@ -2685,7 +2710,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       return {
         pane: 'pane_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7',
         opacity: 1,
-        color: 'rgba(213,180,60,1.0)',
+        color: '#d7e3ff',
         dashArray: '',
         lineCap: 'square',
         lineJoin: 'bevel',
@@ -2761,7 +2786,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       return {
         pane: 'pane_Khost_Province_Nadir_Shah_Kot_District_OSM_roads_UTM42n_8',
         opacity: 1,
-        color: 'rgba(164,113,88,1.0)',
+        color: '#d7e3ff',
         dashArray: '',
         lineCap: 'square',
         lineJoin: 'bevel',
@@ -2835,7 +2860,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       return {
         pane: 'pane_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9',
         opacity: 1,
-        color: 'rgba(133,182,111,1.0)',
+        color: '#d7e3ff',
         dashArray: '',
         lineCap: 'square',
         lineJoin: 'bevel',
@@ -2914,7 +2939,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       return {
         pane: 'pane_Khost_Province_Sabari_District_OSM_roads_UTM42n_10',
         opacity: 1,
-        color: 'rgba(125,139,143,1.0)',
+        color: '#d7e3ff',
         dashArray: '',
         lineCap: 'square',
         lineJoin: 'bevel',
@@ -2990,7 +3015,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       return {
         pane: 'pane_Khost_Province_Shamul_District_OSM_roads_UTM42n_11',
         opacity: 1,
-        color: 'rgba(145,82,45,1.0)',
+        color: '#d7e3ff',
         dashArray: '',
         lineCap: 'square',
         lineJoin: 'bevel',
@@ -3065,7 +3090,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       return {
         pane: 'pane_Khost_Province_Spera_District_OSM_roads_UTM42n_12',
         opacity: 1,
-        color: 'rgba(190,178,151,1.0)',
+        color: '#d7e3ff',
         dashArray: '',
         lineCap: 'square',
         lineJoin: 'bevel',
@@ -3102,7 +3127,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       return {
         pane: 'pane_Khost_Province_Tanay_District_OSM_roads_UTM42n_13',
         opacity: 1,
-        color: 'rgba(196,60,57,1.0)',
+        color: '#d7e3ff',
         dashArray: '',
         lineCap: 'square',
         lineJoin: 'bevel',
@@ -3138,7 +3163,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       return {
         pane: 'pane_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14',
         opacity: 1,
-        color: 'rgba(229,182,54,1.0)',
+        color: '#d7e3ff',
         dashArray: '',
         lineCap: 'square',
         lineJoin: 'bevel',
