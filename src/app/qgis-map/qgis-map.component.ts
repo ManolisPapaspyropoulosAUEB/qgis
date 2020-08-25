@@ -12,7 +12,6 @@ import {
 } from '@angular/core';
 import * as $ from 'jquery';
 import * as L from 'leaflet';
-
 import {json_Khost_Province_Baak_District_OSM_roads_UTM42n_2} from './data/Khost_Province_Baak_District_OSM_roads_UTM42n_2';
 import {json_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3} from './data/Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3';
 import {json_Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4} from './data/Khost_Province_Jaji_Maidan_District_OSM_roads_UTM42n_4';
@@ -27,11 +26,7 @@ import {json_Khost_Province_Spera_District_OSM_roads_UTM42n_12} from './data/Kho
 import {json_Khost_Province_Tanay_District_OSM_roads_UTM42n_13} from './data/Khost_Province_Tanay_District_OSM_roads_UTM42n_13';
 import {json_Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14} from './data/Khost_Province_Tirzayee_District_OSM_roads_UTM42n_14';
 import {json_KhostProvincedistrictsKhost_Province_UTM42n_1} from './data/KhostProvincedistrictsKhost_Province_UTM42n_1';
-
 import {img_ShadedreliefKhostUTM42n_0} from './data/shade';
-
-
-
 import Autolinker from 'autolinker';
 import {DataService} from '../../services/data.service';
 import {MatTabChangeEvent} from '@angular/material/tabs';
@@ -63,9 +58,7 @@ import {ImagePipe} from './image.pipe';
 import {SafeUrlPipe} from './safeurl.pipe';
 import {MaterialFileInputModule} from 'ngx-material-file-input';
 import {RemoteDataService} from '../../services/remotedata.service';
-
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
 interface Options {
   width?: number,
   height?: number,
@@ -74,8 +67,6 @@ interface Options {
   toolbar?: number,
   location?: number;
 }
-
-
 @Component({
   selector: 'app-qgis-map',
   templateUrl: './index.html',
@@ -100,13 +91,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public searchTextFacilities: '';
   public searchTextVillages: '';
   public roadsToMap = [];
-  //public lvrrid;
   public selectAllCheck;
-
   public orderCol;
   public descAsc;
-
-
   public flagMap;
   public asyncResult;
   public selectAllCheckFacilities;
@@ -133,7 +120,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     primaryKey: 'num_province_code',
     enableCheckAll: false
   };
-
   dropdownSettings3 = {
     singleSelection: true,
     badgeShowlimitPage: 3,
@@ -162,12 +148,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public selectedValuesRoadCondition = [];
   public agriculturFacilitationFilter = '';
   public markers = [];
-
-
   public diakopthsDromwn = true;
   public currentLastParam = '';
   public loadingMap;
-
   public currentNum_district_code: any;
   public currentProvinceCode: any;
   public currentProvinceName;
@@ -182,8 +165,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public selectAllCheckVillages;
   private roadsTab1Cpy = [];
   public selectionArrayRoads;
-
-
   public layer_KhostProvincedistrictsKhost_Province_UTM42n_1;
   public layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3; //
   public layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3;
@@ -199,24 +180,17 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5: L.geoJson;
   public layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7: L.geoJson;
   private changeModeArray=[];
-
-
-  // this.layer_Khost_Province_Khost_District_OSM_roads_UTM42n_5 this.layer_Khost_Province_Musa_Khel_District_OSM_roads_UTM42n_7
-
-
   constructor(private  dataservice: DataService,
               domSanitizer: DomSanitizer,
               public router: Router,
+              public remoteDataService :RemoteDataService,
               public filterService: FilterService,
               private snackBar: MatSnackBar,
               public dialog: MatDialog,
               private scrollService: ScrollService,
               public excelPdfExporterService: ExcelPdfExporterService) {
   }
-
-  // @ViewChild('mydatatable') mydatatable;
   @ViewChild('mydatatable') mydatatable: DatatableComponent;
-
   @ViewChild('fclassSelect') fclassSelect;
   @ViewChild('roadConditionSelect') roadConditionSelect;
   @ViewChild(FacilitiesComponent) facilitiesComponent: FacilitiesComponent;
@@ -225,9 +199,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   @ViewChild('drawer') drawer: MatDrawer;
   @ViewChild('drawerMapSelections') drawerMapSelections: MatDrawer;
   @ViewChild('lvrrid') lvrrid;
-
-
-  //
   public resetFilters() {
     this.roadWayRadio = 'FB';
     this.bridgeFilter = 'TF';
@@ -240,16 +211,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.sqlInRoadConditions = '()';
     this.getRoadsPyParams();
   }
-
   workbook: ExcelProper.Workbook = new Excel.Workbook();//
   blobType: string = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
   private windowHandle: Window;
   private windowFeatures: Options = {width: 500, height: 500, left: 0, top: 0, location: 0};
-
   public onClick2() {
     this.windowHandle = this.createNewWindow('http://admin.synergic.gr:9030/', 'newWindow', this.windowFeatures);
   }
-
   private createNewWindow(url: string, name = 'newWindow', options: Options) {
     if (url == null) {
       return null;
@@ -257,8 +225,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     const features = `width=${options.width},height=${options.height},left=${options.left},top=${options.top},location=${options.location},toolbar=${options.toolbar}`;
     return window.open(url, name, features);
   }
-
-
   public ngOnInit() {
     this.loadingMap=false;
     this.loading = false;
@@ -266,7 +232,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.descAsc = 'asc';
     this.shmaSort = 0;
     this.filterService.tab = 0;
-
     this.currentBtnNav = 'init';
     this.fullName = localStorage.getItem('fullName');
     if ((localStorage.getItem('province') != null) && (localStorage.getItem('district') != null)) {
@@ -285,7 +250,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.showOnMapWidth = 100;
     this.mcaActive = true;
     this.rowHeight = 50;
-
     this.roadTab2 = [];
     this.selectionArrayRoads = [];
     this.currentStatus = true;
@@ -311,14 +275,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.FacilitislimitPage = 16;
     this.villageLimitPage = 16;
     this.getDistrictsTab2();
-
     this.currentLastParam = '';
     this.currentBtnNavInit = true;
     this.currentBtnNavCriteria = false;
     this.currentBtnNavScores = false;
     this.currentBtnNavMcaCbi = false;
-
-
   }
 
 
@@ -333,27 +294,19 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     localStorage.setItem('num_district_code', null);
     window.location.reload();
   }
-
-
   scrollToId(param: string) {//
     this.currentLastParam = param;
-
     if (param == 'init') {
       this.currentBtnNavInit = true;
       this.currentBtnNavScores = false;
       this.currentBtnNavCriteria = false;
       this.currentBtnNavMcaCbi = false;
-
-
     } else if (param == 'criteria') {
       this.currentBtnNavInit = false;
       this.currentBtnNavScores = false;
       this.currentBtnNavCriteria = true;
       this.currentBtnNavMcaCbi = false;
-
     } else if (param == 'c1_location') {
-
-
       this.currentBtnNavInit = false;
       this.currentBtnNavScores = true;
       this.currentBtnNavCriteria = false;
@@ -363,7 +316,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.currentBtnNavScores = false;
       this.currentBtnNavCriteria = false;
       this.currentBtnNavMcaCbi = true;
-
     }
 
     this.scrollService.scrollToElementById(param); //
@@ -371,12 +323,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
   btnControlNav(from) {
-
-
     var style;
     if (from == 1) {
-
-
       if (this.currentBtnNavInit) {
         style = {
           'margin-right': '4px!important',
@@ -384,20 +332,14 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           'height': '25px!important',
           'background': '#939BAC!important'
         };
-
       } else {
-
         style = {
           'margin-right': '4px!important',
           'border-radius': '16px!important',
           'height': '25px!important',
           'background': '#8BAA48!important'
         };
-
-
       }
-
-
       return style;
     } else if (from == 2) {
       if (this.currentBtnNavInit) {
@@ -408,19 +350,14 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           'background': '#939BAC!important'
         };
       } else {
-
         style = {
           'margin-right': '4px!important',
           'border-radius': '16px!important',
           'height': '25px!important',
           'background': '#8BAA48!important'
         };
-
-
       }
-
       return style;
-
     } else if (from == 3) {
       if (this.currentBtnNavInit) {
         style = {
@@ -430,19 +367,14 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           'background': '#939BAC!important'
         };
       } else {
-
         style = {
           'margin-right': '4px!important',
           'border-radius': '16px!important',
           'height': '25px!important',
           'background': '#8BAA48!important'
         };
-
-
       }
       return style;
-
-
     } else if (from == 4) {
       if (this.currentBtnNavInit) {
         style = {
@@ -2103,7 +2035,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         layer.feature.geometry.type = 'MultiPolygon';
       });
 
-      if(localStorage.getItem('district') != null){//ara uparxei epilegmeno district
         var currentDistrict = this.currentDistrictName;
         this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
           if (layer.feature.properties.dist_name_ == currentDistrict) {
@@ -2111,14 +2042,13 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.feature.geometry.type = 'editRow';
           }
         });
-      }
 
 
     }else{
       var bounds_group = new L.featureGroup([]);
       this.myMap.createPane('pane_ShadedreliefKhostUTM42n_0');//
       this.myMap.getPane('pane_ShadedreliefKhostUTM42n_0').style.zIndex = 400;
-      var img_ShadedreliefKhostUTM42n_0 = 'http://192.168.1.5:9023/downloadFile?docId=133';
+      var img_ShadedreliefKhostUTM42n_0 =this.remoteDataService.imageURL + '?docId=' +133;
       var img_bounds_ShadedreliefKhostUTM42n_0 = [[32.84103911135089,69.0882851687274],[33.9123098127972,70.5131406575886]];
       var layer_ShadedreliefKhostUTM42n_0 = new L.imageOverlay(img_ShadedreliefKhostUTM42n_0,
         img_bounds_ShadedreliefKhostUTM42n_0,
@@ -2131,7 +2061,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         layer.feature.geometry.type = 'MultiPolygonMode';
       });
 
-      if(localStorage.getItem('district') != null){//ara uparxei epilegmeno district
         var currentDistrict = this.currentDistrictName;
         this.layer_KhostProvincedistrictsKhost_Province_UTM42n_1.eachLayer(function (layer) {
           if (layer.feature.properties.dist_name_ == currentDistrict) {
@@ -2139,7 +2068,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
             layer.feature.geometry.type = 'editRow';
           }
         });
-      }
 
 
     }

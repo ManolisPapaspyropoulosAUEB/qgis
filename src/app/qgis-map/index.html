@@ -59,17 +59,12 @@
       transform: scaleY(1.2);
     }
   }
-
   .container4 {
     height: 10em;
     position: relative;
     height: 80vh;
 
   }
-
-
-
-
   .container4 .wave {
     margin: 0;
     position: absolute;
@@ -77,10 +72,7 @@
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
-  }
-
-
-  .container5 {
+  }  .container5 {
     height: 10em;
     position: relative;
     height: 100vh;
@@ -89,10 +81,6 @@
     right: 0;
     bottom: 0;
   }
-
-
-
-
   .container5 .wave {
     margin: 0;
     position: absolute;
@@ -103,13 +91,7 @@
     transform: translate(-50%, -50%);
 
   }
-
-
-
-
-
   /*------------------END LOADING-----------------------*/
-
   .drawer-map-selection{
     position: fixed!important;
     top: 52px!important;
@@ -144,21 +126,12 @@
     background-color: #2f4060;
     color: white;
 }
-
-
-
-
-
-
-
 .closeFclass{
   position: relative;
   top: 3px;
   right: 3px;
   cursor: pointer;
 }
-
-
 .button-container-list-table{
   /*padding-left: 18px!important;*/
 }
@@ -175,12 +148,7 @@
   background: #8BAA48!important;
   color: #feffff !important;
 }
-
-
-
-
 /*mid circle*/
-
   .fullName {
     position: relative;
     /* top: 13px;*/
@@ -317,13 +285,14 @@
     padding-bottom: 7px;
   }
 
-  .butnRfs{
-    margin-left: 16px;
-    color: #969696;
-    padding-left: 3px;
-    font-weight: 400;
-  }
 
+  .butnRfs{
+    color: #969696;
+    font-weight: 400;
+    padding-left: 2px!important;
+    padding-right: 4px!important;
+    margin-left: 14px!important;
+  }
 </style>
 <mat-drawer-container class="example-container">
   <mat-drawer class="left-column-filter" style="width:17%;background: whitesmoke" #drawer [mode]="'side'" opened>
@@ -337,18 +306,11 @@
     </div>
     <div class=" " style="display: grid;margin-top: 5px;margin-bottom: 10px;">
 
-      <div class="col-md-6" style="margin-bottom: 10px">
-        <button (click)="reloadAndCleanLs()" mat-button class="butnRfs">
-          <span class="material-icons" style="margin-right: 5px;">cached</span>
-          <span >Reset All</span>
-
-        </button>
+      <div class="col-md-12" style="padding-left: 17px;margin-top: 14px;margin-bottom: 7px">
+        <mat-slide-toggle [disabled]="this.province.length==0" (toggleChange)="changeMode()" >
+        <span style="font-size: 14px;">Apply shaded relief</span>
+        </mat-slide-toggle>
       </div>
-      <div class="col-md-12" style="padding-left: 28px">
-        <mat-slide-toggle [disabled]="this.province.length==0" (toggleChange)="changeMode()" >Apply shaded relief</mat-slide-toggle>
-      </div>
-
-
     </div>
     <div class="" style="    margin-top: 13px;">
       <div class="province-combo">
@@ -365,6 +327,13 @@
       </div>
 
 
+      <div class="col-md-6" style="margin-top: 10px;
+    padding-left: 0px;">
+        <button (click)="reloadAndCleanLs()" mat-button class="butnRfs">
+          <span class="material-icons" style="margin-right: 5px;">cached</span>
+          <span >Reset All</span>
+        </button>
+      </div>
 
       <mat-checkbox *ngIf="tab==1 && currentNum_district_code>0" [(ngModel)]="selectAllCheck" (click)="selectAllCheckMethod()" class="example-margin selectAllRoads" >
             <span *ngIf="!selectAllCheck">
@@ -379,7 +348,6 @@
                <span style="margin-bottom: 10px;    "><b style="    font-size: 15px;">Filters</b>
                          <span class="material-icons resetFilters" matTooltip="Clear Filters"  (click)="resetFilters()">cached</span>
                </span>
-
         </div>
         <mat-form-field class="example-full-width" style="width: 91%">
           <mat-label>Search by name,LVRR_ID</mat-label>
@@ -393,7 +361,6 @@
                 <span (click)="sl.close()" class="material-icons closeFclass">close</span>
               </div>
             </div>
-
             <mat-option [value]="unclassifiedCheck">unclassified</mat-option>
             <mat-option [value]="primaryCheck">primary</mat-option>
             <mat-option [value]="secondaryCheck">secondary</mat-option>
@@ -419,14 +386,11 @@
         <mat-form-field style="width: 91%">
           <mat-label>Road Condition Search</mat-label>
           <mat-select #slrc [(ngModel)]="selectedValuesRoadCondition" #roadConditionSelect="ngModel" multiple (valueChange)="updateRoadConditionFilter($event)">
-
             <div class="flex">
               <div class="col-md-12 closeCol" >
                 <span (click)="slrc.close()" class="material-icons closeFclass">close</span>
               </div>
             </div>
-
-
             <mat-option [value]="concreteFilter">concrete</mat-option>
             <mat-option [value]="sand_or_gravelFilter">sand or gravel</mat-option>
             <mat-option [value]="asphaltFilter">asphalt</mat-option>
@@ -440,9 +404,6 @@
           <mat-radio-button value="TF">Both</mat-radio-button>
         </mat-radio-group>
       </div>
-
-
-
       <mat-checkbox *ngIf="tab==2 && currentProvinceCode>0" [(ngModel)]="selectAllCheckFacilities" (click)="selectAllCheckMethodFacilities()"
                     class="example-margin selectAllRoads ">
             <span *ngIf="!selectAllCheckFacilities">
@@ -455,8 +416,7 @@
       <div *ngIf="tab==2 && currentProvinceCode>0" class="roadFilters">
         <div style="display: grid;">
                <span style="margin-bottom: 10px;    "><b>Filters</b>
-                         <span class="material-icons resetFilters" matTooltip="Clear Filters"
-                               (click)="resetFiltersFacilities()">cached</span>
+                         <span class="material-icons resetFilters" matTooltip="Clear Filters" (click)="resetFiltersFacilities()">cached</span>
                </span>
         </div>
         <mat-form-field class="example-full-width" style="width: 91%">
@@ -485,10 +445,8 @@
       </mat-checkbox>
       <div *ngIf="tab==3 && currentProvinceCode>0" class="roadFilters">
         <div style="display: grid">
-
                <span style="margin-bottom: 10px;    "><b>Filters</b>
-                         <span class="material-icons resetFilters" matTooltip="Clear Filters"
-                               (click)="resetFiltersVillages()">cached</span>
+                         <span class="material-icons resetFilters" matTooltip="Clear Filters" (click)="resetFiltersVillages()">cached</span>
                </span>
         </div>
         <mat-form-field class="example-full-width" style="width: 91%">
@@ -503,14 +461,9 @@
           <span>Villages</span>
         </div>
       </div>
-
-
-
-
       <div *ngIf="tab==4 " class="roadFilters">
         <div style="display: grid">
-               <span style="margin-bottom: 10px;    "><b>Filters</b>
-               </span>
+               <span style="margin-bottom: 10px;    "><b>Filters</b></span>
         </div>
         <mat-form-field class="example-full-width" style="width: 91%">
           <mat-label>Search by label</mat-label>
@@ -523,10 +476,8 @@
     <div class="" style="display:flex;background-color: #2f4060!important;">
       <div class="col-md-7 tabs-custom-links">
         <div>
-          <span *ngIf="currentStatus" (click)="openClosedSideNav()"
-                class="material-icons buttonNavLeft">navigate_before</span>
-          <span *ngIf="!currentStatus" (click)="openClosedSideNav()"
-                class="material-icons buttonNavLeft">navigate_next</span>
+          <span *ngIf="currentStatus" (click)="openClosedSideNav()" class="material-icons buttonNavLeft">navigate_before</span>
+          <span *ngIf="!currentStatus" (click)="openClosedSideNav()" class="material-icons buttonNavLeft">navigate_next</span>
         </div>
       </div>
       <div class="col-md-5 user-data">
@@ -604,21 +555,13 @@
                           </div>
                         </div>
                       </div>
-
-
-
                       <div class="col-md-3">
                         <div class="col-md-12" style="padding: 0;    padding-top: 5px;    margin-right: 23px;    width: 80px;display: flex">
                           <div style="    min-width: 46px;">
                       <span *ngIf="road.docSize>-1" class="docspan" matBadge="{{road.docSize}}" matBadgeOverlap="false" matBadgeSize="small" matBadgePosition="before" style="    position: relative;left: 21px;top: -8px;z-index: 3;">
-                      </span>
-
-                            <span  matTooltip="Uploads" (click)="photoGalley(road)"  class="material-icons" style="position: relative;left: -10px;">
-                          insert_photo
-                      </span>
+                      </span><span  matTooltip="Uploads" (click)="photoGalley(road)"  class="material-icons" style="position: relative;left: -10px;">insert_photo</span>
                           </div>
                           <div>
-
                       <span *ngIf="road.notesSize>-1"  matBadge="{{road.notesSize}}"  matBadgeOverlap="false" matBadgeSize="small" matBadgePosition="before" style="position: relative;left: 22px; top: -9px;z-index: 3;">
                       </span>
                             <span   matTooltip="Notes" (click)="notes(road)" class="material-icons" style="position: relative;top: 1px;left: -8px">
@@ -627,8 +570,6 @@
                           </div>
                         </div>
                       </div>
-
-
                       <div (click)="hitRoad(road)" class="col-md-1" style="margin: 0;padding-top: 12px">
                         <mat-checkbox [disabled]="true" (change)="road.checkedFilter=!road.checkedFilter"
                                       [(ngModel)]="road.checkedFilter" class="example-margin"></mat-checkbox>
@@ -791,9 +732,6 @@
             <div *ngIf="this.currentNum_district_code>0 " class="" style="display: flex;    border-bottom: 1px solid #d1d4d7;" >
               <div class="col-md-8" style="margin: 0;padding: 0;display: flex">
                 <div class="col-md-3 button-header-outer" style="padding-left: 10px">
-
-
-
                   <button matTooltip="Calculate criteria,MCA,CBI Rates"  mat-button (click)="calculateCriteria()"   mat-icon-button aria-label="Example icon button with a vertical three dot icon">
                     <svg   style="cursor: pointer;position: relative;top: 0px;left: 7px;"  xmlns="http://www.w3.org/2000/svg" width="28" height="28.001" viewBox="0 0 28 28.001"><defs><style>.a{fill:#b5b5b5;}.b{fill:#8baa48;}</style></defs><path class="a" d="M2.461,0A2.464,2.464,0,0,0,0,2.461V12.469H12.469V0ZM8.149,7.055H7.055V8.149a.82.82,0,1,1-1.641,0V7.055H4.32a.82.82,0,1,1,0-1.641H5.414V4.32a.82.82,0,1,1,1.641,0V5.414H8.149a.82.82,0,1,1,0,1.641Z"/><path class="a" d="M270.022,12.469h.447V2.461A2.464,2.464,0,0,0,268.008,0H258V12.173a9.688,9.688,0,0,1,12.022.3ZM261.5,6.234a.82.82,0,0,1,.82-.82h3.828a.82.82,0,0,1,0,1.641H262.32A.82.82,0,0,1,261.5,6.234Z" transform="translate(-243.89)"/><path class="a" d="M12.173,258H0v10.008a2.464,2.464,0,0,0,2.461,2.461H12.469v-.447a9.688,9.688,0,0,1-.3-12.022Zm-3.991,7.022a.82.82,0,1,1-1.16,1.16l-.787-.787-.787.787a.82.82,0,0,1-1.16-1.16l.787-.787-.787-.787a.82.82,0,1,1,1.16-1.16l.787.787.787-.787a.82.82,0,0,1,1.16,1.16l-.787.787Z" transform="translate(0 -243.89)"/><g transform="translate(11.867 11.867)"><path class="b" d="M225.067,217a8.067,8.067,0,1,0,8.067,8.067A8.076,8.076,0,0,0,225.067,217Zm1.914,10.254h-3.828a.82.82,0,1,1,0-1.641h3.828a.82.82,0,1,1,0,1.641Zm0-2.734h-3.828a.82.82,0,1,1,0-1.641h3.828a.82.82,0,1,1,0,1.641Z" transform="translate(-217 -217)"/></g></svg>
                     <span   style="    position: relative;left: 10px;" class="button-label" >CALC MCA,CBI</span>
@@ -811,9 +749,6 @@
                     <span class="button-label">EXPORT</span>
                   </button>
                 </div>
-
-
-
                 <div class="col-md-2 button-header-outer pl-0" style="position: relative;left: -12px;">
                   <button  (click)="importRoadsXLS()"  style="    padding-left: 7px;"   matTooltip="import" matTooltipClass="tooltip" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="27.16" height="27.16" viewBox="0 0 27.16 27.16"><defs><style>.a{fill:#8baa48;}.b{fill:#b5b5b5;}</style></defs><path class="a" d="M18.356,11a7.356,7.356,0,1,0,7.356,7.356A7.364,7.364,0,0,0,18.356,11Zm3.178,9.339-2.546,2.829a.851.851,0,0,1-1.263,0l-2.546-2.829a.85.85,0,0,1,.631-1.417h1.415V14.395a1.132,1.132,0,1,1,2.263,0v4.527H20.9A.85.85,0,0,1,21.534,20.339Z" transform="translate(1.448 1.448)"/><path class="b" d="M11.317,0,22.633,4.527,11.317,9.053,0,4.527Z"/><path class="b" d="M10.185,10.228,0,6.154V17.3a.565.565,0,0,0,.37.531l9.815,3.616Z" transform="translate(0 0.81)"/><path class="b" d="M18.356,9.375a9.618,9.618,0,0,1,2.829.426V6.154L11,10.228v2.58A9.6,9.6,0,0,1,18.356,9.375Z" transform="translate(1.448 0.81)"/></svg>
