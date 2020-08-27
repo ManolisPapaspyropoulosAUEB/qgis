@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
+import {UsersComponent} from '../users/users.component';
 
 @Component({
   selector: 'app-core-data',
@@ -13,11 +14,14 @@ export class CoreDataComponent implements OnInit {
   label;
   opParam;
   opId;
+  tab;
   criteriaMaster;
   role;
   constructor(private dataService :DataService,private snackBar: MatSnackBar) { }
+  @ViewChild(UsersComponent) usersComponent: UsersComponent;
 
   ngOnInit(): void {
+    this.tab=0;
     this.role=localStorage.getItem("role");
     this.label="";
   }
@@ -37,10 +41,21 @@ export class CoreDataComponent implements OnInit {
     }
   }
 
+  public switchTabChange(event){
+    this.tab=event.index;
+    window.dispatchEvent(new Event('resize'));
 
-  public updateFilters(label){
+  }
+
+  public updateFilters(label){//
+
     this.label=label;
-    this.getCriteriaMaster();
+    if(this.tab==0){
+      this.getCriteriaMaster();
+    }else if(this.tab==2){
+      this.usersComponent.getUsersFilters(label);
+    }
+
   }
 
 
@@ -67,10 +82,7 @@ export class CoreDataComponent implements OnInit {
     console.log('Detail Toggled', event);
   }
 
-  public switchTabChange(event){
-    window.dispatchEvent(new Event('resize'));
 
-  }
 
 
   updateMainCost() { //opId

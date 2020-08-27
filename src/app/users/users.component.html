@@ -61,21 +61,23 @@
         account_circle
         </span>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-8">
 
 
         <div style="display: flex">
           <div class="col-md-12">
             <h1 style="color: #0684ff;margin-bottom: 0px">{{user.fullName}}</h1>
             <h3 style="margin-bottom: 0px">{{user.email}}</h3>
-            <h3 style="margin-bottom: 0px">{{user.role}}</h3>
+            <h3 *ngIf="user.role=='admin'" style="margin-bottom: 0px;    color: cadetblue;font-weight: 600;" >{{user.role}}</h3>
+            <h3 *ngIf="user.role=='user'" style="margin-bottom: 0px;    color: crimson;font-weight: 600;" >{{user.role}}</h3>
           </div>
         </div>
 
       </div>
-      <div class="col-md-1">
+      <div class="col-md-2" style="text-align: center">
         <div class="button-container-list-table" style="    position: relative;top: 24px;">
-          <button class="button-actions" mat-icon-button [matMenuTriggerFor]="menu">
+          <button style="background: #f2f2f2;
+    box-shadow: 0px 0px 3px 1px #888888;"  class="button-actions" mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon class="more-action-mat">more_vert</mat-icon>
           </button>
           <mat-menu class="menu-actions" #menu="matMenu">

@@ -10,16 +10,28 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
+  name='';
    users = [];
   constructor(private dataservice : DataService, public dialog: MatDialog, private snackBar: MatSnackBar,) { }
 
   ngOnInit(): void {
+    this.name='';
     this.getUsers();
   }
 
   getUsers(){
-    this.dataservice.getUsers({}).subscribe(res=>{
+    this.dataservice.getUsers({
+      name:this.name
+    }).subscribe(res=>{
+      this.users=res.data;
+    })
+  }
+
+  getUsersFilters(name){
+    this.name=name;
+    this.dataservice.getUsers({
+      name:this.name
+    }).subscribe(res=>{
       this.users=res.data;
     })
   }

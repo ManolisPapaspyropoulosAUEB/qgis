@@ -3656,20 +3656,18 @@ export class ProfileDialog implements OnInit {
     this.oldPassword='';
     this.newPassword='';
     this.retypeNewPassword='';
-    this.dataservice.getUsers({
-      "userId":localStorage.getItem("id")
-    }).subscribe(response=>{
-      if(response.status=='ok'){
-        this.id=response.data[0].id;
-        this.name=response.data[0].name;
-        this.lastname=response.data[0].lastname;
-        this.fullName=response.data[0].fullName;
-        this.username=response.data[0].username;
-        this.role=response.data[0].role;
-        this.password=response.data[0].password;
-        this.email=response.data[0].email;
-      }
-    });
+    this.name='';
+    this.lastname='';
+    this.fullName='';
+    this.username='';
+    this.role='';
+    this.email='';
+    this.oldPassword='';
+    this.newPassword='';
+    this.retypeNewPassword='';
+
+    console.log(this.password);
+
     this.editForm2 = this.formBuilder.group({
       name: [ this.name, Validators.required],
       lastname: [ this.lastname, Validators.required],
@@ -3677,18 +3675,18 @@ export class ProfileDialog implements OnInit {
       role: [ this.role, Validators.required],
       email: [ this.email, Validators.required]
     });
-    this.editForm3 = this.formBuilder.group(
-      {password: [ this.password,Validators.required ],
-      oldPassword: [ this.oldPassword,Validators.required ],
-      newPassword: [ this.newPassword,[Validators.required, Validators.minLength(8)] ],
-      retypeNewPassword: [ this.retypeNewPassword,Validators.required ],
-    },
+    this.editForm3 = this.formBuilder.group({
+        password: [ this.password,Validators.required ],
+        oldPassword: [ this.oldPassword,Validators.required ],
+        newPassword: [ this.newPassword,[Validators.required, Validators.minLength(8)] ],
+        retypeNewPassword: [this.retypeNewPassword,Validators.required ],
+      },
       {validator: [MustMatch('newPassword', 'retypeNewPassword'),MustMatch2('oldPassword', 'password')]}
-      );
+    );
     function MustMatch(controlName: string, matchingControlName: string) {
       return (formGroup: FormGroup) => {
-        const control = formGroup.controls[controlName];
-        const matchingControl = formGroup.controls[matchingControlName];
+        var control = formGroup.controls[controlName];
+        var matchingControl = formGroup.controls[matchingControlName];
         if (matchingControl.errors && !matchingControl.errors.mustMatch) {
           // return if another validator has already found an error on the matchingControl
           return;
@@ -3703,8 +3701,12 @@ export class ProfileDialog implements OnInit {
     }
     function MustMatch2(controlName: string, matchingControlName: string) {
       return (formGroup: FormGroup) => {
-        const control = formGroup.controls[controlName];
-        const matchingControl = formGroup.controls[matchingControlName];
+        var control = formGroup.controls[controlName];
+        var matchingControl = formGroup.controls[matchingControlName];
+
+        console.log(control.value);
+        console.log(matchingControl.value);
+
         if (control.errors && !control.errors.mustMatch) {
           return;
         }
@@ -3717,9 +3719,55 @@ export class ProfileDialog implements OnInit {
     }
     this.f2.role.disable();
     this.f2.email.disable();
+
+    this.dataservice.getUsers({
+      "userId":localStorage.getItem("id")
+    }).subscribe(response=>{
+      if(response.status=='ok'){
+        this.id=response.data[0].id;
+        this.name=response.data[0].name;
+        this.lastname=response.data[0].lastname;
+        this.fullName=response.data[0].fullName;
+        this.username=response.data[0].username;
+        this.role=response.data[0].role;
+        this.password=response.data[0].password;
+        this.email=response.data[0].email;
+        this.editForm2.get("name").setValue(response.data[0].name);
+        this.editForm2.get("lastname").setValue(response.data[0].lastname);
+        this.editForm2.get("username").setValue(response.data[0].username);
+        this.editForm2.get("email").setValue(response.data[0].email);
+        this.editForm3.get("oldPassword").setValue(response.data[0].oldPassword);
+        this.editForm3.get("newPassword").setValue(response.data[0].newPassword);
+        this.editForm3.get("retypeNewPassword").setValue(response.data[0].retypeNewPassword);
+        this.editForm3.get("password").setValue(response.data[0].password);
+
+      }
+    });
+
   }
+
+
+  getUser(){
+    this.dataservice.getUsers({
+      "userId":localStorage.getItem("id")
+    }).subscribe(response=>{
+      if(response.status=='ok'){
+        this.id=response.data[0].id;
+        this.name=response.data[0].name;
+        this.lastname=response.data[0].lastname;
+        this.fullName=response.data[0].fullName;
+        this.username=response.data[0].username;
+        this.role=response.data[0].role;
+        this.password=response.data[0].password;
+        this.email=response.data[0].email;
+      }
+    });
+  }
+
   tabChange(event){
     this.tab =event.index;
+    this.editForm3.get("password").setValue(this.password);
+
   }
 
   get f2() {
@@ -3748,15 +3796,45 @@ export class ProfileDialog implements OnInit {
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
       return;
     }
-    this.dialogRef.close(true);
+
+    this.dataservice.editUser({
+      name: this.f2.name.value,
+      lastname: this.f2.lastname.value,
+      username: this.f2.username.value,
+      userId:this.id
+    }).subscribe(response=>{
+      this.getUser();
+      this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+      localStorage.setItem("fullName",response.fullName);
+    });
   }
+
+  disableInput(){
+    if(this.newPassword==''){
+      this.f2.newPassword.disable();
+    }
+  }
+
+
   public updatePassword() {
+    console.log("eeee")
     if (this.editForm3.invalid) {
       this.validateAllFormFields(this.editForm3);
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
       return;
     }
-    this.dialogRef.close(true);
+    this.dataservice.editUser({
+      password: this.f3.newPassword.value,
+      userId:this.id
+    }).subscribe(response=>{
+      this.getUser();
+      this.retypeNewPassword='';
+      this.oldPassword='';
+      this.newPassword='';
+      this.editForm3.markAsUntouched()
+      this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
+    });
+
   }
 }
 
