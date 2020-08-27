@@ -75,6 +75,7 @@ loading;
           <MatSnackBarConfig>{duration: 3000}
         );
         localStorage.setItem("email",response.role);
+        localStorage.setItem("role",response.role);
         localStorage.setItem("id",response.id);
         localStorage.setItem("fullName",response.fullName);
         this.router.navigate(['/qgis'])

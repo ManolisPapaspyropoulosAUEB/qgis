@@ -122,12 +122,7 @@
     </div>
   </mat-tab>
 
-  <!--<mat-tab label="Users">-->
-
-    <!--<app-users></app-users>-->
-
-  <!--</mat-tab>-->
-
-
-
+  <mat-tab *ngIf="this.role=='admin'" label="Users">
+    <app-users></app-users>
+  </mat-tab>
 </mat-tab-group>

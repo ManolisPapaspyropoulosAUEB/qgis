@@ -22,6 +22,11 @@
     color: white;
   }
 
+  mat-checkbox.mat-checkbox-background{
+    background: white!important;
+    border: 1px solid gray!important;
+  }
+
 
 
   .closeIcon:hover {
@@ -34,6 +39,24 @@
     top: -5px;
     font-size: 19px;
   }
+
+  .dist-name-search{
+    background: lightgrey;
+    margin-bottom: 6px;
+    margin-top: 6px;
+    border-radius: 5px;
+  }
+
+
+  .header-mat-select-multi{
+    display: flex;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+  }
+
 </style>
 
 
@@ -42,7 +65,8 @@
   <div style="display: flex">
     <div class="col-md-11" style="padding-left: 12px">
       <h2 style="font-size: 24px" *ngIf="this.data.updateMode==0">Add Facilitie</h2>
-      <h2  style="font-size: 24px" >Add User</h2>
+      <h2 *ngIf="this.data.mode=='add'"  style="font-size: 24px" >Add User</h2>
+      <h2 *ngIf="this.data.mode=='edit'"  style="font-size: 24px" >Edit User</h2>
 
 
     </div>
@@ -79,23 +103,32 @@
       <input  formControlName="email"   matInput placeholder="email" [(ngModel)]="email">
     </mat-form-field>
 
+    <mat-form-field  appearance="fill">
+      <mat-label>Role</mat-label>
+      <mat-select   formControlName="role" [(value)]="role">
+        <mat-option value="admin">admin</mat-option>
+        <mat-option value="user">user</mat-option>
+      </mat-select>
+    </mat-form-field>
+
     <mat-form-field class="example-full-width">
       <mat-label>password</mat-label>
       <input  formControlName="password"   matInput placeholder="password" [(ngModel)]="password">
     </mat-form-field>
 
-    <mat-form-field style="width: 91%">
+    <mat-form-field *ngIf="this.role!='admin'"   style="width:100%">
       <mat-label>Available Districts</mat-label>
-      <mat-select #slrc [(ngModel)]="selectedDistricts" #roadConditionSelect="ngModel" multiple >
-        <div style="display: flex">
-
-          <div class="col-md-10">
-            <input     matInput placeholder="search.." [(ngModel)]="districtName" (keyup)="searchByDistrictName()">
-
+      <mat-select  formControlName="selectedDistricts" #slrc [(ngModel)]="selectedDistricts"  multiple (valueChange)="printTest()">
+        <div class="header-mat-select-multi">
+          <div class="col-md-2" style="    background: #2f4060;color: white;">
+            <mat-checkbox (change)="selectAllDistricts()" class="example-margin">
+              Select All
+            </mat-checkbox>
           </div>
-
+          <div class="col-md-8" style="background-color: #2f4060;">
+            <input formControlName="districtName"  class="dist-name-search"    matInput placeholder="search.." [(ngModel)]="districtName" (keyup)="searchByDistrictName()" (keydown)="$event.stopPropagation()">
+          </div>
           <div class="col-md-2 closeCol" >
-
             <span (click)="slrc.close()" class="material-icons closeFclass">close</span>
           </div>
         </div>
@@ -104,6 +137,8 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+
+
 
 
   </form>

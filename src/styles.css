@@ -719,7 +719,9 @@ span.datatable-header-cell-label,
 .roadFilters .mat-radio-label-content {
   font-size: 14px;
 }
-
+.mat-drawer-inner-container{
+  overflow-y: hidden!important;
+}
 .roadFilters .mat-form-field-infix {
   font-size: 14px;
 }
@@ -730,8 +732,10 @@ span.datatable-header-cell-label,
 }
 
 .left-column-filter .mat-drawer-inner-container {
-  overflow: hidden;
+  overflow-y: auto!important;
+  overflow-x: hidden!important;
 }
+
 
 .extra-help-points {
   margin-top: 17px;

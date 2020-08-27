@@ -11,8 +11,7 @@
 
 
 <body style="background-color: #5c6b94">
-<div class="container" style="justify-items: center;width: 445px;
-   position: relative;top: 25%">
+<div class="container" style="justify-items: center;width: 445px;position: relative;top: 25%">
   <div style="
     height: 67px;
     background-color: #2F4060;
@@ -23,9 +22,7 @@
     color: white;
     border-radius: 0px;
     box-shadow: 1px 1px 4px #344e8a;
-">Login
-    <mat-progress-bar style="    top: -33px;" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-  </div>
+">Login<mat-progress-bar style="    top: -33px;" *ngIf="loading" mode="indeterminate"></mat-progress-bar></div>
   <mat-card>
     <form  [formGroup]="editForm" class="example-form" style="" (submit)="onSubmitForm()" >
       <mat-form-field style="width: 100%;" class="example-full-width">
@@ -52,29 +49,14 @@
           >
           </ngx-recaptcha2>
         </div>
-
-        <!--6LeOZ4YUAAAAAJ8clQYNtOXNDHsd58KZHyJeILk6-->
-        <!--6LfZwLQZAAAAAI8oDKAs15v6mXnE4JTxxuAv_kaj-->
-        <!--<button  mat-raised-button [disabled]="loading || recaptcha==null" color="primary">Login</button>-->
-        <!--<img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />-->
-
        <div style="display: flex;    justify-content: center;" >
-
-
-
          <button class="loginB" [disabled]="loading || recaptcha==null" mat-raised-button color="primary">Login</button>
        </div>
         <div class=" " style="display: flex;justify-content: center">
           <a   (click)="forgotPassword()"    style="    margin-left: 5px;" mat-button >Forgot Password</a>
-
         </div>
-
-
       </div>
-      <!--<button mat-raised-button color="primary">Login</button>-->
     </form>
   </mat-card>
 </div>
 </body>
-
-

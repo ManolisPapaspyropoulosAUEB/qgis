@@ -156,6 +156,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public currentProvinceName;
   public currentDistrictName;
   public fullName;
+  public email;
+
   private sqlInFclass;
   private sqlInRoadConditions;
   public loading;
@@ -237,6 +239,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.filterService.tab = 0;
     this.currentBtnNav = 'init';
     this.fullName = localStorage.getItem('fullName');
+    this.email = localStorage.getItem('email');
     if ((localStorage.getItem('province') != null) && (localStorage.getItem('district') != null)) {
       this.currentProvinceCode = localStorage.getItem('proCode');
       this.currentNum_district_code = localStorage.getItem('distCode');
@@ -2164,7 +2167,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
 
     function highlightFeatureOnClick(e) {
-      if (e.target.feature.geometry.type == 'MultiLineString') {
+
+
+       if (e.target.feature.geometry.type == 'SelectedMultiLineString') {
         filterService.countHits = filterService.countHits + 1;
         if (filterService.countHits == 1) {
           drawerMapSelections.toggle().finally(() => {
@@ -2179,27 +2184,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         highlightLayer.setStyle(
           {color: '#009111', weight: 8}
         );
-      }
-
-     else  if (e.target.feature.geometry.type == 'SelectedMultiLineString') {
-        filterService.countHits = filterService.countHits + 1;
-        if (filterService.countHits == 1) {
-          drawerMapSelections.toggle().finally(() => {
-            window.dispatchEvent(new Event('resize'));
-          });
-          currentStatusMapSelection = !currentStatusMapSelection;
-        }
-        var findRoadForGetMethod = filterService.mapRoadsArrayAll.find(x => x.LVRR_ID == e.target.feature.properties.LVRR_ID);
-        findRoadForGetMethod.checkedFilter = false;
-        filterService.roadTab2.push(findRoadForGetMethod);
-        e.target.feature.geometry.type = 'editMapRoad';
-        highlightLayer.setStyle(
-          {color: '#009111', weight: 8}
-        );
-      }
-
-
-      else if (e.target.feature.geometry.type == 'editMapRoad') {  //editMapRoadSelection
+      } else if (e.target.feature.geometry.type == 'editMapRoad') {  //editMapRoadSelection
         e.target.feature.geometry.type = 'SelectedMultiLineString';
         highlightLayer.setStyle(
           {color: '#00ff17', weight: 8}
@@ -3629,7 +3614,166 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
+  myProfile(){
+    const dialogRef = this.dialog.open(ProfileDialog, {
+      width: '800px'
+    });
+  }
+
+
 }
+
+
+@Component({
+  selector: './profile-dialog',
+  templateUrl: './profile-dialog.html'
+})
+export class ProfileDialog implements OnInit {
+  @Output() dismiss = new EventEmitter();
+  @Output() focusout = new EventEmitter();
+  editForm2: FormGroup;
+  editForm3: FormGroup;
+  id;
+  name;
+  lastname;
+  fullName;
+  username;
+  role;
+  password;
+  email;
+  oldPassword='';
+  newPassword;
+  retypeNewPassword;
+  user:any;
+
+
+  tab;
+  constructor(public dialogRef: MatDialogRef<DeleteSnapshotDialog>,private dataservice:DataService, public dialog: MatDialog, private formBuilder: FormBuilder, private snackBar: MatSnackBar,
+              @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+  }
+  ngOnInit() {
+
+    this.tab=0;
+    this.oldPassword='';
+    this.newPassword='';
+    this.retypeNewPassword='';
+    this.dataservice.getUsers({
+      "userId":localStorage.getItem("id")
+    }).subscribe(response=>{
+      if(response.status=='ok'){
+        this.id=response.data[0].id;
+        this.name=response.data[0].name;
+        this.lastname=response.data[0].lastname;
+        this.fullName=response.data[0].fullName;
+        this.username=response.data[0].username;
+        this.role=response.data[0].role;
+        this.password=response.data[0].password;
+        this.email=response.data[0].email;
+
+        console.log(this.user);
+        console.log(response.data);
+
+      }
+    })
+
+    this.editForm2 = this.formBuilder.group({
+      name: [ this.name, Validators.required],
+      lastname: [ this.lastname, Validators.required],
+      username: [ this.username, Validators.required],
+      role: [ this.role, Validators.required],
+      email: [ this.email, Validators.required]
+    });
+
+
+
+    this.editForm3 = this.formBuilder.group({
+
+      oldPassword: [ this.oldPassword,Validators.required ],
+      newPassword: [ this.newPassword,[Validators.required, Validators.minLength(8)] ],
+      retypeNewPassword: [ this.retypeNewPassword,Validators.required ],
+    },
+      {
+        validator: MustMatch('newPassword', 'retypeNewPassword')
+      }
+      );
+    function MustMatch(controlName: string, matchingControlName: string) {
+      return (formGroup: FormGroup) => {
+        const control = formGroup.controls[controlName];
+        const matchingControl = formGroup.controls[matchingControlName];
+
+        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+          // return if another validator has already found an error on the matchingControl
+          return;
+        }
+
+        // set error on matchingControl if validation fails
+        if (control.value !== matchingControl.value) {
+          matchingControl.setErrors({ mustMatch: true });
+        } else {
+          matchingControl.setErrors(null);
+        }
+      }
+    }
+
+    this.f2.role.disable();
+    this.f2.email.disable();
+  }
+
+  tabChange(event){
+    this.tab =event.index;
+  }
+
+
+  get f2() {
+    return this.editForm2.controls;
+  }
+
+  get f3() {
+    return this.editForm3.controls;
+  }
+
+
+  validateAllFormFields(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsTouched({onlySelf: true});
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      }
+    });
+  }
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+
+  public updateGeneralInfo() {
+    if (this.editForm2.invalid) {
+      this.validateAllFormFields(this.editForm2);
+      this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
+      return;
+    }
+    this.dialogRef.close(true);
+  }
+
+  public updatePassword() {
+    if (this.editForm3.invalid) {
+      this.validateAllFormFields(this.editForm3);
+      this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
+      return;
+    }
+    this.dialogRef.close(true);
+  }
+
+
+}
+
+
 
 type AOA = any[][];
 import * as XLSX from 'xlsx';

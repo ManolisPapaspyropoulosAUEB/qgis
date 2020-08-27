@@ -36,6 +36,50 @@ export class DataService {
     );
   }
 
+  addUser(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'addUser', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+      }
+    );
+  }
+
+
+  //
+
+
+  deleteUser(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'deleteUser', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+      }
+    );
+  }
+
+
+
+  editUser(data) {
+    return this.http.post<any>(this.remoteDataService.serviceURL + 'editUser', data).map(
+      (response) => {
+        return response;
+      },
+      (error) => {
+      }
+    );
+  }
+
+
+
+
+
+
+
+
+
   //getAllSnapshotsRecords deleteSnapshot
 
   getAllFromRoadsHistory(data) {
@@ -238,6 +282,8 @@ export class DataService {
 
 
   get_districts(data) {
+    data.userId=localStorage.getItem('id');
+    data.role=localStorage.getItem('role');
     return this.http.post<any>(this.remoteDataService.serviceURL + 'getAllDistricts', data).map(
         (response) => {
           return response;

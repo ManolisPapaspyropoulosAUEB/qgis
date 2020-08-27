@@ -150,6 +150,7 @@
 }
 /*mid circle*/
   .fullName {
+
     position: relative;
     /* top: 13px;*/
     z-index: 3;
@@ -157,6 +158,11 @@
     text-align: right;
     /*  padding-right: 8px;*/
     /*font-size: 15px;*/
+  }
+  .fullName:hover{
+    cursor: pointer!important;
+    color: whitesmoke;
+    font-weight: bold;
   }
 
   .logOutBtn {
@@ -293,6 +299,11 @@
     padding-right: 4px!important;
     margin-left: 14px!important;
   }
+
+  .example-container-selections.mat-drawer-inner-container{
+    overflow-y: hidden!important;
+  }
+
 </style>
 <mat-drawer-container class="example-container">
   <mat-drawer class="left-column-filter" style="width:17%;background: whitesmoke" #drawer [mode]="'side'" opened>
@@ -321,7 +332,10 @@
       </div>
       <div class="district-combo" disabled=true>
         <angular2-multiselect [data]="districts" [settings]="dropdownSettings3"
-                              [(ngModel)]="district" (onSelect)="selectDistrict(district,'manual')"
+                              [(ngModel)]="district"
+
+                              (click)="this.get_districts({num_province_code: province[0].num_province_code});"
+                              (onSelect)="selectDistrict(district,'manual')"
                               (onDeSelect)="deselectDistrict(district)">
         </angular2-multiselect>
       </div>
@@ -481,7 +495,7 @@
         </div>
       </div>
       <div class="col-md-5 user-data">
-        <div class="fullName">
+        <div (click)="myProfile()"   class="fullName">
           {{fullName}}
         </div>
         <div class="logOutBtn" (click)="logOut()">
@@ -504,9 +518,9 @@
         </div>
       </div>
     </div>
-    <mat-tab-group class="myCustomTabParentClass" animationDuration="0ms" style="   " (selectedTabChange)="switchTab($event)">
+    <mat-tab-group class="myCustomTabParentClass" animationDuration="10ms" style="   " (selectedTabChange)="switchTab($event)">
       <mat-tab label="Map"   style="    background-color: white;">
-        <mat-drawer-container class="example-container">
+        <mat-drawer-container class="example-container-selections">
           <mat-drawer  class="drawer-map-selection" style="width: 36%;background: whitesmoke;    box-shadow: -2px 2px 2px 0px #888888!important;" #sideNav mode="side" opened="false" position="end" #drawerMapSelections>
             <div style="padding: 0;margin: 0">
               <mat-tab-group class="mycustomTabClass">
@@ -522,61 +536,63 @@
                            placeholder="Search.."
                     />
                   </div>
-                  <mat-card class="matCardSelection" *ngFor="let road of this.filterService.roadTab2|filter: searchTextRoads;"
-                            on-mouseout="out(road)" on-mouseover='over(road)' >
-                    <div class="row" style="padding: 0;margin: 0">
-                      <div (click)="hitRoad(road)" class="col-md-8" style="margin: 0;padding: 0;display: grid">
-                        <div class="row">
-                          <div class="col-md-7">
+                  <div class="card-container" style="height: 75vh;overflow-y: scroll;">
+                    <mat-card class="matCardSelection" *ngFor="let road of this.filterService.roadTab2|filter: searchTextRoads;"
+                              on-mouseout="out(road)" on-mouseover='over(road)' >
+                      <div class="row" style="padding: 0;margin: 0">
+                        <div (click)="hitRoad(road)" class="col-md-8" style="margin: 0;padding: 0;display: grid">
+                          <div class="row">
+                            <div class="col-md-7">
                             <span style="font-weight: bold">
                               LVRR_ID:
                             </span>
-                            {{road.LVRR_ID}}
-                          </div>
-                          <div class="col-md-5">
+                              {{road.LVRR_ID}}
+                            </div>
+                            <div class="col-md-5">
                             <span style="font-weight: bold">
                               MCA:
                             </span>
-                            {{road.mca}} (%)
+                              {{road.mca}} (%)
+                            </div>
                           </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-7">
+                          <div class="row">
+                            <div class="col-md-7">
                             <span style="font-weight: bold">
                               Osm_id:
                             </span>
-                            {{road.osm_id}}
-                          </div>
-                          <div class="col-md-5">
+                              {{road.osm_id}}
+                            </div>
+                            <div class="col-md-5">
                             <span style="font-weight: bold">
                               CBI:
                             </span>
-                            {{road.cbi}}
+                              {{road.cbi}}
+                            </div>
                           </div>
-                        </div>
 
-                      </div>
-                      <div class="col-md-3">
-                        <div class="col-md-12" style="padding: 0;    padding-top: 5px;    margin-right: 23px;    width: 80px;display: flex">
-                          <div style="    min-width: 46px;">
+                        </div>
+                        <div class="col-md-3">
+                          <div class="col-md-12" style="padding: 0;    padding-top: 5px;    margin-right: 23px;    width: 80px;display: flex">
+                            <div style="    min-width: 46px;">
                       <span *ngIf="road.docSize>-1" class="docspan" matBadge="{{road.docSize}}" matBadgeOverlap="false" matBadgeSize="small" matBadgePosition="before" style="    position: relative;left: 21px;top: -8px;z-index: 3;">
                       </span><span  matTooltip="Uploads" (click)="photoGalley(road)"  class="material-icons" style="position: relative;left: -10px;">insert_photo</span>
-                          </div>
-                          <div>
+                            </div>
+                            <div>
                       <span *ngIf="road.notesSize>-1"  matBadge="{{road.notesSize}}"  matBadgeOverlap="false" matBadgeSize="small" matBadgePosition="before" style="position: relative;left: 22px; top: -9px;z-index: 3;">
                       </span>
-                            <span   matTooltip="Notes" (click)="notes(road)" class="material-icons" style="position: relative;top: 1px;left: -8px">
+                              <span   matTooltip="Notes" (click)="notes(road)" class="material-icons" style="position: relative;top: 1px;left: -8px">
                         speaker_notes
                       </span>
+                            </div>
                           </div>
                         </div>
+                        <div (click)="hitRoad(road)" class="col-md-1" style="margin: 0;padding-top: 12px">
+                          <mat-checkbox [disabled]="true" (change)="road.checkedFilter=!road.checkedFilter"
+                                        [(ngModel)]="road.checkedFilter" class="example-margin"></mat-checkbox>
+                        </div>
                       </div>
-                      <div (click)="hitRoad(road)" class="col-md-1" style="margin: 0;padding-top: 12px">
-                        <mat-checkbox [disabled]="true" (change)="road.checkedFilter=!road.checkedFilter"
-                                      [(ngModel)]="road.checkedFilter" class="example-margin"></mat-checkbox>
-                      </div>
-                    </div>
-                  </mat-card>
+                    </mat-card>
+                  </div>
                 </mat-tab>
                 <mat-tab label="Facilities Selections">
                   <div class="search-hero">
@@ -590,46 +606,49 @@
                            placeholder="Search.."
                     />
                   </div>
-                  <mat-card class="matCardSelection" [hidden]="!facilitie.checked"
-                            *ngFor="let facilitie of this.filterService.facilitiesArray|filter: searchTextFacilities;"
-                            (click)="hitFacilitie(facilitie)">
-                    <div class="row" style="padding: 0;margin: 0">
-                      <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
-                        <div class="row">
-                          <div class="col-md-5">
+                  <div class="card-container" style="height: 75vh;overflow-y: scroll;">
+                    <mat-card class="matCardSelection" [hidden]="!facilitie.checked"
+                              *ngFor="let facilitie of this.filterService.facilitiesArray|filter: searchTextFacilities;"
+                              (click)="hitFacilitie(facilitie)">
+                      <div class="row" style="padding: 0;margin: 0">
+                        <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
+                          <div class="row">
+                            <div class="col-md-5">
                             <span style="font-weight: bold">
                               Name:
                             </span>
-                            {{facilitie.label}}
-                          </div>
-                          <div class="col-md-7">
+                              {{facilitie.label}}
+                            </div>
+                            <div class="col-md-7">
                             <span style="font-weight: bold">
                               Source:
                             </span>
-                            {{facilitie.fromSource}}
+                              {{facilitie.fromSource}}
+                            </div>
                           </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-5">
+                          <div class="row">
+                            <div class="col-md-5">
                             <span style="font-weight: bold">
                               Type:
                             </span>
-                            {{facilitie.type}}
-                          </div>
-                          <div class="col-md-7">
+                              {{facilitie.type}}
+                            </div>
+                            <div class="col-md-7">
                             <span style="font-weight: bold">
                               District Name:
                             </span>
-                            {{facilitie.districtName}}
+                              {{facilitie.districtName}}
+                            </div>
                           </div>
                         </div>
+                        <div class="col-md-1" style="margin: 0;padding-top: 10px">
+                          <mat-checkbox [disabled]="true" (change)="facilitie.checkedFilter=!facilitie.checkedFilter"
+                                        [(ngModel)]="facilitie.checkedFilter" class="example-margin"></mat-checkbox>
+                        </div>
                       </div>
-                      <div class="col-md-1" style="margin: 0;padding-top: 10px">
-                        <mat-checkbox [disabled]="true" (change)="facilitie.checkedFilter=!facilitie.checkedFilter"
-                                      [(ngModel)]="facilitie.checkedFilter" class="example-margin"></mat-checkbox>
-                      </div>
-                    </div>
-                  </mat-card>
+                    </mat-card>
+                  </div>
+
                 </mat-tab>
                 <mat-tab label="Villages Selections">
                   <div class="search-hero">
@@ -643,55 +662,59 @@
                            placeholder="Search.."
                     />
                   </div>
-                  <mat-card class="matCardSelection" [hidden]="!village.checked"
-                            *ngFor="let village of this.filterService.villagesArray|filter: searchTextVillages;"
-                            (click)="hitVillage(village)">
-                    <div class="row" style="padding: 0;margin: 0">
-                      <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
+
+                  <div class="card-container" style="height: 75vh;overflow-y: scroll;">
+                    <mat-card class="matCardSelection" [hidden]="!village.checked"
+                              *ngFor="let village of this.filterService.villagesArray|filter: searchTextVillages;"
+                              (click)="hitVillage(village)">
+                      <div class="row" style="padding: 0;margin: 0">
                         <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
-                          <div class="row">
-                            <div class="col-md-6">
+                          <div class="col-md-11" style="margin: 0;padding: 0;display: grid">
+                            <div class="row">
+                              <div class="col-md-6">
                             <span style="font-weight: bold">
                               Village Name:
                             </span>
-                              {{village.villageName}}
-                            </div>
-                            <div class="col-md-6">
+                                {{village.villageName}}
+                              </div>
+                              <div class="col-md-6">
                             <span style="font-weight: bold">
                               Map Lat:
                             </span>
-                              {{village.mapLat}}
+                                {{village.mapLat}}
+                              </div>
                             </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-6">
+                            <div class="row">
+                              <div class="col-md-6">
                             <span style="font-weight: bold">
                                Village Co
                             </span>
-                               {{village.villageCo}}
-                            </div>
-                            <div class="col-md-6">
+                                {{village.villageCo}}
+                              </div>
+                              <div class="col-md-6">
                             <span style="font-weight: bold">
                               Map Long:
                             </span>
-                              {{village.mapLong}}
+                                {{village.mapLong}}
+                              </div>
                             </div>
-                          </div>
-                          <div class="row">
-                            <div class="col-md-6">
+                            <div class="row">
+                              <div class="col-md-6">
                             <span style="font-weight: bold">
                               Village Population:
                             </span>
-                              {{village.villagePop}}
+                                {{village.villagePop}}
+                              </div>
                             </div>
                           </div>
                         </div>
+                        <div class="col-md-1" style="margin: 0;padding-top: 26px">
+                          <mat-checkbox [disabled]="true" (change)="village.checkedFilter=!village.checkedFilter"[(ngModel)]="village.checkedFilter" class="example-margin"></mat-checkbox>
+                        </div>
                       </div>
-                      <div class="col-md-1" style="margin: 0;padding-top: 26px">
-                        <mat-checkbox [disabled]="true" (change)="village.checkedFilter=!village.checkedFilter"[(ngModel)]="village.checkedFilter" class="example-margin"></mat-checkbox>
-                      </div>
-                    </div>
-                  </mat-card>
+                    </mat-card>
+                  </div>
+
                 </mat-tab>
               </mat-tab-group>
             </div>

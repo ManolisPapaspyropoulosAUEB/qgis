@@ -19,8 +19,16 @@
     border-radius: 66px;
     box-shadow: 2px 1px 3px 0px #888888;
     margin-bottom: 7px;
+    display: flex;
 
 
+
+  }
+
+  .userdiv:hover{
+    box-shadow: 3px 2px 3px 0px #888888;
+    cursor: pointer!important;
+    background-color: whitesmoke!important;
   }
 
   .accountcircle{
@@ -32,9 +40,12 @@
 
 
 
-<div  style="display: flex">
+<div  style="display: flex;    overflow-y: auto!important;
+    max-height: 78vh!important;">
 
-  <div class="col-md-2">
+  <div class="col-md-2" style="  position: -webkit-sticky;
+  position: sticky;
+  top: 0;">
     <button  (click)="addUser()"  mat-button  matTooltip="Add Village" class="addBtnOuter" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
         <span class="material-icons addBtn addCrcle">
           add
@@ -62,10 +73,25 @@
         </div>
 
       </div>
-      <div class="col-md-1 editcol" >
-        <mat-icon  style="cursor: pointer">edit
-        </mat-icon>
+      <div class="col-md-1">
+        <div class="button-container-list-table" style="    position: relative;top: 24px;">
+          <button class="button-actions" mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon class="more-action-mat">more_vert</mat-icon>
+          </button>
+          <mat-menu class="menu-actions" #menu="matMenu">
+            <button (click)="editUser(user)"  mat-menu-item>
+              <mat-icon class="editRoad" style="color: #000000;cursor: pointer;">edit
+              </mat-icon>
+              <span>Edit</span>
+            </button>
+            <button (click)="deleteUser(user)"  mat-menu-item>
+              <span class="material-icons delete" style="color: red;cursor: pointer;" >delete</span>
+              <span>Delete</span>
+            </button>
+          </mat-menu>
+        </div>
       </div>
+
     </div>
 
   </div>

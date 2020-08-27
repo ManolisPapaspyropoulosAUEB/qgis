@@ -14,14 +14,13 @@ export class CoreDataComponent implements OnInit {
   opParam;
   opId;
   criteriaMaster;
+  role;
   constructor(private dataService :DataService,private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.role=localStorage.getItem("role");
     this.label="";
   }
-//opId
-
-
  public  getCriteriaMaster(){
     this.dataService.getAllCriteriaMaster({
       "label":this.label
@@ -30,12 +29,10 @@ export class CoreDataComponent implements OnInit {
       this.opParam=response.opParam;
       this.opId=response.opId;
     });
-
   }
 
   toggleExpandRowActivate(e){
     if(e.type == 'click') {
-
       this.toggleExpandRow(e.row);
     }
   }

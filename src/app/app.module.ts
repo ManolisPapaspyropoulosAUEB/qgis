@@ -80,7 +80,7 @@ import {
   DeleteImgDialog, DeleteNoteDialog, DeleteSnapshotDialog,
   EditRoadDialog, HistoryDialog, ImportDialog,
   NotesDialog, OpenPdfConfigurationDialog,
-  PhotoGallery,
+  PhotoGallery, ProfileDialog,
   QgisMapComponent
 } from './qgis-map/qgis-map.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
@@ -103,7 +103,7 @@ import { NoteComponent } from './note/note.component';
 import {SafeUrlPipe} from './qgis-map/safeurl.pipe';
 import {ImagePipe} from './qgis-map/image.pipe';
 import {UniquePipe} from './qgis-map/unique.pipe';
-import {UserDialogUpdate, UsersComponent} from './users/users.component';
+import {DeleteUserDialog, UserDialogUpdate, UsersComponent} from './users/users.component';
 
 
 
@@ -180,6 +180,7 @@ const routes: Routes = [
     DeleteSnapshotDialog,
     HistoryDialog,
     EditRoadDialog,
+     ProfileDialog,
     CriteriaConfirmationDialog,
     AddingNoteDialog,
     DeleteNoteDialog,
@@ -190,6 +191,7 @@ const routes: Routes = [
     RoadsComponent,
     AddSchoolDialog,
     UserDialogUpdate,
+    DeleteUserDialog,
     DeleteVillageDialog,
     PhotoGallery,
     VillageDialog,
@@ -302,8 +304,11 @@ const routes: Routes = [
 
 
   ],
+
+
   entryComponents: [
     EditRoadDialog,
+     ProfileDialog,
     ImportDialog,
     OpenPdfConfigurationDialog,
     DeleteNoteDialog,
@@ -319,6 +324,7 @@ const routes: Routes = [
     VillageDialog,
     AddSchoolDialog,
     UserDialogUpdate,
+    DeleteUserDialog,
     DeleteVillageDialog,
     MosqueDialog,
     AddDCDialog

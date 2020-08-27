@@ -1,0 +1,53 @@
+
+<style>
+  .closeIcon {
+    color: white;
+    position: relative;
+    top: 0px;
+    left: 18px;
+    background: #2F4060;
+    border-radius: 5px;
+  }
+
+
+  .closeIcon:hover {
+
+    cursor: pointer;
+  }
+</style>
+
+
+<mat-dialog-content>
+
+  <div style="display: flex">
+    <div class="col-md-11">
+      <h2 style="font-size: 24px">Delete User</h2>
+    </div>
+    <div class="col-md-1">
+    <span  (click)="onNoClick()"   class="material-icons closeIcon">
+      close
+    </span>
+    </div>
+  </div>
+  <div style="display: flex" style="display: flex;
+    margin-left: 8px;
+    font-size: 18px;
+    margin-bottom: 20px;background: #ffffff">
+    <div  style="padding: 0;margin: 0px">
+      Are you sure want to delete this User?
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button style="background-color: #2F4060" (click)="yes()"   type="submit" mat-raised-button color="primary">Yes</button>
+
+  <button mat-raised-button (click)="onNoClick()" >Cancel</button>
+</mat-dialog-actions>
