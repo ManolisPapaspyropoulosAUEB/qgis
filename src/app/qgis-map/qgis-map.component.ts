@@ -3646,15 +3646,12 @@ export class ProfileDialog implements OnInit {
   newPassword;
   retypeNewPassword;
   user:any;
-
-
   tab;
   constructor(public dialogRef: MatDialogRef<DeleteSnapshotDialog>,private dataservice:DataService, public dialog: MatDialog, private formBuilder: FormBuilder, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
   }
   ngOnInit() {
-
     this.tab=0;
     this.oldPassword='';
     this.newPassword='';
@@ -3671,13 +3668,8 @@ export class ProfileDialog implements OnInit {
         this.role=response.data[0].role;
         this.password=response.data[0].password;
         this.email=response.data[0].email;
-
-        console.log(this.user);
-        console.log(response.data);
-
       }
-    })
-
+    });
     this.editForm2 = this.formBuilder.group({
       name: [ this.name, Validators.required],
       lastname: [ this.lastname, Validators.required],
@@ -3685,29 +3677,22 @@ export class ProfileDialog implements OnInit {
       role: [ this.role, Validators.required],
       email: [ this.email, Validators.required]
     });
-
-
-
-    this.editForm3 = this.formBuilder.group({
-
+    this.editForm3 = this.formBuilder.group(
+      {password: [ this.password,Validators.required ],
       oldPassword: [ this.oldPassword,Validators.required ],
       newPassword: [ this.newPassword,[Validators.required, Validators.minLength(8)] ],
       retypeNewPassword: [ this.retypeNewPassword,Validators.required ],
     },
-      {
-        validator: MustMatch('newPassword', 'retypeNewPassword')
-      }
+      {validator: [MustMatch('newPassword', 'retypeNewPassword'),MustMatch2('oldPassword', 'password')]}
       );
     function MustMatch(controlName: string, matchingControlName: string) {
       return (formGroup: FormGroup) => {
         const control = formGroup.controls[controlName];
         const matchingControl = formGroup.controls[matchingControlName];
-
         if (matchingControl.errors && !matchingControl.errors.mustMatch) {
           // return if another validator has already found an error on the matchingControl
           return;
         }
-
         // set error on matchingControl if validation fails
         if (control.value !== matchingControl.value) {
           matchingControl.setErrors({ mustMatch: true });
@@ -3716,15 +3701,26 @@ export class ProfileDialog implements OnInit {
         }
       }
     }
-
+    function MustMatch2(controlName: string, matchingControlName: string) {
+      return (formGroup: FormGroup) => {
+        const control = formGroup.controls[controlName];
+        const matchingControl = formGroup.controls[matchingControlName];
+        if (control.errors && !control.errors.mustMatch) {
+          return;
+        }
+        if (control.value !== matchingControl.value) {
+          control.setErrors({ mustMatch: true });
+        } else {
+          control.setErrors(null);
+        }
+      }
+    }
     this.f2.role.disable();
     this.f2.email.disable();
   }
-
   tabChange(event){
     this.tab =event.index;
   }
-
 
   get f2() {
     return this.editForm2.controls;
@@ -3733,8 +3729,6 @@ export class ProfileDialog implements OnInit {
   get f3() {
     return this.editForm3.controls;
   }
-
-
   validateAllFormFields(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(field => {
       const control = formGroup.get(field);
@@ -3745,13 +3739,9 @@ export class ProfileDialog implements OnInit {
       }
     });
   }
-
-
   onNoClick(): void {
     this.dialogRef.close();
   }
-
-
   public updateGeneralInfo() {
     if (this.editForm2.invalid) {
       this.validateAllFormFields(this.editForm2);
@@ -3760,7 +3750,6 @@ export class ProfileDialog implements OnInit {
     }
     this.dialogRef.close(true);
   }
-
   public updatePassword() {
     if (this.editForm3.invalid) {
       this.validateAllFormFields(this.editForm3);
@@ -3769,11 +3758,7 @@ export class ProfileDialog implements OnInit {
     }
     this.dialogRef.close(true);
   }
-
-
 }
-
-
 
 type AOA = any[][];
 import * as XLSX from 'xlsx';

@@ -7,59 +7,10 @@
     background: #3f51b5;
     border-radius: 5px;
   }
-
-  .closeFclass{
-    position: relative;
-    top: 3px;
-    right: 3px;
-    cursor: pointer;
-  }
-
-  .closeCol{
-    text-align: end!important;
-    padding-right: 0;
-    background-color: #2f4060;
-    color: white;
-  }
-
-  mat-checkbox.mat-checkbox-background{
-    background: white!important;
-    border: 1px solid gray!important;
-  }
-
-
-
   .closeIcon:hover {
-
     cursor: pointer;
   }
-
-  .addCrcle{
-    position: relative;
-    top: -5px;
-    font-size: 19px;
-  }
-
-  .dist-name-search{
-    background: lightgrey;
-    margin-bottom: 6px;
-    margin-top: 6px;
-    border-radius: 5px;
-  }
-
-
-  .header-mat-select-multi{
-    display: flex;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-
-  }
-
 </style>
-
-
 <mat-dialog-content>
 
   <div style="display: flex">
@@ -72,89 +23,71 @@
     </span>
     </div>
   </div>
-
-
-
-
     <mat-tab-group (selectedTabChange)="tabChange($event)" class="mycustomTabClassUpdateRoad" animationDuration="10ms">
       <mat-tab label="General Information" style="">
         <form   [formGroup]="editForm2" class="example-form" style="display: grid;padding-left: 13px;padding-right: 24px;"  (ngSubmit)="updateGeneralInfo()">
-
         <div style="display: grid;margin-top: 10px">
           <mat-form-field class="example-full-width">
             <mat-label>Name</mat-label>
             <input  formControlName="name"   matInput placeholder="name" [(ngModel)]="name">
           </mat-form-field>
-
           <mat-form-field class="example-full-width">
             <mat-label>lastname</mat-label>
             <input  formControlName="lastname"   matInput placeholder="lastname" [(ngModel)]="lastname">
           </mat-form-field>
-
           <mat-form-field class="example-full-width">
             <mat-label>username</mat-label>
             <input  formControlName="username"   matInput placeholder="username" [(ngModel)]="username">
           </mat-form-field>
-
           <mat-form-field class="example-full-width">
             <mat-label>role</mat-label>
-            <input [disabled]=true  formControlName="role"   matInput placeholder="role" [(ngModel)]="role">
+            <input   formControlName="role"   matInput placeholder="role" [(ngModel)]="role">
           </mat-form-field>
-
           <mat-form-field class="example-full-width">
             <mat-label>email</mat-label>
-            <input [disabled]=true  formControlName="email"   matInput placeholder="email" [(ngModel)]="email">
+            <input   formControlName="email"   matInput placeholder="email" [(ngModel)]="email">
           </mat-form-field>
         </div>
-
-
-        </form>
-
+       </form>
       </mat-tab>
       <mat-tab label="Change Password ">
-
         <form   [formGroup]="editForm3" class="example-form" style="display: grid;padding-left: 13px;padding-right: 24px;"  (ngSubmit)="updatePassword()">
-
         <div style="display: grid;margin-top: 10px">
           <mat-form-field class="example-full-width">
-            <mat-label>fill your old password</mat-label>
-            <input   formControlName="oldPassword"   matInput placeholder="" [(ngModel)]="oldPassword">
-         </mat-form-field>
-          <span *ngIf="f3.oldPassword.errors.required">old PasswordPassword is required</span>
-
-          <mat-form-field class="example-full-width">
-            <mat-label>fill your new password</mat-label>
-            <input [disabled]=true  formControlName="newPassword"   matInput placeholder="" [(ngModel)]="newPassword">
-            <div *ngIf="f3.newPassword.errors.required">new password required</div>
-            <div *ngIf="f3.newPassword.errors.minlength">Password must be at least 8 characters</div>
+            <mat-label>Old password</mat-label>
+            <input type="password"  formControlName="oldPassword"   matInput placeholder="" [(ngModel)]="oldPassword">
+            <div *ngIf="f3.oldPassword.touched && f3.oldPassword.errors?.required" style="color: red">
+              old password is required
+            </div>
+            <div *ngIf="f3.oldPassword.touched && f3.oldPassword.errors?.mustMatch" style="color: red">incorrect password</div>
           </mat-form-field>
-
           <mat-form-field class="example-full-width">
-            <mat-label>retype new password</mat-label>
-            <input [disabled]=true  formControlName="retypeNewPassword"   matInput placeholder="" [(ngModel)]="retypeNewPassword">
-            <div *ngIf="f3.retypeNewPassword.errors.required">Confirm Password is required</div>
-            <div *ngIf="f3.retypeNewPassword.errors.mustMatch">Passwords must match</div>
+            <mat-label>New password</mat-label>
+            <input type="password" [disabled]=true  formControlName="newPassword"   matInput placeholder="" [(ngModel)]="newPassword">
+            <div *ngIf="f3.newPassword.touched && f3.newPassword.errors?.required" style="color: red">
+              new password required
+            </div>
+            <div *ngIf="f3.newPassword.touched && f3.newPassword.errors?.minlength" style="color: red">
+              Password must be at least 8 characters
+            </div>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Retype new password</mat-label>
+            <input  type="password"   formControlName="retypeNewPassword"   matInput placeholder="" [(ngModel)]="retypeNewPassword">
+            <div *ngIf="f3.retypeNewPassword.touched && f3.retypeNewPassword.errors?.required" style="color: red">Confirm Password is required</div>
+            <div *ngIf="f3.retypeNewPassword.touched && f3.retypeNewPassword.errors?.mustMatch" style="color: red">New Password and  retype new password must match</div>
+          </mat-form-field>
+          <mat-form-field style="display: none" class="example-full-width">
+            <mat-label>Retype new password</mat-label>
+            <input type="password"   formControlName="password"   matInput placeholder="" [(ngModel)]="password">
           </mat-form-field>
         </div>
-
         </form>
-
-
-
-
-
       </mat-tab>
     </mat-tab-group>
-
-
-
-
-
-
 </mat-dialog-content>
 <mat-dialog-actions>
   <button *ngIf="tab==0" (click)="updateGeneralInfo()" style="background-color: #2F4060"  type="submit" mat-raised-button color="primary">Update General Imformations</button>
   <button *ngIf="tab==1" (click)="updatePassword()" style="background-color: #2F4060"  type="submit" mat-raised-button color="primary">Update Password</button>
-
   <button mat-raised-button (click)="onNoClick()" >Cancel</button>
 </mat-dialog-actions>
