@@ -153,9 +153,6 @@ export class FacilitiesComponent implements OnInit  {
 
 
   public selectRow(row, event) {
-
-    console.log(row);
-
     if (event.checked == true) {
       this.userSelectionsForMapShow.push(row);
     } else {
@@ -396,11 +393,7 @@ export class MosqueDialog implements OnInit {
   ngOnInit() {
 
     window.dispatchEvent(new Event('resize'));
-
-    console.log(this.data)
-
     this.editForm2 = this.formBuilder.group({
-
       num_district_code: [0, Validators.required],
       num_province_code: [0, Validators.required],
       east: [0, Validators.min(0)],

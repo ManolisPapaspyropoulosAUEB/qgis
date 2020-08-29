@@ -80,6 +80,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public roadsTab1 = [];
   public headerHeight = 50;
   public mcaActive;
+  public role;
   public rowHeight = 50;
   public pageLimit = 10;
   public currentBtnNavInit;
@@ -230,7 +231,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     return window.open(url, name, features);
   }
   public ngOnInit() {
-
+    this.role=localStorage.getItem("role");
     this.loadingMap=false;
     this.loading = false;
     this.orderCol = 'LVRR_ID';
@@ -1559,6 +1560,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       });
     }
   }
+
   public switchTab($event: MatTabChangeEvent) {
     var tab = $event.index;
     this.tab = tab;
@@ -1566,7 +1568,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     if (tab == 0) {
       this.loadingMap=true;
       setTimeout(() => {
-        this.coreDataComponent.emptyTable();
+        if(this.role=='admin'){
+          this.coreDataComponent.emptyTable();
+        }
         this.ngOnChanges2();
         this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName); //mhn kaleseis thn get sou gia ta fereis ta facilities
         this.removeAllMarkersFromMap();//
@@ -1580,8 +1584,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         );
       }, 500)
     } else if (tab == 1) {
-      this.coreDataComponent.emptyTable();
-      window.dispatchEvent(new Event('resize'));
+      if(this.role=='admin'){
+        this.coreDataComponent.emptyTable();
+      }      window.dispatchEvent(new Event('resize'));
       this.ngOnChanges2();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
@@ -1591,8 +1596,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       }, 200, false);
     } else if (tab == 2) {
-      this.coreDataComponent.emptyTable();
-      this.initMapRoadsArray();
+      if(this.role=='admin'){
+        this.coreDataComponent.emptyTable();
+      }      this.initMapRoadsArray();
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       // window.addEventListener('resize', function(event) {
@@ -1607,8 +1613,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.facilitiesComponent.setDistrict(this.currentNum_district_code, false, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       this.villagesComponent.setDistrict(this.currentNum_district_code, true, this.currentProvinceCode, this.currentProvinceName, this.currentDistrictName);
       this.villagesComponent.enableNgx();
-      this.coreDataComponent.emptyTable();
-      setTimeout(function () {
+      if(this.role=='admin'){
+        this.coreDataComponent.emptyTable();
+      }      setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
           this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
         }
@@ -1635,13 +1642,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     }
   }
   updateFiterFclass(e) {
-    console.log(e);
     var sqlIn = '(' + e.toString() + ')';
     this.sqlInFclass = sqlIn; ///
     this.getRoadsPyParams();
   }
   updateRoadConditionFilter(e) {
-    console.log(e);
     var checks = [];
     checks = e;
     var sqlIn = '(' + e.toString() + ')';
@@ -1714,7 +1719,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.orderCol = event.column.prop;
     this.descAsc = event.newValue;
     this.shmaSort = 1;
-    console.log(this.orderCol);
     if (this.orderCol == 'mca') {
       this.getRoadsPyParams();
     }
@@ -2007,7 +2011,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
   private __getElementByClass(className: string): HTMLElement {
-    console.log('element class : ', className);
     const element = <HTMLElement>document.querySelector(`.${className}`);
     return element;
   }//datatable-body
@@ -2115,13 +2118,21 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     }
     $(window).resize(function () {
       if (filterService.tab == 1) {
-        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (195) + 'px';
+        if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (195) + 'px';
+        }
       } else if (filterService.tab == 2) {
-        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
+        if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
+        }
       } else if (filterService.tab == 3) {
-        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
+        if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
+        }
       } else if (filterService.tab == 4) {
-        this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (199) + 'px';
+        if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (199) + 'px';
+        }
       }
       setTimeout(() => {
         window.dispatchEvent(new Event('resize'));
@@ -3250,6 +3261,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
     this.currentStatusMapSelection = !this.currentStatusMapSelection;
   }
+
   initFooter(){
     if (this.filterService.tab == 2) {
       setTimeout(function () {
@@ -3665,9 +3677,6 @@ export class ProfileDialog implements OnInit {
     this.oldPassword='';
     this.newPassword='';
     this.retypeNewPassword='';
-
-    console.log(this.password);
-
     this.editForm2 = this.formBuilder.group({
       name: [ this.name, Validators.required],
       lastname: [ this.lastname, Validators.required],
@@ -3703,10 +3712,6 @@ export class ProfileDialog implements OnInit {
       return (formGroup: FormGroup) => {
         var control = formGroup.controls[controlName];
         var matchingControl = formGroup.controls[matchingControlName];
-
-        console.log(control.value);
-        console.log(matchingControl.value);
-
         if (control.errors && !control.errors.mustMatch) {
           return;
         }
@@ -3740,10 +3745,8 @@ export class ProfileDialog implements OnInit {
         this.editForm3.get("newPassword").setValue(response.data[0].newPassword);
         this.editForm3.get("retypeNewPassword").setValue(response.data[0].retypeNewPassword);
         this.editForm3.get("password").setValue(response.data[0].password);
-
       }
     });
-
   }
 
 
@@ -3817,7 +3820,6 @@ export class ProfileDialog implements OnInit {
 
 
   public updatePassword() {
-    console.log("eeee")
     if (this.editForm3.invalid) {
       this.validateAllFormFields(this.editForm3);
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
@@ -3961,7 +3963,6 @@ export class ImportDialog implements OnInit {
     return {};
   }
   testH(e) {
-    console.log(e);
   }
   onFileChangeUpload(evt: any) {
     this.loading=true;
@@ -4027,7 +4028,6 @@ export class ImportDialog implements OnInit {
   }
   private readDataSheet(ws: XLSX.WorkSheet, startRow: number) {
     let datas = <AOA>(XLSX.utils.sheet_to_json(ws, {header: 1, raw: false, range: startRow}));
-    console.log(datas[1]);
     let headDatas = datas[0];
     for (let i = 0; i < this.data.length; i++) {
       this.data[i][this.headData.length] = datas.filter(x => x[0] == this.data[i][0]);
@@ -4121,8 +4121,6 @@ export class HistoryDialog implements OnInit {
       }
     });
   }
-
-
   deleteSnapshot(snapshot) {//
     const dialogRef = this.dialog.open(DeleteSnapshotDialog, {
       width: '800px',
@@ -4505,7 +4503,6 @@ export class PhotoGallery implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.data);
     this.loading = false;
     this.uploadForm = this.formBuilder.group({
       file: ['']

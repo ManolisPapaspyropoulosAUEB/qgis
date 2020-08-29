@@ -43,12 +43,7 @@ export class VillagesComponent implements OnInit {
 
     if (currentTab == true && current_province_code) {
       if (current_province_code == this.num_province_code && currentNum_district_code == this.num_district_code) {
-
-        console.log("hhh");
         this.getVillages();
-
-
-
       } else {
         this.num_district_code = currentNum_district_code;
         this.num_province_code = current_province_code;

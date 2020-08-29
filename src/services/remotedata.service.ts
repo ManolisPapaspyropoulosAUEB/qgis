@@ -8,8 +8,8 @@ export class RemoteDataService {
 
 
 //topika
-public serviceURL = 'http://192.168.1.6:9023/';
-public imageURL = 'http://192.168.1.6:9023/downloadFile';
+// public serviceURL = 'http://192.168.1.6:9023/';
+// public imageURL = 'http://192.168.1.6:9023/downloadFile';
 //
 
 
@@ -18,8 +18,8 @@ public imageURL = 'http://192.168.1.6:9023/downloadFile';
 
 
 // //server
-//   public serviceURL = 'http://afggis.synergic.systems:9030/';
-//   public imageURL = 'http://afggis.synergic.systems:9030/downloadFile';
+  public serviceURL = 'http://afggis.synergic.systems:9030/';
+  public imageURL = 'http://afggis.synergic.systems:9030/downloadFile';
 // //
 
 

@@ -48,9 +48,7 @@ export class UsersComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result);
         this.dataservice.addUser(result).subscribe(response=>{
-
           if(response.status=='ok'){
             this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
             this.getUsers();
@@ -172,7 +170,7 @@ export class UserDialogUpdate implements OnInit {
     this.editForm2 = this.formBuilder.group({
       name: [ this.name, Validators.required],
       lastname: [ this.lastname, Validators.required],
-      username: [ this.username, Validators.required],
+      username: [ this.username],
       email: [ this.email, [Validators.required,Validators.email]],
       password: [ this.password, Validators.required],
       selectedDistricts: [ this.selectedDistricts,Validators.required],
@@ -202,9 +200,6 @@ export class UserDialogUpdate implements OnInit {
       this.password=this.data.password;
       this.role=this.data.role;
       this.selectedDistricts=this.data.selectedDistricts;
-
-      console.log(this.data.selectedDistricts);
-
     }
 
 
@@ -213,10 +208,6 @@ export class UserDialogUpdate implements OnInit {
 
 
   getDistricts(){
-
-    console.log(
-      this.districtName
-    )
     this.dataService.get_districts({
       "districtName":this.districtName,
       "num_province_code":14
@@ -229,14 +220,11 @@ export class UserDialogUpdate implements OnInit {
 
 
   printTest(){ //selectedDistricts
-    console.log(this.districts);
-    console.log(this.selectedDistricts);
   }
 
 
   selectAllDistricts(){
     this.selectAllVariable=!this.selectAllVariable;
-    console.log(this.selectAllVariable);
     if(!this.selectAllVariable){
       this.selectedDistricts=[];
     }else{

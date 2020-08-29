@@ -8,9 +8,6 @@ export class ScrollService {
   constructor(private router: Router) {}
   scrollTo(path: string) {
     const { url, elementId } = this.__getUrlAndElementId(path);
-    console.log("url : ", url);
-    console.log("element id : ", elementId);
-
     if (url) {
       this.router.navigate([url]);
       if (elementId) {
@@ -36,14 +33,12 @@ export class ScrollService {
 
 
   private __getElementById(id: string): HTMLElement {
-    console.log("element id : ", id);
     const element = <HTMLElement>document.querySelector(`#${id}`);
     return element;
   }
 
 
   private __getElementByClass(className: string): HTMLElement {
-    console.log("element class : ", className);
     const element = <HTMLElement>document.querySelector(`.${className}`);
     return element;
   }//datatable-body

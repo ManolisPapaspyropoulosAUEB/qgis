@@ -1,10 +1,6 @@
 <style>
 
-  ::ng-deep.table{
-    padding-top: 13px!important;
-    margin-bottom: 0rem!important;
 
-  }
   ngx-datatable{
     padding-left: 14px;
     padding-bottom: 4%;
@@ -38,6 +34,7 @@
   <mat-tab label="Criteria">
     <div class="table">
       <ngx-datatable
+        style="padding-top:12px!important"
         #myTable
         class="material expandable"
         [columnMode]="'force'"

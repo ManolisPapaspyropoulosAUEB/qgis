@@ -12,6 +12,13 @@
     border-radius: 10px;
   }
 
+
+
+
+  .table{
+    padding-top: 0px!important;
+  }
+
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #a1a4a7;
@@ -384,7 +391,7 @@
         <mat-radio-group (change)="updateFilter()" [(ngModel)]="roadWayRadio" aria-label="Select an option"
                          style="    display: grid;margin-top: 15px;    margin-bottom: 15px;">
           <mat-radio-button value="F">Oneway</mat-radio-button>
-          <mat-radio-button value="B">Both way</mat-radio-button>
+          <mat-radio-button value="B">Both ways</mat-radio-button>
           <mat-radio-button value="FB">Oneway and Both way</mat-radio-button>
         </mat-radio-group>
         <mat-form-field class="example-full-width" style="width: 91%">
@@ -569,7 +576,6 @@
                               {{road.cbi}}
                             </div>
                           </div>
-
                         </div>
                         <div class="col-md-3">
                           <div class="col-md-12" style="padding: 0;    padding-top: 5px;    margin-right: 23px;    width: 80px;display: flex">
@@ -580,15 +586,13 @@
                             <div>
                       <span *ngIf="road.notesSize>-1"  matBadge="{{road.notesSize}}"  matBadgeOverlap="false" matBadgeSize="small" matBadgePosition="before" style="position: relative;left: 22px; top: -9px;z-index: 3;">
                       </span>
-                              <span   matTooltip="Notes" (click)="notes(road)" class="material-icons" style="position: relative;top: 1px;left: -8px">
-                        speaker_notes
+                              <span   matTooltip="Notes" (click)="notes(road)" class="material-icons" style="position: relative;top: 1px;left: -8px">speaker_notes
                       </span>
                             </div>
                           </div>
                         </div>
                         <div (click)="hitRoad(road)" class="col-md-1" style="margin: 0;padding-top: 12px">
-                          <mat-checkbox [disabled]="true" (change)="road.checkedFilter=!road.checkedFilter"
-                                        [(ngModel)]="road.checkedFilter" class="example-margin"></mat-checkbox>
+                          <mat-checkbox [disabled]="true" (change)="road.checkedFilter=!road.checkedFilter" [(ngModel)]="road.checkedFilter" class="example-margin"></mat-checkbox>
                         </div>
                       </div>
                     </mat-card>
@@ -648,7 +652,6 @@
                       </div>
                     </mat-card>
                   </div>
-
                 </mat-tab>
                 <mat-tab label="Villages Selections">
                   <div class="search-hero">
@@ -662,7 +665,6 @@
                            placeholder="Search.."
                     />
                   </div>
-
                   <div class="card-container" style="height: 75vh;overflow-y: scroll;">
                     <mat-card class="matCardSelection" [hidden]="!village.checked"
                               *ngFor="let village of this.filterService.villagesArray|filter: searchTextVillages;"
@@ -714,7 +716,6 @@
                       </div>
                     </mat-card>
                   </div>
-
                 </mat-tab>
               </mat-tab-group>
             </div>
@@ -751,51 +752,55 @@
         </mat-drawer-container>
       </mat-tab>
       <mat-tab label="Roads">
-        <div style="" *ngIf="tab==1" class="table">
+        <div style="" *ngIf="tab==1" class="">
           <div class="col-md-12" style="    padding: 0;margin: 0">
             <div *ngIf="this.currentNum_district_code>0 " class="" style="display: flex;    border-bottom: 1px solid #d1d4d7;" >
               <div class="col-md-8" style="margin: 0;padding: 0;display: flex">
-                <div class="col-md-3 button-header-outer" style="padding-left: 10px">
-                  <button matTooltip="Calculate criteria,MCA,CBI Rates"  mat-button (click)="calculateCriteria()"   mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-                    <svg   style="cursor: pointer;position: relative;top: 0px;left: 7px;"  xmlns="http://www.w3.org/2000/svg" width="28" height="28.001" viewBox="0 0 28 28.001"><defs><style>.a{fill:#b5b5b5;}.b{fill:#8baa48;}</style></defs><path class="a" d="M2.461,0A2.464,2.464,0,0,0,0,2.461V12.469H12.469V0ZM8.149,7.055H7.055V8.149a.82.82,0,1,1-1.641,0V7.055H4.32a.82.82,0,1,1,0-1.641H5.414V4.32a.82.82,0,1,1,1.641,0V5.414H8.149a.82.82,0,1,1,0,1.641Z"/><path class="a" d="M270.022,12.469h.447V2.461A2.464,2.464,0,0,0,268.008,0H258V12.173a9.688,9.688,0,0,1,12.022.3ZM261.5,6.234a.82.82,0,0,1,.82-.82h3.828a.82.82,0,0,1,0,1.641H262.32A.82.82,0,0,1,261.5,6.234Z" transform="translate(-243.89)"/><path class="a" d="M12.173,258H0v10.008a2.464,2.464,0,0,0,2.461,2.461H12.469v-.447a9.688,9.688,0,0,1-.3-12.022Zm-3.991,7.022a.82.82,0,1,1-1.16,1.16l-.787-.787-.787.787a.82.82,0,0,1-1.16-1.16l.787-.787-.787-.787a.82.82,0,1,1,1.16-1.16l.787.787.787-.787a.82.82,0,0,1,1.16,1.16l-.787.787Z" transform="translate(0 -243.89)"/><g transform="translate(11.867 11.867)"><path class="b" d="M225.067,217a8.067,8.067,0,1,0,8.067,8.067A8.076,8.076,0,0,0,225.067,217Zm1.914,10.254h-3.828a.82.82,0,1,1,0-1.641h3.828a.82.82,0,1,1,0,1.641Zm0-2.734h-3.828a.82.82,0,1,1,0-1.641h3.828a.82.82,0,1,1,0,1.641Z" transform="translate(-217 -217)"/></g></svg>
-                    <span   style="    position: relative;left: 10px;" class="button-label" >CALC MCA,CBI</span>
-                  </button>
-                </div>
-                <div class="col-md-2 button-header-outer  " style="    margin-left: -43px;">
-                  <button mat-button (click)="snapshotDialog()"  matTooltip="Show history criteria and scores" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-                    <img sr style=" cursor: pointer;height: 32px;padding-left: 6px;position: relative;top: -3px;" src="assets/fileHistory.png"/>
-                    <span class="button-label">HISTORY</span>
-                  </button>
-                </div>
-                <div class="col-md-2 button-header-outer pl-0">
-                  <button mat-button (click)="convertAs()" style="    padding-left: 7px;"   matTooltip="Export data roads to pdf or xlsx" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-                    <svg style="    cursor: pointer;position: relative;top: -1px;left: 0px;" xmlns="http://www.w3.org/2000/svg" width="27.953" height="27.5" viewBox="0 0 27.953 27.5"><defs><style>.a{fill:#b5b5b5;}.b{fill:#8baa48;}</style></defs><g transform="translate(0 0)"><path class="a" d="M12.812,22.023,0,16.15v2.737a.581.581,0,0,0,.351.533l12.461,5.418Z" transform="translate(0 2.66)"/><path class="a" d="M13,22.023V24.84l12.461-5.418a.584.584,0,0,0,.351-.535V16.15Z" transform="translate(2.141 2.66)"/><path class="b" d="M14.444,16.306H11.532a1.458,1.458,0,0,1-1.456-1.456V7.862h-3.2a.874.874,0,0,1-.617-1.491L12.371.256a.874.874,0,0,1,1.236,0l6.115,6.115A.874.874,0,0,1,19.1,7.862H15.9V14.85A1.458,1.458,0,0,1,14.444,16.306Z" transform="translate(0.988)"/><path class="a" d="M19.218,11.063v1.965a3.79,3.79,0,0,1-3.785,3.785H12.521a3.79,3.79,0,0,1-3.785-3.785V11.063L0,15.066l13.977,6.406,13.977-6.406Z" transform="translate(0 1.822)"/></g></svg>
-                    <span class="button-label">EXPORT</span>
-                  </button>
-                </div>
-                <div class="col-md-2 button-header-outer pl-0" style="position: relative;left: -12px;">
-                  <button  (click)="importRoadsXLS()"  style="    padding-left: 7px;"   matTooltip="import" matTooltipClass="tooltip" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="27.16" height="27.16" viewBox="0 0 27.16 27.16"><defs><style>.a{fill:#8baa48;}.b{fill:#b5b5b5;}</style></defs><path class="a" d="M18.356,11a7.356,7.356,0,1,0,7.356,7.356A7.364,7.364,0,0,0,18.356,11Zm3.178,9.339-2.546,2.829a.851.851,0,0,1-1.263,0l-2.546-2.829a.85.85,0,0,1,.631-1.417h1.415V14.395a1.132,1.132,0,1,1,2.263,0v4.527H20.9A.85.85,0,0,1,21.534,20.339Z" transform="translate(1.448 1.448)"/><path class="b" d="M11.317,0,22.633,4.527,11.317,9.053,0,4.527Z"/><path class="b" d="M10.185,10.228,0,6.154V17.3a.565.565,0,0,0,.37.531l9.815,3.616Z" transform="translate(0 0.81)"/><path class="b" d="M18.356,9.375a9.618,9.618,0,0,1,2.829.426V6.154L11,10.228v2.58A9.6,9.6,0,0,1,18.356,9.375Z" transform="translate(1.448 0.81)"/></svg>
-                    <span class="button-label">IMPORT</span>
-                  </button>
+                <div class="d-flex bd-highlight" >
+                  <div class="p-2 bd-highlight">
+                    <button matTooltip="Calculate criteria,MCA,CBI Rates"  mat-button (click)="calculateCriteria()"   mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                      <svg   style="cursor: pointer;position: relative;top: 0px;left: 0px;"  xmlns="http://www.w3.org/2000/svg" width="28" height="28.001" viewBox="0 0 28 28.001"><defs><style>.a{fill:#b5b5b5;}.b{fill:#8baa48;}</style></defs><path class="a" d="M2.461,0A2.464,2.464,0,0,0,0,2.461V12.469H12.469V0ZM8.149,7.055H7.055V8.149a.82.82,0,1,1-1.641,0V7.055H4.32a.82.82,0,1,1,0-1.641H5.414V4.32a.82.82,0,1,1,1.641,0V5.414H8.149a.82.82,0,1,1,0,1.641Z"/><path class="a" d="M270.022,12.469h.447V2.461A2.464,2.464,0,0,0,268.008,0H258V12.173a9.688,9.688,0,0,1,12.022.3ZM261.5,6.234a.82.82,0,0,1,.82-.82h3.828a.82.82,0,0,1,0,1.641H262.32A.82.82,0,0,1,261.5,6.234Z" transform="translate(-243.89)"/><path class="a" d="M12.173,258H0v10.008a2.464,2.464,0,0,0,2.461,2.461H12.469v-.447a9.688,9.688,0,0,1-.3-12.022Zm-3.991,7.022a.82.82,0,1,1-1.16,1.16l-.787-.787-.787.787a.82.82,0,0,1-1.16-1.16l.787-.787-.787-.787a.82.82,0,1,1,1.16-1.16l.787.787.787-.787a.82.82,0,0,1,1.16,1.16l-.787.787Z" transform="translate(0 -243.89)"/><g transform="translate(11.867 11.867)"><path class="b" d="M225.067,217a8.067,8.067,0,1,0,8.067,8.067A8.076,8.076,0,0,0,225.067,217Zm1.914,10.254h-3.828a.82.82,0,1,1,0-1.641h3.828a.82.82,0,1,1,0,1.641Zm0-2.734h-3.828a.82.82,0,1,1,0-1.641h3.828a.82.82,0,1,1,0,1.641Z" transform="translate(-217 -217)"/></g></svg>
+                    </button>
+                    <span (click)="calculateCriteria()"   style="    position: relative;left: 6px;" class="button-label" >CALC MCA,CBI</span>
+                  </div>
+                  <div class="p-2 bd-highlight">
+                    <button mat-button (click)="snapshotDialog()"  matTooltip="Show history criteria and scores" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                      <img sr style=" cursor: pointer;height: 32px;padding-left: 6px;position: relative;top: -3px;left: -3px" src="assets/fileHistory.png"/>
+                    </button>
+                    <span (click)="snapshotDialog()" class="button-label">HISTORY</span>
+                  </div>
+                  <div class="p-2 bd-highlight">
+                    <button mat-button (click)="convertAs()" style="    padding-left: 7px;"   matTooltip="Export data roads to pdf or xlsx" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                      <svg style="    cursor: pointer;position: relative;top: -1px;left: -3px;" xmlns="http://www.w3.org/2000/svg" width="27.953" height="27.5" viewBox="0 0 27.953 27.5"><defs><style>.a{fill:#b5b5b5;}.b{fill:#8baa48;}</style></defs><g transform="translate(0 0)"><path class="a" d="M12.812,22.023,0,16.15v2.737a.581.581,0,0,0,.351.533l12.461,5.418Z" transform="translate(0 2.66)"/><path class="a" d="M13,22.023V24.84l12.461-5.418a.584.584,0,0,0,.351-.535V16.15Z" transform="translate(2.141 2.66)"/><path class="b" d="M14.444,16.306H11.532a1.458,1.458,0,0,1-1.456-1.456V7.862h-3.2a.874.874,0,0,1-.617-1.491L12.371.256a.874.874,0,0,1,1.236,0l6.115,6.115A.874.874,0,0,1,19.1,7.862H15.9V14.85A1.458,1.458,0,0,1,14.444,16.306Z" transform="translate(0.988)"/><path class="a" d="M19.218,11.063v1.965a3.79,3.79,0,0,1-3.785,3.785H12.521a3.79,3.79,0,0,1-3.785-3.785V11.063L0,15.066l13.977,6.406,13.977-6.406Z" transform="translate(0 1.822)"/></g></svg>
+                    </button>
+                    <span  (click)="convertAs()" class="button-label">EXPORT</span>
+                  </div>
+                  <div class="p-2 bd-highlight">
+                    <button  (click)="importRoadsXLS()"  style="    padding-left: 7px;"   matTooltip="import" matTooltipClass="tooltip" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                      <svg style="    position: relative;    left: -3px;" xmlns="http://www.w3.org/2000/svg" width="27.16" height="27.16" viewBox="0 0 27.16 27.16"><defs><style>.a{fill:#8baa48;}.b{fill:#b5b5b5;}</style></defs><path class="a" d="M18.356,11a7.356,7.356,0,1,0,7.356,7.356A7.364,7.364,0,0,0,18.356,11Zm3.178,9.339-2.546,2.829a.851.851,0,0,1-1.263,0l-2.546-2.829a.85.85,0,0,1,.631-1.417h1.415V14.395a1.132,1.132,0,1,1,2.263,0v4.527H20.9A.85.85,0,0,1,21.534,20.339Z" transform="translate(1.448 1.448)"/><path class="b" d="M11.317,0,22.633,4.527,11.317,9.053,0,4.527Z"/><path class="b" d="M10.185,10.228,0,6.154V17.3a.565.565,0,0,0,.37.531l9.815,3.616Z" transform="translate(0 0.81)"/><path class="b" d="M18.356,9.375a9.618,9.618,0,0,1,2.829.426V6.154L11,10.228v2.58A9.6,9.6,0,0,1,18.356,9.375Z" transform="translate(1.448 0.81)"/></svg>
+                    </button>
+                    <span  (click)="importRoadsXLS()"  class="button-label">IMPORT</span>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-4 quick-view-table-btns">
-                <button style="padding-left: 3px!important;font-size: 13px" [ngClass]="(this.currentBtnNavInit==true)?'btnControlSelected':'btnControl'" (click)="scrollToId('init')" mat-raised-button >
-                  <span class="material-icons">arrow_left</span><span>START</span>
-                </button>
-                <button style="font-size: 13px" [ngClass]="(this.currentBtnNavCriteria==true)?'btnControlSelected':'btnControl'" (click)="scrollToId('criteria')" mat-raised-button >
-                  <span>CRITERIA</span>
-                </button>
-                <button style="font-size: 13px"  [ngClass]="(this.currentBtnNavScores==true)?'btnControlSelected':'btnControl'" (click)="scrollToId('c1_location')" mat-raised-button >
-                  <span>SCORES</span>
-                </button>
-                <button  style="padding-right: 0px!important;font-size: 13px" [ngClass]="(this.currentBtnNavMcaCbi==true)?'btnControlSelected':'btnControl'" (click)="scrollToId('mciCbiRates')" mat-raised-button >
-                  <span>MCA,CBI</span>
-                  <span class="material-icons">
+              <div class="col-md-4" style="    padding-top: 8px;">
+                <div class="p-2 bd-highlight quick-view-table-btns">
+                  <button style="padding-left: 3px!important;font-size: 13px" [ngClass]="(this.currentBtnNavInit==true)?'btnControlSelected':'btnControl'" (click)="scrollToId('init')" mat-raised-button >
+                    <span class="material-icons">arrow_left</span><span>START</span>
+                  </button>
+                  <button style="font-size: 13px" [ngClass]="(this.currentBtnNavCriteria==true)?'btnControlSelected':'btnControl'" (click)="scrollToId('criteria')" mat-raised-button >
+                    <span>CRITERIA</span>
+                  </button>
+                  <button style="font-size: 13px"  [ngClass]="(this.currentBtnNavScores==true)?'btnControlSelected':'btnControl'" (click)="scrollToId('c1_location')" mat-raised-button >
+                    <span>SCORES</span>
+                  </button>
+                  <button  style="padding-right: 0px!important;font-size: 13px" [ngClass]="(this.currentBtnNavMcaCbi==true)?'btnControlSelected':'btnControl'" (click)="scrollToId('mciCbiRates')" mat-raised-button >
+                    <span>MCA,CBI</span>
+                    <span class="material-icons">
                     arrow_right
                     </span>
-                </button>
+                  </button>
+                </div>
               </div>
             </div>
             <div class="container4" *ngIf="loading">
@@ -809,7 +814,7 @@
             </div>
             <ngx-datatable
               *ngIf="!this.loading"
-              style="margin-top: 5px"
+              style="margin-top: 1px"
               #mydatatable
               id="myTble"
               class="material"
@@ -1184,7 +1189,7 @@
       <mat-tab label="Villages">
         <app-villages></app-villages>
       </mat-tab>
-      <mat-tab label="Core Data">
+      <mat-tab  *ngIf="this.role=='admin'" label="Core Data">
         <app-core-data></app-core-data>
       </mat-tab>
     </mat-tab-group>

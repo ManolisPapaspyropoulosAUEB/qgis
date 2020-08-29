@@ -255,10 +255,6 @@ mat-ripple mat-tab-label mat-focus-indicator mat-tab-label-active ng-star-insert
   overflow-x: hidden;
 }
 
-::ng-deep.table {
-  padding-top: 10px !important;
-  margin-bottom: 0rem !important;
-}
 
 .ngx-datatable.bootstrap {
   box-shadow: none;
