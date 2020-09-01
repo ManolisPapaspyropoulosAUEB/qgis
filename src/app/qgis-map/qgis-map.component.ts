@@ -3515,6 +3515,9 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     });
     dialogRef.afterClosed().subscribe(result => {
+
+      console.log(result);
+
       if (result) {
         if (result.exporter == 'XLSX') {
           if (result.optionExporter == 'selected') {
@@ -3680,7 +3683,7 @@ export class ProfileDialog implements OnInit {
     this.editForm2 = this.formBuilder.group({
       name: [ this.name, Validators.required],
       lastname: [ this.lastname, Validators.required],
-      username: [ this.username, Validators.required],
+      username: [ this.username],
       role: [ this.role, Validators.required],
       email: [ this.email, Validators.required]
     });
@@ -3690,7 +3693,9 @@ export class ProfileDialog implements OnInit {
         newPassword: [ this.newPassword,[Validators.required, Validators.minLength(8)] ],
         retypeNewPassword: [this.retypeNewPassword,Validators.required ],
       },
-      {validator: [MustMatch('newPassword', 'retypeNewPassword'),MustMatch2('oldPassword', 'password')]}
+      {validator: [
+        MustMatch('newPassword', 'retypeNewPassword'),
+          MustMatch2('oldPassword', 'password')]}
     );
     function MustMatch(controlName: string, matchingControlName: string) {
       return (formGroup: FormGroup) => {
@@ -3769,7 +3774,7 @@ export class ProfileDialog implements OnInit {
 
   tabChange(event){
     this.tab =event.index;
-    this.editForm3.get("password").setValue(this.password);
+    this.editForm3.get("password").setValue(this.password);//bale ena settimoeout pou tha bazei timh edw meta apo ena deyterolepto
 
   }
 
@@ -4104,6 +4109,9 @@ export class HistoryDialog implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+
+        console.log(result);
+
         let finalRes = {
           'exporter': result.exporter,
           'id': row.id
@@ -4113,7 +4121,7 @@ export class HistoryDialog implements OnInit {
           this.dataservice.getAllFromRoadsHistory(finalRes).subscribe(response => {
             this.excelPdfExporterService.convertAsPdf(response.data);
           });
-        } else if (finalRes.exporter == 'XLS') {
+        } else if (finalRes.exporter == 'XLSX') {
           this.dataservice.getAllFromRoadsHistory(finalRes).subscribe(response => {
             this.excelPdfExporterService.convertAsXls(response.data);
           });

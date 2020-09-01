@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {DataService} from '../../services/data.service';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
@@ -39,19 +39,30 @@ export class RegisterComponent implements OnInit {
     return this.editForm.controls;
   }
 
+  validateAllFormFields(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsTouched({onlySelf: true});
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+
+      }
+    });
+  }
+
 
   onSubmitForm() {
-
     if (this.editForm.invalid) {
+      this.validateAllFormFields(this.editForm);
+      this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
+
       return;
     }
-
     this.loading=true;
     let pwd = {
       email: this.f.email.value
     };
-
-
 
     this.dataService.forgotPwd({
       pwd:pwd
@@ -75,78 +86,9 @@ export class RegisterComponent implements OnInit {
           'x',
           <MatSnackBarConfig>{duration: 3000}
         );
-
-
       }
-
-
-
-
     });
-
-
-
   }
-
-
-  // onSubmitForm() {
-  //
-  //   if (this.editForm.invalid) {
-  //     return;
-  //   }
-  //
-  //   this.loading=true;
-  //   let user = {
-  //     username: this.f.username.value,
-  //     firstname: this.f.firstname.value,
-  //     lastname: this.f.lastname.value,
-  //     email: this.f.email.value,
-  //     password: this.f.password.value,
-  //     role: this.f.role.value
-  //   };
-  //
-  //
-  //   var company={};
-  //   if(this.f.role.value=='Producer'){
-  //      company = { companyName: this.f.company.value, street: this.f.street.value, city: this.f.city.value  , numberStreet:   this.f.numberStreet.value   };
-  //
-  //   }
-  //
-  //   this.dataService.register({
-  //     user:user,
-  //     company:company
-  //
-  //   }).subscribe(response=>{
-  //
-  //     if(response.status=='ok'){
-  //       this.loading=false;
-  //
-  //       this.snackBar.open(
-  //        response.message,
-  //         'x',
-  //         <MatSnackBarConfig>{duration: 3000}
-  //       );
-  //
-  //
-  //     }else{
-  //       this.loading=false;
-  //       this.snackBar.open(
-  //         response.message,
-  //         'x',
-  //         <MatSnackBarConfig>{duration: 3000}
-  //       );
-  //
-  //
-  //     }
-  //
-  //
-  //
-  //
-  //   });
-  //
-  //
-  //
-  // }
 
 
 

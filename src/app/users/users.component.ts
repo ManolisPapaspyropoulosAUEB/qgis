@@ -147,16 +147,11 @@ export class UserDialogUpdate implements OnInit {
   districtName;
   selectAllVariable;
   role;
-
-
-
   constructor(public dialogRef: MatDialogRef<UserDialogUpdate>,
               private formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any,
               private dataService: DataService, private snackBar: MatSnackBar) {}
 
   ngOnInit() {
-
-
     this.districtName="";
     this.selectAllVariable=false;
     this.getDistricts();

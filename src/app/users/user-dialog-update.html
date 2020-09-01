@@ -67,8 +67,6 @@
       <h2 style="font-size: 24px" *ngIf="this.data.updateMode==0">Add Facilitie</h2>
       <h2 *ngIf="this.data.mode=='add'"  style="font-size: 24px" >Add User</h2>
       <h2 *ngIf="this.data.mode=='edit'"  style="font-size: 24px" >Edit User</h2>
-
-
     </div>
     <div class="col-md-1">
     <span  (click)="onNoClick()"   class="material-icons closeIcon">
@@ -76,33 +74,24 @@
     </span>
     </div>
   </div>
-
-
-
   <form   [formGroup]="editForm2" class="example-form" style="display: grid;padding-left: 13px;
     padding-right: 24px;"  (ngSubmit)="saveDC()">
-
-
     <mat-form-field class="example-full-width">
       <mat-label>Name</mat-label>
       <input  formControlName="name"   matInput placeholder="name" [(ngModel)]="name">
     </mat-form-field>
-
     <mat-form-field class="example-full-width">
       <mat-label>Last name</mat-label>
       <input  formControlName="lastname"   matInput placeholder="lastname" [(ngModel)]="lastname">
     </mat-form-field>
-
-    <mat-form-field class="example-full-width">
-      <mat-label>username</mat-label>
-      <input  formControlName="username"   matInput placeholder="username" [(ngModel)]="username">
-    </mat-form-field>
-
+    <!--<mat-form-field class="example-full-width">-->
+      <!--<mat-label>username</mat-label>-->
+      <!--<input  formControlName="username"   matInput placeholder="username" [(ngModel)]="username">-->
+    <!--</mat-form-field>-->
     <mat-form-field class="example-full-width">
       <mat-label>email</mat-label>
       <input  formControlName="email"   matInput placeholder="email" [(ngModel)]="email">
     </mat-form-field>
-
     <mat-form-field  appearance="fill">
       <mat-label>Role</mat-label>
       <mat-select   formControlName="role" [(value)]="role">
@@ -110,12 +99,10 @@
         <mat-option value="user">user</mat-option>
       </mat-select>
     </mat-form-field>
-
     <mat-form-field class="example-full-width">
       <mat-label>password</mat-label>
       <input  formControlName="password"   matInput placeholder="password" [(ngModel)]="password">
     </mat-form-field>
-
     <mat-form-field *ngIf="this.role!='admin'"   style="width:100%">
       <mat-label>Available Districts</mat-label>
       <mat-select  formControlName="selectedDistricts" #slrc [(ngModel)]="selectedDistricts"  multiple (valueChange)="printTest()">
@@ -137,14 +124,9 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-
-
-
-
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button (click)="saveDC()" style="background-color: #2F4060"  type="submit" mat-raised-button color="primary">Save</button>
-
   <button mat-raised-button (click)="onNoClick()" >Cancel</button>
 </mat-dialog-actions>
