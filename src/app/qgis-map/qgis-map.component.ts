@@ -3662,7 +3662,7 @@ export class ProfileDialog implements OnInit {
   retypeNewPassword;
   user:any;
   tab;
-  constructor(public dialogRef: MatDialogRef<DeleteSnapshotDialog>,private dataservice:DataService, public dialog: MatDialog, private formBuilder: FormBuilder, private snackBar: MatSnackBar,
+  constructor(public dialogRef: MatDialogRef<DeleteSnapshotDialog>,private dataservice:DataService,public validationService : ValidationService, public dialog: MatDialog, private formBuilder: FormBuilder, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
   }
@@ -3702,10 +3702,8 @@ export class ProfileDialog implements OnInit {
         var control = formGroup.controls[controlName];
         var matchingControl = formGroup.controls[matchingControlName];
         if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-          // return if another validator has already found an error on the matchingControl
           return;
         }
-        // set error on matchingControl if validation fails
         if (control.value !== matchingControl.value) {
           matchingControl.setErrors({ mustMatch: true });
         } else {
@@ -3785,22 +3783,13 @@ export class ProfileDialog implements OnInit {
   get f3() {
     return this.editForm3.controls;
   }
-  validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(field => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        control.markAsTouched({onlySelf: true});
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control);
-      }
-    });
-  }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
   public updateGeneralInfo() {
     if (this.editForm2.invalid) {
-      this.validateAllFormFields(this.editForm2);
+      this.validationService.validateAllFormFields(this.editForm2);
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
       return;
     }
@@ -3826,7 +3815,7 @@ export class ProfileDialog implements OnInit {
 
   public updatePassword() {
     if (this.editForm3.invalid) {
-      this.validateAllFormFields(this.editForm3);
+      this.validationService.validateAllFormFields(this.editForm3);
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
       return;
     }
@@ -3852,6 +3841,7 @@ import {promise} from 'selenium-webdriver';
 import Promise = promise.Promise;
 import {JsonObject} from '@angular/compiler-cli/ngcc/src/packages/entry_point';
 import {Observable} from 'rxjs/Observable';
+import {ValidationService} from '../../services/validation.service';
 @Component({
   selector: './import-dialog',
   templateUrl: './import-dialog.html'
@@ -4254,7 +4244,6 @@ export class NotesDialog implements OnInit {
   @Output() dismiss = new EventEmitter();
   @Output() focusout = new EventEmitter();
   notes = [];
-
   constructor(public dialogRef: MatDialogRef<NotesDialog>, public dialog: MatDialog, private  dataservice: DataService, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
@@ -4263,16 +4252,12 @@ export class NotesDialog implements OnInit {
   ngOnInit() {
     this.getNoteByRoadId();
   }
-
-
   onDismiss(event) {
     this.dismiss.emit(event);
   }
-
   onFocusOut(event) {
     this.focusout.emit(event);
   }
-
   editNote(note) {
     note.updateMode = 1;
     const dialogRef = this.dialog.open(AddingNoteDialog, {
@@ -4285,21 +4270,16 @@ export class NotesDialog implements OnInit {
           this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
           this.getNoteByRoadId();
         });
-
       }
     });
-
   }
-
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-
   public yes() {
     this.dialogRef.close(true);
   }
-
   getNoteByRoadId() {
     this.dataservice.getNoteByRoadId({'roadId': this.data.id}).subscribe(response => {
       if (response.status == 'ok') {
@@ -4310,16 +4290,12 @@ export class NotesDialog implements OnInit {
       }
     });
   }
-
   addNote() {
     this.data.updateMode = 0;
     const dialogRef = this.dialog.open(AddingNoteDialog, {
       width: '800px',
       data: this.data
-
-
     });
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.dataservice.addNote(result).subscribe(response => {
@@ -4328,16 +4304,9 @@ export class NotesDialog implements OnInit {
         });
       }
     });
-
-
   }
-
-
   public save() {
-
   }
-
-
   deleteNote(note) {
     note.updateMode = 1;
     const dialogRef = this.dialog.open(DeleteNoteDialog, {
@@ -4350,13 +4319,9 @@ export class NotesDialog implements OnInit {
           this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
           this.getNoteByRoadId();
         });
-
       }
     });
-
   }
-
-
 }
 
 
@@ -4377,14 +4342,9 @@ export class DeleteNoteDialog implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
-
   public yes() {
     this.dialogRef.close(true);
-
   }
-
-
 }
 
 
@@ -4396,7 +4356,7 @@ export class AddingNoteDialog implements OnInit {
   @Output() dismiss = new EventEmitter();
   @Output() focusout = new EventEmitter();
 
-  constructor(public dialogRef: MatDialogRef<AddingNoteDialog>, public dialog: MatDialog, private formBuilder: FormBuilder, private snackBar: MatSnackBar,
+  constructor(public dialogRef: MatDialogRef<AddingNoteDialog>,public validationService : ValidationService, public dialog: MatDialog, private formBuilder: FormBuilder, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
 
@@ -4433,22 +4393,12 @@ export class AddingNoteDialog implements OnInit {
   get f() {
     return this.editForm2.controls;
   }
-  validateAllFormFields(formGroup: FormGroup) {         //{1}
-    Object.keys(formGroup.controls).forEach(field => {  //{2}
-      const control = formGroup.get(field);             //{3}
-      if (control instanceof FormControl) {             //{4}
-        control.markAsTouched({onlySelf: true});
-      } else if (control instanceof FormGroup) {        //{5}
-        this.validateAllFormFields(control);            //{6}
-      }
-    });
-  }
 
 
   public saveNote() {
 
     if (this.editForm2.invalid) {
-      this.validateAllFormFields(this.editForm2);
+      this.validationService.validateAllFormFields(this.editForm2);
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
       return;
     }
@@ -4720,7 +4670,7 @@ export class EditRoadDialog implements OnInit {
   constructor(public dialogRef: MatDialogRef<EditRoadDialog>,
               private formBuilder: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public data: any,
-              private dataService: DataService, private snackBar: MatSnackBar, public router: Router,
+              private dataService: DataService, private snackBar: MatSnackBar, public router: Router,public validationService : ValidationService,
   ) {
   }
 
@@ -4778,25 +4728,12 @@ export class EditRoadDialog implements OnInit {
   get f() {
     return this.editForm.controls;
   }
-
-  validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(field => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        control.markAsTouched({onlySelf: true});
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control);
-      }
-    });
-  }
-
   ftthemarket(value) {
   }
-
   public save() {
     if (this.editForm.invalid) {
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
-      this.validateAllFormFields(this.editForm);
+      this.validationService.validateAllFormFields(this.editForm);
       return;
     }
     let resultObject = {

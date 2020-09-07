@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {DataService} from '../../services/data.service';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
+import {ValidationService} from '../../services/validation.service';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,9 @@ export class RegisterComponent implements OnInit {
   role="Consumer";
   password="";
   loading: any;
-  constructor(private snackBar: MatSnackBar,private formBuilder: FormBuilder, private router: Router,private  dataService : DataService) {
+  constructor(private snackBar: MatSnackBar,private formBuilder: FormBuilder, private router: Router,
+              public validationService : ValidationService,
+              private  dataService : DataService) {
   }
   ngOnInit() {
     this.loading=false;
@@ -39,22 +42,11 @@ export class RegisterComponent implements OnInit {
     return this.editForm.controls;
   }
 
-  validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(field => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        control.markAsTouched({onlySelf: true});
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control);
-
-      }
-    });
-  }
 
 
   onSubmitForm() {
     if (this.editForm.invalid) {
-      this.validateAllFormFields(this.editForm);
+      this.validationService.validateAllFormFields(this.editForm);
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
 
       return;

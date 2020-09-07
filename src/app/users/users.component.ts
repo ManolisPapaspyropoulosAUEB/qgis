@@ -3,6 +3,7 @@ import {DataService} from '../../services/data.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ValidationService} from '../../services/validation.service';
 
 @Component({
   selector: 'app-users',
@@ -147,7 +148,7 @@ export class UserDialogUpdate implements OnInit {
   districtName;
   selectAllVariable;
   role;
-  constructor(public dialogRef: MatDialogRef<UserDialogUpdate>,
+  constructor(public dialogRef: MatDialogRef<UserDialogUpdate>,public validationService : ValidationService,
               private formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any,
               private dataService: DataService, private snackBar: MatSnackBar) {}
 
@@ -244,16 +245,7 @@ export class UserDialogUpdate implements OnInit {
     this.dialogRef.close();
   }
 
-  validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(field => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        control.markAsTouched({onlySelf: true});
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control);
-      }
-    });
-  }
+
 
   public saveDC() { //addUser
 
@@ -268,7 +260,7 @@ export class UserDialogUpdate implements OnInit {
     }
 
     if (this.editForm2.invalid) {
-      this.validateAllFormFields(this.editForm2);
+      this.validationService.validateAllFormFields(this.editForm2);
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
       return;
     }

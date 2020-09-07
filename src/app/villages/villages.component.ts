@@ -5,6 +5,7 @@ import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ScrollService} from '../../services/scroll.service';
+import {ValidationService} from '../../services/validation.service';
 @Component({
   selector: 'app-villages',
   templateUrl: './villages.component.html',
@@ -267,7 +268,7 @@ export class VillageDialog implements OnInit {
   provinces = [];
   id;
   constructor(public dialogRef: MatDialogRef<VillageDialog>,
-              private formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any,
+              private formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any,public validationService : ValidationService,
               private dataService: DataService, private snackBar: MatSnackBar) {}
 
   ngOnInit() {
@@ -358,23 +359,17 @@ export class VillageDialog implements OnInit {
     } else {
       this.getProvinces();
     }
-
-
   }
-
   public getProvinces() {
     this.dataService.get_province().subscribe(response => {
       this.provinces = response.data;
     });
   }
-
   public getDistricts() {
     this.dataService.get_districts({num_province_code: this.num_province_code}).subscribe(response => {
       this.districts = response.data;
     });
   }
-
-
   styleObjectPr(): Object {
     if (this.f.num_province_code.errors) {
       return {
@@ -385,7 +380,6 @@ export class VillageDialog implements OnInit {
     }
     return {};
   }
-
   styleObjectD(): Object {
     if (this.f.num_district_code.errors) {
       return {
@@ -396,29 +390,15 @@ export class VillageDialog implements OnInit {
     }
     return {};
   }
-
   get f() {
     return this.editForm2.controls;
   }
-
   onNoClick(): void {
     this.dialogRef.close();
   }
-
-  validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach(field => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        control.markAsTouched({onlySelf: true});
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control);
-      }
-    });
-  }
-
   public saveDC() {
     if (this.editForm2.invalid) {
-      this.validateAllFormFields(this.editForm2);
+      this.validationService.validateAllFormFields(this.editForm2);
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
       return;
     }

@@ -104,6 +104,7 @@ import {SafeUrlPipe} from './qgis-map/safeurl.pipe';
 import {ImagePipe} from './qgis-map/image.pipe';
 import {UniquePipe} from './qgis-map/unique.pipe';
 import {DeleteUserDialog, UserDialogUpdate, UsersComponent} from './users/users.component';
+import {ValidationService} from '../services/validation.service';
 
 
 
@@ -252,7 +253,6 @@ const routes: Routes = [
     MatCardModule,
     A11yModule,
     ClipboardModule,
-
     FormsModule,
     FileUploadModule,
     CdkStepperModule,
@@ -333,7 +333,8 @@ const routes: Routes = [
 
 
 
-  providers: [AuthGuardService, AuthService, DataService, RemoteDataService,FilterService,ExcelPdfExporterService,SafeUrlPipe,ImagePipe,UniquePipe,
+
+  providers: [AuthGuardService, AuthService,ValidationService, DataService, RemoteDataService,FilterService,ExcelPdfExporterService,SafeUrlPipe,ImagePipe,UniquePipe,
 
     {provide:MAT_DIALOG_DATA,useValue: {}}
 
