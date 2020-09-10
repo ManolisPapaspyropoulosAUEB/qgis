@@ -12,7 +12,10 @@ export class CoreDataComponent implements OnInit {
   timeout: any;
   @ViewChild('myTable') table: any;
   label;
-  opParam;
+  estimatedRoutineMaintenanceCost;
+  estimatedPeriodicMaintenanceCost;
+
+
   opId;
   tab;
   criteriaMaster;
@@ -21,6 +24,8 @@ export class CoreDataComponent implements OnInit {
   @ViewChild(UsersComponent) usersComponent: UsersComponent;
 
   ngOnInit(): void {
+    this.estimatedRoutineMaintenanceCost=0;
+    this.estimatedPeriodicMaintenanceCost=0;
     this.tab=0;
     this.role=localStorage.getItem("role");
     this.label="";
@@ -30,7 +35,10 @@ export class CoreDataComponent implements OnInit {
       "label":this.label
     }).subscribe(response=>{
       this.criteriaMaster=response.data;
-      this.opParam=response.opParam;
+
+      this.estimatedRoutineMaintenanceCost=response.estimatedRoutineMaintenanceCost;
+      this.estimatedPeriodicMaintenanceCost=response.estimatedPeriodicMaintenanceCost;
+
       this.opId=response.opId;
     });
   }
@@ -84,7 +92,8 @@ export class CoreDataComponent implements OnInit {
 
   updateMainCost() { //opId
     this.dataService.updateEstimatedMaintenanceCost({
-      "opParam":this.opParam,
+      "estimatedRoutineMaintenanceCost":this.estimatedRoutineMaintenanceCost,
+      "estimatedPeriodicMaintenanceCost":this.estimatedPeriodicMaintenanceCost,
       "opId":this.opId
     }).subscribe(response=>{
       this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});

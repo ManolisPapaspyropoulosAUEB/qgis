@@ -299,7 +299,7 @@ mat-ripple mat-tab-label mat-focus-indicator mat-tab-label-active ng-star-insert
 
 .ngx-datatable.bootstrap .datatable-body {
 
-  width: 97% !important;
+  width: 91% !important;
 
 }
 
@@ -722,9 +722,11 @@ span.datatable-header-cell-label,
   font-size: 14px;
 }
 
+
 .roadFilters {
-  max-height: 65vh;
+  max-height: 56vh;
   overflow-y: auto;
+
 }
 
 .left-column-filter .mat-drawer-inner-container {

@@ -49,12 +49,12 @@ export class ScrollService {
     if(myTble!=null){
       if(param=='mciCbiRates'){
         myTble.scrollTo({
-          left: 5500,
+          left: 7650,
           behavior: 'smooth'
         });
       }else if (param=='c1_location'){
         myTble.scrollTo({
-          left: 3500,
+          left: 5600,
           behavior: 'smooth'
         });
       }else if (param=='init'){
@@ -64,7 +64,7 @@ export class ScrollService {
         });
       }else if (param=='criteria'){
         myTble.scrollTo({
-          left: 1820,
+          left: 2520,
           behavior: 'smooth'
         });
       }else if(param=='top'){

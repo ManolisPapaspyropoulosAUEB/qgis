@@ -32,9 +32,12 @@ export class FacilitiesComponent implements OnInit  {
   public type;
   public userSelectionsForMapShow = [];
   private nameFilter: string;
+  private showAllCheckFacilities;
+
 
   ngOnInit(): void {
 
+    this.showAllCheckFacilities=false;
     this.loading=false;
 
     this.nameFilter='';
@@ -85,6 +88,13 @@ export class FacilitiesComponent implements OnInit  {
           }
         }
       });
+
+
+      if(this.showAllCheckFacilities){
+        this.showAllCheckedFacilities(this.showAllCheckFacilities);
+      }
+
+
       this.loading=false;
 
       window.dispatchEvent(new Event('resize'));
@@ -182,8 +192,30 @@ export class FacilitiesComponent implements OnInit  {
     this.getFacilities();
   }
 
+
+
+
+  public showAllCheckedFacilities(showAllCheckFacilities) {
+    console.log(showAllCheckFacilities);
+    this.showAllCheckFacilities=showAllCheckFacilities;
+    var facilities = this.finalfacilitiesMerged;
+    this.finalfacilitiesMerged=[];
+    if (showAllCheckFacilities) {
+      for ( let i = 0; i <facilities.length; i++) {
+        if (facilities[i].checked == true) {
+          this.finalfacilitiesMerged.push(facilities[i]);
+        }
+      }
+    } else {
+      this.getFacilities();
+    }
+  }
+
+
+
+
   selectAllCheckMethod(selectAllCheckFacilities: any) {
-    if (selectAllCheckFacilities) {
+    if (!selectAllCheckFacilities) {
       this.finalfacilitiesMerged.forEach(element => {
         element.checked = false;
         this.userSelectionsForMapShow = [];
@@ -194,6 +226,7 @@ export class FacilitiesComponent implements OnInit  {
         this.userSelectionsForMapShow.push(element);
       });
     }
+    console.log( this.finalfacilitiesMerged);
     this.filterService.facilitiesArray = this.userSelectionsForMapShow;
   }
 

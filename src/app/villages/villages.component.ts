@@ -21,10 +21,12 @@ export class VillagesComponent implements OnInit {
   private provinceName: any;
   private district_name: any;
   public loading;
-
+  public showAllCheckVillages;
   constructor(public dataservice: DataService, public filterService: FilterService, public dialog: MatDialog, private snackBar: MatSnackBar, private scrollService: ScrollService) {
   }
   ngOnInit(): void {
+    this.showAllCheckVillages=false;
+
     this.loading=false;
     this.limit = 16;
   }
@@ -54,6 +56,23 @@ export class VillagesComponent implements OnInit {
       }
     }
   }
+
+
+  public showAllCheckedVillages(showAllCheckVillages) {
+    this.showAllCheckVillages=showAllCheckVillages;
+    var villages = this.villages;
+    this.villages=[];
+    if (showAllCheckVillages) {
+      for ( let i = 0; i <villages.length; i++) {
+        if (villages[i].checked == true) {
+          this.villages.push(villages[i]);
+        }
+      }
+    } else {
+      this.getVillages();
+    }
+  }
+
 
 
   // setDistrict(currentNum_district_code: any, currentTab, current_province_code: any, proName, district_name) {
@@ -102,6 +121,13 @@ export class VillagesComponent implements OnInit {
           }
         }
       });
+
+
+      if(this.showAllCheckVillages){
+        this.showAllCheckedVillages(this.showAllCheckVillages);
+      }
+
+
       this.loading=false;
 
 
@@ -137,7 +163,7 @@ export class VillagesComponent implements OnInit {
     this.filterService.villageLimitTab = villageLimkt;
   }
   selectAllCheckMethod(selectAllCheckFacilities: any) {
-    if (selectAllCheckFacilities) {
+    if (!selectAllCheckFacilities) {
       this.villages.forEach(element => {
         element.checked = false;
         this.userSelectionsForMapShow = [];
