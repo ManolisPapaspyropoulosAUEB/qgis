@@ -96,11 +96,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public selectAllCheck;
   public showAllCheckRoads;
   public districtChange;
-
   public showAllCheckVillages;
-
-
-
   public orderCol;
   public descAsc;
   public flagMap;
@@ -167,7 +163,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public currentDistrictName;
   public fullName;
   public email;
-
   private sqlInFclass;
   private sqlInRoadConditions;
   public loading;
@@ -240,7 +235,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     return window.open(url, name, features);
   }
   public ngOnInit() {
-
     this.showAllCheckVillages=false;
     this.districtChange=true;
     this.showAllCheckRoads=false;
@@ -274,11 +268,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.selectAllCheckVillages = false;
     this.selectAllCheck = false;
     this.selectAllCheckFacilities = false;
-
     this.showAllCheckFacilities = false;
-
-
-
     this.roadWayRadio = 'FB';
     this.bridgeFilter = 'TF';
     this.agriculturFacilitationFilter = 'TF';
@@ -799,11 +789,8 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   public hitRoad(road) {
     var findRoad = this.roadsTab1.find(x => x.LVRR_ID == road.LVRR_ID);
     var findRoad2 = this.filterService.roadTab2.find(x => x.LVRR_ID == road.LVRR_ID);
-
     var findRoadForGetMethod = this.filterService.mapRoadsArrayAll.find(x => x.LVRR_ID == road.LVRR_ID);
-
     var clone = Object.create(findRoad2);
-
     if (!findRoadForGetMethod.checkedFilter) {
       findRoadForGetMethod.checkedFilter = true;
       findRoad2.checkedFilter=null;
@@ -824,14 +811,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
       road.checkedFilter = false;
     }
-
-    console.log(findRoad2.checkedFilter);
-    console.log(this.filterService.mapRoadsArrayAll.find(x => x.LVRR_ID == road.LVRR_ID).checkedFilter);
-    //    var findRoad2 = this.filterService.roadTab2.find(x => x.LVRR_ID == road.LVRR_ID);
-    console.log(this.filterService.roadTab2.find(x => x.LVRR_ID == road.LVRR_ID).checkedFilter);
-
-
-
     if (road.districtId == 1411) { //-->spera
       this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
@@ -894,7 +873,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       });
     }
-//----------------------------------------------------------------------------------------------------------
     else if (road.districtId == 1410) {
       this.layer_Khost_Province_Qalandar_District_OSM_roads_UTM42n_9.eachLayer(function (layer) {
         if (layer.feature.properties.LVRR_ID === road.LVRR_ID) {
@@ -1085,21 +1063,19 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       });
     }
   }
-  ngOnChanges2() {//sugxronismos pinakwn
-    this.roadsTab1.forEach(e => {//
+  ngOnChanges2() {
+    this.roadsTab1.forEach(e => {
       e.checked = false;
       e.checkedFilter = false;
     });
-    this.filterService.mapRoadsArrayAll.forEach(e => {//
+    this.filterService.mapRoadsArrayAll.forEach(e => {
       e.checked = false;
       e.checkedFilter = false;
     });
-    console.log(this.filterService.roadTab2);
     if (this.roadsTab1.length > 0 &&  this.filterService.mapRoadsArrayAll.length  && this.filterService.roadTab2.length  > 0) {
       this.filterService.roadTab2.forEach(e => {
         var findRoadForGetMethod = this.filterService.mapRoadsArrayAll.find(x => x.LVRR_ID == e.LVRR_ID);
         findRoadForGetMethod.checked = true;
-        console.log( e.checkedFilter)
         findRoadForGetMethod.checkedFilter = e.checkedFilter;
         var road = this.roadsTab1.find(x => x.LVRR_ID == e.LVRR_ID);
         if(road!=undefined){
@@ -1147,9 +1123,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       });
     }
   }
-
-
-
 
   public showAllCheckedRoads() {
     this.getRoadsPyParams();
@@ -1333,20 +1306,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     }
   }
 
-
   public setRoadsToMap() {//this.filterService.mapRoadsArrayAll
-
-
-
-
-
     this.removeAllRoadsFromMap2();
     for (let i = 0; i < this.filterService.mapRoadsArrayAll.length; i++) {
-
       var LVRR_ID = this.filterService.mapRoadsArrayAll[i].LVRR_ID;
       var checked =this.filterService.mapRoadsArrayAll[i].checked;
-      console.log(LVRR_ID, checked,this.filterService.mapRoadsArrayAll[i].checkedFilter);
-
       if (this.currentNum_district_code == 1411) { //-->spera
         this.layer_Khost_Province_Spera_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
           if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
@@ -1380,7 +1344,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           }
         });
       }
-
       else if (this.currentNum_district_code == 1403) { //gurbuz
         this.layer_Khost_Province_Gurbuz_District_OSM_roads_UTM42n_3.eachLayer(function (layer) {
           if (layer.feature.properties.LVRR_ID === LVRR_ID && checked == true) {
@@ -1866,7 +1829,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           const className = this.__getElementByClass('datatable-body');
           className.scrollTo({
             top: 5,
-            left: 5500
+            left: 7650
           });
           this.shmaSort = 0;
         }, 100);
@@ -2194,12 +2157,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.villagesComponent.showAllCheckedVillages(this.showAllCheckVillages);
   }
 
-
-
-
-
-
-
   public selectAllCheckMethodVillages() {
     this.villagesComponent.selectAllCheckMethod(this.selectAllCheckVillages);
   }
@@ -2207,8 +2164,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   private __getElementByClass(className: string): HTMLElement {
     const element = <HTMLElement>document.querySelector(`.${className}`);
     return element;
-  }//datatable-body
-
+  }
 
   public changeMode(){
     if(this.changeModeArray.length>0){
@@ -2371,14 +2327,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         });
       }
     }
-
-
-
-
-
-
     function highlightFeatureOnClick(e) {
-
       if (e.target.feature.geometry.type == 'SelectedMultiLineString') {
         filterService.countHits = filterService.countHits + 1;
         if (filterService.countHits == 1) {
@@ -2388,9 +2337,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           currentStatusMapSelection = !currentStatusMapSelection;
         }
         var findRoadForGetMethod = filterService.mapRoadsArrayAll.find(x => x.LVRR_ID == e.target.feature.properties.LVRR_ID);
-
         var clone = Object.create(findRoadForGetMethod);
-
         clone.checked=true;
         clone.checked=false;
         filterService.roadTab2.push(clone);
@@ -2411,7 +2358,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       }
     }
-
 
     function unhighlightFeature(e) {
       if (e.target.feature.geometry.type === 'MultiLineString') {
@@ -2442,8 +2388,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     function unhighlightFeaturePolygon(e) {
       if (e.target.feature.geometry.type === 'MultiPolygon') {
         for (var i in e.target._eventParents) {
-
-
           if (e.target.feature.properties.dist_name_ == 'Jaji Maidan') {
             e.target.setStyle({fillColor: 'rgba(190,213,122,1.0)'});
           }else if (e.target.feature.properties.dist_name_ == 'Baak'){
@@ -2500,9 +2444,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }else if (e.target.feature.properties.dist_name_ == 'Spera'){
           e.target.setStyle({fillColor: 'rgba(220,150,158,0.4470588235294118)'});
         }
-
-
-
       }
     }
 

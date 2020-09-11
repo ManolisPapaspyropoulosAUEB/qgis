@@ -139,29 +139,6 @@ export class FacilitiesComponent implements OnInit  {
   }
 
 
-  // onScroll(offsetY: number) {
-  //   // total height of all rows in the viewport
-  //   const viewHeight = this.el.nativeElement.getBoundingClientRect().height - this.headerHeight;
-  //
-  //   // check if we scrolled to the end of the viewport
-  //   if (!this.isLoading && offsetY + viewHeight >= this.rows.length * this.rowHeight) {
-  //     // total number of results to load
-  //     let limit = this.pageLimit;
-  //
-  //     // check if we haven't fetched any results yet
-  //     if (this.rows.length === 0) {
-  //       // calculate the number of rows that fit within viewport
-  //       const pageSize = Math.ceil(viewHeight / this.rowHeight);
-  //
-  //       // change the limit to pageSize such that we fill the first page entirely
-  //       // (otherwise, we won't be able to scroll past it)
-  //       limit = Math.max(pageSize, this.pageLimit);
-  //     }
-  //     this.loadPage(limit);
-  //   }
-  // }
-
-
   public selectRow(row, event) {
     if (event.checked == true) {
       this.userSelectionsForMapShow.push(row);
@@ -170,12 +147,10 @@ export class FacilitiesComponent implements OnInit  {
       for (var i = 0; i < this.userSelectionsForMapShow.length; i++) {
         if (this.userSelectionsForMapShow[i].id == row.id && this.userSelectionsForMapShow[i].type == row.type) {
           this.userSelectionsForMapShow.splice(i, 1);
-
         }
       }
     }
     this.filterService.facilitiesArray = this.userSelectionsForMapShow;
-
   }
 
   public setLimit(FacilitislimitPage) {
@@ -191,9 +166,6 @@ export class FacilitiesComponent implements OnInit  {
     this.filterService.facilitiesType = type;
     this.getFacilities();
   }
-
-
-
 
   public showAllCheckedFacilities(showAllCheckFacilities) {
     console.log(showAllCheckFacilities);
@@ -238,13 +210,10 @@ export class FacilitiesComponent implements OnInit  {
     row.district_name = this.district_name;
     row.proName = this.provinceName;
     row.updateMode = 1;
-
     const dialogRef = this.dialog.open(MosqueDialog, {
       width: '800px',
       data: row
     });
-
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.dataservice.updateFacilitie(result).subscribe(response => {
@@ -259,8 +228,6 @@ export class FacilitiesComponent implements OnInit  {
         });
       }
     });
-
-
   }
 
 
@@ -271,14 +238,8 @@ export class FacilitiesComponent implements OnInit  {
       width: '600px',
       data: row
     });
-
-
-
-
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-
         this.dataservice.deleteFacilitie(row).subscribe(response => {
           if (response.status == 'ok') {
             this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
@@ -287,10 +248,8 @@ export class FacilitiesComponent implements OnInit  {
             this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
           }
         });
-
       }
     });
-
   }
 
 
@@ -307,8 +266,6 @@ export class FacilitiesComponent implements OnInit  {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-
-
         this.dataservice.addDistrictCenter(result).subscribe(response => {
           if (response.status == 'ok') {
             this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
@@ -351,9 +308,6 @@ export class FacilitiesComponent implements OnInit  {
     });
   }
 
-
-
-
   public addFacilitie() {
     const dialogRef = this.dialog.open(MosqueDialog, {
       width: '800px',
@@ -367,8 +321,6 @@ export class FacilitiesComponent implements OnInit  {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-
-
         this.dataservice.addFacilitie(result).subscribe(response => {
           if (response.status == 'ok') {
             this.snackBar.open(response.message, 'x', <MatSnackBarConfig>{duration: 4000});
@@ -398,12 +350,9 @@ export class MosqueDialog implements OnInit {
   type:string;
   east:number;
   north:number;
-
   fromSource:string;
   distName:string;
   distCode:number;
-
-
   proCode:number;
   districtType:string;
   proCenter:string;
@@ -416,8 +365,6 @@ export class MosqueDialog implements OnInit {
   districts = [];
   provinces = [];
   id;
-
-
   constructor(public dialogRef: MatDialogRef<AddSchoolDialog>,
               private formBuilder: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: any,
               private dataService: DataService, private snackBar: MatSnackBar
@@ -434,13 +381,9 @@ export class MosqueDialog implements OnInit {
       label: ["", Validators.required],
       type: ["",Validators.required],
       fromSource: ["",Validators.required]
-
-
     });
     if (this.data.updateMode == 1) {
-
       this.id=this.data.id;
-
       this.east = this.data.east;
       this.north = this.data.north;
       this.proCode = this.data.proCode;
@@ -459,8 +402,6 @@ export class MosqueDialog implements OnInit {
         'num_district_code': this.num_district_code,
         'district_name': this.data.distName,
       });
-
-
       this.editForm2.setValue({
         num_district_code: [this.num_district_code, Validators.required],
         num_province_code: [this.num_province_code, Validators.required],
@@ -470,28 +411,15 @@ export class MosqueDialog implements OnInit {
         type: [this.type,Validators.required],
         fromSource: [this.fromSource,Validators.required]});
     }else{
-
-
       this.east = 0;
       this.north = 0;
       this.proCode = this.data.proCode;
       this.distrCode = this.data.distrCode;
-
       this.label ="";
       this.type ="";
       this.fromSource ="";
-
-
     //  this.validateAllFormFields(this.editForm2);
-
-
-
-
-
-
     }
-
-
     if ((this.data.proCode != null && this.data.distrCode != null) && (this.data.proCode != '' && this.data.distrCode != '')) {
       this.num_district_code = this.data.distrCode;
       this.num_province_code = this.data.proCode;
@@ -499,8 +427,6 @@ export class MosqueDialog implements OnInit {
         'num_district_code': this.num_district_code,
         'district_name': this.data.district_name,
       });
-
-
       this.num_province_code = this.proCode;
       this.provinces.push({
         'num_province_code': this.proCode,
@@ -515,11 +441,7 @@ export class MosqueDialog implements OnInit {
     } else {
       this.getProvinces();
     }
-
-
-
   }
-
   public getProvinces() {
     this.dataService.get_province().subscribe(response => {
       this.provinces = response.data;
@@ -578,11 +500,9 @@ export class MosqueDialog implements OnInit {
   public saveDC() {
     if (this.editForm2.invalid) {
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
-
       this.validateAllFormFields(this.editForm2);
       return;
     }
-
     let resultObject = {//centerType altDistName
       num_district_code: this.f.num_district_code.value,
       num_province_code: this.f.num_province_code.value,
@@ -608,11 +528,6 @@ export class MosqueDialog implements OnInit {
 })
 export class AddSchoolDialog implements OnInit {
   editForm2: FormGroup;
-
-
-
-
-
   targetFid:number;
   name:string;
   type:string;
@@ -623,7 +538,6 @@ export class AddSchoolDialog implements OnInit {
   from:string;
   distName:string;
   distCode:number;
-
   proCode:number;
   districtType:string;
   proCenter:string;
@@ -660,14 +574,9 @@ export class AddSchoolDialog implements OnInit {
       type: ["",Validators.required],
       from: ["",Validators.required],
       altDistName: ["", Validators.required]
-
-
-
     });
     if (this.data.updateMode == 1) {
-
       this.id=this.data.id;
-
       this.east = this.data.east;
       this.north = this.data.north;
       this.northUtm42 =this.data.northUtm42;
@@ -690,8 +599,6 @@ export class AddSchoolDialog implements OnInit {
         'num_district_code': this.num_district_code,
         'district_name': this.data.distName,
       });
-
-
       this.editForm2.setValue({
         num_district_code: [this.num_district_code, Validators.required],
         num_province_code: [this.num_province_code, Validators.required],
@@ -706,8 +613,6 @@ export class AddSchoolDialog implements OnInit {
         altDistName: [this.altDistName, Validators.required]
       });
     }else{
-
-
       this.east = 0;
       this.north = 0;
       this.northUtm42 = 0;
@@ -840,11 +745,6 @@ export class AddSchoolDialog implements OnInit {
     this.dialogRef.close(resultObject);
   }
 }
-
-
-
-
-
 
 @Component({
   selector: './delete-dc-dialog',
