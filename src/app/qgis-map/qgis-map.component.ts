@@ -3638,6 +3638,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.loading=true;
         this.dataservice.calculateCriteria({
           'district_id': this.currentNum_district_code,
           'snapshot': result.snapshot
@@ -4790,6 +4791,7 @@ export class EditRoadDialog implements OnInit {
   bridgeMat: boolean;
   tunnelMat: boolean;
   source;
+  security;
   lengthInMetres;
   elevationInMetres;
   lvrr_id;
@@ -4798,12 +4800,18 @@ export class EditRoadDialog implements OnInit {
   accessToGCsRMs;
   farmToTheMarket;
   ftm;
-  agricultureFacilitaties;
+  agriculturalFacilities;
   linksToMajorActivityCentres;
   numberOfConnections;
   roadCondition;
+  roadConditionCriterio;
+  requirementsForEarthWorks;
   connectivity;
-
+  trafficVolume;
+  safety;
+  roadQualityAndNeeds;
+  environmentalImpacts;
+  roadAccessibility;
   constructor(public dialogRef: MatDialogRef<EditRoadDialog>,
               private formBuilder: FormBuilder,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -4817,25 +4825,37 @@ export class EditRoadDialog implements OnInit {
     this.ref = this.data.ref;
     this.oneway = this.data.oneway;
     this.lvrr_id = this.data.LVRR_ID;
-    this.connectivity = this.data.connectivity;
+    // this.connectivity = this.data.connectivity;
     this.fclass = this.data.fclass;
     this.ref = this.data.ref;
+    this.roadAccessibility = this.data.roadAccessibility;
     this.oneway = this.data.oneway;
     this.maxspeed = this.data.maxspeed;
     this.layer = this.data.layer;
     this.bridgeMat = this.data.bridgeMat;
     this.tunnelMat = this.data.tunnelMat;
     this.source = this.data.source;
+    this.safety = this.data.safety;
     this.lengthInMetres = this.data.lengthInMetres;
     this.elevationInMetres = this.data.elevationInMetres;
     this.populationServed = this.data.populationServed;
     this.facilitiesServed = this.data.facilitiesServed;
     this.accessToGCsRMs = this.data.accessToGCsRMs;
+    this.connectivity = this.data.connectivity;
+    this.trafficVolume = this.data.trafficVolume;
+    this.security = this.data.security;
+
     this.farmToTheMarket = this.data.farmToTheMarket;
-    this.agricultureFacilitaties = this.data.agricultureFacilitaties;
+    this.agriculturalFacilities = this.data.agriculturalFacilities;
     this.linksToMajorActivityCentres = this.data.facilitiesServed + this.data.accessToGCsRMs;
     this.numberOfConnections = this.data.numberOfConnections;
     this.roadCondition = this.data.roadCondition;
+    this.roadConditionCriterio = this.data.roadConditionCriterio;
+    this.roadQualityAndNeeds = this.data.roadQualityAndNeeds;
+    this.environmentalImpacts = this.data.environmentalImpacts;
+    this.requirementsForEarthWorks = this.data.requirementsForEarthWorks;
+​
+
     this.editForm = this.formBuilder.group({
       name: [this.name, Validators.required],
       fclass: [this.fclass, Validators.required],
@@ -4846,19 +4866,29 @@ export class EditRoadDialog implements OnInit {
       bridgeMat: [this.bridgeMat],
       tunnelMat: [this.tunnelMat],
       source: [this.source],
+      safety: [this.safety],
+      requirementsForEarthWorks: [this.requirementsForEarthWorks],
+      environmentalImpacts: [this.environmentalImpacts],
       lengthInMetres: [this.lengthInMetres, Validators.min(0)],
       elevationInMetres: [this.elevationInMetres, Validators.min(0)],
       populationServed: [this.populationServed, Validators.min(0)],
       facilitiesServed: [this.facilitiesServed, Validators.min(0)],
       accessToGCsRMs: [this.accessToGCsRMs, [Validators.min(5), Validators.max(10)]],
-      connectivity: [this.connectivity, Validators.min(0)],
-      farmToTheMarket: [this.farmToTheMarket],
-      agricultureFacilitaties: [this.agricultureFacilitaties],
-      linksToMajorActivityCentres: [this.linksToMajorActivityCentres],
-      numberOfConnections: [this.numberOfConnections, [Validators.min(0), Validators.max(10)]],
-      roadCondition: [this.roadCondition]
+      connectivity: [this.connectivity, Validators.required],
+      trafficVolume: [this.trafficVolume, Validators.required],
+      security: [this.security, Validators.required],
+
+
+      farmToTheMarket: [this.farmToTheMarket, Validators.required],
+      agriculturalFacilities: [this.agriculturalFacilities, Validators.required],
+      linksToMajorActivityCentres: [this.linksToMajorActivityCentres, Validators.required],
+      numberOfConnections: [this.numberOfConnections, [Validators.min(1), Validators.max(10)]],
+      roadCondition: [this.roadCondition, Validators.required],
+      roadQualityAndNeeds: [this.roadQualityAndNeeds, Validators.required],
+      roadConditionCriterio: [this.roadConditionCriterio, Validators.required],
+      roadAccessibility: [this.roadAccessibility, Validators.required]
     });
-    this.f.linksToMajorActivityCentres.disable();
+     this.f.security.disable();
   }
 
 
@@ -4883,6 +4913,8 @@ export class EditRoadDialog implements OnInit {
       bridgeMat: this.f.bridgeMat.value,
       tunnelMat: this.f.tunnelMat.value,
       connectivity: this.f.connectivity.value,
+      trafficVolume: this.f.trafficVolume.value,
+      security: this.f.security.value,
       source: this.source,
       farmToTheMarket: this.farmToTheMarket,
       lengthInMetres: this.f.lengthInMetres.value,
@@ -4890,10 +4922,16 @@ export class EditRoadDialog implements OnInit {
       populationServed: this.f.populationServed.value,
       facilitiesServed: this.f.facilitiesServed.value,
       accessToGCsRMs: this.f.accessToGCsRMs.value,
-      agricultureFacilitaties: this.agricultureFacilitaties,
+      agriculturalFacilities: this.agriculturalFacilities,
       linksToMajorActivityCentres: this.f.linksToMajorActivityCentres.value,
       numberOfConnections: this.f.numberOfConnections.value,
       roadCondition: this.f.roadCondition.value,
+      roadConditionCriterio: this.f.roadConditionCriterio.value,
+      roadAccessibility: this.f.roadAccessibility.value,
+      roadQualityAndNeeds: this.f.roadQualityAndNeeds.value,
+      environmentalImpacts: this.f.environmentalImpacts.value,
+      safety: this.f.safety.value,
+      requirementsForEarthWorks: this.f.requirementsForEarthWorks.value,
       id: this.data.id
     };
     this.dialogRef.close(resultObject);

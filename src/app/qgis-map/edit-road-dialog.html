@@ -104,9 +104,8 @@
               <span *ngIf=" f.elevationInMetres.errors">   please give a positive number
                  </span>
             </mat-form-field>
-
             <mat-form-field  appearance="fill">
-              <mat-label>Source</mat-label>
+              <mat-label>Road Condition</mat-label>
               <mat-select  formControlName="roadCondition" [(value)]="roadCondition">
                 <mat-option>None</mat-option>
                 <mat-option value="concrete">concrete</mat-option>
@@ -114,11 +113,9 @@
                 <mat-option value="asphalt">asphalt</mat-option>
               </mat-select>
             </mat-form-field>
-
             <mat-checkbox style="    margin-right: 10px;" formControlName="bridgeMat" class="example-margin" [(ngModel)]="bridgeMat">
               Bidge
             </mat-checkbox>
-
             <mat-checkbox formControlName="tunnelMat" class="example-margin" [(ngModel)]="tunnelMat">
               Tunnel
            </mat-checkbox>
@@ -126,7 +123,8 @@
         </div>
       </mat-tab>
       <mat-tab label="Criteria">
-        <div class="" style="display: flex;margin-top: 10px">
+        <div class="" style="display: flex;margin-top: 10px;    max-height: 51vh;
+    overflow-y: scroll;">
           <div class="col-md-6" style="    padding-top: 12px;">
             <mat-form-field class="example-full-width">
               <mat-label>Population Served (criterio 1) </mat-label>
@@ -140,15 +138,12 @@
               <span *ngIf=" f.facilitiesServed.errors" style="color: red">   please give a numbers > 1
                  </span>
             </mat-form-field>
-
-
             <mat-form-field class="example-full-width">
               <mat-label>Access to GCS & RMS (criterio 3)</mat-label>
               <input  type="number"  formControlName="accessToGCsRMs"   matInput placeholder="access To GCsRMs" [(ngModel)]="accessToGCsRMs">
               <span *ngIf=" f.accessToGCsRMs.errors" style="color: red">   please give a numbers > 5 and <10
                  </span>
             </mat-form-field>
-
             <mat-form-field  appearance="fill">
               <mat-label>Farm to the Market (criterio 4) </mat-label>
               <mat-select (valueChange)="ftthemarket(farmToTheMarket)"  formControlName="farmToTheMarket" [(ngModel)]="farmToTheMarket">
@@ -156,47 +151,133 @@
                 <mat-option value="5.0">True</mat-option>
               </mat-select>
             </mat-form-field>
+            <mat-form-field  appearance="fill">
+              <mat-label>Agriculture Facilitation (criterio 5) </mat-label>
+              <mat-select  formControlName="agriculturalFacilities" [(ngModel)]="agriculturalFacilities">
+                <mat-option value="0.0">False</mat-option>
+                <mat-option value="5.0">True</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field  class="example-full-width">
+              <mat-label> Connectivity   (criterio 6)</mat-label>
+              <input  [disabled]="true"   type="number"  formControlName="connectivity"   matInput placeholder="connectivity" [(ngModel)]="connectivity">
+              <span *ngIf=" f.connectivity.errors" style="color: red">   please give a numbers >= 0
+                 </span>
+            </mat-form-field>
+            <mat-form-field  appearance="fill">
+              <mat-label> ​Road Accessibility (criterio 7)</mat-label>
+              <mat-select  formControlName="roadAccessibility" [(ngModel)]="roadAccessibility">
+                <mat-option value="10.0">Bad</mat-option>
+                <mat-option value="6.0">Poor</mat-option>
+                <mat-option value="3.0">Limited/fair</mat-option>
+                <mat-option value="0.0">Good</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6" >
+
+            <!--<mat-form-field  style="" class="example-full-width">-->
+              <!--<mat-label>links To Major Activity Centres (Connectivity-criterio 7)</mat-label>-->
+              <!--<input [disabled]="true"  type="number"  formControlName="linksToMajorActivityCentres"   matInput placeholder="population Served" [(ngModel)]="linksToMajorActivityCentres">-->
+            <!--</mat-form-field>-->
+            <mat-form-field  class="example-full-width">
+              <mat-label>​Number of Connections to other roads (criterio 8) </mat-label>
+              <input  type="number"  formControlName="numberOfConnections"   matInput placeholder="number Of Connections" [(ngModel)]="numberOfConnections">
+              <span *ngIf=" f.numberOfConnections.errors"  style="color: red">   please give a numbers >=1  and =<10
+                 </span>
+            </mat-form-field>
 
 
             <mat-form-field  appearance="fill">
-              <mat-label>Agriculture Facilitaties (criterio 5) </mat-label>
-              <mat-select  formControlName="agricultureFacilitaties" [(ngModel)]="agricultureFacilitaties">
-                <mat-option value="0.0">False</mat-option>
-                <mat-option value="5.0">True</mat-option>
+              <mat-label> ​Road Condition  (criterio 9)</mat-label>
+              <mat-select  formControlName="roadConditionCriterio" [(ngModel)]="roadConditionCriterio">
+                <mat-option value="5.0">Very Bad</mat-option>
+                <mat-option value="4.0">Bad</mat-option>
+                <mat-option value="3.0">Average</mat-option>
+                <mat-option value="2.0">Good</mat-option>
+                <mat-option value="1.0">Excellent</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field  appearance="fill">
+              <mat-label> ​Road Quality and needs  (criterio 10)</mat-label>
+              <mat-select  formControlName="roadQualityAndNeeds" [(ngModel)]="roadQualityAndNeeds">
+                <mat-option value="5.0">Very bad (needs rehabilitation)	</mat-option>
+                <mat-option value="4.0">Bad (to be assessed for planning rehabilitation or major repair and improvement works)	</mat-option>
+                <mat-option value="3.0">Average (to be assessed for defining maintenance needs and/or improvements)	</mat-option>
+                <mat-option value="2.0">Good (to follow the periodic maintenance plan with some additional repairs)	</mat-option>
+                <mat-option value="1.0">Excellent (only routine maintenance is required for keeping it in excellent condition)	</mat-option>
+                <mat-option value="0.0">Perfect (to plan routine maintenance for avoiding any quality decline)	</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+            <mat-form-field  appearance="fill">
+              <mat-label> ​Requirements for earth works  (criterio 11)</mat-label>
+              <mat-select  formControlName="requirementsForEarthWorks" [(ngModel)]="requirementsForEarthWorks">
+                <mat-option value="5.0">Asphalt</mat-option>
+                <mat-option value="5.0">Drainage works</mat-option>
+                <mat-option value="4.0">Concrete</mat-option>
+                <mat-option value="3.0">Composite*	</mat-option>
+                <mat-option value="2.0">Recycling**	</mat-option>
+                <mat-option value="1.0">Bituminous Solutions***	</mat-option>
+                <mat-option value="0.0">No need for civil works	</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+            <mat-form-field  appearance="fill">
+              <mat-label> Traffic volume (criterio 12)</mat-label>
+              <mat-select  formControlName="trafficVolume" [(ngModel)]="trafficVolume">
+                <mat-option value="5.0">Very Heavy volume (150 - 200 Vehicles Per Day)	</mat-option>
+                <mat-option value="4.0">Heavy volume (100 - 150 Vehicles Per Day)	</mat-option>
+                <mat-option value="3.0">Medium volume (50 - 100 Vehicles Per Day)	</mat-option>
+                <mat-option value="2.0">Light volume (10 - 50 Vehicles Per Day)	</mat-option>
+                <mat-option value="1.0">Very Light volume (1 – 10 Vehicles Per Day)	</mat-option>
+                <mat-option value="0.0">No volume (0 Vehicles Per Day)	</mat-option>
+                <mat-option value="1.0">Light passenger car, pick-up, jeep, flying couch	</mat-option>
+                <mat-option value="0.4">Motorcycle</mat-option>
+                <mat-option value="0.6">Animal cart, motorcycle trailer	</mat-option>
+                <mat-option value="0.3">Bicycle</mat-option>
+                <mat-option value="0.4">Animal transport</mat-option>
+                <mat-option value="2.0">Light commercial truck (6 Wheels)	</mat-option>
+                <mat-option value="2.5">Heavy commercial vehicle	</mat-option>
+                <mat-option value="2.25">Bus (> 4 Wheel)	</mat-option>
+                <mat-option value="1.1">Minibus (4 Wheels)/tractor	</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+            <mat-form-field  appearance="fill">
+              <mat-label> Safety (criterio 13)</mat-label>
+              <mat-select  formControlName="safety" [(ngModel)]="safety">
+                <mat-option value="3.0">Average</mat-option>
+                <mat-option value="2.0">Good</mat-option>
+                <mat-option value="1.0">Excellent</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field style="display: none" appearance="fill">
+              <mat-label> Security/District (criterio 14)</mat-label>
+              <mat-select  formControlName="security" [(ngModel)]="security">
+                <mat-option value="3.0">Average</mat-option>
+                <mat-option value="2.0">Good</mat-option>
+                <mat-option value="1.0">Excellent</mat-option>
               </mat-select>
             </mat-form-field>
 
 
 
-
-
-          </div>
-          <div class="col-md-6" >
-
-            <mat-form-field style="display: none" class="example-full-width">
-              <mat-label>Connectivity (criterio 6)</mat-label>
-              <input  type="number"  formControlName="connectivity"   matInput placeholder="connectivity" [(ngModel)]="connectivity">
-              <span *ngIf=" f.connectivity.errors" style="color: red">   please give a numbers >= 0
-                 </span>
-            </mat-form-field>
-
-
-
-
-
-
-
-            <mat-form-field  style="" class="example-full-width">
-              <mat-label>links To Major Activity Centres</mat-label>
-              <input [disabled]="true"  type="number"  formControlName="linksToMajorActivityCentres"   matInput placeholder="population Served" [(ngModel)]="linksToMajorActivityCentres">
-            </mat-form-field>
-
-
-            <mat-form-field class="example-full-width">
-              <mat-label>​Number of Connections to other roads (criterio 8) </mat-label>
-              <input  type="number"  formControlName="numberOfConnections"   matInput placeholder="number Of Connections" [(ngModel)]="numberOfConnections">
-              <span *ngIf=" f.numberOfConnections.errors"  style="color: red">   please give a numbers > 5 and <10
-                 </span>
+            <mat-form-field  appearance="fill">
+              <mat-label> Enviromental Impacts (criterio 15)</mat-label>
+              <mat-select  formControlName="environmentalImpacts" [(ngModel)]="environmentalImpacts">
+                <mat-option value="5">Extremely adverse environmental impacts (road use activities result in extremely harmful effects on the environment and/or on cultural heritage preservation areas. Traffic diversion, control and calming measures must be taken immediately)	</mat-option>
+                <mat-option value="4">Serious adverse environmental impacts (road use activities result in seriously harmful effects on the environment and/or on cultural heritage preservation areas. There is an urgent need to take traffic control and calming measures)	</mat-option>
+                <mat-option value="3">Average environmental impacts (road use activities to be seriously assessed as to the harmful effects on the environment and/or on cultural heritage preservation areas)	</mat-option>
+                <mat-option value="2">Few adverse environmental impacts (road use activities result in limited harmful effects on the environment and/or on cultural heritage preservation areas.)	</mat-option>
+                <mat-option value="1">Limited adverse environmental impacts (road use activities result to very limited harmful effects on the environment and/or on cultural heritage preservation areas.)	</mat-option>
+                <mat-option value="0">Perfect- No negative environmental impacts	</mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
         </div>
