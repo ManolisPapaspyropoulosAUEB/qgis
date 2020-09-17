@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
   onSubmitForm() {
     if (this.editForm.invalid) {
       this.validationService.validateAllFormFields(this.editForm);
-      this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
+      this.snackBar.open('Your form is not valid, make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
 
       return;
     }

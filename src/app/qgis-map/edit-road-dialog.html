@@ -127,45 +127,45 @@
     overflow-y: scroll;">
           <div class="col-md-6" style="    padding-top: 12px;">
             <mat-form-field class="example-full-width">
-              <mat-label>Population Served (criterio 1) </mat-label>
+              <mat-label>Population Served (criterion 1) </mat-label>
               <input  type="number"  formControlName="populationServed"   matInput placeholder="population Served" [(ngModel)]="populationServed">
               <span *ngIf=" f.populationServed.errors" style="color: red">   please give a positive number
                  </span>
             </mat-form-field>
             <mat-form-field class="example-full-width">
-              <mat-label>Facilities Served (criterio 2)</mat-label>
+              <mat-label>Facilities Served (criterion 2)</mat-label>
               <input  type="number"  formControlName="facilitiesServed"   matInput placeholder="facilities Served" [(ngModel)]="facilitiesServed">
               <span *ngIf=" f.facilitiesServed.errors" style="color: red">   please give a numbers > 1
                  </span>
             </mat-form-field>
             <mat-form-field class="example-full-width">
-              <mat-label>Access to GCS & RMS (criterio 3)</mat-label>
+              <mat-label>Access to GCS & RMS (criterion 3)</mat-label>
               <input  type="number"  formControlName="accessToGCsRMs"   matInput placeholder="access To GCsRMs" [(ngModel)]="accessToGCsRMs">
               <span *ngIf=" f.accessToGCsRMs.errors" style="color: red">   please give a numbers > 5 and <10
                  </span>
             </mat-form-field>
             <mat-form-field  appearance="fill">
-              <mat-label>Farm to the Market (criterio 4) </mat-label>
+              <mat-label>Farm to the Market (criterion 4) </mat-label>
               <mat-select (valueChange)="ftthemarket(farmToTheMarket)"  formControlName="farmToTheMarket" [(ngModel)]="farmToTheMarket">
                 <mat-option value="0.0">False</mat-option>
                 <mat-option value="5.0">True</mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field  appearance="fill">
-              <mat-label>Agriculture Facilitation (criterio 5) </mat-label>
+              <mat-label>Agriculture Facilitation (criterion 5) </mat-label>
               <mat-select  formControlName="agriculturalFacilities" [(ngModel)]="agriculturalFacilities">
                 <mat-option value="0.0">False</mat-option>
                 <mat-option value="5.0">True</mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field  class="example-full-width">
-              <mat-label> Connectivity   (criterio 6)</mat-label>
+              <mat-label> Connectivity   (criterion 6)</mat-label>
               <input  [disabled]="true"   type="number"  formControlName="connectivity"   matInput placeholder="connectivity" [(ngModel)]="connectivity">
               <span *ngIf=" f.connectivity.errors" style="color: red">   please give a numbers >= 0
                  </span>
             </mat-form-field>
             <mat-form-field  appearance="fill">
-              <mat-label> ​Road Accessibility (criterio 7)</mat-label>
+              <mat-label> ​Road Accessibility (criterion 7)</mat-label>
               <mat-select  formControlName="roadAccessibility" [(ngModel)]="roadAccessibility">
                 <mat-option value="10.0">Bad</mat-option>
                 <mat-option value="6.0">Poor</mat-option>
@@ -182,7 +182,7 @@
               <!--<input [disabled]="true"  type="number"  formControlName="linksToMajorActivityCentres"   matInput placeholder="population Served" [(ngModel)]="linksToMajorActivityCentres">-->
             <!--</mat-form-field>-->
             <mat-form-field  class="example-full-width">
-              <mat-label>​Number of Connections to other roads (criterio 8) </mat-label>
+              <mat-label>​Number of Connections to other roads (criterion 8) </mat-label>
               <input  type="number"  formControlName="numberOfConnections"   matInput placeholder="number Of Connections" [(ngModel)]="numberOfConnections">
               <span *ngIf=" f.numberOfConnections.errors"  style="color: red">   please give a numbers >=1  and =<10
                  </span>
@@ -190,7 +190,7 @@
 
 
             <mat-form-field  appearance="fill">
-              <mat-label> ​Road Condition  (criterio 9)</mat-label>
+              <mat-label> ​Road Condition  (criterion 9)</mat-label>
               <mat-select  formControlName="roadConditionCriterio" [(ngModel)]="roadConditionCriterio">
                 <mat-option value="5.0">Very Bad</mat-option>
                 <mat-option value="4.0">Bad</mat-option>
@@ -200,7 +200,7 @@
               </mat-select>
             </mat-form-field>
             <mat-form-field  appearance="fill">
-              <mat-label> ​Road Quality and needs  (criterio 10)</mat-label>
+              <mat-label> ​Road Quality and needs  (criterion 10)</mat-label>
               <mat-select  formControlName="roadQualityAndNeeds" [(ngModel)]="roadQualityAndNeeds">
                 <mat-option value="5.0">Very bad (needs rehabilitation)	</mat-option>
                 <mat-option value="4.0">Bad (to be assessed for planning rehabilitation or major repair and improvement works)	</mat-option>
@@ -213,7 +213,7 @@
 
 
             <mat-form-field  appearance="fill">
-              <mat-label> ​Requirements for earth works  (criterio 11)</mat-label>
+              <mat-label> ​Requirements for earth works  (criterion 11)</mat-label>
               <mat-select  formControlName="requirementsForEarthWorks" [(ngModel)]="requirementsForEarthWorks">
                 <mat-option value="5.0">Asphalt</mat-option>
                 <mat-option value="5.0">Drainage works</mat-option>
@@ -227,7 +227,7 @@
 
 
             <mat-form-field  appearance="fill">
-              <mat-label> Traffic volume (criterio 12)</mat-label>
+              <mat-label> Traffic volume (criterion 12)</mat-label>
               <mat-select  formControlName="trafficVolume" [(ngModel)]="trafficVolume">
                 <mat-option value="5.0">Very Heavy volume (150 - 200 Vehicles Per Day)	</mat-option>
                 <mat-option value="4.0">Heavy volume (100 - 150 Vehicles Per Day)	</mat-option>
@@ -235,41 +235,42 @@
                 <mat-option value="2.0">Light volume (10 - 50 Vehicles Per Day)	</mat-option>
                 <mat-option value="1.0">Very Light volume (1 – 10 Vehicles Per Day)	</mat-option>
                 <mat-option value="0.0">No volume (0 Vehicles Per Day)	</mat-option>
-                <mat-option value="1.0">Light passenger car, pick-up, jeep, flying couch	</mat-option>
-                <mat-option value="0.4">Motorcycle</mat-option>
-                <mat-option value="0.6">Animal cart, motorcycle trailer	</mat-option>
-                <mat-option value="0.3">Bicycle</mat-option>
-                <mat-option value="0.4">Animal transport</mat-option>
-                <mat-option value="2.0">Light commercial truck (6 Wheels)	</mat-option>
-                <mat-option value="2.5">Heavy commercial vehicle	</mat-option>
-                <mat-option value="2.25">Bus (> 4 Wheel)	</mat-option>
-                <mat-option value="1.1">Minibus (4 Wheels)/tractor	</mat-option>
               </mat-select>
             </mat-form-field>
 
 
             <mat-form-field  appearance="fill">
-              <mat-label> Safety (criterio 13)</mat-label>
+              <mat-label> Safety (criterion 13)</mat-label>
               <mat-select  formControlName="safety" [(ngModel)]="safety">
-                <mat-option value="3.0">Average</mat-option>
-                <mat-option value="2.0">Good</mat-option>
-                <mat-option value="1.0">Excellent</mat-option>
-              </mat-select>
-            </mat-form-field>
-
-            <mat-form-field style="display: none" appearance="fill">
-              <mat-label> Security/District (criterio 14)</mat-label>
-              <mat-select  formControlName="security" [(ngModel)]="security">
-                <mat-option value="3.0">Average</mat-option>
-                <mat-option value="2.0">Good</mat-option>
-                <mat-option value="1.0">Excellent</mat-option>
+                <mat-option value="5.0">Very bad safety history/potential (road is very frequently connected to injuries and fatalities) – more than 10 road accidents with people killed	</mat-option>
+                <mat-option value="4.0">Bad safety history/potential (road is frequently connected to injuries and fatalities) – up to 10 road accidents with people killed and seriously injured	</mat-option>
+                <mat-option value="3.0">Average safety history/potential – 5 to 10 road accidents with people killed and/or seriously injured	</mat-option>
+                <mat-option value="2.0">Good safety history/potential (road is not frequently connected to injuries and fatalities) - less than 5 road accidents – with people injured or serious injured, no deaths	</mat-option>
+                <mat-option value="1.0">Excellent safety history/potential (injuries and fatalities are very rare) – less than 5 accidents per year and light injuries	</mat-option>
+                <mat-option value="0.0">Perfect safety history/potential (no injuries and fatalities have been recorded)	</mat-option>
               </mat-select>
             </mat-form-field>
 
 
 
             <mat-form-field  appearance="fill">
-              <mat-label> Enviromental Impacts (criterio 15)</mat-label>
+              <mat-label> Security/District (criterion 14)</mat-label>
+              <mat-select  formControlName="security" [(ngModel)]="security">
+                <mat-option value="5.0">Very bad security history/potential (the District is very frequently connected to criminal activities and terrorism) – 100% Taliban control (TB)</mat-option>
+                <mat-option value="4.0">Bad security history/potential (The District is frequently connected to criminal activities and terrorism) – Government control 10-40% - TB control 90-60% </mat-option>
+                <mat-option value="3.0">Average security history/potential – Government control 60-50%, TB control 40-50% over District</mat-option>
+                <mat-option value="2.0">Good security history/potential (The district is not frequently connected to criminal activities and terrorism) – Government control 70-90%, TB control 10-30%</mat-option>
+                <mat-option value="1.0">Excellent security history/potential (criminal activities and terrorism are very rare) – Government control 90-100% - TB control up to 10%</mat-option>
+                <mat-option value="0.0">Perfect security history/potential (no criminal activities and terrorism have ever been recorded) – 100% Government control</mat-option>
+
+
+              </mat-select>
+            </mat-form-field>
+
+
+
+            <mat-form-field  appearance="fill">
+              <mat-label> Enviromental Impacts (criterion 15)</mat-label>
               <mat-select  formControlName="environmentalImpacts" [(ngModel)]="environmentalImpacts">
                 <mat-option value="5">Extremely adverse environmental impacts (road use activities result in extremely harmful effects on the environment and/or on cultural heritage preservation areas. Traffic diversion, control and calming measures must be taken immediately)	</mat-option>
                 <mat-option value="4">Serious adverse environmental impacts (road use activities result in seriously harmful effects on the environment and/or on cultural heritage preservation areas. There is an urgent need to take traffic control and calming measures)	</mat-option>

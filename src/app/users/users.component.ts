@@ -261,7 +261,7 @@ export class UserDialogUpdate implements OnInit {
 
     if (this.editForm2.invalid) {
       this.validationService.validateAllFormFields(this.editForm2);
-      this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
+      this.snackBar.open('Your form is not valid, make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
       return;
     }
 

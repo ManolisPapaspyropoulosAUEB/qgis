@@ -543,7 +543,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     this.facilitiesComponent.setLimit(16);
     this.facilitiesComponent.resetFilters(this.typeFacilities);
   }
-
   public resetFiltersVillages() {
     this.villagesComponent.setLimit(16);
     this.villageLimitPage = 16;
@@ -552,7 +551,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
   onClick(event) {//
   }
-
   public addRoadToMap(object, event) {
     if (event.checked == true) {
       var findRoad = this.roadsTab1.find(x => x.LVRR_ID == object.LVRR_ID);
@@ -4686,7 +4684,6 @@ export class PhotoGallery implements OnInit {
             if (result) {
               formData.delete('replace');
               formData.append('replace', 'yes');
-
               this.httpClient.post<any>(this.SERVER_URL, formData).subscribe(
                 (res) => {
                   if (res.status == 'ok') {
@@ -4709,7 +4706,6 @@ export class PhotoGallery implements OnInit {
         this.loading = false;
       },
       (err) => {
-
         this.loading = false;
         this.snackBar.open('Max length limit attained', 'x', <MatSnackBarConfig>{duration: 4000});
         $('#uploadBtn2').val('');
@@ -4825,7 +4821,6 @@ export class EditRoadDialog implements OnInit {
     this.ref = this.data.ref;
     this.oneway = this.data.oneway;
     this.lvrr_id = this.data.LVRR_ID;
-    // this.connectivity = this.data.connectivity;
     this.fclass = this.data.fclass;
     this.ref = this.data.ref;
     this.roadAccessibility = this.data.roadAccessibility;
@@ -4844,7 +4839,6 @@ export class EditRoadDialog implements OnInit {
     this.connectivity = this.data.connectivity;
     this.trafficVolume = this.data.trafficVolume;
     this.security = this.data.security;
-
     this.farmToTheMarket = this.data.farmToTheMarket;
     this.agriculturalFacilities = this.data.agriculturalFacilities;
     this.linksToMajorActivityCentres = this.data.facilitiesServed + this.data.accessToGCsRMs;
@@ -4854,8 +4848,6 @@ export class EditRoadDialog implements OnInit {
     this.roadQualityAndNeeds = this.data.roadQualityAndNeeds;
     this.environmentalImpacts = this.data.environmentalImpacts;
     this.requirementsForEarthWorks = this.data.requirementsForEarthWorks;
-​
-
     this.editForm = this.formBuilder.group({
       name: [this.name, Validators.required],
       fclass: [this.fclass, Validators.required],
@@ -4877,8 +4869,6 @@ export class EditRoadDialog implements OnInit {
       connectivity: [this.connectivity, Validators.required],
       trafficVolume: [this.trafficVolume, Validators.required],
       security: [this.security, Validators.required],
-
-
       farmToTheMarket: [this.farmToTheMarket, Validators.required],
       agriculturalFacilities: [this.agriculturalFacilities, Validators.required],
       linksToMajorActivityCentres: [this.linksToMajorActivityCentres, Validators.required],
@@ -4888,7 +4878,6 @@ export class EditRoadDialog implements OnInit {
       roadConditionCriterio: [this.roadConditionCriterio, Validators.required],
       roadAccessibility: [this.roadAccessibility, Validators.required]
     });
-     this.f.security.disable();
   }
 
 

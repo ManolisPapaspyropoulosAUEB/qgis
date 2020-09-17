@@ -499,7 +499,7 @@ export class MosqueDialog implements OnInit {
 
   public saveDC() {
     if (this.editForm2.invalid) {
-      this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
+      this.snackBar.open('Your form is not valid, make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
       this.validateAllFormFields(this.editForm2);
       return;
     }
@@ -722,7 +722,7 @@ export class AddSchoolDialog implements OnInit {
 
   public saveDC() {
     if (this.editForm2.invalid) {
-      this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
+      this.snackBar.open('Your form is not valid, make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
 
       this.validateAllFormFields(this.editForm2);
       return;
@@ -929,7 +929,7 @@ export class AddDCDialog implements OnInit {
 
   public saveDC() {
     if (this.editForm2.invalid) {
-      this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
+      this.snackBar.open('Your form is not valid, make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
 
       return;
     }
