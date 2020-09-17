@@ -433,11 +433,6 @@
           <mat-radio-button value="TF">Both</mat-radio-button>
         </mat-radio-group>
       </div>
-
-
-
-
-
       <div  style="display: grid;">
         <div>
           <mat-checkbox *ngIf="tab==2 && currentProvinceCode>0" [(ngModel)]="selectAllCheckFacilities" (change)="selectAllCheckMethodFacilities()"
@@ -449,9 +444,7 @@
               Unselect All
             </span>
           </mat-checkbox>
-
         </div>
-
         <div>
           <mat-checkbox *ngIf="tab==2 && currentNum_district_code>0" [(ngModel)]="showAllCheckFacilities" (change)="showAllCheckedFacilities()" class="example-margin selectAllRoads" >
             <span>
@@ -459,13 +452,7 @@
             </span>
           </mat-checkbox>
         </div>
-
       </div>
-
-
-
-
-
       <div *ngIf="tab==2 && currentProvinceCode>0" class="roadFilters">
         <div style="display: grid;">
                <span style="margin-bottom: 10px;    "><b>Filters</b>
@@ -487,7 +474,6 @@
           <mat-radio-button value="Both">All</mat-radio-button>
         </mat-radio-group>
       </div>
-
       <div  style="display: grid;">
         <mat-checkbox *ngIf="tab==3 && currentProvinceCode>0" [(ngModel)]="selectAllCheckVillages" (change)="selectAllCheckMethodVillages()"
                       class="example-margin selectAllRoads">
@@ -498,21 +484,12 @@
               Unselect All
             </span>
         </mat-checkbox>
-
-
         <mat-checkbox *ngIf="tab==3 && currentNum_district_code>0" [(ngModel)]="showAllCheckVillages" (change)="showAllCheckedVillages()" class="example-margin selectAllRoads" >
             <span>
               Show only selected
             </span>
         </mat-checkbox>
       </div>
-
-
-
-
-
-
-
       <div *ngIf="tab==3 && currentProvinceCode>0" class="roadFilters">
         <div style="display: grid">
                <span style="margin-bottom: 10px;    "><b>Filters</b>
