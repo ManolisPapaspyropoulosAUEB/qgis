@@ -2099,6 +2099,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     return this.http.get(this.remoteDataService.imageURL + '?docId=' +135);
   }
 
+
   ngAfterViewInit(): void {
     this.loadingMap=true;
     this.getJSON().subscribe(data => {
@@ -2140,7 +2141,6 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         this.selectProvince(this.province, 'ngOninit');
       }
     });
-
   }
 
   public selectAllCheckMethodFacilities() {
@@ -4493,18 +4493,14 @@ export class DeleteNoteDialog implements OnInit {
 export class AddingNoteDialog implements OnInit {
   @Output() dismiss = new EventEmitter();
   @Output() focusout = new EventEmitter();
-
   constructor(public dialogRef: MatDialogRef<AddingNoteDialog>,public validationService : ValidationService, public dialog: MatDialog, private formBuilder: FormBuilder, private snackBar: MatSnackBar,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-
   }
-
   editForm2: FormGroup;
   title;
   description;
   ngOnInit() {
-
     if (this.data.updateMode == 1) {
       this.title = this.data.title;
       this.description = this.data.description;
@@ -4515,43 +4511,31 @@ export class AddingNoteDialog implements OnInit {
     this.editForm2 = this.formBuilder.group({
       title: [this.title, Validators.required],
       description: [this.description, Validators.required],
-
-
     });
   }
-
   onNoClick(): void {
     this.dialogRef.close();
   }
-
   public yes() {
     this.dialogRef.close(true);
-
   }
   get f() {
     return this.editForm2.controls;
   }
-
-
   public saveNote() {
-
     if (this.editForm2.invalid) {
       this.validationService.validateAllFormFields(this.editForm2);
       this.snackBar.open('Your form is not valid,make sure you fill in all required fields', 'x', <MatSnackBarConfig>{duration: 4000});
       return;
     }
-
     if (this.data.updateMode == 0) {
-
       let resultObject = {
         title: this.f.title.value,
         description: this.f.description.value,
         roadId: this.data.id
       };
       this.dialogRef.close(resultObject);
-
     } else {
-
       let resultObject = {
         title: this.f.title.value,
         description: this.f.description.value,
@@ -4589,12 +4573,10 @@ export class PhotoGallery implements OnInit {
               private dataService: DataService, private snackBar: MatSnackBar, public router: Router, private formBuilder: FormBuilder, private httpClient: HttpClient
   ) {
   }
-
   onFileSelect(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.uploadForm.get('file').setValue(file);
-
     }
   }
 
@@ -4605,7 +4587,6 @@ export class PhotoGallery implements OnInit {
     });
     this.getImages();
   }
-
   public getImages() {
     this.imageData = [];
     this.dataService.getPhotoByRoadId(this.data).subscribe(response => {
@@ -4645,19 +4626,15 @@ export class PhotoGallery implements OnInit {
           }
         });
       }
-
     });
   }
-
   get f() {
     return this.uploadForm.controls;
   }
-
   private __getElementByClass(className: string): HTMLElement {
     const element = <HTMLElement>document.querySelector(`.${className}`);
     return element;
   }
-
   onSubmit() {
     this.loading = true;
     const formData = new FormData();
@@ -4713,7 +4690,6 @@ export class PhotoGallery implements OnInit {
       }
     );
   }
-
   onNoClick(): void {
     this.dialogRef.close();
   }
@@ -4725,52 +4701,38 @@ export class PhotoGallery implements OnInit {
   templateUrl: './confirmation_replace-img-dialog.html'
 })
 export class ConfirmUploadPhotoDialog implements OnInit {
-
   constructor(public dialogRef: MatDialogRef<DeleteImgDialog>,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
   }
-
   ngOnInit() {
   }
-
-
   onNoClick(): void {
     this.dialogRef.close();
   }
-
   public yes() {
     this.dialogRef.close(true);
-
   }
 }
-
 
 @Component({
   selector: './delete-img-dialog',
   templateUrl: './delete-img-dialog.html'
 })
 export class DeleteImgDialog implements OnInit {
-
   constructor(public dialogRef: MatDialogRef<DeleteImgDialog>,
               @Inject(MAT_DIALOG_DATA) public data: any
   ) {
   }
-
   ngOnInit() {
   }
-
-
   onNoClick(): void {
     this.dialogRef.close();
   }
-
   public yes() {
     this.dialogRef.close(true);
-
   }
 }
-
 
 @Component({
   selector: './edit-road-dialog',
@@ -4879,7 +4841,6 @@ export class EditRoadDialog implements OnInit {
       roadAccessibility: [this.roadAccessibility, Validators.required]
     });
   }
-
 
   get f() {
     return this.editForm.controls;
