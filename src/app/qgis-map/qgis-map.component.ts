@@ -1725,7 +1725,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       // window.addEventListener('resize', function(event) {
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (193) + 'px';
         }
       }, 0, false);
       // });
@@ -1736,9 +1736,10 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       this.villagesComponent.enableNgx();
       if(this.role=='admin'){
         this.coreDataComponent.emptyTable();
+
       }      setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (193) + 'px';
         }
       }, 0, false);
     } else if (tab == 4) {
@@ -2260,6 +2261,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
 
+  
 
   private initMap(filterService, roadTab2, drawerMapSelections, currentStatusMapSelection): void {
     function __getElementByClassF(className: string): HTMLElement {
@@ -2273,11 +2275,11 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         }
       } else if (filterService.tab == 2) {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (193) + 'px';
         }
       } else if (filterService.tab == 3) {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (193) + 'px';
         }
       } else if (filterService.tab == 4) {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
@@ -3409,7 +3411,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
     if (this.filterService.tab == 2) {
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (193) + 'px';
         }
       }, 600, false);
 
@@ -3417,7 +3419,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
 
       setTimeout(function () {
         if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
-          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (218) + 'px';
+          this.document.getElementsByClassName('datatable-body')[0].style.maxHeight = this.document.getElementsByClassName('example-container')[0].offsetHeight - (193) + 'px';
         }
       }, 600, false);
     } else if (this.filterService.tab == 4) {

@@ -3,7 +3,7 @@
     color: red !important;
   }
 </style>
-<div class="top-extra-actions">
+<div style="padding-left: 10px" class="top-extra-actions">
   <button (click)="addFacilitie()" matTooltip="add facilitie" class="addBtnOuter" mat-mini-fab color="primary"
           aria-label="Example icon button with a menu icon">
         <span class="material-icons addBtn addCrcle">
@@ -25,10 +25,9 @@
       <div class="rect rect5"></div>
     </div>
   </div>
-
   <ngx-datatable
     *ngIf="!this.loading"
-    style="margin-top: 15px"
+    style="margin-top: -10px"
                  class="material"
                  [rowHeight]="'50'"
                  [rows]="finalfacilitiesMerged"

@@ -14,7 +14,7 @@
   }
 
 </style>
-<div class="top-extra-actions">
+<div style="padding-left: 9px!important;" class="top-extra-actions">
   <button (click)="addVillage()"  mat-button  matTooltip="Add Village" class="addBtnOuter" mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
         <span class="material-icons addBtn addCrcle">
           add
@@ -37,7 +37,7 @@
 
   <ngx-datatable
     *ngIf="!this.loading"
-    style="margin-top: 15px"
+    style="margin-top: -10px"
                  class="material"
                  [reorderable]=true
                  [rowHeight]="'50'"
