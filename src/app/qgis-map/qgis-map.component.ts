@@ -1798,12 +1798,14 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
       }
     ).subscribe(response => {
       if(this.filterService.mapRoadsArrayAll.length==0 || this.districtChange){
+        this.filterService.mapRoadsArrayAll=[];
         this.filterService.mapRoadsArrayAll= response.data;
         this.districtChange=false;
       }
       this.roadsTab1 = response.data;
       this.roadsTab1.forEach(e => {
         e.LVRR_ID =  e.lvrrId;
+        e.osm_id =  e.osmId;
         e.accessToGCsRMs =  e.c3Id;
         e.farmToTheMarket =  e.c4Id;
         e.agricultureFacilitation =  e.c5Id;
