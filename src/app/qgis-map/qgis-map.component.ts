@@ -529,6 +529,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   setPageNgx($event: any) {
     this.limitPage = $event;
   }
+
   setPageNgxFacilities($event: any) {
     this.FacilitislimitPage = $event;
     this.facilitiesComponent.setLimit(this.FacilitislimitPage);
@@ -1800,8 +1801,22 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
         this.filterService.mapRoadsArrayAll= response.data;
         this.districtChange=false;
       }
-      console.log(this.filterService.mapRoadsArrayAll);
       this.roadsTab1 = response.data;
+      this.roadsTab1.forEach(e => {
+        e.LVRR_ID =  e.lvrrId;
+        e.accessToGCsRMs =  e.c3Id;
+        e.farmToTheMarket =  e.c4Id;
+        e.agricultureFacilitation =  e.c5Id;
+        e.roadAccessibility =  e.c7Id;
+        e.numberOfConnections =  e.c8Id;
+        e.roadConditionCriterio =  e.c9Id;
+        e.roadQualityAndNeeds =  e.c10Id;
+        e.requirementsForEarthWorks =  e.c11Id;
+        e.trafficVolume =  e.c12Id;
+        e.safety =  e.c13Id;
+        e.security =  e.c14Id;
+        e.environmentalImpacts =  e.c15Id;
+      });
       if (this.tab == 1) {
         setTimeout(function () {
           if (this.document.getElementsByClassName('datatable-body')[0] != undefined) {
@@ -1828,7 +1843,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
           const className = this.__getElementByClass('datatable-body');
           className.scrollTo({
             top: 5,
-            left: 7650
+            left: 9650
           });
           this.shmaSort = 0;
         }, 100);
@@ -2261,7 +2276,7 @@ export class QgisMapComponent implements OnInit, AfterViewInit {
   }
 
 
-  
+
 
   private initMap(filterService, roadTab2, drawerMapSelections, currentStatusMapSelection): void {
     function __getElementByClassF(className: string): HTMLElement {
@@ -4760,7 +4775,7 @@ export class EditRoadDialog implements OnInit {
   accessToGCsRMs;
   farmToTheMarket;
   ftm;
-  agriculturalFacilities;
+  agricultureFacilitation;
   linksToMajorActivityCentres;
   numberOfConnections;
   roadCondition;
@@ -4800,11 +4815,12 @@ export class EditRoadDialog implements OnInit {
     this.populationServed = this.data.populationServed;
     this.facilitiesServed = this.data.facilitiesServed;
     this.accessToGCsRMs = this.data.accessToGCsRMs;
+    console.log(this.accessToGCsRMs);
     this.connectivity = this.data.connectivity;
     this.trafficVolume = this.data.trafficVolume;
     this.security = this.data.security;
     this.farmToTheMarket = this.data.farmToTheMarket;
-    this.agriculturalFacilities = this.data.agriculturalFacilities;
+    this.agricultureFacilitation = this.data.agricultureFacilitation;
     this.linksToMajorActivityCentres = this.data.facilitiesServed + this.data.accessToGCsRMs;
     this.numberOfConnections = this.data.numberOfConnections;
     this.roadCondition = this.data.roadCondition;
@@ -4829,14 +4845,14 @@ export class EditRoadDialog implements OnInit {
       elevationInMetres: [this.elevationInMetres, Validators.min(0)],
       populationServed: [this.populationServed, Validators.min(0)],
       facilitiesServed: [this.facilitiesServed, Validators.min(0)],
-      accessToGCsRMs: [this.accessToGCsRMs, [Validators.min(5), Validators.max(10)]],
-      connectivity: [this.connectivity, Validators.required],
+      accessToGCsRMs: [this.accessToGCsRMs],
+      connectivity: [this.connectivity, [Validators.min(0), Validators.max(5)]],
       trafficVolume: [this.trafficVolume, Validators.required],
       security: [this.security, Validators.required],
       farmToTheMarket: [this.farmToTheMarket, Validators.required],
-      agriculturalFacilities: [this.agriculturalFacilities, Validators.required],
+      agricultureFacilitation: [this.agricultureFacilitation, Validators.required],
       linksToMajorActivityCentres: [this.linksToMajorActivityCentres, Validators.required],
-      numberOfConnections: [this.numberOfConnections, [Validators.min(1), Validators.max(10)]],
+      numberOfConnections: [this.numberOfConnections],
       roadCondition: [this.roadCondition, Validators.required],
       roadQualityAndNeeds: [this.roadQualityAndNeeds, Validators.required],
       roadConditionCriterio: [this.roadConditionCriterio, Validators.required],
@@ -4874,7 +4890,7 @@ export class EditRoadDialog implements OnInit {
       populationServed: this.f.populationServed.value,
       facilitiesServed: this.f.facilitiesServed.value,
       accessToGCsRMs: this.f.accessToGCsRMs.value,
-      agriculturalFacilities: this.agriculturalFacilities,
+      agricultureFacilitation: this.agricultureFacilitation,
       linksToMajorActivityCentres: this.f.linksToMajorActivityCentres.value,
       numberOfConnections: this.f.numberOfConnections.value,
       roadCondition: this.f.roadCondition.value,
