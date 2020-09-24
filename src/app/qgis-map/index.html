@@ -339,8 +339,7 @@
                               [(ngModel)]="district"
 
                               (click)="this.get_districts({num_province_code: province[0].num_province_code});"
-                              (onSelect)="selectDistrict(district,'manual')"
-                              (onDeSelect)="deselectDistrict(district)">
+                              (onSelect)="selectDistrict(district,'manual')">
         </angular2-multiselect>
       </div>
 
@@ -584,23 +583,26 @@
                             </div>
                             <div class="col-md-5">
                             <span style="font-weight: bold">
-                              MCA:
+                              CBI ROUTINE:
                             </span>
-                              {{road.mca}} (%)
+
+                              {{road.cbiRoutine}}
+
                             </div>
                           </div>
                           <div class="row">
                             <div class="col-md-7">
-                            <span style="font-weight: bold">
-                              Osm_id:
+                              <span style="font-weight: bold">
+                              MCA:
                             </span>
-                              {{road.osm_id}}
+                              {{road.mca}} (%)
                             </div>
                             <div class="col-md-5">
                             <span style="font-weight: bold">
-                              CBI:
+                              CBI PERIODIC:
                             </span>
-                              {{road.cbi}}
+
+                              {{road.cbiPeriodic}}
                             </div>
                           </div>
                         </div>
@@ -760,7 +762,7 @@
             </div>
             <div class="" style="display: flex">
               <div class="col-12" style="    padding:0px; z-index: 0;top: 0px;">
-                <div class="map-container" (click)="onClick($event)" id="map" ></div>
+                <div class="map-container"  id="map" ></div>
                 <div style="background-color: white" class="container5" *ngIf="this.loadingMap">
                   <div class="wave">
                     <div class="rect rect1"></div>
@@ -864,28 +866,28 @@
               </ngx-datatable-column>
               <ngx-datatable-column class="lvrr_id"  [width]="100"   #lvrrid name="LVRR_ID" prop="LVRR_ID" [flexGrow]="1" [frozenLeft]="true">
                 <ng-template    let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.LVRR_ID }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="OSM_ID" [width]="100"  class="osmId" prop="osmId" [flexGrow]="1" [frozenLeft]="true">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.osmId }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Code" class="code" prop="code" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.code }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Fclass" [width]="100"  class="code" prop="fclass" [flexGrow]="1" [frozenLeft]="true">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div matTooltip={{row.fclass}} (click)="selectRoad(row)">
+                  <div matTooltip={{row.fclass}} >
                     <div>{{ row?.fclass }}
                     </div>
                   </div>
@@ -893,84 +895,84 @@
               </ngx-datatable-column>
               <ngx-datatable-column [width]="100"    name="NAME" class="testinioclass" prop="name" [flexGrow]="1" [frozenLeft]="true" style="border-right: 1px solid green!important;">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div matTooltip={{row.name}} (click)="selectRoad(row)">
+                  <div matTooltip={{row.name}} >
                     {{ row?.name }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Layer" class="testinioclass" prop="layer" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.layer }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Ref" class="testinioclass" prop="ref" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.ref }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Maxspeed" class="testinioclass" prop="maxspeed" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.maxspeed }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Oneway" class="testinioclass" prop="oneway" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.oneway }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Bridge" class="testinioclass" prop="bridge" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.bridge }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Tunnel" class="testinioclass" prop="tunnel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.tunnel }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="District" class="testinioclass" prop="district" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.district }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Source" class="testinioclass" prop="source" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.source }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Length in metres" class="testinioclass" prop="lengthInMetres" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.lengthInMetres }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Width in metres" class="testinioclass" prop="roadWidthInM" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.roadWidthInM }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Elevation in metres" [width]="200" class="testinioclass" prop="elevationInMetres" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.elevationInMetres }}
                   </div>
                 </ng-template>
@@ -978,12 +980,11 @@
 
               <ngx-datatable-column name="links To Major Activity Centres" [width]="270" class="testinioclass" prop="linksToMajorActivityCentres" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.linksToMajorActivityCentres }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-
               <!--<ngx-datatable-column name="Agricultural Facilities" [width]="200" class="testinioclass" prop="agriculturalFacilities" [flexGrow]="1">-->
                 <!--<ng-template let-row="row" ngx-datatable-cell-template>-->
                   <!--<div *ngIf="row.agriculturalFacilities=='0.0' ">-->
@@ -994,154 +995,126 @@
                   <!--</div>-->
                 <!--</ng-template>-->
               <!--</ngx-datatable-column>-->
-
-
               <!--<ngx-datatable-column name="Number of connections" [width]="200" class="testinioclass"-->
                                     <!--prop="numberOfConnections" [flexGrow]="1">-->
                 <!--<ng-template let-row="row" ngx-datatable-cell-template>-->
-                  <!--<div (click)="selectRoad(row)">-->
+                  <!--<div >-->
                     <!--{{ row?.numberOfConnections }}-->
                   <!--</div>-->
                 <!--</ng-template>-->
               <!--</ngx-datatable-column>-->
-
               <ngx-datatable-column name="Road Condition" [width]="200" class="testinioclass" prop="roadCondition" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.roadCondition }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-
-
-
               <ngx-datatable-column name="Population served" [width]="200" class="testinioclass" prop="populationServed" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.populationServed }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Facilities served" [width]="200" class="testinioclass" prop="facilitiesServed" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.facilitiesServed }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Access to GCS & RMS" [width]="200" class="testinioclass" prop="accessToGCsRMsLabel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div  matTooltip={{row.accessToGCsRMsLabel}} (click)="selectRoad(row)">
+                  <div  matTooltip={{row.accessToGCsRMsLabel}} >
                     {{ row?.accessToGCsRMsLabel }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-
               <ngx-datatable-column name="Farm to the Market" [width]="200" class="testinioclass" prop="farmToTheMarketLabel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div   matTooltip={{row.farmToTheMarketLabel}}  (click)="selectRoad(row)">
+                  <div   matTooltip={{row.farmToTheMarketLabel}}  >
                     {{ row?.farmToTheMarketLabel }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-
-
-
               <ngx-datatable-column name="Agriculture Facilitation" [width]="210" class="testinioclass" prop="agricultureFacilitationLabel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div   matTooltip={{row.agricultureFacilitationLabel}}  (click)="selectRoad(row)">
+                  <div   matTooltip={{row.agricultureFacilitationLabel}}  >
                     {{ row?.agricultureFacilitationLabel }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-
-
-
-
               <ngx-datatable-column name="Connectivity" [width]="130" class="testinioclass" prop="connectivity" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)">
+                  <div >
                     {{ row?.connectivity }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="Road Accessibility" [width]="160" class="testinioclass" prop="roadAccessibilityLabel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div   matTooltip={{row.roadAccessibilityLabel}}  (click)="selectRoad(row)">
+                  <div   matTooltip={{row.roadAccessibilityLabel}}  >
                     {{ row?.roadAccessibilityLabel }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-
-
               <ngx-datatable-column name="Number of Connections to other roads" [width]="320" class="testinioclass"
                                     prop="numberOfConnectionsLabel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div  matTooltip={{row.numberOfConnectionsLabel}}  (click)="selectRoad(row)">
+                  <div  matTooltip={{row.numberOfConnectionsLabel}}  >
                     {{ row?.numberOfConnectionsLabel }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-
-
               <ngx-datatable-column name="Road Condition Criterio" [width]="200" class="testinioclass" prop="roadConditionCriterioLabel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div matTooltip={{row.roadConditionCriterioLabel}} (click)="selectRoad(row)">
+                  <div matTooltip={{row.roadConditionCriterioLabel}} >
                     {{ row?.roadConditionCriterioLabel }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-
-
-
               <ngx-datatable-column name="Road quality and needs" [width]="500" class="testinioclass" prop="roadQualityAndNeedsLabel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div  matTooltip={{row.roadQualityAndNeedsLabel}} (click)="selectRoad(row)">
+                  <div  matTooltip={{row.roadQualityAndNeedsLabel}} >
                     {{ row?.roadQualityAndNeedsLabel }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-
-
               <ngx-datatable-column name="requirements For Earth Works" [width]="270" class="testinioclass" prop="requirementsForEarthWorksLabel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div  matTooltip={{row.requirementsForEarthWorksLabel}}  (click)="selectRoad(row)">
+                  <div  matTooltip={{row.requirementsForEarthWorksLabel}}  >
                     {{ row?.requirementsForEarthWorksLabel }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-
-
               <ngx-datatable-column name="traffic Volume" [width]="300" class="testinioclass" prop="trafficVolumeLabel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div matTooltip={{row.trafficVolumeLabel}} (click)="selectRoad(row)">
+                  <div matTooltip={{row.trafficVolumeLabel}} >
                     {{ row?.trafficVolumeLabel }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
-
               <ngx-datatable-column name="safety" [width]="840" class="testinioclass" prop="safetyLabel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div matTooltip={{row.safetyLabel}} (click)="selectRoad(row)">
+                  <div matTooltip={{row.safetyLabel}} >
                     {{ row?.safetyLabel }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="security" [width]="600" class="testinioclass" prop="securityLabel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div matTooltip={{row.securityLabel}} (click)="selectRoad(row)">
+                  <div matTooltip={{row.securityLabel}} >
                     {{ row?.securityLabel }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column name="environmental Impacts" [width]="860" class="testinioclass" prop="environmentalImpactsLabel" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div  matTooltip={{row.environmentalImpactsLabel}} (click)="selectRoad(row)">
+                  <div  matTooltip={{row.environmentalImpactsLabel}} >
                     {{ row?.environmentalImpactsLabel }}
                   </div>
                 </ng-template>
-
-
               </ngx-datatable-column>
               <ngx-datatable-column name="C1_score" prop="c1Score" class="testinioclass" [flexGrow]="1" #c1location>
                 <ng-template let-row="row" ngx-datatable-cell-template>
@@ -1250,21 +1223,21 @@
               </ngx-datatable-column>
               <ngx-datatable-column name="MCA (%)" prop="mca" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div (click)="selectRoad(row)" matTooltip={{row.mcaTypos}}  >
+                  <div  matTooltip={{row.mcaTypos}}  >
                     {{ row?.mca }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column [width]="260" name="CBI ROUTINE MAINTENANCE" prop="cbiRoutine" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div  matTooltip={{row.cbi1RoutineTypos}}  (click)="selectRoad(row)" >
+                  <div  matTooltip={{row.cbi1RoutineTypos}}   >
                     {{ row?.cbiRoutine }}
                   </div>
                 </ng-template>
               </ngx-datatable-column>
               <ngx-datatable-column [width]="260" name="CBI PERIODIC MAINTENANCE" prop="cbiPeriodic" [flexGrow]="1">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div matTooltip={{row.cbi2PeriodicTypos}} (click)="selectRoad(row)" >
+                  <div matTooltip={{row.cbi2PeriodicTypos}}  >
                     {{ row?.cbiPeriodic }}
                   </div>
                 </ng-template>
