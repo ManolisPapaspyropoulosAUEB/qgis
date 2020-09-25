@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {FilterService} from '../../services/filter.service';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
@@ -6,12 +6,13 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ScrollService} from '../../services/scroll.service';
 import {ValidationService} from '../../services/validation.service';
+import {Subscription} from 'rxjs';
 @Component({
   selector: 'app-villages',
   templateUrl: './villages.component.html',
   styleUrls: ['./villages.component.css']
 })
-export class VillagesComponent implements OnInit {
+export class VillagesComponent implements OnInit,OnDestroy {
   public num_district_code;
   public num_province_code;
   public villages = [];
@@ -22,6 +23,7 @@ export class VillagesComponent implements OnInit {
   private district_name: any;
   public loading;
   public showAllCheckVillages;
+  public  villageSub:Subscription;
   constructor(public dataservice: DataService, public filterService: FilterService, public dialog: MatDialog, private snackBar: MatSnackBar, private scrollService: ScrollService) {
   }
   ngOnInit(): void {
@@ -89,10 +91,15 @@ export class VillagesComponent implements OnInit {
   //   }
   // }
 
+  ngOnDestroy(): void {
+    this.villageSub.unsubscribe();
+    console.log(this.villages);
+  }
+
 
   getVillages() {
     this.loading=true;
-    this.dataservice.getVillages({
+    this.villageSub=this.dataservice.getVillages({
       'num_district_code': this.num_district_code,
       'num_province_code': this.num_province_code,
       'villageNameFilter': this.villageNameFilter
@@ -246,6 +253,8 @@ export class VillagesComponent implements OnInit {
       }
     });
   }
+
+
 }
 
 @Component({

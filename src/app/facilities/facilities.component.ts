@@ -1,7 +1,6 @@
 import {AfterViewChecked, Component, ElementRef, Inject, OnInit} from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {FilterService} from '../../services/filter.service';
-import {EditRoadDialog} from '../qgis-map/qgis-map.component';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';

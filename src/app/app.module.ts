@@ -76,11 +76,8 @@ import {FileUploadModule} from 'ng2-file-upload';
 import { SliderComponent } from './slider/slider.component';
 import {
 
-  AddingNoteDialog, ConfirmUploadPhotoDialog, CriteriaConfirmationDialog,
-  DeleteImgDialog, DeleteNoteDialog, DeleteSnapshotDialog,
-  EditRoadDialog, HistoryDialog, ImportDialog,
-  NotesDialog, OpenPdfConfigurationDialog,
-  PhotoGallery, ProfileDialog,
+
+  ProfileDialog,
   QgisMapComponent
 } from './qgis-map/qgis-map.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
@@ -92,7 +89,15 @@ import {ExcelPdfExporterService} from './services/excel-pdf-exporter.service';
 import {NgxSelectModule} from 'ngx-select-ex';
 import {NgxCaptchaModule} from 'ngx-captcha';
 import { LoaderComponent } from './loader/loader.component';
-import {RoadsComponent} from './roads/roads.component';
+import {
+  AddingNoteDialog,
+  ConfirmUploadPhotoDialog,
+  CriteriaConfirmationDialog, DeleteImgDialog, DeleteNoteDialog,
+  DeleteSnapshotDialog, EditRoadDialog,
+  HistoryDialog, ImportDialog, NotesDialog,
+  OpenPdfConfigurationDialog, PhotoGallery,
+  RoadsComponent
+} from './roads/roads.component';
 import { CarouselComponent } from './qgis-map/carousel/carousel.component';
 import {NgImageSliderModule} from 'ng-image-slider';
 import {NgxImageGalleryModule} from 'ngx-image-gallery';
@@ -171,6 +176,7 @@ const routes: Routes = [
 
 
 
+
 @NgModule({
   declarations: [
     SafeUrlPipe,
@@ -197,7 +203,7 @@ const routes: Routes = [
     PhotoGallery,
     VillageDialog,
     AddDCDialog,
-    OpenPdfConfigurationDialog,
+    OpenPdfConfigurationDialog, //
     AppComponent,
     RegisterComponent,
     VillagesComponent,
@@ -306,7 +312,7 @@ const routes: Routes = [
   ],
 
 
-  entryComponents: [
+  entryComponents: [//
     EditRoadDialog,
      ProfileDialog,
     ImportDialog,

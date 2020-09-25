@@ -54,7 +54,7 @@ export class ScrollService {
         });
       }else if (param=='c1_location'){
         myTble.scrollTo({
-          left: 7510,
+          left: 6130,
           behavior: 'smooth'
         });
       }else if (param=='init'){
@@ -64,7 +64,7 @@ export class ScrollService {
         });
       }else if (param=='criteria'){
         myTble.scrollTo({
-          left: 2300,
+          left: 920,
           behavior: 'smooth'
         });
       }else if(param=='top'){

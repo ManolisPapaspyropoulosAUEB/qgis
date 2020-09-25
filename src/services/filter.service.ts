@@ -14,7 +14,7 @@ export class FilterService {
   public roadTab2=[];
   public roadsTab1Cpy=[];
   public tab=0;
-
+  public loadingMap=false;
 
 
   public facilitiesLimitTab=16;
